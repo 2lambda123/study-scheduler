@@ -1,5 +1,5 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="../ajax/ajax.js"></script>
+<script src="../scripts/jquery.min.js"></script>
+<script src="../ajax/buttonAjax.js"></script>
 <script>
 //Toggles visibilty on weekdays forms when repetition select changes
 $(document).on('change', '#rep', function() {

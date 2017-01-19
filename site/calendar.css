@@ -27,22 +27,18 @@
   width:100px;
   color:#fff;
   font-size: 15px;
-  background-color: #5bc0de;
+  background-color: rgb(0,0,0);
   cursor: pointer;
 }
-
-/*table, tr, td {
-	border: 1px solid black;
-}*/
 
 #calendar{
 	padding: 10px 14px;
 	background-color:#ccc;
   table-layout: fixed;
-	border-radius: 25px;
-  width: 80%;
+	/*border-radius: 25px;*/
+  width: 70%;
   margin: auto;
-  background-color: rgb(16, 34, 63);
+  background-color: rgb(0, 0, 0);
 }
 
 th {
@@ -64,29 +60,25 @@ th {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: #666;
+  /*background-color: #666;*/
   color: black;
   overflow: visible;
-  background-color: rgb(16, 34, 63);
+  /*background-color: rgb(0, 0, 0);*/
 }
-
-/*.item{
-  width: 100%;
-  height: 100%;
-}*/
 
 .event:hover
 {
-   background: #ff6600;
-   color:white;
-   width: 200%;
+   /*background: #ff6600;*/
+   color: white;
+   min-width: 400px;
    min-height: 100px;
    overflow: visible;
-   font-size: 0.5em;
    z-index:4;
    /*width: 100% !important;*/
    transform:scale(2,2);
    transition: .1s all;
+      font-size: 0.5em;
+
 }
 .event:hover > .edit {
   height:50%;
@@ -107,10 +99,6 @@ th {
 .SUMMARY{
   font-weight: bold;
 }
-
-/*.day{
-	height: 100%;
-}*/
 
 .KTH {
   background-color: rgb(255,86,2)/*#fa5050*/;
