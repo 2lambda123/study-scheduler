@@ -32,7 +32,7 @@ function binarySearch($dtstart, $calendar_decoded, $min, $max, $x){
 function generateUid(){
   return uniqid("67209119184"); // IP + current string to time
 }
-
+//$ENCODED_JSON IS APPARENTLY $COLLECTION_ENCODED
 function dailyWork($start_date, $end_date, $encoded_json, $hp){
   $start_year = (int)substr($start_date, 0, 4);
   $start_month = (int)substr($start_date,5, 2);
@@ -222,13 +222,15 @@ function minutesToHour($dtstart,$minutes){ //takes dtstart and minutes and retur
 function distribute($calendar_encoded, $courses_encoded, $collection_encoded){ // distributes time for ONE course, collection checks how many days to work
   $courses = json_decode($courses_encoded, true);
   //var_dump($courses);
+   $calendar_decoded = json_decode($calendar_encoded, true);
   foreach($courses as $courses_decoded){ // loop through every course, $courses is all the courses from database
 	  $collection_decoded = json_decode($collection_encoded, true);
-    $repeat = false;
-
+	  $repeat = false;
+	$examWork = 0;
+	$work_per_lab = 0;
+	$courseWork = 0;
     if (strcmp($courses_decoded["exam"], "on") == 0){ //TENTA
       $examWork = dailyWork($courses_decoded["coursestart"], $courses_decoded["courseend"], $collection_encoded, $courses_decoded["hp_exam"]);
-      $calendar_decoded = json_decode($calendar_encoded, true);
       $calendar_decoded = distributeWork($calendar_decoded, $courses_decoded, $examWork, days($collection_encoded), "Course study",$courses_decoded["coursestart"], $collection_decoded, $repeat);
       $repeat = true;
     }
@@ -251,8 +253,8 @@ function distribute($calendar_encoded, $courses_encoded, $collection_encoded){ /
 
       for ($i = 0; $i < $labs; $i++){
         $end = $endtimes[$i];
-        $work_per_lab = dailyWork($start, $end, $courses_decoded["hp_lab"]/$labs);
-        $calendar_decoded = distributeWork($calendar_decoded, $courses_decoded, $work_per_lab, days($collection_encoded), "Prepare for lab " . $i, $start, $collection_decoded, $repeat);
+        $work_per_lab = dailyWork($start, $end, $collection_encoded, $courses_decoded["hp_lab"]/$labs);
+        $calendar_decoded = distributeWork($calendar_decoded, $courses_decoded, $work_per_lab, days($collection_encoded), "Prepare for lab " . $i, $start, $collection_decoded, $repeat, $end);
         $start = $end; // new start is last end
       }
       $repeat = true;
@@ -265,19 +267,21 @@ function distribute($calendar_encoded, $courses_encoded, $collection_encoded){ /
 	  $cw++;
     $repeat = true;
 	}
-
   }
   return json_encode($calendar_decoded);
 }
 
 // from $courses_decoded we will get start and end date. $examWork will be calculated in 'distribute'
-function distributeWork($calendar_decoded, $courses_decoded, $examWork, $workingdays, $course_work, $start, $collection_decoded, $repeat){ // måste anropa från distribute $workingdays = days(collection_encoded)
+function distributeWork($calendar_decoded, $courses_decoded, $examWork, $workingdays, $course_work, $start, $collection_decoded, $repeat, $end = false){ // måste anropa från distribute $workingdays = days(collection_encoded)
   $course_code = $courses_decoded["coursecode"]; //courses_decoded is for one course
   $count = count($calendar_decoded); //$count is the size of calendar
   $x = 0; // $x is start of week
   //Dra upp $x till start of week, just nu är den bara start of calendar - $start is 2017-05-01
+  $end_dt;
   $start_dt = convertDate($start); //converts $start to DT format
-  $end_dt = convertDate($courses_decoded["courseend"]);
+  if (!$end) $end_dt = convertDate($courses_decoded["courseend"]);
+  else $end_dt = convertDate($end)+1; //todo ... fix date
+  
 
   // find first event of first day
   $x = binarySearch($start_dt, $calendar_decoded, 0, $count-1, 8);
@@ -353,7 +357,7 @@ $weekStart = $x;
 
     		  else{ //if previous event is not a STUDY-SCHEDULER time or not same course/coursework
 
-            if ($freeTime <= $examWork && $freeTime > 10){ // if the free time is shorter than study time, and at least 10 mins
+            if ($freeTime <= $examWork && $freeTime > 0){ // if the free time is shorter than study time, and at least 10 mins
               $calendar_decoded[$x+$z]["AVAILABLE"] = false;
               $calendar_decoded[$x+$z]["SUMMARY"] = "STUDY-SCHEDULER: " . $course_work . " - " . $course_code;
               $calendar_decoded[$x+$z]["UID"] = generateUid();
@@ -378,17 +382,18 @@ $weekStart = $x;
               $calendar_decoded[$x+$z]["UID"] = generateUid();
 
               $newDT = minutesToHour($calendar_decoded[$x+$z]["DTSTART"], $work);
-
               $calendar_decoded[$x + $z]["DTEND"] = $newDT;
               $event["DTSTART"] = $newDT; // new available event
-
               // put new free event into calendar TODO: inte göra array() om vi ska göra på sista, +1 to be after [x+z]
-              array_splice($calendar_decoded, $x + $z + 1, 0, array($event));
+			  if ($event['DTSTART'] < $event['DTEND']) {
+				array_splice($calendar_decoded, $x + $z + 1, 0, array($event));
+				$count++;
+				$x++;
+			  }
               // +1 as we make an array splice
               $freeTime = timeDiff($calendar_decoded[$x+$z]);
               $examWork = 0;
-              $count++;
-              $x++;
+              
             }
           }
         } // end of if statement checking if it's a study time

@@ -10,7 +10,7 @@
   $db = new DB();
   $calendarLink = $db -> select("SELECT STUDY FROM calendar WHERE ID ='$_SESSION[uuid]'");
   $calendar = $calendarLink[0]["STUDY"];
-
+	//var_dump(json_decode($calendar));
   //$calendar = downloadFile($calendarLink);
 
   $calendarPersonal = $db -> select("SELECT PERSONAL FROM calendar WHERE ID ='$_SESSION[uuid]'");
@@ -40,10 +40,11 @@
   $calendarCourses = $calendarCourses[0]["COURSES"];
 
   $calendar = free_time_with_events($calendar);
+  //var_dump($calendar);
   $calendar = analyze($calendar, $calendarRoutines);
-  
+  //var_dump($calendar);
   $calendar = distribute($calendar, $calendarCourses, $calendarRoutines);
-
+  //var_dump($calendar);
   $db -> query("UPDATE calendar SET CURRENT=".$db->quote($calendar) ." WHERE ID='$_SESSION[uuid]'");
 
 ?>

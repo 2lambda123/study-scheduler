@@ -66,7 +66,7 @@ $(document).on('submit','#submitKTHlink', function(event) {
 		data: $(this).serialize(),
 		success: function(data){
 			console.log(data);
-			document.getElementById('submitKTHlink').innerHTML += data;
+			document.getElementById('submitKTHlink').outerHTML += data;
 		}
 	})
 });

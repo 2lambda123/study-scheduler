@@ -126,7 +126,7 @@ function analyze ($events, $collection) {
 		}
 		$count = count($e);
 	}	
-
+	//var_dump($e);
 	$firstEvent = true;
 	$lastEvent;
 	//This loop fixes travel times
@@ -196,7 +196,7 @@ function analyze ($events, $collection) {
 			$e = findAvailBetween($i,count($e)-1,$ti, 0, $e);
 		}
 	}
-
+	
 	//This loop fixes breaks
 	for($i = 0; $i < $count; $i++){
 		if($e[$i]->AVAILABLE){
@@ -221,7 +221,7 @@ function analyze ($events, $collection) {
 		}
 		$count = count($e);
 	}
-	
+	//var_dump($e);
 	//Loop that discards all events that start on a day you dont want to study
 	$events = array();
 	foreach ($e as $ev) {
@@ -230,16 +230,19 @@ function analyze ($events, $collection) {
 		}
 	}
 	$e = $events;
+	//var_dump($e);
 	return json_encode($e);
 }
 // $i is index for first not available event
 // $y is index for next not available event
 // $ttime1 and $ttime 2 is first and next events traveltimes, $e is array of all events
-function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
+function findAvailBetween($i,$y,$ttime1 = 0,$ttime2 = 0, $e){
 	//Count both traveltimes, $e[$i]->dtend + ttime1, $e[$y]->dtstart - ttime2
+	if (!$ttime1) $ttime1 = 0;
+	if (!$ttime2) $ttime2 = 0;
 	$pause1end = str_replace(":", "T", date("Ymd:Hi", strtotime("+" . $ttime1 . " minutes", strtotime(substr($e[$i]->DTEND, 0, 8) . substr($e[$i]->DTEND, 9, 6))))) . "Z"; // + $ttime1
 	$pause2start = str_replace(":", "T", date("Ymd:Hi", strtotime( "-" . $ttime2 . " minutes", strtotime(substr($e[$y]->DTSTART, 0, 8) . substr($e[$y]->DTSTART, 9, 6))))) . "Z"; // - $ttime2
-	
+
 	for($x = $i; $x < $y; $x++){
 		if ($e[$x]->AVAILABLE) {
 			$u = false;
