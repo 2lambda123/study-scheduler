@@ -17,7 +17,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 		$result = $db -> select("SELECT COURSES FROM data WHERE ID='".$_SESSION['uuid']."'");
 	}
 		
-	$r = (isset($result1[0]['COURSES'])) ? json_decode($result1[0]['COURSES'], true) : null;
+	$r = (isset($result[0]['COURSES'])) ? json_decode($result[0]['COURSES'], true) : null;
 	$p = array();
 	
 	//If new coursecode has same name as an existing coursecode, die and echo error message
@@ -28,7 +28,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			}
 		}
 	}
-	
+	var_dump($r);
 	//Checks if $r has actual values
 	if ($r !== "") {
 		//Checks if $r is an array
@@ -37,10 +37,12 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			array_push($r, (object)$_POST);
 			$p = $r;
 		} else {
-			//Add $r into new array and $post to new array
-			//array_push($p, (object)$r);
 			array_push($p, (object)$_POST);
 		}
+	} else {
+		//Add $r into new array and $post to new array
+		//array_push($p, (object)$r);
+		array_push($p, (object)$_POST);
 	}
 	//Update database to match new courses
 	if(isset($_SESSION['uuid'])){
