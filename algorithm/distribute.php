@@ -254,7 +254,7 @@ function distribute($calendar_encoded, $courses_encoded, $collection_encoded){ /
       for ($i = 0; $i < $labs; $i++){
         $end = $endtimes[$i];
         $work_per_lab = dailyWork($start, $end, $collection_encoded, $courses_decoded["hp_lab"]/$labs);
-        $calendar_decoded = distributeWork($calendar_decoded, $courses_decoded, $work_per_lab, days($collection_encoded), "Prepare for lab " . $i, $start, $collection_decoded, $repeat, $end);
+        $calendar_decoded = distributeWork($calendar_decoded, $courses_decoded, $work_per_lab, days($collection_encoded), "Prepare for lab " . ($i+1), $start, $collection_decoded, $repeat, $end);
         $start = $end; // new start is last end
       }
       $repeat = true;
@@ -278,10 +278,11 @@ function distributeWork($calendar_decoded, $courses_decoded, $examWork, $working
   $x = 0; // $x is start of week
   //Dra upp $x till start of week, just nu är den bara start of calendar - $start is 2017-05-01
   $end_dt;
-  $start_dt = convertDate($start); //converts $start to DT format
+  $start_dt;
+  if (!$end) $start_dt = convertDate($start);
+  else $start_dt = convertDate($start)+1; //converts $start to DT format
   if (!$end) $end_dt = convertDate($courses_decoded["courseend"]);
-  else $end_dt = convertDate($end)+1; //todo ... fix date
-  
+  else $end_dt = convertDate($end); //todo ... fix date
 
   // find first event of first day
   $x = binarySearch($start_dt, $calendar_decoded, 0, $count-1, 8);
@@ -357,11 +358,13 @@ $weekStart = $x;
 
     		  else{ //if previous event is not a STUDY-SCHEDULER time or not same course/coursework
 
-            if ($freeTime <= $examWork && $freeTime > 0){ // if the free time is shorter than study time, and at least 10 mins
-              $calendar_decoded[$x+$z]["AVAILABLE"] = false;
-              $calendar_decoded[$x+$z]["SUMMARY"] = "STUDY-SCHEDULER: " . $course_work . " - " . $course_code;
-              $calendar_decoded[$x+$z]["UID"] = generateUid();
-              $examWork -= $freeTime;
+            if ($freeTime <= $examWork){ // if the free time is shorter than study time, and at least 10 mins
+				if ($freeTime > 10) {
+				  $calendar_decoded[$x+$z]["AVAILABLE"] = false;
+				  $calendar_decoded[$x+$z]["SUMMARY"] = "STUDY-SCHEDULER: " . $course_work . " - " . $course_code;
+				  $calendar_decoded[$x+$z]["UID"] = generateUid();
+				  $examWork -= $freeTime;
+				}
             }
 
             else{ // if free time is longer than study time
