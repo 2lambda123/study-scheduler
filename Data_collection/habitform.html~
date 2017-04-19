@@ -1,0 +1,17 @@
+<form>
+	<h3>New habit</h3>
+	<div>
+		Name: <input name="name" type="text"/><br/>
+		Duration (days): <input name="duration" type="number"/><br/>
+		Repetition: 
+		<select name="repetition">
+			<option>Daily</option>
+			<option>Weekly</option>
+			<option>Monthly</option>
+		</select><br/>
+		Location: <input type="text"/><br/>
+		(optional) from: <input type="date"/> to: <input type="date"/><br/>
+		<input type="submit"/>
+	</div>
+</form>
+	

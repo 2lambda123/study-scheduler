@@ -1,0 +1,17 @@
+<form>
+	<h3>New course</h3>
+	<div>
+		Course name:<input type="text"/><br/>
+		From: <input name="coursestart" type="date"/><br/>
+		To: <input name="courseend" type="date"/><br/>
+		HP: <input name="hp" type="number"/>
+		(optional) Due dates
+		Coursework: <input name="dd1" type="date"/><br/>
+		HP: <input name="hpdd1"  type="number"/>
+		Coursework: <input name="dd2" type="date"/><br/>
+		HP: <input name= "hpdd2" type="number"/>
+		Coursework: <input name="dd3" type="date"/><br/>
+		HP: <input name="hpdd3" type="number"/>
+		<input type="submit"/>
+	</div>
+</form>
