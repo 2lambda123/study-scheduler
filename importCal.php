@@ -20,7 +20,7 @@ class event {
 }
 
 
-$file_content = file_get_contents("marcus.m.soderman@gmail.com.ics");
+$file_content = file_get_contents("https://www.kth.se/social/user/218278/icalendar/9fd7a5485dbf6243bbd0b4ada27934ab4f028163");
 $file = explode("BEGIN:VEVENT", $file_content);
 for ($i = 1; $i < count($file); $i++) {
 	$file[$i] = "BEGIN:VEVENT:" . $file[$i];
