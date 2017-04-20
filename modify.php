@@ -3,16 +3,6 @@
 <body>
 
 <?php
-/*
-$event = '{"SUMMARY":"test3","DTSTART":"20170217T140000", "DTEND":3, "UID":"f3","DESCRIPTION":"TEST3","LOCATION":"kista"}';
-$array = ['{"SUMMARY":"test1","DTSTART":"20170117T120000", "DTEND":3, "UID":"f4","DESCRIPTION":"TEST1","LOCATION":"kista"}',
-          '{"SUMMARY":"test1","DTSTART":"20170117T140000", "DTEND":3, "UID":"f4","DESCRIPTION":"TEST1","LOCATION":"kista"}'];*/
-
-$event = '{"SUMMARY":"test3","DTSTART":"20170427T115355", "DTEND":3, "UID":"f3","DESCRIPTION":"TEST3","LOCATION":"kista"}';
-$array = ['{"SUMMARY":"test1","DTSTART":"20170327T080000", "DTEND":3, "UID":"f4","DESCRIPTION":"TEST1","LOCATION":"kista"}',
-        '{"SUMMARY":"test1","DTSTART":"20170327T100000", "DTEND":3, "UID":"f4","DESCRIPTION":"TEST1","LOCATION":"kista"}'];
-$ans = modify($array, $event);
-var_dump($ans);
 
 function modify($array, $event){ //$array is an array consisting json elements. $event is a json object to be added to $array
   $event_decoded = json_decode($event, true);
