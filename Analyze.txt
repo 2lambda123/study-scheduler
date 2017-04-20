@@ -1,0 +1,23 @@
+Input: 
+Alla available times
+
+Output:
+All avaailable time minus tid upptagen för vanor som sova,
+äta och resa. 
+
+Vanor:
+Dagar man inte studerar
+Sova 
+Restid
+Pauser:
+- Måste kolla hur mycket de reser innan vi lägger in pauser
+  eftersom restiden kan räknas som paustid.
+Valfria Vanor: 
+- Kan antingen vara dagliga, veckliga eller månadsliga
+- Bestäm mellan vilka tiden man gör det på dagen
+- För veckliga och månadsliga så bestämmer man vilka veckodagar
+  aktiviteten utförs.
+- Vi skiter i rökare, man måste specificera vilka tiden man gör
+  det på.
+- Restid till habits (Om t.ex. gymmet ligger på annan plats)
+
