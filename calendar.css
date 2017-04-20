@@ -1,10 +1,3 @@
-.week {
-  background-color: #123;
-  width: 90%;
-  height: 1000px;
-  margin:0 auto;
-}
-
 #weekHead {
   font-size: 32px;
   font-weight: bold;
@@ -12,7 +5,26 @@
   padding-bottom: 50px;
 }
 
-#monbox {
+.weekdays{
+  background-color: #123;
+  padding:10px 0;
+  margin-left:auto;
+  margin-right:auto;
+  width:80%;
+}
+
+/*.weekdays div{
+  overflow:scroll;
+}*/
+
+.weekdays li{
+  border-right: thick solid #666;
+  text-align:center;
   color:#ffffff;
-  position: absolute;
+  padding-left: 50px;
+  padding-right: 50px;
+  display:inline-block;
+  width:5%;
+  height:10%;
+
 }

@@ -18,16 +18,16 @@
   </ul>
 
   <div id="weekHead"> "MIA" </div>
-
-  <div class="week">
-    <div id="monbox"> Monday </div>
-    <div id="tuebox"> Tuesday </div>
-    <div id="wedbox"> Wednesday </div>
-    <div id="thubox"> Thursday </div>
-    <div id="fribox"> Friday </div>
-    <div id="satbox"> Saturday </div>
-    <div id="sunbox"> Sunday </div>
-  </div>
-
+<div id="week">
+    <ul class="weekdays">
+      <li>Monday<div id="monbox"></div></li>
+      <li>Tuesday<div id="tuebox"> </div></li>
+      <li>Wednesday<div id="wedbox"> </div></li>
+      <li>Thursday<div id="thubox"> </div></li>
+      <li>Friday<div id="fribox"> </div></li>
+      <li>Saturday<div id="satbox"> </div></li>
+      <li>Sunday<div id="sunbox"> </div></li>
+    </ul>
+</div>
 </body>
 </html>
