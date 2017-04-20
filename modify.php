@@ -17,6 +17,8 @@ function modify($array, $event){ //$array is an array consisting json elements. 
     }
     $pos++;
   }
+  array_push($array,$event);
+  return $array;
 }
 ?>
 
