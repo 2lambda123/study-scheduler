@@ -1,0 +1,1 @@
+{"name":"Gymma","duration":"25","repetition":"Weekly","location":"Gym","dtstart":"19:00","dtend":"21:00","travel":"15","Monday":"on","Tuesday":"on","Friday":"on","Sunday":"on"}

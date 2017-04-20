@@ -2,7 +2,7 @@ Input:
 Alla available times
 
 Output:
-All avaailable time minus tid upptagen för vanor som sova,
+All available time minus tid upptagen för vanor som sova,
 äta och resa. 
 
 Vanor:
@@ -21,3 +21,11 @@ Valfria Vanor:
   det på.
 - Restid till habits (Om t.ex. gymmet ligger på annan plats)
 
+1. Kolla om eventets starttid är innan/samtidigt som 
+   "sovtidens" början.
+2. Kolla om eventets slut är samtidigt/efter sovtidens slut.
+3. Om den slutar innan sovtidens slut är vi fucked. För då är
+   hen upptagen när hon ska sova. Annars får vi skapa en/två till
+   available.
+
+Sätter restid mellan allt förutom skola-> skola

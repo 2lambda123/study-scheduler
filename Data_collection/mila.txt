@@ -1,0 +1,1 @@
+{"mo":"on","we":"on","su":"on","sleepfrom":"23:00","sleepto":"06:00","traveltime":"60","studylength":"60","breaktime":"5"}

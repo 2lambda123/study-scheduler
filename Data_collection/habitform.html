@@ -2,7 +2,7 @@
 	<h3>New habit</h3>
 	<div>
 		Name: <input name="name" type="text"/><br/>
-		Duration (days): <input name="duration" type="number"/><br/>
+		Number of repetitions: <input name="duration" type="number"/><br/>
 		Repetition: 
 		<select name="repetition">
 			<option>Daily</option>
@@ -10,7 +10,20 @@
 			<option>Monthly</option>
 		</select><br/>
 		Location: <input name="location" type="text"/><br/>
-		(optional) from: <input name="dtstart" type="date"/> to: <input name="dtend" type="date"/><br/>
+		from: <input name="dtstart" type="time"/> to: <input name="dtend" type="time"/><br/>
+		
+		Estimated travel time: <input name="travel" type="number"/><br/><br/>
+		
+		Which days of week I will repeat (for monthly and weekly).
+		<div>
+		<label for="mo"/>Monday:</label> <input type="checkbox" name="Monday" id="mo"/><br/>
+		<label for="tu"/>Tuesday:</label> <input type="checkbox" name="Tuesday" id="tu"/><br/>
+		<label for="we"/>Wednesday:</label> <input type="checkbox" name="Wednesday" id="we"/><br/>
+		<label for="th"/>Thursday:</label> <input type="checkbox" name="Thursday" id="th"/><br/>
+		<label for="fr"/>Friday:</label> <input type="checkbox" name="Friday" id="fr"/><br/>
+		<label for="sa"/>Saturday:</label> <input type="checkbox" name="Saturday" id="sa"/><br/>
+		<label for="su"/>Sunday:</label> <input type="checkbox" name="Sunday" id="su"/><br/>
+	</div>
 		<input type="submit"/>
 	</div>
 </form>
