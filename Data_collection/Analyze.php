@@ -66,15 +66,29 @@ function analyze ($events) {
 	//Denna loop fixar restider
 	for($i = 0; $i < count($e) ; $i++) {
 		if (!$e[$i]->AVAILABLE) {
-			if ($firstEvent) {
+			$ti;
+			if((preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$i]->SUMMARY)){
+				$ti = collection->traveltime;
+			} 
+			else{
+				$ti = $e[i]->DESCRIPTION;
+			}
+			if ($firstEvent){
 				//lägg restid innan första event
-				findAvailBetween(0,$i,0, $collection->traveltime, $e);
+				findAvailBetween(0, $i,0, $ti, $e);
 			}
 			for ($y = $i; $y < count($e); $y++) {
 				if(!$e[$y]->AVAILABLE) {
+					$ty;
+					if((preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$y]->SUMMARY)){
+						$ty = collection->traveltime;
+					} 
+					else{
+						$ty = $e[y]->DESCRIPTION;
+					}
 					//jämföra ny dag
 					if(date('Ymd', strtotime($e[$i]->DTEND) !== date('Ymd', strtotime($e[$y]->DTSTART)))){		
-						findAvailBetween($i,$y,$collection->traveltime, $collection->traveltime, $e);	
+						findAvailBetween($i,$y,$ti, $ty, $e);	
 					}
 					//jämföra om det är samma sorts event (skola å skola eller samma habit å habit
 					else if(($e[$i]->SUMMARY == $e[$y]->SUMMARY) || (preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$i]->SUMMARY) == preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$y]->SUMMARY))){
@@ -82,13 +96,13 @@ function analyze ($events) {
 					}
 					//om det inte är samma sort, lägg restid mellan
 					else{
-					findAvailBetween($i,$y,$collection->traveltime, $collection->traveltime, $e);
+					findAvailBetween($i,$y, $ti, $ty, $e);
 					} 
 					$lastEvent = false;
 				}
 			}
 			if ($lastEvent) {
-				findAvailBetween($i,count($e)-1,$collection->traveltime, 0, $e);//lägg restid efter sista event
+				findAvailBetween($i,count($e)-1,$ti, 0, $e);//lägg restid efter sista event
 			}
 			$lastEvent = true;
 			$firstEvent = false;
