@@ -30,4 +30,13 @@ Valfria Vanor:
 
 Sätter restid mellan allt förutom skola-> skola
 
-Philip testar
+Restid:
+1. Kolla även om det är en ny dag på det andra eventet,
+   om det är så, sätt restid i slutet av första och början på 
+   andra dagen.
+2. Loopar igenom och letar upp "första" not-avail-eventet och det
+   non-avail-event som kommer efter, jämför å kollar om restid
+   behövs. (Om ena eventet inte är i skolan eller om (2)). 
+3. Om det behövs restid, loopa igenom avail-tiderna/tiden och
+   undersök var vi ska klippa/ta bort events och gör detta efter
+   loopen.

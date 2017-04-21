@@ -72,11 +72,17 @@ function analyze ($events) {
 			for ($y = $i; $y < count($e); $y++) {
 				if(!$e[$y]->AVAILABLE) {
 					//jämföra ny dag
+					if(date('Ymd', strtotime($e[$i]->DTEND) !== date('Ymd', strtotime($e[$y]->DTSTART){		
+						findAvailBetween($i,$y,$collection->traveltime, $collection->traveltime, $e);			
+					//jämföra om det är samma sorts event (skola å skola eller samma habit å habit
+					else if(($e[$i]->SUMMARY == $e[$y]->SUMMARY)||){
 					
-					
-					//jämföra om det är samma sorts event (skola å skola eller samma habit å habit)
-					//om det ej är samma sort, lägg restid mellan
+					}
 					$lastEvent = false;
+					//om det inte är samma sort, lägg restid mellan
+					else{
+					findAvailBetween($i,$y,$collection->traveltime, $collection->traveltime, $e)
+					} 
 				}
 			}
 			if ($lastEvent) {
@@ -88,4 +94,29 @@ function analyze ($events) {
 	}
 	//Denna loop fixar pauser
 }
+// Hittar, klipper till och/eller tar bort events för restiden i schemat
+findAvailBetween($i,$y,$ttime1,$ttime2, $e){
+	$pause1end = $e[$i]->DTSTART // + $ttime1
+	$pause2start = $e[$y]->DTSTART // - $ttime2
+	for($x = $i; $x < $y; $x++){
+		if($e[$x]->DTSTART >= $e[$i]->DTEND && $e[$x]->DTEND <= $pause1end){ // Om avail är innuti restiden
+		unset($e[$x]);
+		}
+		else if($e[$x]->DTSTART >= $e[$i]->DTEND && $e[$x]->DTEND > $pause1end){  
+		$e[$x]->DTSTART = 
+		}
+	}	
+}
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
