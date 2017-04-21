@@ -19,47 +19,71 @@
   </ul>
 
   <div id="weekHead"> "MIA" </div>
- 
+
+<div id= "cal">
+
 	  <table  id= "table" style= "width: 80%" align="center">
-		<div class="days"> 
-		<tr>
-		  
-			  <th class= "poop">Monday</th>
-			  <th class= "poop" >Tuesday</th>
-			  <th class= "poop">Wednesday</th>
-			  <th class= "poop">Thursday</th>
-			  <th class= "poop">Friday</th>
-			  <th class= "poop">Saturday</th>
-			  <th class= "poop">Sunday</th>
-			
-		  </tr> 
-		  </div>
+		    <div class="days">
+		        <tr>
+      			  <th>Monday</th>
+      			  <th>Tuesday</th>
+      			  <th>Wednesday</th>
+      			  <th>Thursday</th>
+      			  <th>Friday</th>
+      			  <th>Saturday</th>
+      			  <th>Sunday</th>
+		        </tr>
+            <tr>
+              <td class="box"> <div id="event"></div></td>
+              <td class="box"> <div></div></td>
+              <td class="box"> <div></div></td>
+              <td class="box"> <div></div></td>
+              <td class="box"> <div></div></td>
+              <td class="box"> <div></div></td>
+              <td class="box"> <div></div></td>
+            </tr>
+		    </div>
 	  </table>
-  
-  
-<p id="demo"> </p>  
-  
+
+
+</div>
+
+<p id="demo"> </p>
+
+<div id="block">
+  <div id="smallblock"></div>
+</div>
+
  <script>
  function Func()
  {		var tableEl = document.getElementById("table");
-	 for(var i=1; i<100; i++)
-	 {		 
+	 /*for(var i=1; i<24; i++)
+	 {
 			var newRow = tableEl.insertRow(i);
 			for(var j=0; j<7; j++)
 			{
 				var newCell = newRow.insertCell(j);
-	
 
-			}
-	document.getElementById("demo").innerHTML= "boooo";
-	
+
+			}*/
 	 }
+
 }
 
 window.onload = Func();
-</script> 
-  
-  
-  
+</script>
+
+  <?php
+    include "importCal.php";
+    $file = json_decode(downloadFile("https://www.kth.se/social/user/216124/icalendar/488f1809dad7460089c214ab25c9ecd5f7c24f1f"));
+    for($i = 0; $i < 10; $i++){
+      print_r(get_object_vars($file[$i]));
+      echo nl2br("\n") . nl2br("\n");
+
+    }
+    ?>
+
+
+
 </body>
 </html>

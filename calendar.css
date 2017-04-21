@@ -4,38 +4,14 @@
   padding-top: 100px;
   padding-bottom: 50px;
 }
-/*
-.weekdays{
-  background-color: #123;
-  padding:10px 0;
-  margin-left:auto;
-  margin-right:auto;
-  width:80%;
-}
-
-.weekdays div{
-  overflow:scroll;
-}
-
-.weekdays li{
-  border-right: thick solid #666;
-  text-align:center;
-  color:#ffffff;
-  padding-left: 50px;
-  padding-right: 50px;
-  display:inline-block;
-  width:5%;
-  height:10%;
-
-}*/
-
 
 table{
-    border: 1px solid black;
+  border: 1px solid black;
 	padding: 10px 14px;
 	background-color: #dddddd;
-	width: 300px;
-    /*border-collapse: collapse;*/
+  table-layout: fixed;
+	/*width: 300px;
+  /*border-collapse: collapse;*/
 	border-radius: 25px;
 }
 
@@ -43,25 +19,74 @@ table, tr, td{
 	border: 1px solid black;
 }
 
+tr, td {
+  border-collapse: collapse;
+}
+
+th {
+  padding: 10px 10px 10px 10px;
+}
+
 td:hover{
 	background-color: blue;
 }
-/*
-.poop
-{
-	border-bottom: 1px solid black;
-	
-	
-}*/
 
-.days
-{
-	text-align: center;
-	
-} 
-
-#table
-{	
-	margin-left:auto;
-  margin-right:auto;	
+td:active{
+  background-color: yellow;
 }
+
+td {
+  height:100px;
+  }
+
+.days{
+	text-align: center;
+  }
+.time{
+  height = 100px;
+  width = 100px;
+}
+
+
+table div tr th #event{
+
+}
+
+.box{
+  position: relative;
+  overflow: scroll;
+  /*height: 10px;*/
+}
+
+#event
+{
+  position: absolute;
+  height: 120px;
+  width: 100px;
+  top: 5px;
+  left: 5px;
+  background-color: white;
+  z-index: 3;
+}
+
+#block{
+  position: relative;
+  /*background-color: pink;
+  height: 50px;
+  width: 50px;
+  position:absolute;
+  z-index = 3;
+  left: 200px;
+  top: 500px;*/
+}
+
+#smallblock{
+  position: absolute;
+  top:0px;
+  left: 0px;
+}
+
+/*#table{
+	margin-left:auto;
+  margin-right:auto;
+}*/
