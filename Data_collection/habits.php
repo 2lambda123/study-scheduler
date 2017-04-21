@@ -9,6 +9,10 @@ class event {
 	public $LOCATION = NULL;
 }
 
+$h = $_POST;
+$events;
+$x = $h['duration'];
+
 $wD[] = array();
 if (isset($h['Monday'])) {
 		array_push($wD, 'Monday');
@@ -31,15 +35,11 @@ if (isset($h['Monday'])) {
 	if (isset($h['Sunday'])) {
 		array_push($wD, 'Sunday');
 }
-	
 
-$h = $_POST;
-$events[] = new event;
-$x = $h['duration'];
-$events;
 if ($h['repetition'] == "Daily") {
-	$d = getdate()['year'] . getdate()['mon'] . getdate()['mday'];
+	$d = getdate()['year'] . "0" . getdate()['mon'] . getdate()['mday'];
 	for ($i = 0; $i < $x; $i++) {
+		$events[] = new event();
 		$events[$i]->SUMMARY = $h['name'];
 		$events[$i]->DESCRIPTION = $h['travel'];
 		$events[$i]->LOCATION = $h['location'];
@@ -49,26 +49,24 @@ if ($h['repetition'] == "Daily") {
 		$d = date('Ymd', strtotime($d . "+1 day"));
 	}
 } else if ($h['repetition'] == "Weekly") {
-	$rep = count($wD)*$x;;
+	$rep = (count($wD)-1)*$x;
 	$d = getdate()['year'] . "0" . getdate()['mon'] . getdate()['mday'];
 	for ($i = 0; $i < $rep;) {
-		echo date('l', strtotime($d));
-		print_r($wD);
-		echo "<br>";
 		if (in_array(date('l', strtotime($d)), $wD)) {
+			$events[] = new event();
 			$events[$i]->SUMMARY = $h['name'];
 			$events[$i]->DESCRIPTION = $h['travel'];
 			$events[$i]->LOCATION = $h['location'];
 			$events[$i]->DTSTART = $d . "T" . str_replace(":", "", $h['dtstart']) . "Z";
 			$events[$i]->DTEND = $d . "T" . str_replace(":", "", $h['dtend']) . "Z";
 			$events[$i]->UID = $d . $h['dtstart'];
-			//$i++;
-			echo $i;
+			$i++;
 		}
-		$i++;
 		$d = date('Ymd', strtotime($d . "+1 day"));
 	}
 }
 
-print_r($events);
+$e = json_encode($events);
+echo $e
+
 ?>
