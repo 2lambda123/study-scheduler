@@ -73,17 +73,18 @@ function analyze ($events) {
 			for ($y = $i; $y < count($e); $y++) {
 				if(!$e[$y]->AVAILABLE) {
 					//jämföra ny dag
-					if(date('Ymd', strtotime($e[$i]->DTEND) !== date('Ymd', strtotime($e[$y]->DTSTART){		
-						findAvailBetween($i,$y,$collection->traveltime, $collection->traveltime, $e);			
+					if(date('Ymd', strtotime($e[$i]->DTEND) !== date('Ymd', strtotime($e[$y]->DTSTART)))){		
+						findAvailBetween($i,$y,$collection->traveltime, $collection->traveltime, $e);	
+					}
 					//jämföra om det är samma sorts event (skola å skola eller samma habit å habit
-					else if(($e[$i]->SUMMARY == $e[$y]->SUMMARY) || (preg_match((\([A-Z][A-Z]\d\d\d\d\)), $e[$i]->SUMMARY) == preg_match((\([A-Z][A-Z]\d\d\d\d\)), $e[$y]->SUMMARY)){
+					else if(($e[$i]->SUMMARY == $e[$y]->SUMMARY) || (preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$i]->SUMMARY) == preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$y]->SUMMARY))){
 						//leave as is
 					}
-					$lastEvent = false;
 					//om det inte är samma sort, lägg restid mellan
 					else{
-					findAvailBetween($i,$y,$collection->traveltime, $collection->traveltime, $e)
+					findAvailBetween($i,$y,$collection->traveltime, $collection->traveltime, $e);
 					} 
+					$lastEvent = false;
 				}
 			}
 			if ($lastEvent) {
@@ -95,7 +96,7 @@ function analyze ($events) {
 	}
 	
 	//Denna loop fixar pauser
-	for($i = 0; $i < count($e); i++){
+	for($i = 0; $i < count($e); $i++){
 		if($e[$i]->AVAILABLE){
 			// if DTSTART - DTEND > studylength
 			if((strtotime($e[$i]->DTEND)-strtotime($e[$i]->DTSTART))/60 > $collection->studylength){
@@ -109,9 +110,9 @@ function analyze ($events) {
 	}
 }
 // Hittar, klipper till och/eller tar bort events för restiden i schemat
-findAvailBetween($i,$y,$ttime1,$ttime2, $e){
-	$pause1end = $e[$i]->DTSTART // + $ttime1
-	$pause2start = $e[$y]->DTSTART // - $ttime2
+function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
+	$pause1end = $e[$i]->DTSTART; // + $ttime1
+	$pause2start = $e[$y]->DTSTART; // - $ttime2
 	for($x = $i; $x < $y; $x++){
 		$u = false;
 		if($e[$x]->DTSTART >= $e[$i]->DTEND && $e[$x]->DTEND <= $pause1end){ // Om avail är innuti restiden
