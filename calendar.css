@@ -10,8 +10,6 @@ table{
 	padding: 10px 14px;
 	background-color: #dddddd;
   table-layout: fixed;
-	/*width: 300px;
-  /*border-collapse: collapse;*/
 	border-radius: 25px;
 }
 
@@ -19,20 +17,12 @@ table, tr, td{
 	border: 1px solid black;
 }
 
-tr, td {
+/*tr, td {
   border-collapse: collapse;
-}
+}*/
 
 th {
   padding: 10px 10px 10px 10px;
-}
-
-td:hover{
-	background-color: blue;
-}
-
-td:active{
-  background-color: yellow;
 }
 
 td {
@@ -42,34 +32,34 @@ td {
 .days{
 	text-align: center;
   }
-.time{
-  height = 100px;
-  width = 100px;
-}
-
-
-table div tr th #event{
-
-}
 
 .box{
   position: relative;
-  overflow: scroll;
-  /*height: 10px;*/
+  overflow: auto;
+  height: 1440px;
 }
 
 #event
 {
   position: absolute;
-  height: 120px;
-  width: 100px;
+  height: 60px;
+  width: 160px;
   top: 5px;
   left: 5px;
   background-color: white;
   z-index: 3;
 }
 
-#block{
+#event:hover{
+  	background-color: blue;
+  }
+#event:active{
+    background-color: yellow;
+}
+
+}
+
+/*#block{
   position: relative;
   /*background-color: pink;
   height: 50px;
@@ -77,14 +67,14 @@ table div tr th #event{
   position:absolute;
   z-index = 3;
   left: 200px;
-  top: 500px;*/
-}
+  top: 500px;
+}*/
 
-#smallblock{
+/*#smallblock{
   position: absolute;
   top:0px;
   left: 0px;
-}
+}*/
 
 /*#table{
 	margin-left:auto;
