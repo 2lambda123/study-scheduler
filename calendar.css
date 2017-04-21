@@ -4,7 +4,7 @@
   padding-top: 100px;
   padding-bottom: 50px;
 }
-
+/*
 .weekdays{
   background-color: #123;
   padding:10px 0;
@@ -13,9 +13,9 @@
   width:80%;
 }
 
-/*.weekdays div{
+.weekdays div{
   overflow:scroll;
-}*/
+}
 
 .weekdays li{
   border-right: thick solid #666;
@@ -27,4 +27,41 @@
   width:5%;
   height:10%;
 
+}*/
+
+
+table{
+    border: 1px solid black;
+	padding: 10px 14px;
+	background-color: #dddddd;
+	width: 300px;
+    /*border-collapse: collapse;*/
+	border-radius: 25px;
+}
+
+table, tr, td{
+	border: 1px solid black;
+}
+
+td:hover{
+	background-color: blue;
+}
+/*
+.poop
+{
+	border-bottom: 1px solid black;
+	
+	
+}*/
+
+.days
+{
+	text-align: center;
+	
+} 
+
+#table
+{	
+	margin-left:auto;
+  margin-right:auto;	
 }

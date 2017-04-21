@@ -5,6 +5,7 @@
 <link href="menubar.css" rel="stylesheet">
 <link href="calendar.css" rel="stylesheet">
 <script type="text/javascript" src="calendar_load_week.js" defer></script>
+
 </head>
 
 <body>
@@ -18,16 +19,47 @@
   </ul>
 
   <div id="weekHead"> "MIA" </div>
-<div id="week">
-    <ul class="weekdays">
-      <li>Monday<div id="monbox"></div></li>
-      <li>Tuesday<div id="tuebox"> </div></li>
-      <li>Wednesday<div id="wedbox"> </div></li>
-      <li>Thursday<div id="thubox"> </div></li>
-      <li>Friday<div id="fribox"> </div></li>
-      <li>Saturday<div id="satbox"> </div></li>
-      <li>Sunday<div id="sunbox"> </div></li>
-    </ul>
-</div>
+ 
+	  <table  id= "table" style= "width: 80%" align="center">
+		<div class="days"> 
+		<tr>
+		  
+			  <th class= "poop">Monday</th>
+			  <th class= "poop" >Tuesday</th>
+			  <th class= "poop">Wednesday</th>
+			  <th class= "poop">Thursday</th>
+			  <th class= "poop">Friday</th>
+			  <th class= "poop">Saturday</th>
+			  <th class= "poop">Sunday</th>
+			
+		  </tr> 
+		  </div>
+	  </table>
+  
+  
+<p id="demo"> </p>  
+  
+ <script>
+ function Func()
+ {		var tableEl = document.getElementById("table");
+	 for(var i=1; i<100; i++)
+	 {		 
+			var newRow = tableEl.insertRow(i);
+			for(var j=0; j<7; j++)
+			{
+				var newCell = newRow.insertCell(j);
+	
+
+			}
+	document.getElementById("demo").innerHTML= "boooo";
+	
+	 }
+}
+
+window.onload = Func();
+</script> 
+  
+  
+  
 </body>
 </html>
