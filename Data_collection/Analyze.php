@@ -61,38 +61,30 @@ function analyze ($events) {
 		}
 	}
 	
-	$pEvent;
-	$nEvent;
-	$firstEvent;
+	$firstEvent = true;
 	$lastEvent;
 	//Denna loop fixar restider
 	for($i = 0; $i < count($e) ; $i++) {
-	//Hitta nästa lediga tid, loopa bak och fram till de närliggande olediga tider.
-		if ($e[$i]->AVAILABLE) {
-			$firstEvent = true;
-			$lastEvent = true;
-			for ($y = $i; $y => 0; $y--) {
-				if(!$e[$y]->AVAILABLE) {
-					$pEvent = $e[$y];
-					$firstEvent = false;
-					break;
-				}
+		if (!$e[$i]->AVAILABLE) {
+			if ($firstEvent) {
+				//lägg restid innan första event
 			}
 			for ($y = $i; $y < count($e); $y++) {
 				if(!$e[$y]->AVAILABLE) {
-					$nEvent = $e[$y];
+					//jämföra ny dag
+					
+					
+					//jämföra om det är samma sorts event (skola å skola eller samma habit å habit)
+					//om det ej är samma sort, lägg restid mellan
 					$lastEvent = false;
-					break;
 				}
 			}
-			if($firstEvent) {
-				
-			} else if ($lastEvent) {
-				
-			} else {
-			
+			if ($lastEvent) {
+				//lägg restid efter sista event
 			}
-		}	
+			$lastEvent = true;
+			$firstEvent = false;
+		}
 	}
 	//Denna loop fixar pauser
 }
