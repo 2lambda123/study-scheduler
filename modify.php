@@ -1,26 +1,20 @@
-<!DOCTYPE html>
-<html>
-<body>
-
 <?php
-
-function modify($array, $event){ //$array is an array consisting json elements. $event is a json object to be added to $array
-  $event_decoded = json_decode($event, true);
+function modify($array, $event){ //$array is a massive string. When decoded it will be a 2D array.
+  $event_decoded = json_decode($event, true); //decodes to a 1D array.
   $dtstart =  substr($event_decoded["DTSTART"], 0, 15); //The 15 first chars are to be compared as date-time.(Leaves out 'Z')
+  $decoded_array = json_decode($array, true); //2D ARRAY
   $pos = 0;
-  while($pos < count($array)){ // Looping through the json array to find the correct position for $event.
-    $temp = json_decode($array[$pos], true); // temporary variable to store the decoded json object.
 
-    if (strcmp(substr($temp["DTSTART"], 0, 15), $dtstart) > 0) { // compare date-time
-      array_splice($array, $pos, 0, $event); // insert into $array
-      return $array;
-    }
-    $pos++;
+  while($pos < count($decoded_array)){ // search for position in the 'first dimension'
+
+      if (strcmp(substr($decoded_array[$pos]["DTSTART"], 0, 15), $dtstart) > 0) { // compare date-time
+/* insert into $decoded_array(because $array is a string). But $decoded_array is 2D so $event_decoded must be converted to 2D*/
+        array_splice($decoded_array, $pos, 0, array($event_decoded));
+        return json_encode($decoded_array); // return as a massive string.
+      }
+      $pos++;
   }
-  array_push($array,$event);
-  return $array;
+  array_push($decoded_array,array($event_decoded));
+  return json_encode($decoded_array); // return as a massive string.
 }
 ?>
-
-</body>
-</html>
