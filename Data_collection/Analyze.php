@@ -16,7 +16,7 @@ function analyze ($events) {
 	
 	
 	//Denna for loop fixar dagar man ej vill plugga
-	for ($i = 0; $i < count($e[$i]); $i++) {
+	for ($i = 0; $i < count($e); $i++) {
 		if ($e[$i]->AVAILABLE) {
 			if (days($e[$i]->DTSTART) && days($e[$i]->DTEND)) {
 				unset($e[$i]);
@@ -31,7 +31,7 @@ function analyze ($events) {
 						if ($e[$i]->DTEND == $date && $e[$i]->DTSTART == $date) {
 						 unset($e[$i]);
 						} else if ($e[$i]->DTEND == $date) {
-							$e[$i]->DTEND = date('Ymd', strtotime($e[$i]->DTEND .' -1 day')) . "T2359Z";//$e[$i]->DTEND = previous day 24.00
+							$e[$i]->DTEND = date('Ymd', strtotime($e[$i]->DTEND .' -1 day')) . "T2359Z";//$e[$i]->DTEND = previous day 23.59
 						}
 						else {
 							$e[$i]->DTSTART = date('Ymd', strtotime($e[$i]->DTSTART .' +1 day')) . "T0000Z";//$e[$i]->DTSTART next day 00.00
@@ -43,7 +43,7 @@ function analyze ($events) {
 	}
 	
 	//Denna for loop fixar sömnschema
-	for ($i = 0; $i < count($e[$i]); $i++) {
+	for ($i = 0; $i < count($e); $i++) {
 		if ($e[$i]->AVAILABLE) {
 			if ($e[$i]->DTSTART < $collection->sleepfrom && $e[$i]->DTEND > $collection->sleepfrom && $e[$i]->DTEND <= $collection->sleepto) {
 				$e[$i]->DTEND = $collection->sleepfrom;
@@ -61,11 +61,38 @@ function analyze ($events) {
 		}
 	}
 	
+	$pEvent;
+	$nEvent;
+	$firstEvent;
+	$lastEvent;
 	//Denna loop fixar restider
-	for(;;) {
-	
-	
-	
+	for($i = 0; $i < count($e) ; $i++) {
+	//Hitta nästa lediga tid, loopa bak och fram till de närliggande olediga tider.
+		if ($e[$i]->AVAILABLE) {
+			$firstEvent = true;
+			$lastEvent = true;
+			for ($y = $i; $y => 0; $y--) {
+				if(!$e[$y]->AVAILABLE) {
+					$pEvent = $e[$y];
+					$firstEvent = false;
+					break;
+				}
+			}
+			for ($y = $i; $y < count($e); $y++) {
+				if(!$e[$y]->AVAILABLE) {
+					$nEvent = $e[$y];
+					$lastEvent = false;
+					break;
+				}
+			}
+			if($firstEvent) {
+				
+			} else if ($lastEvent) {
+				
+			} else {
+			
+			}
+		}	
 	}
 	//Denna loop fixar pauser
 }
