@@ -76,7 +76,7 @@ function analyze ($events) {
 						findAvailBetween($i,$y,$collection->traveltime, $collection->traveltime, $e);			
 					//jämföra om det är samma sorts event (skola å skola eller samma habit å habit
 					else if(($e[$i]->SUMMARY == $e[$y]->SUMMARY)||){
-					
+						
 					}
 					$lastEvent = false;
 					//om det inte är samma sort, lägg restid mellan
@@ -99,11 +99,22 @@ findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 	$pause1end = $e[$i]->DTSTART // + $ttime1
 	$pause2start = $e[$y]->DTSTART // - $ttime2
 	for($x = $i; $x < $y; $x++){
+		$u = false;
 		if($e[$x]->DTSTART >= $e[$i]->DTEND && $e[$x]->DTEND <= $pause1end){ // Om avail är innuti restiden
-		unset($e[$x]);
+			unset($e[$x]);
+			$u = true;
+			$x--;
 		}
-		else if($e[$x]->DTSTART >= $e[$i]->DTEND && $e[$x]->DTEND > $pause1end){  
-		$e[$x]->DTSTART = 
+		if($e[$x]->DTSTART < $pause1end && $e[$x]->DTEND > $pause1end && !$u){  
+			$e[$x]->DTSTART = $pause1end;
+		}
+		if($e[$x]->DTEND > $pause2start && $e[$x]->DTSTART >= $pause2start && !$u) {
+			unset($e[$x]);
+			$u = true;
+			$x--;
+		}
+		if ($e[$x]->DTEND > $pause2start && !$u) {
+			$e[$x]->DTEND = $pause2start;
 		}
 	}	
 }
