@@ -1,63 +1,100 @@
 <?php
 
-$collection = json_decode(file_get_contents("Collection.txt"));
 
-print_r($collection);
 
-function days($d) {
-	return false;
-}
 
+
+
+$collection;
 function analyze ($events) {
 	$e = json_decode($events);
 	$tempStart;
 	$tempEnd;
 	
+	print_r($e);
+	$collection = json_decode(file_get_contents("Collection.txt"));
+	print_r($collection);
 	
+	$sleepfrom = str_replace(":", "", $collection->sleepfrom);
+	$sleepto = str_replace(":", "", $collection->sleepto);
+	
+	function days($d, $collection) {
+		$wD[] = array();
+		if (property_exists($collection,"Monday")) {
+			array_push($wD, 'Monday');
+		}
+		if (property_exists($collection,"Tuesday")) {
+			array_push($wD, 'Tuesday');
+		}
+		if (property_exists($collection,"Wednesday")) {
+			array_push($wD, 'Wednesday');
+		}
+		if (property_exists($collection,"Thursday")) {
+			array_push($wD, 'Friday');
+		}
+		if (property_exists($collection,"Saturday")) {
+			array_push($wD, 'Saturday');
+		}
+		if (property_exists($collection,"Sunday")) {
+			array_push($wD, 'Sunday');
+		}
+		if (in_array(date('l', strtotime($d)), $wD)) {
+			return true;
+		}
+		return false;
+	}	
 	
 	//Denna for loop fixar dagar man ej vill plugga
 	for ($i = 0; $i < count($e); $i++) {
 		if ($e[$i]->AVAILABLE) {
-			if (days($e[$i]->DTSTART) && days($e[$i]->DTEND)) {
+			if (days($e[$i]->DTSTART, $collection) && days($e[$i]->DTEND, $collection)) {
+				echo date('l', strtotime($e[$i]->DTSTART)) . " <br>";
+				print_r($e[$i]);
+				echo " borttagen <br>";
 				unset($e[$i]);
 			} else {
 				$date = $e[$i]->DTSTART;
-				if(days($e[$i]->DTSTART)) {
+				if(days($e[$i]->DTSTART, $collection)) {
+					echo "hej2";
 					$e[$i]->DTSTART = date('Ymd', strtotime($e[$i]->DTSTART .' +1 day')) . "T0000Z";//$e[$i]->DTSTART = next day 00.00;
-					$date = $e[$i]->DTSTART;
 				}
-				for ( ; $date < $e[$i]->DTEND; date('Ymd', strtotime($date .' +1 day'))) {
-					if (days($date)) {
-						if ($e[$i]->DTEND == $date && $e[$i]->DTSTART == $date) {
+				$date = $e[$i]->DTSTART;
+				for ( ; $date < $e[$i]->DTEND; ) {
+					if (days($date, $collection)) {
+						if (substr($e[$i]->DTEND, 0, 8) == substr($date, 0, 8) && substr($e[$i]->DTSTART, 0, 8) == substr($date, 0, 8)) {
 						 unset($e[$i]);
-						} else if ($e[$i]->DTEND == $date) {
+						} else if (substr($e[$i]->DTEND, 0, 8) == substr($date, 0, 8)) {
 							$e[$i]->DTEND = date('Ymd', strtotime($e[$i]->DTEND .' -1 day')) . "T2359Z";//$e[$i]->DTEND = previous day 23.59
 						}
 						else {
 							$e[$i]->DTSTART = date('Ymd', strtotime($e[$i]->DTSTART .' +1 day')) . "T0000Z";//$e[$i]->DTSTART next day 00.00
 						}
+					
 					}
+					$date = date('Ymd', strtotime($date .' +1 day'));
+					$date = $date . "T0000Z";
 				}				
 			}
 		}
 	}
-	
 	//Denna for loop fixar sömnschema
-	for ($i = 0; $i < count($e); $i++) {
+	for ($i = 0; $i < count($e); $i++) {	
 		if ($e[$i]->AVAILABLE) {
-			if ($e[$i]->DTSTART < $collection->sleepfrom && $e[$i]->DTEND > $collection->sleepfrom && $e[$i]->DTEND <= $collection->sleepto) {
-				$e[$i]->DTEND = $collection->sleepfrom;
-			} else if ($e[$i]->DTSTART >= $collection->sleepfrom && $e[$i]->DTEND <= $collection->sleepto) {
+			echo substr($e[$i]->DTSTART, 9, 4) . " >= " . $sleepfrom . " && " . substr($e[$i]->DTSTART, 9, 4) . " < " . $sleepto . " && " . substr($e[$i]->DTEND, 9, 4) . " > " . $sleepto . "<br><br>";
+			if (substr($e[$i]->DTSTART, 9, 4) < $sleepfrom && substr($e[$i]->DTEND, 9, 4) > $sleepfrom && substr($e[$i]->DTEND, 9, 4) <= $sleepto) {
+				$e[$i]->DTEND = $sleepfrom;
+			} else if (substr($e[$i]->DTSTART, 9, 4) >= $sleepfrom && substr($e[$i]->DTEND, 9, 4) <= $sleepto) {
 				unset($e[$i]);
-			} else if ($e[$i]->DTSTART >= $collection->sleepfrom && $e[$i]->DTSTART < $collection->sleepto && $e[$i]->DTEND > $collection->sleepto) {
-				$e[$i]->DTSTART = $collection->sleepto;
-			} else if ($e[$i]->DTSTART < $collection->sleepfrom && $e[$i]->DTEND > $collection->sleepto) {
+			} else if (substr($e[$i]->DTSTART, 9, 4) >= $sleepfrom && substr($e[$i]->DTSTART, 9, 4) < $sleepto && substr($e[$i]->DTEND, 9, 4) > $sleepto) {
+				$e[$i]->DTSTART = $sleepto;
+			} else if (substr($e[$i]->DTSTART, 9, 4) < $sleepfrom && substr($e[$i]->DTEND, 9, 4) > $sleepto) {
 				//Splitta och behåll efter samt innan sova
 				$avEvent = $e[$i];
-				$avEvent->DTSTART = $collection->sleepto;
-				$e[$i]->DTEND = $collection->sleepfrom;
+				$avEvent->DTSTART = $sleepto;
+				$e[$i]->DTEND = $sleepfrom;
 				array_splice($e, $i+1, 0, $avEvent);
 			}
+			print_r($e[$i]);
 		}
 	}
 	
@@ -65,10 +102,11 @@ function analyze ($events) {
 	$lastEvent;
 	//Denna loop fixar restider
 	for($i = 0; $i < count($e) ; $i++) {
+	
 		if (!$e[$i]->AVAILABLE) {
 			$ti;
-			if((preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$i]->SUMMARY)){
-				$ti = collection->traveltime;
+			if(preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$i]->SUMMARY)){
+				$ti = $collection->traveltime;
 			} 
 			else{
 				$ti = $e[i]->DESCRIPTION;
@@ -80,8 +118,8 @@ function analyze ($events) {
 			for ($y = $i; $y < count($e); $y++) {
 				if(!$e[$y]->AVAILABLE) {
 					$ty;
-					if((preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$y]->SUMMARY)){
-						$ty = collection->traveltime;
+					if(preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$y]->SUMMARY)){
+						$ty = $collection->traveltime;
 					} 
 					else{
 						$ty = $e[y]->DESCRIPTION;
@@ -122,6 +160,7 @@ function analyze ($events) {
 			}
 		}
 	}
+	return $e;
 }
 // Hittar, klipper till och/eller tar bort events för restiden i schemat
 function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
@@ -148,15 +187,5 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 	}	
 }
 
-
-
-
-
-
-
-
-
-
-
-
+echo analyze('[{"SUMMARY":"Gymma","DTSTART":"20170421T0000Z","DTEND":"20170421T1000Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170421T1000Z","DTEND":"20170421T1400Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170421T1400Z","DTEND":"20170421T1500Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170421T1500Z","DTEND":"20170422T0100Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170422T0200Z","DTEND":"20170422T0800Z","UID":"2017042219:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170422T0800Z","DTEND":"20170422T1500Z","UID":"2017042219:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170422T1500Z","DTEND":"20170422T1700Z","UID":"2017042219:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170422T1700Z","DTEND":"20170423T1100Z","UID":"2017042319:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170423T1100Z","DTEND":"20170423T2100Z","UID":"2017042319:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170423T2100Z","DTEND":"20170424T0500Z","UID":"2017042319:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170424T0500Z","DTEND":"20170424T1100Z","UID":"2017042419:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170424T1100Z","DTEND":"20170424T2100Z","UID":"2017042419:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170424T2100Z","DTEND":"20170424T2200Z","UID":"2017042419:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170424T2200Z","DTEND":"20170425T1500Z","UID":"2017042519:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170425T1500Z","DTEND":"20170425T2100Z","UID":"2017042519:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false}]');
 ?>
