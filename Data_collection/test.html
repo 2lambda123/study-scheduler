@@ -1,0 +1,46 @@
+<form action='habitform.php' method='post'>
+	<h3>New course</h3>
+	<div>
+		Course name:<input type="text"/><br/>
+		Tenta: <input type="checkbox" name="exam"> HP: <input name="hp" type="number"/><br/>
+		Start of course: <input name="coursestart" type="date"/><br/>
+		Exam date: <input name="courseend" type="date"/><br/><br/>
+		<a href="#" id="add" onclick="addNewField()"> + </a><br/>
+		<div id="container" /> 
+		
+		<input type="submit"/>
+	</div>
+</form>
+<script>
+function addNewField(){
+var container = document.getElementById("container");
+
+var coursework = document.createElement("coursework");
+coursework.type = "text";
+
+
+var startdate = document.createElement("startdate");
+startdate.type = "date";
+var enddate = document.createElement("enddate");
+enddate.type = "date";
+var hp = document.createElement("hp");
+hp.type = "number";
+
+container.appendChild(document.createTextNode("Coursework"));
+container.appendChild(coursework);
+container.appendChild(document.createElement("br"));
+
+container.appendChild(document.createTextNode("Startdate"));
+container.appendChild(startdate);
+container.appendChild(document.createElement("br"));
+
+container.appendChild(document.createTextNode("Enddate"));
+container.appendChild(enddate);
+container.appendChild(document.createElement("br"));
+
+container.appendChild(document.createTextNode("HP"));
+container.appendChild(hp);
+container.appendChild(document.createElement("br"));
+
+}
+</script>
