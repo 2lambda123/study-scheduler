@@ -68,6 +68,7 @@ function analyze ($events) {
 		if (!$e[$i]->AVAILABLE) {
 			if ($firstEvent) {
 				//lägg restid innan första event
+				findAvailBetween(0,$i,0, $collection->traveltime, $e);
 			}
 			for ($y = $i; $y < count($e); $y++) {
 				if(!$e[$y]->AVAILABLE) {
@@ -75,8 +76,8 @@ function analyze ($events) {
 					if(date('Ymd', strtotime($e[$i]->DTEND) !== date('Ymd', strtotime($e[$y]->DTSTART){		
 						findAvailBetween($i,$y,$collection->traveltime, $collection->traveltime, $e);			
 					//jämföra om det är samma sorts event (skola å skola eller samma habit å habit
-					else if(($e[$i]->SUMMARY == $e[$y]->SUMMARY)||){
-						
+					else if(($e[$i]->SUMMARY == $e[$y]->SUMMARY) || (preg_match((\([A-Z][A-Z]\d\d\d\d\)), $e[$i]->SUMMARY) == preg_match((\([A-Z][A-Z]\d\d\d\d\)), $e[$y]->SUMMARY)){
+						//leave as is
 					}
 					$lastEvent = false;
 					//om det inte är samma sort, lägg restid mellan
@@ -86,13 +87,15 @@ function analyze ($events) {
 				}
 			}
 			if ($lastEvent) {
-				//lägg restid efter sista event
+				findAvailBetween($i,count($e)-1,$collection->traveltime, 0, $e);//lägg restid efter sista event
 			}
 			$lastEvent = true;
 			$firstEvent = false;
 		}
 	}
+	
 	//Denna loop fixar pauser
+	
 }
 // Hittar, klipper till och/eller tar bort events för restiden i schemat
 findAvailBetween($i,$y,$ttime1,$ttime2, $e){
