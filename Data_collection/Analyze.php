@@ -128,7 +128,7 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 			$u = true;
 			$x--;
 		}
-		if ($e[$x]->DTEND > $pause2start && !$u) {
+		if ($e[$x]->DTEND > $pause2start && $e[$x]->DTEND <= $e[$y]->DTSTART && !$u) {
 			$e[$x]->DTEND = $pause2start;
 		}
 	}	
