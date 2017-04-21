@@ -1,26 +1,28 @@
 var number = 1;
 
-function addNewField() {
-    var container = document.getElementById("container");
-    var coursework = document.createElement("input");
-    coursework.type = "text";
-    coursework.name = "coursework" + number;
-	coursework.id = "coursework" + number;
+function addNewField() { //adds a new coursework
+    var container = document.getElementById("container");  //parent container
+	
+    var coursework = document.createElement("input"); //creates new input element
+    coursework.type = "text"; //gives input a type
+    coursework.name = "coursework" + number; //gives input a name
 
-    var startdate = document.createElement("input"); //createElement skapar element
+    var startdate = document.createElement("input");
     startdate.type = "date";
     startdate.name = "startdate" + number;
+	
     var enddate = document.createElement("input");
     enddate.type = "date";
     enddate.name = "enddate" + number;
+	
     var hp = document.createElement("input");
     hp.type = "number";
     hp.name = "hp_work" + number;
 
-    container.appendChild(document.createTextNode("Coursework " + number + ": "));
-    container.appendChild(coursework);
+	//13 appendChild (used in removeField as static variable)
+    container.appendChild(document.createTextNode("Coursework " + number + ": ")); //Adds text
+    container.appendChild(coursework);	//Adds element created above
     container.appendChild(document.createElement("br"));
-	alert(coursework.id);
 
     container.appendChild(document.createTextNode("Startdate: "));
     container.appendChild(startdate);
@@ -35,16 +37,13 @@ function addNewField() {
     container.appendChild(document.createElement("br"));
     container.appendChild(document.createElement("br"));
 
-    number++;
+    number++; //increment to keep track of number of courseworks
 }
 
-function removeField(){
-var parent = document.getElementById("container");
-var types = ["coursework", "startdate", "enddate", "hp_work"];
-for(var i = 0; i < types.length; i++){
-	var child = document.getElementById("coursework1");
-	alert(child);
-	parent.removeChild(child);
-}
+function removeField(){ //removes a coursework
 number --;
+for(var i = 0; i < 13; i++) //Loop through all container.appendChild done in addNewField
+	container.removeChild(container.lastChild); //Removes last child from container
+
+
 }

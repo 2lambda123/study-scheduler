@@ -1,18 +1,18 @@
-<form action='habitform.php' method='post'>
-	<h3>New course</h3>
-	<div>
-		Course name:<input type="text"/><br/>
-		From: <input name="coursestart" type="date"/><br/>
-		To: <input name="courseend" type="date"/><br/>
-		HP: <input name="hp" type="number"/>
-		(optional) Due dates<br/>
-		
-		Coursework: <input name="dd1" type="date"/>
-		HP: <input name="hpdd1"  type="number"/><br/>
-		Coursework: <input name="dd2" type="date"/>
-		HP: <input name= "hpdd2" type="number"/><br/>
-		Coursework: <input name="dd3" type="date"/>
-		HP: <input name="hpdd3" type="number"/><br/>
-		<input type="submit"/>
-	</div>
-</form>
+<body>
+
+	<form action='habitform.php' method='post'>
+		<h3>New course</h3>
+		<div id="container">
+			<input type="submit"/><br/><br/>
+			Course name: <input type="text"/><br/>
+			Tenta: <input type="checkbox" name="exam"> HP: <input name="hp_exam" type="number"/><br/>
+			Start of course: <input name="coursestart" type="date"/><br/>
+			Exam date: <input name="courseend" type="date"/><br/><br/>
+			<a href="#" id="add" onclick="addNewField()"> [Add] </a>
+			<a href="#" id="remove" onclick="removeField()">[Remove] </a><br/>
+		</div>
+	</form>
+
+<script src="dynamic.js"></script>
+
+</body>
