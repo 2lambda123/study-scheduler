@@ -95,7 +95,18 @@ function analyze ($events) {
 	}
 	
 	//Denna loop fixar pauser
-	
+	for($i = 0; $i < count($e); i++){
+		if($e[$i]->AVAILABLE){
+			// if DTSTART - DTEND > studylength
+			if((strtotime($e[$i]->DTEND)-strtotime($e[$i]->DTSTART))/60 > $collection->studylength){
+				// Splitta upp i en före och en efter med breaktime mellanrum
+				$event2 = $e[$i];
+				$e[$i]->DTEND = // $e[$i]-> DTEND = DTSTART + studylength  
+				$event2->DTSTART = // $e[$i]->DTEND + breaktime
+				array_splice($e, $i+1, 0, $event2);
+			}
+		}
+	}
 }
 // Hittar, klipper till och/eller tar bort events för restiden i schemat
 findAvailBetween($i,$y,$ttime1,$ttime2, $e){
