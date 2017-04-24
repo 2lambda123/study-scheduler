@@ -17,6 +17,7 @@ class event {
 	public $UID = NULL;
 	public $DESCRIPTION = NULL;
 	public $LOCATION = NULL;
+  public $AVAILABLE = false;
 }
 function downloadFile ($fileLink) {
 	$file_content = file_get_contents($fileLink);
@@ -46,7 +47,7 @@ function importCal ($file_content) {
 				$sum = strstr_after($a, "SUMMARY:");
 			}
 		}
-		
+
 		foreach ($attr as $a) {
 			if (strstr($a, "DTSTART;VALUE=DATE-TIME:")) {
 				$sum = strstr_after($a, "DTSTART;VALUE=DATE-TIME:");
@@ -56,7 +57,7 @@ function importCal ($file_content) {
 				$events[$i-1]->DTSTART = $sum;
 			}
 		}
-		
+
 		foreach ($attr as $a) {
 			if (strstr($a, "DTEND;VALUE=DATE-TIME:")) {
 				$sum = strstr_after($a, "DTEND;VALUE=DATE-TIME:");
@@ -66,14 +67,14 @@ function importCal ($file_content) {
 				$events[$i-1]->DTSTART = $sum;
 			}
 		}
-		
+
 		foreach ($attr as $a) {
 			if (strstr($a, "UID:")) {
 				$sum = strstr_after($a, "UID:");
 				$events[$i-1]->UID = $sum;
 			}
 		}
-		
+
 		$sum = "";
 		foreach ($attr as $a) {
 			if ($sum !== "") {
@@ -90,7 +91,7 @@ function importCal ($file_content) {
 				$sum = strstr_after($a, "DESCRIPTION:");
 			}
 		}
-		
+
 		$sum = "";
 		foreach ($attr as $a) {
 			if ($sum !== "") {
@@ -110,7 +111,6 @@ function importCal ($file_content) {
 	}
 
 	$e = json_encode($events);
-	echo $e;
 	return $e;
 }
 ?>
