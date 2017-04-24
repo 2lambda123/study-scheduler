@@ -8,6 +8,7 @@ function strstr_after($haystack, $needle, $case_insensitive = false) {
     // Most likely false or null
     return $pos;
 }
+
 class event {
 	public $SUMMARY = NULL;
 	public $DTSTART = NULL;
