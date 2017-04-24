@@ -30,4 +30,24 @@
       }
   }
 
+  function position($day)
+	{
+		include_once "gen_cal.php";
+		$date1 = '20170417T000000Z';
+		$date2 = '20170424T000000Z';
+		$arr = gen_week($date1,$date2);
+
+		$length = count($arr);
+		$html = "";
+		for($x = 0; $x < $length; $x++)
+		{
+			if ($x == $day)
+			{
+				$day = $arr[$x];
+				$html.= "<div class='item'>$day</div>";
+			}
+		}
+		return $html;
+	}
+
  ?>

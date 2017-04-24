@@ -1,8 +1,8 @@
 <?php
 	include "importCal.php";
 	
-	function cmp_date_val($date) 	{ return substr($date,0,8).substr($date,9,4); }
 	function cmp_date($date1,$date2){ return cmp_date_val($date1) > cmp_date_val($date2); }
+	function cmp_date_val($date) 	{ return substr($date,0,8).substr($date,9,4); }
 	function cmp_day($date1,$date2) { return intval(substr($date2,0,8)) - intval(substr($date1,0,8)); }
 	function pretty_time($date) 	{ return substr($date,9,2).":".substr($date,11,2); }
 	function ugly_time($date) 		{ return substr($date,9,2).substr($date,11,2); }

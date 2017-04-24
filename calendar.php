@@ -36,13 +36,13 @@
 		        </tr>
 
             <tr>
-              <td class="cells"><div class="box"></div></td>
-              <td class="cells"><div class="box"></div></td>
-              <td class="cells"><div class="box"></div></td>
-              <td class="cells"><div class="box"></div></td>
-              <td class="cells"><div class="box"></div></td>
-              <td class="cells"><div class="box"></div></td>
-              <td class="cells"><div class="box"></div></td>
+              <td class="box"><div class="days"><?php echo position(0);?></div></td>
+              <td class="box"><div class="days"><?php echo position(1);?></div></td>
+              <td class="box"><div class="days"><?php echo position(2);?></div></td>
+              <td class="box"><div class="days"><?php echo position(3);?></div></td>
+              <td class="box"><div class="days"><?php echo position(4);?></div></td>
+              <td class="box"><div class="days"><?php echo position(5);?></div></td>
+              <td class="box"><div class="days"><?php echo position(6);?></div></td>
             </tr>
 	  </table>
 </body>
