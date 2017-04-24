@@ -18,13 +18,12 @@
     <li style="float:right"><a href="">LOGOUT</a></li>
   </ul>
 
+
+  <!--Week Heading-->
   <div id="weekHead"> "MIA" </div>
 
-<div id= "cal">
-
-	  <table  id= "table" style= "width: 80%" align="center">
-		    <div class="days">
-		        <tr>
+	  <table  id= "calendar" align="center">
+		        <tr text-align="center">
       			  <th>Monday</th>
       			  <th>Tuesday</th>
       			  <th>Wednesday</th>
@@ -33,28 +32,32 @@
       			  <th>Saturday</th>
       			  <th>Sunday</th>
 		        </tr>
+
+
             <tr>
-              <td class="box"> <div id="event"></div></td>
-              <td class="box"> <div></div></td>
+              <td class="box">
+                    <div id="box1">
+                      <div id="item1">
+                      </div>
+                      <div id="item2">
+                      </div>
+                    </div>
+              </td>
+
+
+              <td class="box">
+                <div id="box2"></div>
+              </td>
+
               <td class="box"> <div></div></td>
               <td class="box"> <div></div></td>
               <td class="box"> <div></div></td>
               <td class="box"> <div></div></td>
               <td class="box"> <div></div></td>
             </tr>
-		    </div>
 	  </table>
 
-
-</div>
-
-<p id="demo"> </p>
-
-<div id="block">
-  <div id="smallblock"></div>
-</div>
-
- <script>
+ <!--><script>
  function Func()
  {		var tableEl = document.getElementById("table");
 	 /*for(var i=1; i<24; i++)
@@ -63,15 +66,13 @@
 			for(var j=0; j<7; j++)
 			{
 				var newCell = newRow.insertCell(j);
-
-
 			}*/
 	 }
 
 }
 
 window.onload = Func();
-</script>
+</script>-->
 
   <?php
     include "importCal.php";
@@ -79,11 +80,8 @@ window.onload = Func();
     for($i = 0; $i < 10; $i++){
       print_r(get_object_vars($file[$i]));
       echo nl2br("\n") . nl2br("\n");
-
     }
     ?>
-
-
 
 </body>
 </html>
