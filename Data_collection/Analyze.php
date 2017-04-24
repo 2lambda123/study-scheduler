@@ -178,14 +178,14 @@ function analyze ($events) {
 				// Splitta upp i en före och en efter med breaktime mellanrum
 					$avEvent = new stdClass();
 					$avEvent->SUMMARY = $e[$i]->SUMMARY;
-					$avEvent->DTSTART = substr($e[$i]->DTSTART, 0, 8) . "T" . date("Hi", strtotime($e[$i]->DTSTART . "+" . ($collection->studylength+$collection->breaktime) . " minutes")) . "Z"; //+studylength+breaktime
+					$avEvent->DTSTART = substr($e[$i]->DTSTART, 0, 8) . "T" . date("Hi", strtotime(("+" . ($collection->studylength+$collection->breaktime) . " minutes"), strtotime(substr($e[$i]->DTSTART, 9, 4)))) . "Z"; //+studylength+breaktime
 					$avEvent->DTEND = $e[$i]->DTEND;
 					$avEvent->UID = $e[$i]->UID;
 					$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
 					$avEvent->LOCATION = $e[$i]->LOCATION;
 					$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
 					
-					$e[$i]->DTEND = substr($e[$i]->DTSTART, 0, 8) .  "T" . date("Hi", strtotime($e[$i]->DTSTART	. "+" . $collection->studylength . " minutes")) . "Z"; // +studylength
+					$e[$i]->DTEND = substr($e[$i]->DTSTART, 0, 8) .  "T" . date("Hi", strtotime( "+" . $collection->studylength . " minutes", strtotime(substr($e[$i]->DTSTART, 9, 4)))) . "Z"; // +studylength
 					array_splice($e, $i+1, 0, array($avEvent)); 
 			}                                                                
 		}
