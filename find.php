@@ -17,7 +17,7 @@ function gen_free_time($file){
 	$cal = importCal($file);
 	$eventArray = json_decode($cal, true);
 	$now = date('Ymd').'T'.date('H').'00'.substr($eventArray[0]["DTSTART"],-3,3);
-	$new_times[] = new event;
+	$new_times = array();
 	$tempstart = $now;
 	$eventS = null;//When the event starts
 	$eventE = null;//When the event ends
@@ -78,4 +78,6 @@ function free_time_with_events($schedule){
 	}
 	return $schema;
 }
+
+var_dump(free_time_with_events("personal.ics"));
 ?>
