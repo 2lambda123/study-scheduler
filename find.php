@@ -6,17 +6,17 @@ function gen_free_time_file($file) {
 	$file_content = file_get_contents($file);
 	return gen_free_time($file_content);
 }
-function get_comparable_datetime($formatted){
-	$ans = substr($formatted,0,8).substr($formatted,9,4);
-	return $ans;
-}
+
 function gen_free_time($file) {
 	$cal = json_decode(importCal($file));
+	//var_dump($cal[0]);
 	$today = date('Ymd');
 	$now = $today.'T'.date('H').'00'.substr($cal[0]->DTSTART,-3,3);
-	$available_times = array();
+	//echo $now;
+	$available_times[] = new event;
+	//print_r($available_times);
+
 	$tempstart = $now;
-	$uid = 0;
 	foreach($cal as $key) {
 		if(intval(substr($key->DTSTART, 0, 8)) >= $today) {
 			$e = new event;
@@ -24,11 +24,14 @@ function gen_free_time($file) {
 			$e->DTEND = $key->DTSTART;
 			$e->AVAILABLE = true;
 			$tempstart = $key->DTEND;
-			if(get_comparable_datetime($e->DTSTART) < get_comparable_datetime($e->DTEND))
-				array_push($available_times,$e);
+			array_push($available_times,$e);
+			//var_dump($e);
 		}
 	}
+	//var_dump($available_times);
 	$export = json_encode($available_times);
 	return $export;
 }
+
+echo gen_free_time_file('personal.ics');
 ?>

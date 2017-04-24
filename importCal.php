@@ -110,6 +110,7 @@ function importCal ($file_content) {
 	}
 
 	$e = json_encode($events);
+	echo $e;
 	return $e;
 }
 ?>
