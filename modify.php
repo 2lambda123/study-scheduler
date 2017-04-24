@@ -14,7 +14,7 @@ function modify($array, $event){ //$array is a massive string. When decoded it w
       }
       $pos++;
   }
-  array_push($decoded_array,array($event_decoded));
+  array_push($decoded_array,$event_decoded);
   return json_encode($decoded_array); // return as a massive string.
 }
 ?>
