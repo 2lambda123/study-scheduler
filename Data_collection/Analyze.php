@@ -164,6 +164,9 @@ function analyze ($events) {
 		}
 		$count = count($e);
 	}
+	foreach ($e as $event) {
+		echo $event->DTSTART . " | " . $event->DTEND . " - " . $event->AVAILABLE ."<br><br>";
+	}
 	
 	//Denna loop fixar pauser
 	for($i = 0; $i < $count; $i++){
@@ -179,8 +182,8 @@ function analyze ($events) {
 					$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
 					$avEvent->LOCATION = $e[$i]->LOCATION;
 					$avEvent->UID = $e[$i]->UID;
-					$avEvent->DTSTART = $e[$i]->DTSTART + $collection->breaktime + $collection->studylength; //+studylength+breaktime
-					$e[$i]->DTEND = $e[$i]->DTSTART + $collection->breaktime; // +studylength
+					$avEvent->DTSTART = substr($e[$i]->DTSTART, 0, 8) . "T" . date("Hi", strtotime($e[$i]->DTSTART . "+" . ($collection->studylength+$collection->breaktime) . " minutes")) . "Z"; //+studylength+breaktime
+					$e[$i]->DTEND = substr($e[$i]->DTSTART, 0, 8) .  "T" . date("Hi", strtotime($e[$i]->DTSTART	. "+" . $collection->studylength . " minutes")) . "Z"; // +studylength
 					array_splice($e, $i+1, 0, array($avEvent)); 
 			}                                                                
 		}
