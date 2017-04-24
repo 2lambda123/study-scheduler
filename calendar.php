@@ -103,7 +103,7 @@ window.onload = Func();
 	function pretty_time($date) 	{ return substr($date,9,2).":".substr($date,11,2); }
 	
 	function collect($date_start, $date_end) {
-		$file = json_decode(downloadFile("personal1.ics"));
+		$file = json_decode(downloadFile("personal2.ics"));
 		$events = array();
 		foreach($file as $event) {
 			if(cmp_date($event->DTSTART,$date_start)
