@@ -41,24 +41,24 @@ function analyze ($events) {
 	//Denna for loop fixar dagar man ej vill plugga
 	for ($i = 0; $i < $count; $i++) {
 		if ($e[$i]->AVAILABLE) {
-			if (days($e[$i]->DTSTART, $collection) && days($e[$i]->DTEND, $collection)) {
+			if (days($e[$i]->DTSTART, $collection) && days($e[$i]->DTEND, $collection)) { //Om ett event bara pågår under dagar man ej vill plugga
 				unset($e[$i]);
 				$e = array_values($e);
 			} else {
 				$date = $e[$i]->DTSTART;
-				if(days($e[$i]->DTSTART, $collection)) {
+				if(days($e[$i]->DTSTART, $collection)) { //Om ett event börjar på en dag man ej vill plugga
 					$e[$i]->DTSTART = date('Ymd', strtotime($e[$i]->DTSTART .' +1 day')) . "T0000Z";//$e[$i]->DTSTART = next day 00.00;
 				}
 				$date = $e[$i]->DTSTART;
 				for ( ; $date < $e[$i]->DTEND; ) {
 					if (days($date, $collection)) {
-						if (substr($e[$i]->DTEND, 0, 8) == substr($date, 0, 8) && substr($e[$i]->DTSTART, 0, 8) == substr($date, 0, 8)) {
+						if (substr($e[$i]->DTEND, 0, 8) == substr($date, 0, 8) && substr($e[$i]->DTSTART, 0, 8) == substr($date, 0, 8)) {  //Om ett event bara pågår under en dag man ej vill plugga
 						 unset($e[$i]);
 						 $e = array_values($e);
-						} else if (substr($e[$i]->DTEND, 0, 8) == substr($date, 0, 8)) {
+						} else if (substr($e[$i]->DTEND, 0, 8) == substr($date, 0, 8)) { //Om ett event slutar under en dag man ej vill plugga
 							$e[$i]->DTEND = date('Ymd', strtotime($e[$i]->DTEND .' -1 day')) . "T2359Z";//$e[$i]->DTEND = previous day 23.59
 						}
-						else {
+						else { //Annars, om ett event börjar en dag man ej vill plugga
 							$e[$i]->DTSTART = date('Ymd', strtotime($e[$i]->DTSTART .' +1 day')) . "T0000Z";//$e[$i]->DTSTART next day 00.00
 						}
 
@@ -74,34 +74,29 @@ function analyze ($events) {
 	//Denna for loop fixar s�mnschema
 	for ($i = 0; $i < $count; $i++) {
 		if ($e[$i]->AVAILABLE) {
-			$t = 0;
-			while ($t <= 1) {
-				if ($sleepfrom > 2400 && $sleepto > 2400) {
+		
+			if ($sleepfrom < $sleepto) { //Om man sover från tidigt på morgonen till senare på dagen
+				if ($sleepfrom > 2400 && $sleepto > 2400) { //Tar bort datum och sparar sovtider igen
 					$sleepfrom = substr($sleepfrom, 9, 4);
 					$sleepto = substr($sleepto, 9, 4);
 				}
-				if ($t == 0) {
-					$sleepfrom = date('Ymd', strtotime(substr($e[$i]->DTSTART, 0, 8) . "-1 day")) . "T" . $sleepfrom . "Z";
-					$sleepto = date('Ymd', strtotime(substr($e[$i]->DTSTART, 0, 8))) . "T" . $sleepto . "Z";
-				} else {
-					$sleepfrom = date('Ymd', strtotime(substr($e[$i]->DTSTART, 0, 8))) . "T" . $sleepfrom . "Z";
-					$sleepto = date('Ymd', strtotime(substr($e[$i]->DTSTART, 0, 8). "+1 day")) . "T" . $sleepto . "Z";
-				}
+				$sleepfrom = substr($e[$i]->DTSTART, 0, 8) . "T" . $sleepfrom . "Z";
+				$sleepto = substr($e[$i]->DTSTART, 0, 8) . "T" . $sleepto . "Z";
 
-				if ($e[$i]->DTSTART < $sleepfrom && $e[$i]->DTEND > $sleepfrom && $e[$i]->DTEND <= $sleepto) {
+				if ($e[$i]->DTSTART < $sleepfrom && $e[$i]->DTEND > $sleepfrom && $e[$i]->DTEND <= $sleepto) { //Om ett event börjar innan man sover och slutar under tiden man sover
 					$e[$i]->DTEND = $sleepfrom;
-				} else if ($e[$i]->DTSTART >= $sleepfrom && $e[$i]->DTEND <= $sleepto) {
+				} else if ($e[$i]->DTSTART >= $sleepfrom && $e[$i]->DTEND <= $sleepto) { //Om ett event bara går medans man sover
 					unset($e[$i]);
 					$e = array_values($e);
-				} else if ($e[$i]->DTSTART >= $sleepfrom && $e[$i]->DTSTART < $sleepto && $e[$i]->DTEND > $sleepto) {
+				} else if ($e[$i]->DTSTART >= $sleepfrom && $e[$i]->DTSTART < $sleepto && $e[$i]->DTEND > $sleepto) { //Om ett event börjar innan man vaknar och fortsätter efter man vaknat
 					$e[$i]->DTSTART = $sleepto;
-				} else if ($e[$i]->DTSTART < $sleepfrom && $e[$i]->DTEND > $sleepto) {
+				} else if ($e[$i]->DTSTART < $sleepfrom && $e[$i]->DTEND > $sleepto) { //Om ett event börjar innan man somnar och slutar efter men vaknat
 					//Splitta och beh�ll efter samt innan sova
 					$avEvent = new stdClass();
 					$avEvent->SUMMARY = $e[$i]->SUMMARY;
 					$avEvent->DTSTART = $sleepto;
 					$avEvent->DTEND = $e[$i]->DTEND;
-					$avEvent->UID = $e[$i]->UID;
+					$avEvent->UID = $e[$i]->UID; //fixa unik id n岠vi skaffat databas
 					$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
 					$avEvent->LOCATION = $e[$i]->LOCATION;
 					$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
@@ -109,7 +104,45 @@ function analyze ($events) {
 					$e[$i]->DTEND = $sleepfrom;
 					array_splice($e, $i+1, 0, array($avEvent));
 				}
-				$t++;
+				
+			} else {
+				$t = 0;
+				while ($t <= 1) {
+					if ($sleepfrom > 2400 && $sleepto > 2400) {
+						$sleepfrom = substr($sleepfrom, 9, 4);
+						$sleepto = substr($sleepto, 9, 4);
+					}
+					if ($t == 0) {
+						$sleepfrom = date('Ymd', strtotime(substr($e[$i]->DTSTART, 0, 8) . "-1 day")) . "T" . $sleepfrom . "Z";
+						$sleepto = date('Ymd', strtotime(substr($e[$i]->DTSTART, 0, 8))) . "T" . $sleepto . "Z";
+					} else {
+						$sleepfrom = date('Ymd', strtotime(substr($e[$i]->DTSTART, 0, 8))) . "T" . $sleepfrom . "Z";
+						$sleepto = date('Ymd', strtotime(substr($e[$i]->DTSTART, 0, 8). "+1 day")) . "T" . $sleepto . "Z";
+					}
+
+					if ($e[$i]->DTSTART < $sleepfrom && $e[$i]->DTEND > $sleepfrom && $e[$i]->DTEND <= $sleepto) {
+						$e[$i]->DTEND = $sleepfrom;
+					} else if ($e[$i]->DTSTART >= $sleepfrom && $e[$i]->DTEND <= $sleepto) {
+						unset($e[$i]);
+						$e = array_values($e);
+					} else if ($e[$i]->DTSTART >= $sleepfrom && $e[$i]->DTSTART < $sleepto && $e[$i]->DTEND > $sleepto) {
+						$e[$i]->DTSTART = $sleepto;
+					} else if ($e[$i]->DTSTART < $sleepfrom && $e[$i]->DTEND > $sleepto) {
+						//Splitta och beh�ll efter samt innan sova
+						$avEvent = new stdClass();
+						$avEvent->SUMMARY = $e[$i]->SUMMARY;
+						$avEvent->DTSTART = $sleepto;
+						$avEvent->DTEND = $e[$i]->DTEND;
+						$avEvent->UID = $e[$i]->UID; //fixa unik id n�r vi skaffat databas
+						$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
+						$avEvent->LOCATION = $e[$i]->LOCATION;
+						$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
+
+						$e[$i]->DTEND = $sleepfrom;
+						array_splice($e, $i+1, 0, array($avEvent));
+					}
+					$t++;
+				}
 			}
 		}
 		$count = count($e);
@@ -174,14 +207,15 @@ function analyze ($events) {
 				// Splitta upp i en f�re och en efter med breaktime mellanrum
 					$avEvent = new stdClass();
 					$avEvent->SUMMARY = $e[$i]->SUMMARY;
-					$avEvent->DTSTART = substr($e[$i]->DTSTART, 0, 8) . "T" . date("Hi", strtotime(("+" . ($collection->studylength+$collection->breaktime) . " minutes"), strtotime(substr($e[$i]->DTSTART, 9, 4)))) . "Z"; //+studylength+breaktime
+					$avEvent->DTSTART = str_replace(":", "T", date("Ymd:Hi", strtotime( "+" . $collection->studylength+$collection->breaktime . " minutes", strtotime(substr($e[$i]->DTSTART, 0, 8) . substr($e[$i]->DTSTART, 9, 4))))) . "Z"; //+studylength+breaktime
 					$avEvent->DTEND = $e[$i]->DTEND;
-					$avEvent->UID = $e[$i]->UID;
+					$avEvent->UID = $e[$i]->UID; //fixa unikt id n�r vi skaffat databas
 					$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
 					$avEvent->LOCATION = $e[$i]->LOCATION;
 					$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
-
-					$e[$i]->DTEND = substr($e[$i]->DTSTART, 0, 8) .  "T" . date("Hi", strtotime( "+" . $collection->studylength . " minutes", strtotime(substr($e[$i]->DTSTART, 9, 4)))) . "Z"; // +studylength
+					
+					$e[$i]->DTEND = str_replace(":", "T", date("Ymd:Hi", strtotime( "+" . $collection->studylength . " minutes", strtotime(substr($e[$i]->DTSTART, 0, 8) . substr($e[$i]->DTSTART, 9, 4))))) . "Z"; // +studylength
+					//specialfall f�r att undvika events som slutar innan eller samtidigt som n�r den b�rja
 					if($avEvent -> DTSTART < $avEvent -> DTEND){
 							array_splice($e, $i+1, 0, array($avEvent));
 					}
@@ -193,8 +227,8 @@ function analyze ($events) {
 }
 // Hittar, klipper till och/eller tar bort events f�r restiden i schemat
 function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
-	$pause1end = substr($e[$i]->DTEND, 0, 8) .  "T" . date("Hi", strtotime( "+" . $ttime1 . " minutes", strtotime(substr($e[$i]->DTEND, 9, 4)))) . "Z"; // + $ttime1
-	$pause2start = substr($e[$y]->DTSTART, 0, 8) .  "T" . date("Hi", strtotime( "-" . $ttime2 . " minutes", strtotime(substr($e[$y]->DTSTART, 9, 4)))) . "Z"; // - $ttime2
+	$pause1end = str_replace(":", "T", date("Ymd:Hi", strtotime( "+" . $ttime1 . " minutes", strtotime(substr($e[$i]->DTEND, 0, 8) . substr($e[$i]->DTEND, 9, 4))))) . "Z";; // + $ttime1
+	$pause2start = str_replace(":", "T", date("Ymd:Hi", strtotime( "+" . $ttime2 . " minutes", strtotime(substr($e[$y]->DTSTART, 0, 8) . substr($e[$y]->DTSTART, 9, 4))))) . "Z"; // - $ttime2
 	for($x = $i; $x < $y; $x++){
 		if ($e[$x]->AVAILABLE) {
 			$u = false;
@@ -203,16 +237,16 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 				$e = array_values($e);
 				$u = true;
 				$x--;
-			}
+			}	//Om avail b�rjar innan men rest klart
 			if($e[$x]->DTSTART < $pause1end && $e[$x]->DTEND > $pause1end && !$u){
 				$e[$x]->DTSTART = $pause1end;
-			}
+			} //Om avail �r inom andra restiden
 			if($e[$x]->DTEND > $pause2start && $e[$x]->DTSTART >= $pause2start && !$u) {
 				unset($e[$x]);
 				$e = array_values($e);
 				$u = true;
 				$x--;
-			}
+			} //Om avail slutar efter man m�ste rest till n�sta !avail event
 			if ($e[$x]->DTEND > $pause2start && $e[$x]->DTEND <= $e[$y]->DTSTART && !$u) {
 				$e[$x]->DTEND = $pause2start;
 			}
@@ -220,6 +254,6 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 	}
 }
 
-$a = analyze('[{"SUMMARY":"Gymma","DTSTART":"20170421T0000Z","DTEND":"20170421T1000Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170421T1000Z","DTEND":"20170421T1400Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170421T1400Z","DTEND":"20170421T1500Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170421T1500Z","DTEND":"20170422T0100Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170422T0200Z","DTEND":"20170422T0800Z","UID":"2017042219:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170422T0800Z","DTEND":"20170422T1500Z","UID":"2017042219:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170422T1500Z","DTEND":"20170422T1700Z","UID":"2017042219:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170422T1700Z","DTEND":"20170423T1100Z","UID":"2017042319:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170423T1100Z","DTEND":"20170423T2100Z","UID":"2017042319:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170423T2100Z","DTEND":"20170424T0500Z","UID":"2017042319:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170424T0500Z","DTEND":"20170424T1100Z","UID":"2017042419:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170424T1100Z","DTEND":"20170424T2100Z","UID":"2017042419:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170424T2100Z","DTEND":"20170424T2200Z","UID":"2017042419:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170424T2200Z","DTEND":"20170425T1500Z","UID":"2017042519:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170425T1500Z","DTEND":"20170425T2100Z","UID":"2017042519:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false}]');
+$a = analyze('[{"SUMMARY":"Gymma","DTSTART":"20170421T0000Z","DTEND":"20170421T1000Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma (ID1019)","DTSTART":"20170421T1000Z","DTEND":"20170421T1400Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma (ID1019)","DTSTART":"20170421T1400Z","DTEND":"20170421T1500Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170421T1500Z","DTEND":"20170422T0100Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma (ID1019)","DTSTART":"20170422T0200Z","DTEND":"20170422T0800Z","UID":"2017042219:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170422T0800Z","DTEND":"20170422T1500Z","UID":"2017042219:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170422T1500Z","DTEND":"20170422T1700Z","UID":"2017042219:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170422T1700Z","DTEND":"20170423T1100Z","UID":"2017042319:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170423T1100Z","DTEND":"20170423T2100Z","UID":"2017042319:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170423T2100Z","DTEND":"20170424T0500Z","UID":"2017042319:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170424T0500Z","DTEND":"20170424T1100Z","UID":"2017042419:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170424T1100Z","DTEND":"20170424T2100Z","UID":"2017042419:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170424T2100Z","DTEND":"20170424T2200Z","UID":"2017042419:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170424T2200Z","DTEND":"20170425T1500Z","UID":"2017042519:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170425T1500Z","DTEND":"20170425T2100Z","UID":"2017042519:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false}]');
 echo json_encode($a);
 ?>

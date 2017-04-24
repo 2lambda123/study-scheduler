@@ -1,1 +1,1 @@
-{"Monday":"on","Wednesday":"on","Friday":"on","Sunday":"on","sleepfrom":"23:00","sleepto":"06:00","traveltime":"60","studylength":"60","breaktime":"10"}
+{"Monday":"on","Wednesday":"on","Friday":"on","Sunday":"on","sleepfrom":"08:00","sleepto":"18:00","traveltime":"60","studylength":"60","breaktime":"10"}
