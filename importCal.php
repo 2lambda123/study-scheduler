@@ -20,7 +20,7 @@ class event {
 function downloadFile ($fileLink) {
 	$file_content = file_get_contents($fileLink);
 	$e = importCal($file_content);
-	return $e;
+	return $e; 
 }
 function importCal ($file_content) {
 	$file = explode("BEGIN:VEVENT", $file_content);

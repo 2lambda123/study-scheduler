@@ -13,26 +13,17 @@ th {
   padding: 10px 10px 10px 10px;
 }
 
-
-#test{
-  height:"20%";
-}
-
 #calendar{
   border: 1px solid black;
 	padding: 10px 14px;
-	background-color: #dddddd;
+	background-color: #99ebff;
   table-layout: fixed;
 	border-radius: 25px;
   width: 80%;
+  margin: auto;
 }
 
-/*.daysHead{
-	text-align: center;
-  }*/
-
-
-#box1{
+.box{
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
@@ -42,19 +33,6 @@ th {
   background-color: grey;
 }
 
-#item1{
-  width: 100%;
-  height: 50%;
-  background-color:red;
-}
-
-#item2{
-  width:100%;
-  height: 30%;
-  background-color: blue;
-}
-
-
-.box{
+.cells{
     height: 500px;
 }
