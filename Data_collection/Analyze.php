@@ -165,15 +165,9 @@ function analyze ($events) {
 		}
 		$count = count($e);
 	}
-	foreach ($e as $event) {
-		echo $event->DTSTART . " | " . $event->DTEND . " - " . $event->AVAILABLE ."<br><br>";
-	}
 
 	//Denna loop fixar pauser
-	echo "studylength: " . $collection->studylength;
-	echo "<br> breaktime: " . $collection->breaktime . "<br><br>";
 	for($i = 0; $i < $count; $i++){
-		echo $i . " | " . $count . "<br>";
 		if($e[$i]->AVAILABLE){
 			// if DTSTART - DTEND > studylength
 			if((strtotime($e[$i]->DTEND)-strtotime($e[$i]->DTSTART))/60 > $collection->studylength){
@@ -199,27 +193,29 @@ function analyze ($events) {
 }
 // Hittar, klipper till och/eller tar bort events f�r restiden i schemat
 function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
-	$pause1end = $e[$i]->DTSTART; // + $ttime1
-	$pause2start = $e[$y]->DTSTART; // - $ttime2
+	$pause1end = substr($e[$i]->DTEND, 0, 8) .  "T" . date("Hi", strtotime( "+" . $ttime1 . " minutes", strtotime(substr($e[$i]->DTEND, 9, 4)))) . "Z"; // + $ttime1
+	$pause2start = substr($e[$y]->DTSTART, 0, 8) .  "T" . date("Hi", strtotime( "-" . $ttime2 . " minutes", strtotime(substr($e[$y]->DTSTART, 9, 4)))) . "Z"; // - $ttime2
 	for($x = $i; $x < $y; $x++){
-		$u = false;
-		if($e[$x]->DTSTART >= $e[$i]->DTEND && $e[$x]->DTEND <= $pause1end){ // Om avail �r innuti restiden
-			unset($e[$x]);
-			$e = array_values($e);
-			$u = true;
-			$x--;
-		}
-		if($e[$x]->DTSTART < $pause1end && $e[$x]->DTEND > $pause1end && !$u){
-			$e[$x]->DTSTART = $pause1end;
-		}
-		if($e[$x]->DTEND > $pause2start && $e[$x]->DTSTART >= $pause2start && !$u) {
-			unset($e[$x]);
-			$e = array_values($e);
-			$u = true;
-			$x--;
-		}
-		if ($e[$x]->DTEND > $pause2start && $e[$x]->DTEND <= $e[$y]->DTSTART && !$u) {
-			$e[$x]->DTEND = $pause2start;
+		if ($e[$x]->AVAILABLE) {
+			$u = false;
+			if($e[$x]->DTSTART >= $e[$i]->DTEND && $e[$x]->DTEND <= $pause1end){ // Om avail �r innuti restiden
+				unset($e[$x]);
+				$e = array_values($e);
+				$u = true;
+				$x--;
+			}
+			if($e[$x]->DTSTART < $pause1end && $e[$x]->DTEND > $pause1end && !$u){
+				$e[$x]->DTSTART = $pause1end;
+			}
+			if($e[$x]->DTEND > $pause2start && $e[$x]->DTSTART >= $pause2start && !$u) {
+				unset($e[$x]);
+				$e = array_values($e);
+				$u = true;
+				$x--;
+			}
+			if ($e[$x]->DTEND > $pause2start && $e[$x]->DTEND <= $e[$y]->DTSTART && !$u) {
+				$e[$x]->DTEND = $pause2start;
+			}
 		}
 	}
 }
