@@ -98,13 +98,14 @@ function analyze ($events) {
 				} else if ($e[$i]->DTSTART < $sleepfrom && $e[$i]->DTEND > $sleepto) {
 					//Splitta och behåll efter samt innan sova
 					$avEvent = new stdClass();
-					$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
-					$avEvent->DTEND = $e[$i]->DTEND;
 					$avEvent->SUMMARY = $e[$i]->SUMMARY;
+					$avEvent->DTSTART = $sleepto;
+					$avEvent->DTEND = $e[$i]->DTEND;
+					$avEvent->UID = $e[$i]->UID;
 					$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
 					$avEvent->LOCATION = $e[$i]->LOCATION;
-					$avEvent->UID = $e[$i]->UID;
-					$avEvent->DTSTART = $sleepto;
+					$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
+					
 					$e[$i]->DTEND = $sleepfrom;
 					array_splice($e, $i+1, 0, array($avEvent)); 
 				}
@@ -176,13 +177,14 @@ function analyze ($events) {
 			if((strtotime($e[$i]->DTEND)-strtotime($e[$i]->DTSTART))/60 > $collection->studylength){
 				// Splitta upp i en före och en efter med breaktime mellanrum
 					$avEvent = new stdClass();
-					$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
-					$avEvent->DTEND = $e[$i]->DTEND;
 					$avEvent->SUMMARY = $e[$i]->SUMMARY;
+					$avEvent->DTSTART = substr($e[$i]->DTSTART, 0, 8) . "T" . date("Hi", strtotime($e[$i]->DTSTART . "+" . ($collection->studylength+$collection->breaktime) . " minutes")) . "Z"; //+studylength+breaktime
+					$avEvent->DTEND = $e[$i]->DTEND;
+					$avEvent->UID = $e[$i]->UID;
 					$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
 					$avEvent->LOCATION = $e[$i]->LOCATION;
-					$avEvent->UID = $e[$i]->UID;
-					$avEvent->DTSTART = substr($e[$i]->DTSTART, 0, 8) . "T" . date("Hi", strtotime($e[$i]->DTSTART . "+" . ($collection->studylength+$collection->breaktime) . " minutes")) . "Z"; //+studylength+breaktime
+					$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
+					
 					$e[$i]->DTEND = substr($e[$i]->DTSTART, 0, 8) .  "T" . date("Hi", strtotime($e[$i]->DTSTART	. "+" . $collection->studylength . " minutes")) . "Z"; // +studylength
 					array_splice($e, $i+1, 0, array($avEvent)); 
 			}                                                                
