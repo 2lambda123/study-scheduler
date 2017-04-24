@@ -1,5 +1,4 @@
 <?php
-
 function strstr_after($haystack, $needle, $case_insensitive = false) {
     $strpos = ($case_insensitive) ? "stripos" : "strpos";
     $pos = $strpos($haystack, $needle);
@@ -23,7 +22,6 @@ function downloadFile ($fileLink) {
 	$e = importCal($file_content);
 	return $e;
 }
-
 function importCal ($file_content) {
 	$file = explode("BEGIN:VEVENT", $file_content);
 	for ($i = 1; $i < count($file); $i++) {
@@ -46,7 +44,7 @@ function importCal ($file_content) {
 				$sum = strstr_after($a, "SUMMARY:");
 			}
 		}
-		
+
 		foreach ($attr as $a) {
 			if (strstr($a, "DTSTART;VALUE=DATE-TIME:")) {
 				$sum = strstr_after($a, "DTSTART;VALUE=DATE-TIME:");
@@ -56,7 +54,7 @@ function importCal ($file_content) {
 				$events[$i-1]->DTSTART = $sum;
 			}
 		}
-		
+
 		foreach ($attr as $a) {
 			if (strstr($a, "DTEND;VALUE=DATE-TIME:")) {
 				$sum = strstr_after($a, "DTEND;VALUE=DATE-TIME:");
@@ -66,14 +64,14 @@ function importCal ($file_content) {
 				$events[$i-1]->DTSTART = $sum;
 			}
 		}
-		
+
 		foreach ($attr as $a) {
 			if (strstr($a, "UID:")) {
 				$sum = strstr_after($a, "UID:");
 				$events[$i-1]->UID = $sum;
 			}
 		}
-		
+
 		$sum = "";
 		foreach ($attr as $a) {
 			if ($sum !== "") {
@@ -90,7 +88,7 @@ function importCal ($file_content) {
 				$sum = strstr_after($a, "DESCRIPTION:");
 			}
 		}
-		
+
 		$sum = "";
 		foreach ($attr as $a) {
 			if ($sum !== "") {
@@ -108,9 +106,7 @@ function importCal ($file_content) {
 			}
 		}
 	}
-
 	$e = json_encode($events);
-	echo $e;
 	return $e;
 }
 ?>
