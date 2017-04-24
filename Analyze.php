@@ -5,7 +5,7 @@ function analyze ($events) {
 
 	$collection = json_decode(file_get_contents("Collection.txt")); //Tar emot personlig data fr�n fil - ska bli databas
 
-	$sleepfrom = str_replace(":", "", $collection->sleepfrom); //Fr�n m�jligt 00:00 format till 0000 format
+	$sleepfrom = str_replace(":", "", $collection->sleepfrom); //Från möjligt 00:00 format till 0000 format
 	$sleepto = str_replace(":", "", $collection->sleepto);
 
 	function days($d, $collection) { //Tar emot dagens datum och returnerar true om man inte vill plugga den dagen, false om man vill
@@ -71,7 +71,7 @@ function analyze ($events) {
 		$count = count($e);
 	}
 
-	//Denna for loop fixar s�mnschema
+	//Denna for loop fixar sömnschema
 	for ($i = 0; $i < $count; $i++) {
 		if ($e[$i]->AVAILABLE) {
 		
@@ -91,12 +91,12 @@ function analyze ($events) {
 				} else if ($e[$i]->DTSTART >= $sleepfrom && $e[$i]->DTSTART < $sleepto && $e[$i]->DTEND > $sleepto) { //Om ett event börjar innan man vaknar och fortsätter efter man vaknat
 					$e[$i]->DTSTART = $sleepto;
 				} else if ($e[$i]->DTSTART < $sleepfrom && $e[$i]->DTEND > $sleepto) { //Om ett event börjar innan man somnar och slutar efter men vaknat
-					//Splitta och beh�ll efter samt innan sova
+					//Splitta och behåll efter samt innan sova
 					$avEvent = new stdClass();
 					$avEvent->SUMMARY = $e[$i]->SUMMARY;
 					$avEvent->DTSTART = $sleepto;
 					$avEvent->DTEND = $e[$i]->DTEND;
-					$avEvent->UID = $e[$i]->UID; //fixa unik id n岠vi skaffat databas
+					$avEvent->UID = $e[$i]->UID; //fixa unik id när vi skaffat databas
 					$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
 					$avEvent->LOCATION = $e[$i]->LOCATION;
 					$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
@@ -128,12 +128,12 @@ function analyze ($events) {
 					} else if ($e[$i]->DTSTART >= $sleepfrom && $e[$i]->DTSTART < $sleepto && $e[$i]->DTEND > $sleepto) {
 						$e[$i]->DTSTART = $sleepto;
 					} else if ($e[$i]->DTSTART < $sleepfrom && $e[$i]->DTEND > $sleepto) {
-						//Splitta och beh�ll efter samt innan sova
+						//Splitta och behåll efter samt innan sova
 						$avEvent = new stdClass();
 						$avEvent->SUMMARY = $e[$i]->SUMMARY;
 						$avEvent->DTSTART = $sleepto;
 						$avEvent->DTEND = $e[$i]->DTEND;
-						$avEvent->UID = $e[$i]->UID; //fixa unik id n�r vi skaffat databas
+						$avEvent->UID = $e[$i]->UID; //fixa unik id när vi skaffat databas
 						$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
 						$avEvent->LOCATION = $e[$i]->LOCATION;
 						$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
@@ -162,27 +162,27 @@ function analyze ($events) {
 				$ti = $e[$i]->DESCRIPTION;
 			}
 			if ($firstEvent){
-				//l�gg restid innan f�rsta event
+				//l�gg restid innan första event
 				findAvailBetween(0, $i,0, $ti, $e);
 			}
 			for ($y = $i; $y < $count; $y++) {
 				if(!$e[$y]->AVAILABLE) {
 					$ty;
-					if(preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$y]->SUMMARY)){ //Om det finns en kurskod inom parentes, har vi restid �r den inmatade
+					if(preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$y]->SUMMARY)){ //Om det finns en kurskod inom parentes, har vi restid är den inmatade
 						$ty = $collection->traveltime;
 					}
 					else{ //Annars ska restiden finnas i description (f�r habit)
 						$ty = $e[$y]->DESCRIPTION;
 					}
-					//j�mf�ra ny dag
+					//jämföra ny dag
 					if(date('Ymd', strtotime($e[$i]->DTEND) !== date('Ymd', strtotime($e[$y]->DTSTART)))){
 						findAvailBetween($i,$y,$ti, $ty, $e);
 					}
-					//j�mf�ra om det �r samma sorts event (skola � skola eller samma habit � habit
+					//jämföra om det är samma sorts event (skola & skola eller samma habit & habit
 					else if(($e[$i]->SUMMARY == $e[$y]->SUMMARY) || (preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$i]->SUMMARY) == preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$y]->SUMMARY))){
 						//leave as is
 					}
-					//om det inte �r samma sort, l�gg restid mellan
+					//om det inte är samma sort, l�gg restid mellan
 					else{
 					findAvailBetween($i,$y, $ti, $ty, $e);
 					}
@@ -204,18 +204,18 @@ function analyze ($events) {
 		if($e[$i]->AVAILABLE){
 			// if DTSTART - DTEND > studylength
 			if((strtotime($e[$i]->DTEND)-strtotime($e[$i]->DTSTART))/60 > $collection->studylength){
-				// Splitta upp i en f�re och en efter med breaktime mellanrum
+				// Splitta upp i en före och en efter med breaktime mellanrum
 					$avEvent = new stdClass();
 					$avEvent->SUMMARY = $e[$i]->SUMMARY;
 					$avEvent->DTSTART = str_replace(":", "T", date("Ymd:Hi", strtotime( "+" . $collection->studylength+$collection->breaktime . " minutes", strtotime(substr($e[$i]->DTSTART, 0, 8) . substr($e[$i]->DTSTART, 9, 4))))) . "Z"; //+studylength+breaktime
 					$avEvent->DTEND = $e[$i]->DTEND;
-					$avEvent->UID = $e[$i]->UID; //fixa unikt id n�r vi skaffat databas
+					$avEvent->UID = $e[$i]->UID; //fixa unikt id när vi skaffat databas
 					$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
 					$avEvent->LOCATION = $e[$i]->LOCATION;
 					$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
 					
 					$e[$i]->DTEND = str_replace(":", "T", date("Ymd:Hi", strtotime( "+" . $collection->studylength . " minutes", strtotime(substr($e[$i]->DTSTART, 0, 8) . substr($e[$i]->DTSTART, 9, 4))))) . "Z"; // +studylength
-					//specialfall f�r att undvika events som slutar innan eller samtidigt som n�r den b�rja
+					//specialfall för att undvika events som slutar innan eller samtidigt som när den börja
 					if($avEvent -> DTSTART < $avEvent -> DTEND){
 							array_splice($e, $i+1, 0, array($avEvent));
 					}
@@ -225,7 +225,7 @@ function analyze ($events) {
 	}
 	return $e;
 }
-// Hittar, klipper till och/eller tar bort events f�r restiden i schemat
+// Hittar, klipper till och/eller tar bort events för restiden i schemat
 function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 	$pause1end = str_replace(":", "T", date("Ymd:Hi", strtotime( "+" . $ttime1 . " minutes", strtotime(substr($e[$i]->DTEND, 0, 8) . substr($e[$i]->DTEND, 9, 4))))) . "Z";; // + $ttime1
 	$pause2start = str_replace(":", "T", date("Ymd:Hi", strtotime( "+" . $ttime2 . " minutes", strtotime(substr($e[$y]->DTSTART, 0, 8) . substr($e[$y]->DTSTART, 9, 4))))) . "Z"; // - $ttime2
@@ -237,16 +237,16 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 				$e = array_values($e);
 				$u = true;
 				$x--;
-			}	//Om avail b�rjar innan men rest klart
+			}	//Om avail börjar innan men rest klart
 			if($e[$x]->DTSTART < $pause1end && $e[$x]->DTEND > $pause1end && !$u){
 				$e[$x]->DTSTART = $pause1end;
-			} //Om avail �r inom andra restiden
+			} //Om avail är inom andra restiden
 			if($e[$x]->DTEND > $pause2start && $e[$x]->DTSTART >= $pause2start && !$u) {
 				unset($e[$x]);
 				$e = array_values($e);
 				$u = true;
 				$x--;
-			} //Om avail slutar efter man m�ste rest till n�sta !avail event
+			} //Om avail slutar efter man måste rest till nästa !avail event
 			if ($e[$x]->DTEND > $pause2start && $e[$x]->DTEND <= $e[$y]->DTSTART && !$u) {
 				$e[$x]->DTEND = $pause2start;
 			}
