@@ -22,20 +22,21 @@ function gen_free_time($file){
 	$eventS = null;//When the event starts
 	$eventE = null;//When the event ends
 	for($i = 1; $i < count($eventArray); $i++){
-		if(eventTimeFloat($eventArray[$i]["DTSTART"]) >= eventTimeFloat($now)) {
+		if(eventTimeFloat($eventArray[$i-1]["DTSTART"]) >= eventTimeFloat($now)) {
 				$eventS = $eventArray[$i-1]["DTSTART"];
 				$eventE = $eventArray[$i-1]["DTEND"];
 				$check = true;
+				echo $eventS;
 
 				if(floatval(substr($eventS, 0, 8)) == floatval(substr($eventArray[$i]["DTSTART"], 0, 8))){
-						while($check){//This loop is to check if there are any overlapping events
+						while($check && isset($eventArray[$i + 1])){//This loop is to check if there are any overlapping events
 							$firstDiff = eventTimeFloat($eventE) - eventTimeFloat($eventS);
 							$secondDiff = eventTimeFloat($eventArray[$i]["DTEND"]) - eventTimeFloat($eventArray[$i]["DTSTART"]);
 							$check = false;
 
 							if($firstDiff >= $secondDiff){//Checking on which side the smaller event is on
 								if(eventTimeFloat($eventE) > eventTimeFloat($eventArray[$i]["DTSTART"])){//We have a overlapping
-									$check = true;
+										$check = true;
 										if(eventTimeFloat($eventE) < eventTimeFloat($eventArray[$i]["DTEND"]))//Second event ends after the first one
 											$eventE = $eventArray[$i]["DTEND"];
 
@@ -45,8 +46,7 @@ function gen_free_time($file){
 							}
 							else{
 								if(eventTimeFloat($eventE) > eventTimeFloat($eventArray[$i]["DTSTART"])){//We have a overlapping
-									$check = true;
-
+										$check = true;
 										if(eventTimeFloat($eventS) > eventTimeFloat($eventArray[$i]["DTSTART"]))//First event starts after first one
 											$eventS = $eventArray[$i]["DTSTART"];
 
@@ -78,6 +78,4 @@ function free_time_with_events($schedule){
 	}
 	return $schema;
 }
-
-var_dump(free_time_with_events("personal.ics"));
 ?>
