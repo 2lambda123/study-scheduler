@@ -29,11 +29,11 @@ function addNewField() { //adds a new coursework
     container.appendChild(coursework); //Adds element created above
     container.appendChild(document.createElement("br"));
 
-    container.appendChild(document.createTextNode("Startdate: "));
+    container.appendChild(document.createTextNode("Start date: "));
     container.appendChild(startdate);
     container.appendChild(document.createElement("br"));
 
-    container.appendChild(document.createTextNode("Enddate: "));
+    container.appendChild(document.createTextNode("End date: "));
     container.appendChild(enddate);
     container.appendChild(document.createElement("br"));
 
