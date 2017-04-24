@@ -1,0 +1,18 @@
+<body>
+
+	<form action='habitform.php' method='post'>
+		<h3>New course</h3>
+		<div id="container">
+			<input type="submit"/><br/><br/>
+			Course name: <input type="text"/><br/>
+			Tenta: <input type="checkbox" name="exam"> HP: <input name="hp_exam" type="number"/><br/>
+			Start of course: <input name="coursestart" type="date"/><br/>
+			Exam date: <input name="courseend" type="date"/><br/><br/>
+			<a href="#" id="add" onclick="addNewField()"> [Add] </a>
+			<a href="#" id="remove" onclick="removeField()">[Remove] </a><br/>
+		</div>
+	</form>
+
+<script src="dynamictest.js"></script>
+
+</body>
