@@ -1,5 +1,4 @@
 <?php
-
 function strstr_after($haystack, $needle, $case_insensitive = false) {
     $strpos = ($case_insensitive) ? "stripos" : "strpos";
     $pos = $strpos($haystack, $needle);
@@ -24,7 +23,6 @@ function downloadFile ($fileLink) {
 	$e = importCal($file_content);
 	return $e;
 }
-
 function importCal ($file_content) {
 	$file = explode("BEGIN:VEVENT", $file_content);
 	for ($i = 1; $i < count($file); $i++) {
@@ -109,7 +107,6 @@ function importCal ($file_content) {
 			}
 		}
 	}
-
 	$e = json_encode($events);
 	return $e;
 }
