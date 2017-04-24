@@ -3,11 +3,11 @@
 function analyze ($events) {
 	$e = json_decode($events); //Decode to array of objects
 
-	$collection = json_decode(file_get_contents("Collection.txt")); //Tar emot personlig data från fil - ska bli databas
-	
-	$sleepfrom = str_replace(":", "", $collection->sleepfrom); //Från möjligt 00:00 format till 0000 format
+	$collection = json_decode(file_get_contents("Collection.txt")); //Tar emot personlig data frï¿½n fil - ska bli databas
+
+	$sleepfrom = str_replace(":", "", $collection->sleepfrom); //Frï¿½n mï¿½jligt 00:00 format till 0000 format
 	$sleepto = str_replace(":", "", $collection->sleepto);
-	
+
 	function days($d, $collection) { //Tar emot dagens datum och returnerar true om man inte vill plugga den dagen, false om man vill
 		$wD[] = array();
 		if (property_exists($collection,"Monday")) {
@@ -35,7 +35,7 @@ function analyze ($events) {
 			return true;
 		}
 		return false;
-	}	
+	}
 
 	$count = count($e);
 	//Denna for loop fixar dagar man ej vill plugga
@@ -61,17 +61,17 @@ function analyze ($events) {
 						else {
 							$e[$i]->DTSTART = date('Ymd', strtotime($e[$i]->DTSTART .' +1 day')) . "T0000Z";//$e[$i]->DTSTART next day 00.00
 						}
-					
+
 					}
 					$date = date('Ymd', strtotime($date .' +1 day'));
 					$date = $date . "T0000Z";
-				}				
+				}
 			}
 		}
 		$count = count($e);
 	}
 
-	//Denna for loop fixar sömnschema
+	//Denna for loop fixar sï¿½mnschema
 	for ($i = 0; $i < $count; $i++) {
 		if ($e[$i]->AVAILABLE) {
 			$t = 0;
@@ -87,7 +87,7 @@ function analyze ($events) {
 					$sleepfrom = date('Ymd', strtotime(substr($e[$i]->DTSTART, 0, 8))) . "T" . $sleepfrom . "Z";
 					$sleepto = date('Ymd', strtotime(substr($e[$i]->DTSTART, 0, 8). "+1 day")) . "T" . $sleepto . "Z";
 				}
-				
+
 				if ($e[$i]->DTSTART < $sleepfrom && $e[$i]->DTEND > $sleepfrom && $e[$i]->DTEND <= $sleepto) {
 					$e[$i]->DTEND = $sleepfrom;
 				} else if ($e[$i]->DTSTART >= $sleepfrom && $e[$i]->DTEND <= $sleepto) {
@@ -96,7 +96,7 @@ function analyze ($events) {
 				} else if ($e[$i]->DTSTART >= $sleepfrom && $e[$i]->DTSTART < $sleepto && $e[$i]->DTEND > $sleepto) {
 					$e[$i]->DTSTART = $sleepto;
 				} else if ($e[$i]->DTSTART < $sleepfrom && $e[$i]->DTEND > $sleepto) {
-					//Splitta och behåll efter samt innan sova
+					//Splitta och behï¿½ll efter samt innan sova
 					$avEvent = new stdClass();
 					$avEvent->SUMMARY = $e[$i]->SUMMARY;
 					$avEvent->DTSTART = $sleepto;
@@ -105,60 +105,60 @@ function analyze ($events) {
 					$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
 					$avEvent->LOCATION = $e[$i]->LOCATION;
 					$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
-					
+
 					$e[$i]->DTEND = $sleepfrom;
-					array_splice($e, $i+1, 0, array($avEvent)); 
+					array_splice($e, $i+1, 0, array($avEvent));
 				}
 				$t++;
 			}
 		}
 		$count = count($e);
 	}
-	
+
 	$firstEvent = true;
 	$lastEvent;
 	//Denna loop fixar restider
 	for($i = 0; $i < $count ; $i++) {
-	
+
 		if (!$e[$i]->AVAILABLE) {
 			$ti;
 			if(preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$i]->SUMMARY)){
 				$ti = $collection->traveltime;
-			} 
+			}
 			else{
 				$ti = $e[$i]->DESCRIPTION;
 			}
 			if ($firstEvent){
-				//lägg restid innan första event
+				//lï¿½gg restid innan fï¿½rsta event
 				findAvailBetween(0, $i,0, $ti, $e);
 			}
 			for ($y = $i; $y < $count; $y++) {
 				if(!$e[$y]->AVAILABLE) {
 					$ty;
-					if(preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$y]->SUMMARY)){ //Om det finns en kurskod inom parentes, har vi restid är den inmatade
+					if(preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$y]->SUMMARY)){ //Om det finns en kurskod inom parentes, har vi restid ï¿½r den inmatade
 						$ty = $collection->traveltime;
-					} 
-					else{ //Annars ska restiden finnas i description (för habit)
+					}
+					else{ //Annars ska restiden finnas i description (fï¿½r habit)
 						$ty = $e[$y]->DESCRIPTION;
 					}
-					//jämföra ny dag
-					if(date('Ymd', strtotime($e[$i]->DTEND) !== date('Ymd', strtotime($e[$y]->DTSTART)))){		
-						findAvailBetween($i,$y,$ti, $ty, $e);	
+					//jï¿½mfï¿½ra ny dag
+					if(date('Ymd', strtotime($e[$i]->DTEND) !== date('Ymd', strtotime($e[$y]->DTSTART)))){
+						findAvailBetween($i,$y,$ti, $ty, $e);
 					}
-					//jämföra om det är samma sorts event (skola å skola eller samma habit å habit
+					//jï¿½mfï¿½ra om det ï¿½r samma sorts event (skola ï¿½ skola eller samma habit ï¿½ habit
 					else if(($e[$i]->SUMMARY == $e[$y]->SUMMARY) || (preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$i]->SUMMARY) == preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$y]->SUMMARY))){
 						//leave as is
 					}
-					//om det inte är samma sort, lägg restid mellan
+					//om det inte ï¿½r samma sort, lï¿½gg restid mellan
 					else{
 					findAvailBetween($i,$y, $ti, $ty, $e);
-					} 
+					}
 					$lastEvent = false;
 				}
 				$count = count($e);
 			}
 			if ($lastEvent) {
-				findAvailBetween($i,count($e)-1,$ti, 0, $e);//lägg restid efter sista event
+				findAvailBetween($i,count($e)-1,$ti, 0, $e);//lï¿½gg restid efter sista event
 			}
 			$lastEvent = true;
 			$firstEvent = false;
@@ -168,14 +168,16 @@ function analyze ($events) {
 	foreach ($e as $event) {
 		echo $event->DTSTART . " | " . $event->DTEND . " - " . $event->AVAILABLE ."<br><br>";
 	}
-	
+
 	//Denna loop fixar pauser
+	echo "studylength: " . $collection->studylength;
+	echo "<br> breaktime: " . $collection->breaktime . "<br><br>";
 	for($i = 0; $i < $count; $i++){
 		echo $i . " | " . $count . "<br>";
 		if($e[$i]->AVAILABLE){
 			// if DTSTART - DTEND > studylength
 			if((strtotime($e[$i]->DTEND)-strtotime($e[$i]->DTSTART))/60 > $collection->studylength){
-				// Splitta upp i en före och en efter med breaktime mellanrum
+				// Splitta upp i en fï¿½re och en efter med breaktime mellanrum
 					$avEvent = new stdClass();
 					$avEvent->SUMMARY = $e[$i]->SUMMARY;
 					$avEvent->DTSTART = substr($e[$i]->DTSTART, 0, 8) . "T" . date("Hi", strtotime(("+" . ($collection->studylength+$collection->breaktime) . " minutes"), strtotime(substr($e[$i]->DTSTART, 9, 4)))) . "Z"; //+studylength+breaktime
@@ -184,28 +186,30 @@ function analyze ($events) {
 					$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
 					$avEvent->LOCATION = $e[$i]->LOCATION;
 					$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
-					
+
 					$e[$i]->DTEND = substr($e[$i]->DTSTART, 0, 8) .  "T" . date("Hi", strtotime( "+" . $collection->studylength . " minutes", strtotime(substr($e[$i]->DTSTART, 9, 4)))) . "Z"; // +studylength
-					array_splice($e, $i+1, 0, array($avEvent)); 
-			}                                                                
+					if($avEvent -> DTSTART < $avEvent -> DTEND){
+							array_splice($e, $i+1, 0, array($avEvent));
+					}
+			}
 		}
 		$count = count($e);
 	}
 	return $e;
 }
-// Hittar, klipper till och/eller tar bort events för restiden i schemat
+// Hittar, klipper till och/eller tar bort events fï¿½r restiden i schemat
 function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 	$pause1end = $e[$i]->DTSTART; // + $ttime1
 	$pause2start = $e[$y]->DTSTART; // - $ttime2
 	for($x = $i; $x < $y; $x++){
 		$u = false;
-		if($e[$x]->DTSTART >= $e[$i]->DTEND && $e[$x]->DTEND <= $pause1end){ // Om avail är innuti restiden
+		if($e[$x]->DTSTART >= $e[$i]->DTEND && $e[$x]->DTEND <= $pause1end){ // Om avail ï¿½r innuti restiden
 			unset($e[$x]);
 			$e = array_values($e);
 			$u = true;
 			$x--;
 		}
-		if($e[$x]->DTSTART < $pause1end && $e[$x]->DTEND > $pause1end && !$u){  
+		if($e[$x]->DTSTART < $pause1end && $e[$x]->DTEND > $pause1end && !$u){
 			$e[$x]->DTSTART = $pause1end;
 		}
 		if($e[$x]->DTEND > $pause2start && $e[$x]->DTSTART >= $pause2start && !$u) {
@@ -217,7 +221,7 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 		if ($e[$x]->DTEND > $pause2start && $e[$x]->DTEND <= $e[$y]->DTSTART && !$u) {
 			$e[$x]->DTEND = $pause2start;
 		}
-	}	
+	}
 }
 
 $a = analyze('[{"SUMMARY":"Gymma","DTSTART":"20170421T0000Z","DTEND":"20170421T1000Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170421T1000Z","DTEND":"20170421T1400Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170421T1400Z","DTEND":"20170421T1500Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170421T1500Z","DTEND":"20170422T0100Z","UID":"2017042119:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170422T0200Z","DTEND":"20170422T0800Z","UID":"2017042219:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170422T0800Z","DTEND":"20170422T1500Z","UID":"2017042219:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170422T1500Z","DTEND":"20170422T1700Z","UID":"2017042219:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170422T1700Z","DTEND":"20170423T1100Z","UID":"2017042319:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170423T1100Z","DTEND":"20170423T2100Z","UID":"2017042319:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170423T2100Z","DTEND":"20170424T0500Z","UID":"2017042319:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170424T0500Z","DTEND":"20170424T1100Z","UID":"2017042419:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170424T1100Z","DTEND":"20170424T2100Z","UID":"2017042419:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170424T2100Z","DTEND":"20170424T2200Z","UID":"2017042419:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false},{"SUMMARY":"Gymma","DTSTART":"20170424T2200Z","DTEND":"20170425T1500Z","UID":"2017042519:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":true},{"SUMMARY":"Gymma","DTSTART":"20170425T1500Z","DTEND":"20170425T2100Z","UID":"2017042519:00","DESCRIPTION":"15","LOCATION":"gymmet","AVAILABLE":false}]');
