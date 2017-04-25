@@ -2,24 +2,26 @@
   include "gen_cal.php";
 
   function print_dates($day) {
-    echo "$day \n" . assign_date($day, 0);
+    echo "$day \n" . assign_date($day, -2);
   }
 
   function assign_date($day, $week) {
       if($week < 0) {
-        $str = "+" . $week . " weeks";
-        $currentDate = strtotime($str);
-        $date = date("Y-m-d", strtotime($day, $currentDate));
-        return $date;
+        $currentDate = date("Y-m-d", strtotime($day . " this week"));
+        $add = $currentDate  . ($week * 7) . " day";
+        return date("Y-m-d", strtotime($add));
       }
+
       else if($week > 0) {
-        $str = "+" . $week . " weeks";
-        $currentDate = strtotime($str);
-        $date = date("Y-m-d", strtotime($day, $currentDate));
-        return $date;
+        $currentDate = date("Y-m-d", strtotime($day . " this week"));
+        $add = $currentDate . "+" . ($week * 7) . " day";
+        return date("Y-m-d", strtotime($add));
       }
+
       else {
-        return $date = date("Y-m-d", strtotime($day));
+        $str = $day . " this week";
+        $date = date("Y-m-d", strtotime($str));
+        return $date;
       }
   }
 

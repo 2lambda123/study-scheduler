@@ -6,3 +6,8 @@
 
   var week = (new Date()).getWeek();
   document.getElementById('weekHead').innerHTML = "Week: " + week;
+
+
+  Date.prototype.getDay = funtion() {
+    var
+  }

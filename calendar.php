@@ -23,10 +23,11 @@
   <!--Week Heading-->
   <div id="weekHead"> "MIA" </div>
 
-  <!-- Calendar table -->
+
+  <!-- Calendar table-->
 	  <table  id="calendar">
 		        <tr text-align="center">
-      			  <th><?php echo "Monday \n" . assign_date("Monday", -1);?></th>
+      			  <th><?php print_dates("Monday");?></th>
       			  <th><?php print_dates("Tuesday");?></th>
       			  <th><?php print_dates("Wednesday")?></th>
       			  <th><?php print_dates("Thursday");?></th>
