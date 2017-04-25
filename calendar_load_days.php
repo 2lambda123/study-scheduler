@@ -1,13 +1,6 @@
 <?php
   include "gen_cal.php";
 
-  /*function convert($date)
-  {
-    $date =
-
-    return;
-  }*/
-
   function print_dates($day) {
     echo "$day \n" . assign_date($day, 0);
   }
@@ -30,8 +23,6 @@
       }
   }
 
-
-
   function position($day)
 	{
 		include_once "gen_cal.php";
@@ -51,5 +42,4 @@
 		}
 		return $html;
 	}
-
  ?>
