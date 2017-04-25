@@ -58,12 +58,31 @@ function gen_free_time($file){
 								$i++;		//to look at them again in the next iteration
 						}
 				}
-
-				$e = new event;
-				$e->DTSTART = $eventE;
-				$e->DTEND = $eventArray[$i]["DTSTART"];
-				$e->AVAILABLE = true;
-				array_push($new_times, $e);
+				if($eventE != $eventArray[$i]["DTSTART"]){
+					//echo "strcmp:".$eventE[7].$eventArray[$i]["DTSTART"][7].strcmp($eventE[7],$eventArray[$i]["DTSTART"][7]);
+					if(strcmp($eventE[7],$eventArray[$i]["DTSTART"][7]) == -1) {
+						$e1 = new event;
+						$e1->DTSTART = $eventE;
+						$e1->DTEND = substr($eventE,0,8)."T2400".substr($eventE,-3,3);
+						$e1->AVAILABLE = true;
+						//var_dump($e1);
+						array_push($new_times, $e1);
+						
+						$e2 = new event;
+						$e2->DTSTART = substr($eventArray[$i]["DTSTART"],0,8)."T0000".substr($eventE,-3,3);
+						$e2->DTEND = $eventArray[$i]["DTSTART"];
+						$e2->AVAILABLE = true;
+						//var_dump($e2);
+						array_push($new_times, $e2);
+						
+					}
+					else {
+						$e = new event;
+						$e->DTSTART = $eventE;
+						$e->DTEND = $eventArray[$i]["DTSTART"];
+						$e->AVAILABLE = true;
+						array_push($new_times, $e);
+					}
 		}
 	}
 	return json_encode($new_times);
