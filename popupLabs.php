@@ -1,36 +1,13 @@
 ﻿<HTML>
 <HEAD>
 <meta charset="utf8">
-<style>
-body {
-	background-color: black;
-}
-#popupLabs {
-	background-color: white;
-	position: absolute;
-	left: 25%;
-	top: 25%;
-	width: 50%;
-	padding-left: 10px;
-	padding-right: 10px;
-	text-align: center;
-}
-
-table {
-	margin: 0 auto;
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-}
-
-tr {
-	height: 25px;
-	border-bottom: 1px solid #ddd;
-}
-</style>
-
+	<link rel = "stylesheet" type = "text/css" href = "popupLabs.css">
 </HEAD>
 <BODY>
 <?php
+include 'LabFind.php';
+$allLabs = labFind('MedLabbar.ics');
+
 function popupLabs ($labs) {
 	$labs = json_decode($labs, false);
 	echo '<div id="popupLabs">';
@@ -52,11 +29,12 @@ function popupLabs ($labs) {
 		$c++;
 		$lastSummary = $lab->SUMMARY;
 	}
-	echo '</table>';	
+	echo '</table>';
 	echo '<input type="submit" style="margin:5px;">';
 	echo '</form></div>';
 }
-popupLabs('[{"SUMMARY":"Hej","DTSTART":"20170516T1710Z","DTEND":"20170516T1810Z","UID":null,"DESCRIPTION":null,"LOCATION":null,"AVAILABLE":true},{"SUMMARY":"Hej","DTSTART":"20170516T1820Z","DTEND":"20170516T1920Z","UID":null,"DESCRIPTION":null,"LOCATION":null,"AVAILABLE":true},{"SUMMARY":"Hej3","DTSTART":"20170516T1930Z","DTEND":"20170516T2030Z","UID":null,"DESCRIPTION":null,"LOCATION":null,"AVAILABLE":true},{"SUMMARY":"Hej4","DTSTART":"20170516T2040Z","DTEND":"20170516T2140Z","UID":null,"DESCRIPTION":null,"LOCATION":null,"AVAILABLE":true}]');
+
+popupLabs($allLabs);
 ?>
 <script>
 function hideLabform() {
