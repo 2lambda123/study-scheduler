@@ -45,5 +45,20 @@
               <td class="box"><div class="days"><?php echo position(6);?></div></td>
             </tr>
 	  </table>
+	  
+	  
+	  
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	  <script>
+		$(".event").click(function()
+		{
+			  $(this).animate({"width": "165px"}, "fast");
+		}
+	  
+	  </script>
+	  
+	  
+	  
+	  
 </body>
 </html>

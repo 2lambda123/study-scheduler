@@ -27,7 +27,7 @@
 	}
 	function gen_event($event){
 		$length = (ugly_time($event->DTEND)-ugly_time($event->DTSTART))/24;
-		$html  = "<div class='event' style='$length%'>";
+		$html  = "<div class='event' style='height:$length%'>";
 		$html .= "<div class='SUMMARY'>".$event->SUMMARY."</div>";
 		$html .= "<div class='pretty_time'>".pretty_time($event->DTSTART)." - ".pretty_time($event->DTEND)."</div>";
 		$html .= "</div>";

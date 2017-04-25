@@ -25,7 +25,7 @@ th {
 
 .box{
   height: 1000px;
-  overflow:auto;
+  overflow: hidden;
 }
 
 .days{
@@ -35,19 +35,36 @@ th {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: orange;
-  overflow:auto;
+  background-color: blue;
 }
 
-.items{
+.item{
   width: 100%;
   height: 100%;
 }
 
+.event:hover
+{
+	 background-color: blue;
+	 height: 100px;
+	 width: 300px;
+	 z-index:1;
+	 position: absolute;
+	 overflow: visible;
+	 z-index: 3;
+}
+
 .event {
   border: 2px solid black;
+    overflow: hidden;
+
+ 
 }
 
 .SUMMARY{
   font-weight:bold;
+}
+
+.day{
+	height: 100%
 }
