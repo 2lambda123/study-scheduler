@@ -30,6 +30,8 @@
       }
   }
 
+
+
   function position($day)
 	{
 		include_once "gen_cal.php";
