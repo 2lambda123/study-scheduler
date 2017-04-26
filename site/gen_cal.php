@@ -1,5 +1,5 @@
 <?php
-	include "importCal.php";
+	include "../scripts/importCal.php";
 
 	function cmp_date($date1,$date2){ return cmp_date_val($date1) > cmp_date_val($date2); }
 	function cmp_date_val($date) 	{ return substr($date,0,8).substr($date,9,4); }
