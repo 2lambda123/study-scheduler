@@ -1,14 +1,17 @@
 <?php
 
+include 'find.php';
 function analyze ($events) {
 	$e = json_decode($events); //Decode to array of objects
 
 	$collection = json_decode(file_get_contents("Collection.txt")); //Tar emot personlig data fr�n fil - ska bli databas
-
+	var_dump($collection);
+	echo "Hello";
+	
 	$sleepfrom = str_replace(":", "", $collection->sleepfrom); //Från möjligt 00:00 format till 0000 format
 	$sleepto = str_replace(":", "", $collection->sleepto);
 
-	function days($d, $collection) { //Tar emot dagens datum och returnerar true om man inte vill plugga den dagen, false om man vill
+	function getDays($d, $collection) { //Tar emot dagens datum och returnerar true om man inte vill plugga den dagen, false om man vill
 		$wD[] = array();
 		if (property_exists($collection,"Monday")) {
 			array_push($wD, 'Monday');
@@ -41,17 +44,17 @@ function analyze ($events) {
 	//Denna for loop fixar dagar man ej vill plugga
 	for ($i = 0; $i < $count; $i++) {
 		if ($e[$i]->AVAILABLE) {
-			if (days($e[$i]->DTSTART, $collection) && days($e[$i]->DTEND, $collection)) { //Om ett event bara pågår under dagar man ej vill plugga
+			if (getDays($e[$i]->DTSTART, $collection) && getDays($e[$i]->DTEND, $collection)) { //Om ett event bara pågår under dagar man ej vill plugga
 				unset($e[$i]);
 				$e = array_values($e);
 			} else {
 				$date = $e[$i]->DTSTART;
-				if(days($e[$i]->DTSTART, $collection)) { //Om ett event börjar på en dag man ej vill plugga
+				if(getDays($e[$i]->DTSTART, $collection)) { //Om ett event börjar på en dag man ej vill plugga
 					$e[$i]->DTSTART = date('Ymd', strtotime($e[$i]->DTSTART .' +1 day')) . "T0000Z";//$e[$i]->DTSTART = next day 00.00;
 				}
 				$date = $e[$i]->DTSTART;
 				for ( ; $date < $e[$i]->DTEND; ) {
-					if (days($date, $collection)) {
+					if (getDays($date, $collection)) {
 						if (substr($e[$i]->DTEND, 0, 8) == substr($date, 0, 8) && substr($e[$i]->DTSTART, 0, 8) == substr($date, 0, 8)) {  //Om ett event bara pågår under en dag man ej vill plugga
 						 unset($e[$i]);
 						 $e = array_values($e);
@@ -74,12 +77,12 @@ function analyze ($events) {
 	//Denna for loop fixar sömnschema
 	for ($i = 0; $i < $count; $i++) {
 		if ($e[$i]->AVAILABLE) {
-		
-			if ($sleepfrom < $sleepto) { //Om man sover från tidigt på morgonen till senare på dagen
-				if ($sleepfrom > 2400 && $sleepto > 2400) { //Tar bort datum och sparar sovtider igen
+			if ($sleepfrom > 2400 && $sleepto > 2400) { //Tar bort datum och sparar sovtider igen
 					$sleepfrom = substr($sleepfrom, 9, 4);
 					$sleepto = substr($sleepto, 9, 4);
 				}
+				
+			if ($sleepfrom < $sleepto) { //Om man sover från tidigt på morgonen till senare på dagen
 				$sleepfrom = substr($e[$i]->DTSTART, 0, 8) . "T" . $sleepfrom . "Z";
 				$sleepto = substr($e[$i]->DTSTART, 0, 8) . "T" . $sleepto . "Z";
 
@@ -104,7 +107,7 @@ function analyze ($events) {
 					$e[$i]->DTEND = $sleepfrom;
 					array_splice($e, $i+1, 0, array($avEvent));
 				}
-				
+
 			} else {
 				$t = 0;
 				while ($t <= 1) {
@@ -213,7 +216,7 @@ function analyze ($events) {
 					$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
 					$avEvent->LOCATION = $e[$i]->LOCATION;
 					$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
-					
+
 					$e[$i]->DTEND = str_replace(":", "T", date("Ymd:Hi", strtotime( "+" . $collection->studylength . " minutes", strtotime(substr($e[$i]->DTSTART, 0, 8) . substr($e[$i]->DTSTART, 9, 4))))) . "Z"; // +studylength
 					//specialfall för att undvika events som slutar innan eller samtidigt som när den börja
 					if($avEvent -> DTSTART < $avEvent -> DTEND){
@@ -223,7 +226,7 @@ function analyze ($events) {
 		}
 		$count = count($e);
 	}
-	return $e;
+	return json_encode($e);
 }
 // Hittar, klipper till och/eller tar bort events för restiden i schemat
 function findAvailBetween($i,$y,$ttime1,$ttime2, $e){

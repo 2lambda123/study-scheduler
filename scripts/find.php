@@ -26,7 +26,6 @@ function gen_free_time($file){
 			$eventS = $eventArray[$i-1]["DTSTART"];
 			$eventE = $eventArray[$i-1]["DTEND"];
 			$check = true;
-			echo $eventS;
 
 			if(floatval(substr($eventS, 0, 8)) == floatval(substr($eventArray[$i]["DTSTART"], 0, 8))){
 					while($check && isset($eventArray[$i + 1])){//This loop is to check if there are any overlapping events
@@ -67,14 +66,14 @@ function gen_free_time($file){
 					$e1->AVAILABLE = true;
 					//var_dump($e1);
 					array_push($new_times, $e1);
-					
+
 					$e2 = new event;
 					$e2->DTSTART = substr($eventArray[$i]["DTSTART"],0,8)."T0000".substr($eventE,-3,3);
 					$e2->DTEND = $eventArray[$i]["DTSTART"];
 					$e2->AVAILABLE = true;
 					//var_dump($e2);
 					array_push($new_times, $e2);
-					
+
 				}
 				else {
 					$e = new event;
@@ -98,4 +97,5 @@ function free_time_with_events($schedule){
 	}
 	return $schema;
 }
+
 ?>
