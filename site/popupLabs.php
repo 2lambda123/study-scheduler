@@ -36,6 +36,7 @@ function popupLabs ($labs) {
 
 popupLabs($allLabs);
 ?>
+
 <script>
 function hideLabform() {
 	document.getElementById('popupLabs').style.display = "none";
