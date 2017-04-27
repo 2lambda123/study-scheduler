@@ -11,10 +11,11 @@ table, tr, td{
 
 th {
   padding: 10px 10px 10px 10px;
+  text-align: center;
+  font-size: adjust;
 }
 
 #calendar{
-  border: 3px solid black;
 	padding: 10px 14px;
 	background-color:#ccc;
   table-layout: fixed;

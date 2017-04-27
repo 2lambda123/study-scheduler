@@ -45,7 +45,7 @@
 			} else {
 			$html .= "<br><div class='extra'>" . $str . "<br> Plats: " . $str . "</div>";
 			}
-			$html .= "<br><div><button class='editbutton' type='button' onclick='clicked(this)'>Edit</button></div></div>";
+			$html .= "<br><div><button type='button' data-toggle='modal' class='editbutton' data-target='#myModal'>Edit<button></div></div>";
 		}
 		return $html;
 	}
@@ -69,7 +69,6 @@
 	function print_events($date1,$date2) {
 		return(gen_week($date1,$date2));
 	}
-
 	function check($clickedEvent){
 		if(preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $clickedEvent->SUMMARY))
 		{
