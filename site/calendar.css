@@ -77,3 +77,38 @@ th {
 .KTH {
   background-color:blue;
 }
+/*MARCUS W, PHILIP W CSS SETTINGS FOR POPUP BEGINS*/
+#changeEvent{
+  border: 5px solid black;
+  width: 250px;
+  padding: 20px;
+  font-size: 10px;
+  background-color: grey;
+}
+
+#close:hover{
+  background-color: green;
+  cursor: pointer;
+}
+#close{
+  padding: 5px;
+  border: 3px solid black;
+  text-align:center;
+  width:50px;
+  font-size: 10px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+#submit{
+    padding: 5px;
+    border: 3px solid black;
+    text-align: center;
+    width:100px;
+    font-size: 10px;
+    background-color: grey;
+}
+#submit:hover{
+  background-color: green;
+  cursor: pointer;
+}
+/*MARCUS W, PHILIP W CSS FOR POPUP ENDS*/
