@@ -1,5 +1,5 @@
 <?php
-	include "importCal.php";
+	include "../scripts/importCal.php";
 
 	function cmp_date($date1,$date2){ return cmp_date_val($date1) > cmp_date_val($date2); }
 	function cmp_date_val($date) 	{ return substr($date,0,8).substr($date,9,4); }
@@ -30,7 +30,8 @@
 		$html  = "<div class='event' style='height:$length%'>";
 		$html .= "<div class='SUMMARY'>".$event->SUMMARY."</div>";
 		$html .= "<div class='pretty_time'>".pretty_time($event->DTSTART)." - ".pretty_time($event->DTEND)."</div>";
-		$html .= "</div>";
+		
+		$html .= " </div>";
 		return $html;
 	}
 	function gen_day($events){
@@ -52,4 +53,5 @@
 	function print_events($date1,$date2) {
 		return(gen_week($date1,$date2));
 	}
+
 ?>

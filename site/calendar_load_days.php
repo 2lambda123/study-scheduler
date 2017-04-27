@@ -44,4 +44,13 @@
 		}
 		return $html;
 	}
+	
+	
+	function boo()
+	{
+		
+		$pop = '<div class= "event"></div>';
+		$pop = preg_replace('/<div class="event">/', '/<div class="poo">/', $pop);
+		echo $pop;
+	}
  ?>

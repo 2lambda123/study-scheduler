@@ -46,5 +46,6 @@
               <td class="box"><div class="days"><?php echo position(6);?></div></td>
             </tr>
 	  </table>
+	  
 </body>
 </html>
