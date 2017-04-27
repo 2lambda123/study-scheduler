@@ -25,15 +25,40 @@
 		}
 		return $week;
 	}
+
 	function gen_event($event){
+
 		$length = (ugly_time($event->DTEND)-ugly_time($event->DTSTART))/24;
 		$html  = "<div class='event' style='height:$length%'>";
 		$html .= "<div class='SUMMARY'>".$event->SUMMARY."</div>";
 		$html .= "<div class='pretty_time'>".pretty_time($event->DTSTART)." - ".pretty_time($event->DTEND)."</div>";
 		
 		$html .= " </div>";
+
+		global $c;
+		$order   = array("\\r\\n", "\\n", "\\r");
+		$replace = ' <br />';
+		$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+
+		if ($event) {
+			$c++;
+			$cl = check($event);
+			$length = (ugly_time($event->DTEND)-ugly_time($event->DTSTART))/24;
+			$str = str_replace($order, $replace, $event->DESCRIPTION);
+			$html  = "<div class='event $cl' style='height:$length%'>";
+			$html .= "<div class='pretty_time'>".pretty_time($event->DTSTART)." - ".pretty_time($event->DTEND)."</div>";
+			$html .= "<div class='SUMMARY'>". str_replace($order, $replace, $event->SUMMARY) ."</div>";
+			if (preg_match($reg_exUrl, $str, $url)) {
+				$html .= "<br><div class='extra'>" . preg_replace($reg_exUrl, '<a href="' . $url[0] . '">' . $url[0] . '</a>', $str) . "<br> Plats: " . str_replace($order, $replace, $event->LOCATION) . "</div>";
+			} else {
+			$html .= "<br><div class='extra'>" . $str . "<br> Plats: " . $str . "</div>";
+			}
+			$html .= "<br><div><button class='editbutton' type='button' onclick='clicked(this)'>Edit</button></div></div>";
+		}
+
 		return $html;
 	}
+
 	function gen_day($events){
 		$html  = "<div class='day'>";
 		foreach($events as $event) {
@@ -54,4 +79,16 @@
 		return(gen_week($date1,$date2));
 	}
 
+	function check($clickedEvent){
+		if(preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $clickedEvent->SUMMARY))
+		{
+			$str ='KTH';
+			return $str;
+		}
+		else
+		{
+			$str = 'Others';
+			return $str;
+		}
+	}
 ?>

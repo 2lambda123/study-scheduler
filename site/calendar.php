@@ -6,7 +6,37 @@
 <link href="calendar.css" rel="stylesheet">
 <script type="text/javascript" src="calendar_load_week.js" defer></script>
 <?php include "calendar_load_days.php" ?>
+<script>
+function clicked(event){
+	
 
+   console.log(event);
+		var req = new XMLHttpRequest();
+		var url = "ajax.php";
+		var type = event.parentElement.parentElement.className;
+		var name = "name="+type;
+		console.log(name);
+		req.open("POST", url, true);
+		req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+		var return_data = null;
+		req.onreadystatechange = function() {
+			if(req.readyState == 4 && req.status == 200) {
+				var return_data = req.responseText;
+				<!--event.innerHTML += return_data;-->
+				
+				if(return_data == 0)
+				{
+				window.open("change_kth_form.html");
+				}
+			}
+		}
+		req.send(name);  
+	
+}
+
+
+</script>
 </head>
 
 <body>

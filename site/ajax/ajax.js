@@ -13,4 +13,5 @@ function ajax(){
 	}
 	req.send(name);
 	document.getElementById("status").innerHTML = "processing...";
+	
 }
