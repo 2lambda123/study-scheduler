@@ -1,6 +1,3 @@
 <?php
-  function delete($event) {
-    
-  }
 
 ?>
