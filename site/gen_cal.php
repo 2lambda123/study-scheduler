@@ -45,7 +45,7 @@
 			} else {
 			$html .= "<br><div class='extra'>" . $str . "<br> Plats: " . $str . "</div>";
 			}
-			$html .= "<br><div><button type='button' data-toggle='modal' class='editbutton' data-target='#myModal'>Edit<button></div></div>";
+			$html .= "<br><div><button type='button' data-toggle='modal' class='editbutton btn' data-target='#myModal'>Edit</button></div></div>";
 		}
 		return $html;
 	}

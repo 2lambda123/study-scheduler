@@ -49,13 +49,13 @@ function clicked(event){
   <!-- Calendar table-->
 	  <table  id="calendar">
 		        <tr text-align="center">
-      			  <th><?php print_dates("Monday");?></th>
-      			  <th><?php print_dates("Tuesday");?></th>
-      			  <th><?php print_dates("Wednesday")?></th>
-      			  <th><?php print_dates("Thursday");?></th>
-      			  <th><?php print_dates("Friday");?></th>
-      			  <th><?php print_dates("Saturday");?></th>
-      			  <th><?php print_dates("Sunday");?></th>
+      			       <th><?php print_dates("Monday");?></th>
+      			       <th><?php print_dates("Tuesday");?></th>
+      			       <th><?php print_dates("Wednesday")?></th>
+      			       <th><?php print_dates("Thursday");?></th>
+      			       <th><?php print_dates("Friday");?></th>
+      			       <th><?php print_dates("Saturday");?></th>
+      			       <th><?php print_dates("Sunday");?></th>
 		        </tr>
 
             <tr>
@@ -69,26 +69,26 @@ function clicked(event){
             </tr>
 	  </table>
 
-  <!-- Popup -->
+  <!-- Popup (Ask User) -->
+<form action="edit_kth.php" method="POST">
     <div class="modal fade" id="myModal">
-      <div class="modal-form">
+      <div class="modal-dialog">
+      <div class="modal-form" role="dialog">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4>Change of plan?<h4>
           </div>
           <div class="modal-body">
-            <form action="edit_kth.php" method="POST">
-    	           <div>
-    		             <label for="study"/>I want to skip this event and spend the time studying instead. </label> <input type="radio" name="study" id="study"/><br/>
-    		             <label for="del"/>I want to skip this event do some other activity (not studying).  </label> <input type="radio" name="del" id="del"/><br/>
-                     <br/><input type="submit" value="Submit" class="btn btn-default" align=""/>
-                     <button type="button" class="btn btn-default" data-dismiss="modal" style="float : right;">Close</button>
-                </div>
-            </form>
+              <input type="radio" name="study" value="study"/> I want to skip this event and spend the time studying instead.<br>
+              <input type="radio" name ="study" value="del"/> I want to skip this event do some other activity (not studying).<br>
+              </br><input type="submit" value="Submit" class="btn btn-default"/>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</form>
 </body>
 </html>
