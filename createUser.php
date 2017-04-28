@@ -1,35 +1,34 @@
 <?php
-
 function createUser ($username, $password) {
-	$mysqli = new mysqli("localhost", "root", "", "studyscheduler");
+	include 'DB.php';
+	$db = new DB();
+	
+	$row = $db -> select("SELECT UUID() AS UUID");
 
-	if ($mysqli->connect_errno) {
-		printf("Connect failed: %s\n", $mysqli->connect_error);
-		exit();
-	}
-
-	$result = mysql_query("SELECT UUID() AS UUID") or die('SQL error: ' . mysql_error());
-	$row = mysql_fetch_assoc($result);
-	$UUID = $row["UUID"];
-	$p = hash('sha256', $password);
-	//$sql = "INSERT INTO user (ID, USERNAME, PASSWORD, SETTINGS, KTHAUTH, FBAUTH) VALUES ('$UUID', '$username', '" . hash('sha256', $password) . "', '', '', '')";
-	$stmt = $mysqli->prepare("INSERT INTO user (ID, USERNAME, PASSWORD, SETTINGS, KTHAUTH, FBAUTH) VALUES ('$UUID', ?, ?, '', '', '')");
-	$stmt->bind_param('ss', $username, $p);
-	if ($stmt->execute()) {
-		$sql = "INSERT INTO calendar (ID, STUDY, PERSONAL, HABITS, CURRENT) VALUES ('$UUID', '', '', '', '')";
-		if ($mysqli->query($sql)) {
-			$sql = "INSERT INTO data (ID, HABITS, COURSES, ROUTINES) VALUES ('$UUID', '', '', '')";
-				if ($mysqli->query($sql)) {
-					echo "Succesfully created user";
-				}
+	$UUID = $row[0]['UUID'];
+	
+	$username = $db -> quote($username);
+	$password = $db -> quote(hash('sha256', $password));
+	$row = $db -> select("SELECT USERNAME FROM user WHERE USERNAME = $username");
+	if (isset($row[0])) {
+		echo "Username already exists, please try another one.";
+	} else {
+		if ($db -> query("INSERT INTO user (ID, USERNAME, PASSWORD, SETTINGS, KTHAUTH, FBAUTH) VALUES ('$UUID', $username, $password, '', '', '')")) {
+			$sql = "INSERT INTO calendar (ID, STUDY, PERSONAL, HABITS, CURRENT) VALUES ('$UUID', '', '', '', '')";
+			if ($db -> query($sql)) {
+				$sql = "INSERT INTO data (ID, HABITS, COURSES, ROUTINES) VALUES ('$UUID', '', '', '')";
+					if ($db -> query($sql)) {
+						echo "Succesfully created user";
+					}
+			}
 		}
 	}
-
-	$mysqli->close();
 }
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
+if (isset($_POST['username']) && isset($_POST['password']) && $_POST['username'] !== "" && $_POST['password'] !== "") {
 	createUser($_POST['username'], $_POST['password']);
+} else {
+	echo "You have not filled in all fields";
 }
 ?>
 <form action="createUser.php" method="post">
