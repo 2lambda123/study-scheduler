@@ -82,7 +82,6 @@ class DB {
 	}
 	
 	public function select($query) {
-		
 		$rows = array();
 		$result = $this -> query($query);
 		

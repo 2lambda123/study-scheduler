@@ -1,10 +1,10 @@
 <?php
 
 include 'find.php';
-function analyze ($events) {
+//$events = encoded json array of objects of events, $collection = encoded json object of collection
+function analyze ($events, $collection) {
 	$e = json_decode($events); //Decode to array of objects
-
-	$collection = json_decode(file_get_contents("Collection.txt")); //Tar emot personlig data fr�n fil - ska bli databas
+	$collection = json_decode($collection);
 	
 	$sleepfrom = str_replace(":", "", $collection->sleepfrom); //Från möjligt 00:00 format till 0000 format
 	$sleepto = str_replace(":", "", $collection->sleepto);
