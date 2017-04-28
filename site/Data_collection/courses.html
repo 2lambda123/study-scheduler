@@ -1,14 +1,13 @@
 <body>
-
-	<form action='habitform.php' method='post'>
+	<form action='../../scripts/forms.php' method='post'>
 		<h3>New course</h3>
 		<div id="container">
 			<input type="submit"/><br/><br/>
 			Course code: <input type="text" name="coursecode"/><br/>
-			Exam: <input type="checkbox" name="exam"> HP: <input name="hp_exam" type="number"/><br/>
+			Exam: <input type="checkbox" name="exam"> HP: <input name="hp_exam" type="float"/><br/>
 			Start of course: <input name="coursestart" type="date"/><br/>
 			Exam date: <input name="courseend" type="date"/><br/><br/>
-			Laboration: <input type="checkbox" name="lab"> HP: <input name="hp_lab" type="number"/><br/>
+			Laboration: <input type="checkbox" name="lab"> HP: <input name="hp_lab" type="float"/><br/>
 			Number of labs: <input name="numberoflabs" type="text"/><br/><br/>
 			
 			<a href="#" id="add" onclick="addNewField()"> [Add] </a>
@@ -17,5 +16,28 @@
 	</form>
 
 <script src="dynamic.js"></script>
-
-</body>
+<body>
+<?php
+	include '../../scripts/DB.php';
+	
+	$db = new DB();
+	$result = $db -> select("SELECT COURSES FROM data WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+		
+	$r = json_decode($result[0]['COURSES'], true);
+	
+	if ($r !== "") {
+		echo '<table>';
+		echo '<tr><th>Course code</th><th>Start date</th><th>End date</th><th>Exam HP</th><th>Lab HP</th><th># Labs</th></tr>';
+		foreach ($r as $c) {
+			echo '<tr>';
+			echo '<th>' . $c['coursecode']	. '</th>';
+			echo '<th>' . $c['coursestart'] . '</th>';
+			echo '<th>' . $c['courseend'] . '</th>';
+			echo '<th>' . $c['hp_exam'] . '</th>';
+			echo '<th>' . $c['hp_lab'] . '</th>';
+			echo '<th>' . $c['numberoflabs'] . '</th>';
+			echo '</tr>';
+		}
+		echo '</table>';
+	}
+?>
