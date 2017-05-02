@@ -238,6 +238,7 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 				$e = array_values($e);
 				$u = true;
 				$x--;
+				$y--;
 			}	//Om avail börjar innan men rest klart
 			if($e[$x]->DTSTART < $pause1end && $e[$x]->DTEND > $pause1end && !$u){
 				$e[$x]->DTSTART = $pause1end;
@@ -247,7 +248,8 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 				$e = array_values($e);
 				$u = true;
 				$x--;
-			} //Om avail slutar efter man måste rest till nästa !avail event
+				$y--;
+			} //Om avail slutar efter man måste rest till nästa !avail event 
 			if ($e[$x]->DTEND > $pause2start && $e[$x]->DTEND <= $e[$y]->DTSTART && !$u) {
 				$e[$x]->DTEND = $pause2start;
 			}
