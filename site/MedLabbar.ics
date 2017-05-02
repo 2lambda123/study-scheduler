@@ -1,0 +1,2151 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Mitt schema//kth.se//
+METHOD:PUBLISH
+DESCRIPTION:Ditt personliga schema innehållande schema- och kalenderhänd
+ elser från dina kurser\, program och grupper
+NAME:Mitt schema
+UID:225669fd-f51a-5208-a691-b90618bb10f7
+URL:https://www.kth.se/social/user/219685/icalendar/7c338897dae8a5486ee187
+ e3c5243c1b758c4c88
+X-PUBLISHED-TTL:PT3H
+X-WR-CALDESC:Ditt personliga schema innehållande schema- och kalenderhän
+ delser från dina kurser\, program och grupper
+X-WR-CALNAME:Mitt schema
+X-WR-RELCALID:225669fd-f51a-5208-a691-b90618bb10f7
+BEGIN:VEVENT
+SUMMARY:Tentamen - Flervariabelanalys (SF1626)
+DTSTART;VALUE=DATE-TIME:20170110T070000Z
+DTEND;VALUE=DATE-TIME:20170110T123000Z
+DTSTAMP;VALUE=DATE-TIME:20161220T150846Z
+UID:0ace03a9bbd4fa81a45c524f17f435827f2fe812
+DESCRIPTION:https://www.kth.se/social/course/SF1626/subgroup/ht-2016-464/e
+ vent/3240-2/\n\nTillhör: HT 2016 CINTE2 m.fl.\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161220T150846Z
+LOCATION:L21\, L22\, L41\, L42\, L43\, L44\, L51\, L52\, Q11\, Q21\, Q22\,
+  Q24\, V01\, V11\, V12\, V21\, V22\, V23\, V32\, V33\, V34\, V35
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Ingenjörskunskap och ingenjörsrollen ICT (II1304
+ ).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170130T090000Z
+DTEND;VALUE=DATE-TIME:20170130T200000Z
+DTSTAMP;VALUE=DATE-TIME:20170123T112611Z
+UID:38d7e3e4726567005e6d4250df42ef2efe8d7175
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49659/\n\nTillhör: HT 2015\n\n\n\nIntroduktion till aktiv karrärs
+ tart\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170123T112611Z
+LOCATION:Ka-Sal A (Sal Östen Mäkitalo)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Nätverk och kommunikation (IK1203)
+DTSTART;VALUE=DATE-TIME:20170130T140000Z
+DTEND;VALUE=DATE-TIME:20170130T180000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T114851Z
+UID:1a37eaaac95c874f435bc44a71d33f99b06070f3
+DESCRIPTION:https://www.kth.se/social/course/IK1203/subgroup/vt-2017-567/e
+ vent/51757/\n\nTillhör: VT 2017\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T114851Z
+LOCATION:Ka-203
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304).\
+ nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170214T140000Z
+DTEND;VALUE=DATE-TIME:20170214T160000Z
+DTSTAMP;VALUE=DATE-TIME:20170123T112609Z
+UID:66e6ce61c9a37d8eb09e2326365deeb89dc6a823
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49591-4/\n\nTillhör: HT 2015\n\n\n\nTid för intervjua en ingenjö
+ r\, se kallelse i nyhetsflödet Social\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170123T112609Z
+LOCATION:Ka-308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304).\
+ nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170221T140000Z
+DTEND;VALUE=DATE-TIME:20170221T160000Z
+DTSTAMP;VALUE=DATE-TIME:20170123T112613Z
+UID:530ccf82eb591bae3c0d7bfcbdf9ff9e4946bb83
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49592-4/\n\nTillhör: HT 2015\n\n\n\nTid för intervjua en ingenjö
+ r\, se kallelse i nyhetsflödet Social\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170123T112613Z
+LOCATION:Ka-308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304).\
+ nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170227T120000Z
+DTEND;VALUE=DATE-TIME:20170227T140000Z
+DTSTAMP;VALUE=DATE-TIME:20170123T112610Z
+UID:0ed7f1c422d558100bbcfed74b5c77396c3f0674
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49593-4/\n\nTillhör: HT 2015\n\n\n\nTid för intervjua en ingenjö
+ r\, se kallelse i nyhetsflödet Social\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170123T112610Z
+LOCATION:Ka-308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304).\
+ nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170301T070000Z
+DTEND;VALUE=DATE-TIME:20170301T090000Z
+DTSTAMP;VALUE=DATE-TIME:20170221T144811Z
+UID:9ea04d022bf0311826f7e4644aea74b4816f63d4
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/92517-4/\n\nTillhör: HT 2015\n\n\n\nAnmärkning: Gruppnr 9 och 10\
+ n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170221T144811Z
+LOCATION:Ka-301
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304)
+DTSTART;VALUE=DATE-TIME:20170301T070000Z
+DTEND;VALUE=DATE-TIME:20170301T090000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115410Z
+UID:f9a45110685f51baccd49d374e8e96837512d680
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49596-4/\n\nTillhör: HT 2015\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115410Z
+LOCATION:Ka-308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304).\
+ nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170301T120000Z
+DTEND;VALUE=DATE-TIME:20170301T140000Z
+DTSTAMP;VALUE=DATE-TIME:20170227T101009Z
+UID:a847e94dad1dd46851bd317484a9726b57c973c0
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/95198-4/\n\nTillhör: HT 2015\n\n\n\nAnmärkning: Group 3\, 4\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170227T101009Z
+LOCATION:Ka-210
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304)
+DTSTART;VALUE=DATE-TIME:20170301T140000Z
+DTEND;VALUE=DATE-TIME:20170301T160000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115421Z
+UID:555e03601a5d318b6b29da45dc077cdfb103cb11
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49601-4/\n\nTillhör: HT 2015\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115421Z
+LOCATION:Ka-308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304)
+DTSTART;VALUE=DATE-TIME:20170302T120000Z
+DTEND;VALUE=DATE-TIME:20170302T140000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115431Z
+UID:d244f38a39bea3a78fe96fbc87408d6235626f19
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49598-4/\n\nTillhör: HT 2015\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115431Z
+LOCATION:Ka-308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304)
+DTSTART;VALUE=DATE-TIME:20170303T070000Z
+DTEND;VALUE=DATE-TIME:20170303T090000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115437Z
+UID:cc37248faaf914ffbed9ee67bcf602650c242b33
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49599-4/\n\nTillhör: HT 2015\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115437Z
+LOCATION:Ka-308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Språkcafé i Kista/Language Café in Kista - Civilingenjörsutbil
+ dning i informationsteknik (CINTE\, 300 hp).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170303T110000Z
+DTEND;VALUE=DATE-TIME:20170303T120000Z
+DTSTAMP;VALUE=DATE-TIME:20170227T114626Z
+UID:1b9db45abf1b8aad672df68827eae65f6ef007ab
+DESCRIPTION:https://www.kth.se/social/program/cinte/event/sprakcafe-i-kist
+ alanguage-cafe-in-kista/\n\nDu som vill träna på att prata svenska har n
+ u möjlighet att gå på språkcafé här i Kista på fredagar kl. 12:00-1
+ 3:00 på Studenttorget (där de röda sofforna står uppställda). Diskuss
+ ionerna hålls av svenska studenter från KTH Kista. Vi har plats för 30
+ studenter och alla får lunchmacka. Ingen anmälan behövs\, först till k
+ varn gäller. Varmt välkommen!\n\nFrågor? Vänligen kontakta Malin Hedbe
+ rg mahedber@kth.se \n\nIf you want to practice to talk in Swedish\, you a
+ re welcome to Language Café on Fridays at 12:00-13:00 in the Student Squa
+ re (where the red sofas are situated). The café is run by Swedish student
+ s from KTH Kista. Lunch sandwiches will be served and no registration is n
+ eeded. First come\, first served and we have places for 30 students. Welco
+ me to join.\n\nQuestions? Please contact Malin Hedberg\, mahedber@kth.se\n
+ \n
+LAST-MODIFIED;VALUE=DATE-TIME:20170227T114626Z
+LOCATION:Studenttorget/Student Square
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Språkcafé i Kista/Language Café in Kista - Civilingenjörsutbi
+ ldning i informationsteknik (CINTE\, 300 hp).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170310T110000Z
+DTEND;VALUE=DATE-TIME:20170310T120000Z
+DTSTAMP;VALUE=DATE-TIME:20170227T114838Z
+UID:9dd95fd84c272a7f93e9246279b8d5cd50205ffb
+DESCRIPTION:https://www.kth.se/social/program/cinte/event/sprakcafe-i-kist
+ alanguage-cafe-in-kist-3/\n\nDu som vill träna på att prata svenska har
+ nu möjlighet att gå på språkcafé här i Kista på fredagar kl. 12:00-
+ 13:00 på Studenttorget (där de röda sofforna står uppställda). Diskus
+ sionerna hålls av svenska studenter från KTH Kista. Vi har plats för 30
+  studenter och alla får lunchmacka. Ingen anmälan behövs\, först till
+ kvarn gäller. Varmt välkommen!\n\nFrågor? Vänligen kontakta Malin Hedb
+ erg mahedber@kth.se \n\nIf you want to practice to talk in Swedish\, you
+ are welcome to Language Café on Fridays at 12:00-13:00 in the Student Squ
+ are (where the red sofas are situated). The café is run by Swedish studen
+ ts from KTH Kista. Lunch sandwiches will be served and no registration is
+ needed. First come\, first served and we have places for 30 students. Welc
+ ome to join.\n\nQuestions? Please contact Malin Hedberg\, mahedber@kth.se\
+ n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170227T114838Z
+LOCATION:Studenttorget/Student Square
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Omtenta - Flervariabelanalys (SF1626).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170315T070000Z
+DTEND;VALUE=DATE-TIME:20170315T120000Z
+DTSTAMP;VALUE=DATE-TIME:20170306T123345Z
+UID:6d0b5be0349acc958a86a210631f1ed06e8263b2
+DESCRIPTION:https://www.kth.se/social/course/SF1626/event/38504-2/\n\nAnm
+ ärkning: SF1532\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170306T123345Z
+LOCATION:B1\, B21\, B22\, B23\, B24\, B3\, D32\, D33\, D34\, D35\, D41\, L
+ 1\, L21\, L22\, L31\, L41\, L42\, M1\, M2\, M23\, M3\, Q1
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170320T090000Z
+DTEND;VALUE=DATE-TIME:20170320T110000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115520Z
+UID:74d729043ae5c2b3d7b02f181ed62f7fe9863725
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/52899/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115520Z
+LOCATION:Ka-301
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Lektion - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170320T120000Z
+DTEND;VALUE=DATE-TIME:20170320T140000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115523Z
+UID:e746524608690b8536db76c94c161a1ce48f9b94
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52335-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115523Z
+LOCATION:Ka-205
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Ingenjörskunskap och ingenjörsrollen ICT (II1304
+ )
+DTSTART;VALUE=DATE-TIME:20170320T140000Z
+DTEND;VALUE=DATE-TIME:20170320T160000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115526Z
+UID:f3bbbd748bc9ef8b720888ac41f9bbe64c89f337
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49660/\n\nTillhör: HT 2015\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115526Z
+LOCATION:Ka-208
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170320T140000Z
+DTEND;VALUE=DATE-TIME:20170320T160000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T114822Z
+UID:8de9713c0a6e7db2833a09367a5daf31678a877a
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/63396/\n\nTillhör: VT 2017 CINTE\n\n\n\n  F1  intro    PI
+ C     PIC-block. Dokumentation. PIC-programmering.\n\nWilliam Sandqvist
+ \n\n\n\n\n\nAnmärkning: F 1\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T114822Z
+LOCATION:Ka-Sal C (Sal Sven-Olof Öhrvik)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170321T090000Z
+DTEND;VALUE=DATE-TIME:20170321T110000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115531Z
+UID:dbe50b5904afd358828934e834783f03f3cb7de9
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/52900/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115531Z
+LOCATION:Ka-301
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170321T090000Z
+DTEND;VALUE=DATE-TIME:20170321T110000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T115317Z
+UID:6830b36bcd735b0cfd845c27803e5d566b128c95
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/63397/\n\nTillhör: VT 2017 CINTE\n\n\n\n F2  PIC_COM    St
+ rings    Dig_pot  PIC-programmering. Seriekommunikation.  Pulsgivare.
+   Interrupt.\n\nWilliam Sandqvist\n\n\n\nAnmärkning: F 2\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T115317Z
+LOCATION:Ka-Sal B (Sal Peter Weissglas)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Lektion - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170321T120000Z
+DTEND;VALUE=DATE-TIME:20170321T140000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115535Z
+UID:ac0ed6f4df65bf59f5044b108a8994b0ad701f5a
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/52901/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115535Z
+LOCATION:Ka-303\, Ka-304
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170322T070000Z
+DTEND;VALUE=DATE-TIME:20170322T090000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T120047Z
+UID:d072736391f51f65b901c951715f2564544b2468
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/63398/\n\nTillhör: VT 2017 CINTE\n\n\n\n F3   Elektricitet.p
+ df   Serie och Parallell  Spänning ström resistans effekt.  Serie-\
+ , parallell och blandade kretsar.\n\nWilliam Sandqvist\n\n\n\nAnmärkning:
+  F 3\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T120047Z
+LOCATION:Ka-Sal C (Sal Sven-Olof Öhrvik)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170322T090000Z
+DTEND;VALUE=DATE-TIME:20170322T110000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115543Z
+UID:598a6f8fd6fc8f1b2b7c4724a16e1ba66901567e
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/52902/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115543Z
+LOCATION:Ka-301
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Lektion - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170322T120000Z
+DTEND;VALUE=DATE-TIME:20170322T140000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115546Z
+UID:c8e1ca30091ea7032880ca14d1ae6c63c4f1acea
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/52903/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115546Z
+LOCATION:Ka-204\, Ka-208
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170322T140000Z
+DTEND;VALUE=DATE-TIME:20170322T160000Z
+DTSTAMP;VALUE=DATE-TIME:20170303T094658Z
+UID:16a973aca0eb77df29cc681e06c80d1850243b68
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/98058/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170303T094658Z
+LOCATION:Ka-Sal C (Sal Sven-Olof Öhrvik)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170323T070000Z
+DTEND;VALUE=DATE-TIME:20170323T090000Z
+DTSTAMP;VALUE=DATE-TIME:20170407T003903Z
+UID:a89c646e3170f8ad899f704b86f73253f18139fa
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/48863/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ1:1\n\n Serie och Par
+ allell    (  Serial and Parallel )\n\nWilliam Sandqvist\n\n\n\nAnmär
+ kning: Ö 1\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170407T003903Z
+LOCATION:Ka-208
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170323T090000Z
+DTEND;VALUE=DATE-TIME:20170323T110000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115555Z
+UID:fa32611bcd98254de9cf2279d8c087f32e5ad466
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/52904/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115555Z
+LOCATION:Ka-301
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Lektion - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170323T120000Z
+DTEND;VALUE=DATE-TIME:20170323T140000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115558Z
+UID:fc42208d77bc7ca401a82edaba22f591ddb7d0b2
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/52905/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115558Z
+LOCATION:Ka-204\, Ka-208
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170323T140000Z
+DTEND;VALUE=DATE-TIME:20170323T160000Z
+DTSTAMP;VALUE=DATE-TIME:20170314T133005Z
+UID:d9ecb8aa01cf260794be86bcd20c358b92da3343
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/63393/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ1:2 (304)\n\n(  Ser
+ ie och Parallell )     Serial and Parallel\n\nDimitrios Stathis\n\n\n\
+ nAnmärkning: Ö1 \n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170314T133005Z
+LOCATION:Ka-304
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170324T070000Z
+DTEND;VALUE=DATE-TIME:20170324T090000Z
+DTSTAMP;VALUE=DATE-TIME:20170314T133202Z
+UID:308e9bc326bd30dd9c4a1383bde106b9a92dc2bb
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/63394/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ1:3 (204)\n\n Serie
+ och Parallell    (  Serial and Parallel )\n\nWilliam Sandqvist\n\n\n\
+ nAnmärkning: Ö1 \n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170314T133202Z
+LOCATION:Ka-204
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304)
+DTSTART;VALUE=DATE-TIME:20170324T090000Z
+DTEND;VALUE=DATE-TIME:20170324T110000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115606Z
+UID:a11de58bc3d3c35cce5330fdd4aaa262ca67120e
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/66035/\n\nTillhör: HT 2015\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115606Z
+LOCATION:Ka-208
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Språkcafé i Kista/Language Café in Kista - Civilingenjörsutbil
+ dning i informationsteknik (CINTE\, 300 hp).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170324T110000Z
+DTEND;VALUE=DATE-TIME:20170324T120000Z
+DTSTAMP;VALUE=DATE-TIME:20170227T115355Z
+UID:d02256bf7e0b3aaec7459e84818d68472c704c64
+DESCRIPTION:https://www.kth.se/social/program/cinte/event/sprakcafe-i-kist
+ alanguage-cafe-in-kista-3/\n\nDu som vill träna på att prata svenska har
+  nu möjlighet att gå på språkcafé här i Kista på fredagar kl. 12:00
+ -13:00 på Studenttorget (där de röda sofforna står uppställda). Disku
+ ssionerna hålls av svenska studenter från KTH Kista. Vi har plats för 3
+ 0 studenter och alla får lunchmacka. Ingen anmälan behövs\, först till
+  kvarn gäller. Varmt välkommen!\n\nFrågor? Vänligen kontakta Malin Hed
+ berg mahedber@kth.se \n\nIf you want to practice to talk in Swedish\, you
+  are welcome to Language Café on Fridays at 12:00-13:00 in the Student Sq
+ uare (where the red sofas are situated). The café is run by Swedish stude
+ nts from KTH Kista. Lunch sandwiches will be served and no registration is
+  needed. First come\, first served and we have places for 30 students. Wel
+ come to join.\n\nQuestions? Please contact Malin Hedberg\, mahedber@kth.se
+ \n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170227T115355Z
+LOCATION:Studenttorget/Student Square
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170327T060000Z
+DTEND;VALUE=DATE-TIME:20170327T100000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T122108Z
+UID:73ab3346b4d727a920e49a26bd1d6c5bcf008a7a
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64904/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 1:1    Lab1:1 
+ \n\n\n\nAnmärkning: L 1 - Stud bokar 1 av 4 tillfällen\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T122108Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170327T080000Z
+DTEND;VALUE=DATE-TIME:20170327T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115614Z
+UID:cce5f692d412bca074db7f0d17529b8e6cf3ec72
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/52907/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115614Z
+LOCATION:Ka-301
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170328T110000Z
+DTEND;VALUE=DATE-TIME:20170328T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T122328Z
+UID:17fde1388b45e4b073bfd2a34716b5f7e9c0dad4
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/65576/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 1:2    Lab1:2 
+ \n\n\n\nAnmärkning: L 1\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T122328Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170328T130000Z
+DTEND;VALUE=DATE-TIME:20170328T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115632Z
+UID:bd956ad845992733c08a0c911c1596b1b1462e4e
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/52908/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115632Z
+LOCATION:Ka-301
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170329T060000Z
+DTEND;VALUE=DATE-TIME:20170329T080000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T131941Z
+UID:c77eb541105f784bf11743d536e930566a99dfd3
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64434/\n\nTillhör: VT 2017 CINTE\n\n\n\n F4   Batterier   
+ Kirchhoff   Om batterier. Batterier.  Kirchoffs lagar\, potential\, nod
+ analys. LTspice - tutorials\n\nWilliam Sandqvist\n\n\n\nAnmärkning: F 4\n
+ \n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T131941Z
+LOCATION:Ka-Sal C (Sal Sven-Olof Öhrvik)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Lektion - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170329T080000Z
+DTEND;VALUE=DATE-TIME:20170329T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115638Z
+UID:66cce05cf6ecd93aee478ae96f5bcf1d12175b98
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/52909/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115638Z
+LOCATION:Ka-204\, Ka-208
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170329T110000Z
+DTEND;VALUE=DATE-TIME:20170329T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T122513Z
+UID:b7bc0b98d4af03b3d4ad50686cd96ec8e92a7523
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64908/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 1:3    Lab1:3 
+ \n\n\n\nAnmärkning: L 1\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T122513Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170329T110000Z
+DTEND;VALUE=DATE-TIME:20170329T130000Z
+DTSTAMP;VALUE=DATE-TIME:20170303T094731Z
+UID:a82df4ec378aa030653d0a8550ac4ca0c7ca7ae2
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/98059/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170303T094731Z
+LOCATION:Ka-Sal C (Sal Sven-Olof Öhrvik)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170330T060000Z
+DTEND;VALUE=DATE-TIME:20170330T080000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115647Z
+UID:a84978811de71e53d2e866be57aa2795607923d7
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/52910/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115647Z
+LOCATION:Ka-301
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170330T060000Z
+DTEND;VALUE=DATE-TIME:20170330T080000Z
+DTSTAMP;VALUE=DATE-TIME:20170308T101034Z
+UID:0b44f0befd7badc7ee85c6040c8b90953f2992bf
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64912/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ2:1 (204)\n\n Kirchho
+ ff    (  Kirchhoff )\n\nWilliam Sandqvist\n\n\n\nAnmärkning: Ö 2\n\
+ n
+LAST-MODIFIED;VALUE=DATE-TIME:20170308T101034Z
+LOCATION:Ka-204
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Lektion - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170330T130000Z
+DTEND;VALUE=DATE-TIME:20170330T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115705Z
+UID:f0a88d7dc01703e2f1723cf957287b03425efcfb
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/52906/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115705Z
+LOCATION:Ka-204\, Ka-208
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170330T130000Z
+DTEND;VALUE=DATE-TIME:20170330T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170407T004310Z
+UID:52af3e2a18b71525b3efa015ed7d5dd94b42e89b
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64915/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ2:3 (303)\n\n(  Kir
+ chhoff )    Kirchhoff\n\nDimitrios Stathis\n\n\n\nAnmärkning: Ö 2\n\
+ n
+LAST-MODIFIED;VALUE=DATE-TIME:20170407T004310Z
+LOCATION:Ka-304
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170331T060000Z
+DTEND;VALUE=DATE-TIME:20170331T080000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115707Z
+UID:f92ec4290bbaaf3b200a8d3787b0123bd563bdba
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/52911/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115707Z
+LOCATION:Ka-301
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Språkcafé i Kista/Language Café in Kista - Civilingenjörsutbil
+ dning i informationsteknik (CINTE\, 300 hp).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170331T100000Z
+DTEND;VALUE=DATE-TIME:20170331T110000Z
+DTSTAMP;VALUE=DATE-TIME:20170227T115452Z
+UID:cde7cd95410435fe88a99c4239273299e9b946b7
+DESCRIPTION:https://www.kth.se/social/program/cinte/event/sprakcafe-i-kist
+ alanguage-cafe-in-kista-4/\n\nDu som vill träna på att prata svenska har
+  nu möjlighet att gå på språkcafé här i Kista på fredagar kl. 12:00
+ -13:00 på Studenttorget (där de röda sofforna står uppställda). Disku
+ ssionerna hålls av svenska studenter från KTH Kista. Vi har plats för 3
+ 0 studenter och alla får lunchmacka. Ingen anmälan behövs\, först till
+  kvarn gäller. Varmt välkommen!\n\nFrågor? Vänligen kontakta Malin Hed
+ berg mahedber@kth.se \n\nIf you want to practice to talk in Swedish\, you
+  are welcome to Language Café on Fridays at 12:00-13:00 in the Student Sq
+ uare (where the red sofas are situated). The café is run by Swedish stude
+ nts from KTH Kista. Lunch sandwiches will be served and no registration is
+  needed. First come\, first served and we have places for 30 students. Wel
+ come to join.\n\nQuestions? Please contact Malin Hedberg\, mahedber@kth.se
+ \n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170227T115452Z
+LOCATION:Studenttorget/Student Square
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170331T110000Z
+DTEND;VALUE=DATE-TIME:20170331T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T122623Z
+UID:0f375cd9430dc51bbfce5425631dfa8b6b3d25c5
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64909/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 1:4    Lab1:4 
+ \n\n\n\nAnmärkning: L 1\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T122623Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170403T110000Z
+DTEND;VALUE=DATE-TIME:20170403T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T123305Z
+UID:c9b37dd8facfebe7a7fcb9278fdbb770fc3b1dec
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64917/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 2:1    Lab 2:1
+ \n\n\n\nAnmärkning: L 2 - Stud bokar 1 av 4 tillfällen\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T123305Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170404T130000Z
+DTEND;VALUE=DATE-TIME:20170404T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T134235Z
+UID:77c9d84172ee3152f67a7b33f6520b598ce34bfb
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64438/\n\nTillhör: VT 2017 CINTE\n\n\n\n F5   Blackbox   
+  AD omvandling   ADlab  Tvåpolssatsen. Superposition.\n\nWilliam San
+ dqvist\n\n\n\nAnmärkning: F5\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T134235Z
+LOCATION:Ka-Sal B (Sal Peter Weissglas)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170405T060000Z
+DTEND;VALUE=DATE-TIME:20170405T080000Z
+DTSTAMP;VALUE=DATE-TIME:20170407T004304Z
+UID:c9f166f34372ef101d5188d8ecce9ac4340e6ff7
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64440/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ3:1\n\n Blackbox   
+  (  Blackbox )\n\nWilliam Sandqvist\n\n\n\nAnmärkning: Ö 3\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170407T004304Z
+LOCATION:Ka-304
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170405T110000Z
+DTEND;VALUE=DATE-TIME:20170405T130000Z
+DTSTAMP;VALUE=DATE-TIME:20170407T004304Z
+UID:1f86f47786d17a1abffbc11b506c497ef05909e5
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64439/\n\nTillhör: VT 2017 CINTE\n\n\n\n  Ö3:2 (304)\n\n Bl
+ ackbox    (  Blackbox )\n\nWilliam Sandqvist\n\n\n\nAnmärkning: Ö 3
+ \n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170407T004304Z
+LOCATION:Ka-304
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170405T130000Z
+DTEND;VALUE=DATE-TIME:20170405T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170314T134514Z
+UID:693d815b2c273c1d30ee03a1bbb0c9446433eeae
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64916/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ3:3 (304)\n\n(  Bla
+ ckbox )     Blackbox\n\nDimitrios Stathis\n\n\n\nAnmärkning: Ö 3\n\
+ n
+LAST-MODIFIED;VALUE=DATE-TIME:20170314T134514Z
+LOCATION:Ka-304
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170406T110000Z
+DTEND;VALUE=DATE-TIME:20170406T120000Z
+DTSTAMP;VALUE=DATE-TIME:20170407T004751Z
+UID:e05aa209251b7d845bfd53a470a6f905676c51fa
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/111106/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170407T004751Z
+LOCATION:Ka-301
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170406T110000Z
+DTEND;VALUE=DATE-TIME:20170406T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T123720Z
+UID:424e1bc3bf894f9372d39e5c65b4ed4811997c62
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64918/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 2:2    Lab 2:2
+ \n\n\n\nAnmärkning: L 2 - Stud bokar 1 av 4 tillfällen\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T123720Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170407T060000Z
+DTEND;VALUE=DATE-TIME:20170407T100000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T123938Z
+UID:48194d76f1cdb615f709064d3603d171c2b4e764
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64920/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 2:3    Lab 2:3
+ \n\n\n\nAnmärkning: L 2 - Stud bokar 1 av 4 tillfällen\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T123938Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Språkcafé i Kista/Language Café in Kista - Civilingenjörsutbil
+ dning i informationsteknik (CINTE\, 300 hp).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170407T100000Z
+DTEND;VALUE=DATE-TIME:20170407T110000Z
+DTSTAMP;VALUE=DATE-TIME:20170323T075122Z
+UID:a11e04f62148dceb79763dd73f50192122b604fc
+DESCRIPTION:https://www.kth.se/social/program/cinte/event/sprakcafe-i-kist
+ alanguage-cafe-in-kista-25/\n\nDu som vill träna på att prata svenska ha
+ r nu möjlighet att gå på språkcafé här i Kista på fredagar kl. 12:0
+ 0-13:00 på Studenttorget (där de röda sofforna står uppställda). Disk
+ ussionerna hålls av svenska studenter från KTH Kista. Vi har plats för
+ 30 studenter och alla får lunchmacka. Ingen anmälan behövs\, först til
+ l kvarn gäller. Varmt välkommen!\n\nFrågor? Vänligen kontakta Malin He
+ dberg mahedber@kth.se \n\nIf you want to practice to talk in Swedish\, yo
+ u are welcome to Language Café on Fridays at 12:00-13:00 in the Student S
+ quare (where the red sofas are situated). The café is run by Swedish stud
+ ents from KTH Kista. Lunch sandwiches will be served and no registration i
+ s needed. First come\, first served and we have places for 30 students. We
+ lcome to join.\n\nQuestions? Please contact Malin Hedberg\, mahedber@kth.s
+ e\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170323T075122Z
+LOCATION:Studenttorget/Student Square
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170407T110000Z
+DTEND;VALUE=DATE-TIME:20170407T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T124136Z
+UID:18ce3d078025d04251429413ac01acd1e3e93307
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64921/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 2:4    Lab 2:4
+ \n\n\n\nAnmärkning: L 2 - Stud bokar 1 av 4 tillfällen\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T124136Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170410T110000Z
+DTEND;VALUE=DATE-TIME:20170410T120000Z
+DTSTAMP;VALUE=DATE-TIME:20170407T004751Z
+UID:389249c2cf2b0b2c4153a3288d7919c4c155f4f7
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/111109/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170407T004751Z
+LOCATION:Ka-301
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Ingenjörskunskap och ingenjörsrollen ICT (II1304
+ )
+DTSTART;VALUE=DATE-TIME:20170418T060000Z
+DTEND;VALUE=DATE-TIME:20170418T080000Z
+DTSTAMP;VALUE=DATE-TIME:20170407T004321Z
+UID:954898ce1e128865e57365743a8472b4ab52bbbe
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/66039/\n\nTillhör: HT 2015\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170407T004321Z
+LOCATION:Ka-308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Handledning - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170418T080000Z
+DTEND;VALUE=DATE-TIME:20170418T090000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115823Z
+UID:32bae71dcad305a23f286e8fb89eee8255831ab0
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52336-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115823Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Handledning - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170418T090000Z
+DTEND;VALUE=DATE-TIME:20170418T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115827Z
+UID:7e78e795d858efdd7e44e0328841e28ce6887be8
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52337-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115827Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Handledning - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170418T100000Z
+DTEND;VALUE=DATE-TIME:20170418T110000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115827Z
+UID:6b6beb755af6bb332f03541235e6742a59cfc0be
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52338-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115827Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Handledning - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170418T110000Z
+DTEND;VALUE=DATE-TIME:20170418T120000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115828Z
+UID:7c9bf318d2ba988a11591cc1d0518ae03ef69f50
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52339-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115828Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Handledning - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170418T120000Z
+DTEND;VALUE=DATE-TIME:20170418T130000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115832Z
+UID:3f7ae34fdc728b32276ae046c53f0087de6e04a0
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52340-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115832Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Handledning - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170418T130000Z
+DTEND;VALUE=DATE-TIME:20170418T140000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115832Z
+UID:951beb59c00426fb0553237d163c0473945b01e2
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52341-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115832Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Handledning - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170418T140000Z
+DTEND;VALUE=DATE-TIME:20170418T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115835Z
+UID:50ff0eea4a6c6c6bebad724020c4061bfc621069
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52342-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115835Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Handledning - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170418T150000Z
+DTEND;VALUE=DATE-TIME:20170418T160000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115835Z
+UID:464d3ab5d7aafc85ae482b6f291d5189229bfdd7
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52343-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115835Z
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170419T060000Z
+DTEND;VALUE=DATE-TIME:20170419T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115837Z
+UID:7a9d6ec05d7c7dbf6c0c0e3110fea73ec3972d02
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52345-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115837Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:* Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170419T060000Z
+DTEND;VALUE=DATE-TIME:20170419T080000Z
+DTSTAMP;VALUE=DATE-TIME:20170418T130505Z
+UID:d214bf9b0236eb8f8a701710fc67eeb6fd887df3
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/50786/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ4:1 \n\n(  Transien
+ ter )    Transients\n\nDimitrios Stathis\n\n\n\nAnmärkning: Ö 4\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170418T130505Z
+LOCATION:Ka-304
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170419T110000Z
+DTEND;VALUE=DATE-TIME:20170419T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115845Z
+UID:774751198a8bffb6d07c7a81113b7be5ec340076
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52346-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115845Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170419T110000Z
+DTEND;VALUE=DATE-TIME:20170419T130000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T140745Z
+UID:ff413c0d63eedff712e5719c9b51047b7decb6f8
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64461/\n\nTillhör: VT 2017 CINTE\n\n\n\n  F6   Kapacitans 
+   Exponentiellt    SchmittTrigger  Kondensatorn\, in och urkopplings
+ förlopp RC. Om exponetiella förlopp. Komparator\, Schmitt-trigger\, 555
+ -koppling.\n\nWilliam Sandqvist\n\n\n\nAnmärkning: F 6\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T140745Z
+LOCATION:Ka-Sal C (Sal Sven-Olof Öhrvik)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170419T130000Z
+DTEND;VALUE=DATE-TIME:20170419T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170407T004305Z
+UID:a0614edc40159ed977be938bfc0b96b6326333d8
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64463/\n\nTillhör: VT 2017 CINTE\n\n\n\n Ö4:2 (308)\n\n Tran
+ sienter   (  Transients )\n\nWilliam Sandqvist\n\n\n\nAnmärkning:
+ Ö 4\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170407T004305Z
+LOCATION:Ka-308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170420T060000Z
+DTEND;VALUE=DATE-TIME:20170420T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115850Z
+UID:f3debd362ede48a6430934d334e3a5a475c263c2
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52349-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115850Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170420T110000Z
+DTEND;VALUE=DATE-TIME:20170420T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115858Z
+UID:2890a97072e0b714ea43aa391aeec9ddfd23a345
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52350-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115858Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170420T110000Z
+DTEND;VALUE=DATE-TIME:20170420T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T124627Z
+UID:ad3171399721cc835ca031c35f65a3255ee6dd81
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64928/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 3:1    Lab 3:1
+ \n\n\n\nAnmärkning: L 3\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T124627Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170421T060000Z
+DTEND;VALUE=DATE-TIME:20170421T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115903Z
+UID:507cc713863f5c9deff111e4cb089254e4870a10
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52347-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115903Z
+LOCATION:Ka-G303\, Ka-G304\, Ka-G305\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170421T060000Z
+DTEND;VALUE=DATE-TIME:20170421T080000Z
+DTSTAMP;VALUE=DATE-TIME:20170314T134918Z
+UID:bf36bc8311597292a1bb86f7d4e648ed6e9645fd
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64464/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ4:3 (304) \n\n Tran
+ sienter   (  Transients )\n\nWilliam Sandqvist\n\n\n\nAnmärkning:
+ Ö 4\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170314T134918Z
+LOCATION:Ka-304
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170421T080000Z
+DTEND;VALUE=DATE-TIME:20170421T100000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T143444Z
+UID:5ebb86fcbb9c79aedd1d66aa12086c83a0509c35
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64462/\n\nTillhör: VT 2017 CINTE\n\n\n\n F7   Induktans   
+ Step Up   PWM  Magnetism\, Induktans\, in och urkopplingsförlopp R/L.
+  Step-up converter. Step-up converter. CCP-enhet\, PWM.\n\nWilliam Sandqv
+ ist\n\n\n\nAnmärkning: F 7\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T143444Z
+LOCATION:Ka-Sal C (Sal Sven-Olof Öhrvik)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Språkcafé i Kista/Language Café in Kista - Civilingenjörsutbil
+ dning i informationsteknik (CINTE\, 300 hp).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170421T100000Z
+DTEND;VALUE=DATE-TIME:20170421T110000Z
+DTSTAMP;VALUE=DATE-TIME:20170323T075154Z
+UID:706b1749d1eec70db5344120e59d3ea8571200c3
+DESCRIPTION:https://www.kth.se/social/program/cinte/event/sprakcafe-i-kist
+ alanguage-cafe-in-kista-26/\n\nDu som vill träna på att prata svenska ha
+ r nu möjlighet att gå på språkcafé här i Kista på fredagar kl. 12:0
+ 0-13:00 på Studenttorget (där de röda sofforna står uppställda). Disk
+ ussionerna hålls av svenska studenter från KTH Kista. Vi har plats för
+ 30 studenter och alla får lunchmacka. Ingen anmälan behövs\, först til
+ l kvarn gäller. Varmt välkommen!\n\nFrågor? Vänligen kontakta Malin He
+ dberg mahedber@kth.se \n\nIf you want to practice to talk in Swedish\, yo
+ u are welcome to Language Café on Fridays at 12:00-13:00 in the Student S
+ quare (where the red sofas are situated). The café is run by Swedish stud
+ ents from KTH Kista. Lunch sandwiches will be served and no registration i
+ s needed. First come\, first served and we have places for 30 students. We
+ lcome to join.\n\nQuestions? Please contact Malin Hedberg\, mahedber@kth.s
+ e\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170323T075154Z
+LOCATION:Studenttorget/Student Square
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170421T110000Z
+DTEND;VALUE=DATE-TIME:20170421T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T124823Z
+UID:e47a0e88e7b7b6b7cdc7fa2d429c8653eb275255
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64927/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 3:2    Lab 3:2
+ \n\n\n\nAnmärkning: L 3\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T124823Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170421T110000Z
+DTEND;VALUE=DATE-TIME:20170421T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115910Z
+UID:4206081f68cc6f9fedde438815327447dfcbe19c
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52348-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115910Z
+LOCATION:Ka-G303\, Ka-G304\, Ka-G305\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170424T060000Z
+DTEND;VALUE=DATE-TIME:20170424T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115913Z
+UID:eb41ac0a7f6a6b97fe22ac9ee4ba47f986517d8f
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52351-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115913Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170424T060000Z
+DTEND;VALUE=DATE-TIME:20170424T080000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T144415Z
+UID:93dffcb3214b4dca05410c10f6cac64ac7265a32
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64470/\n\nTillhör: VT 2017 CINTE\n\n\n\n F8     AC Phasor
+ RCL  Växelströmskretsar. Phasor.\n\nWilliam Sandqvist\n\n\n\nAnmärknin
+ g: F 8\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T144415Z
+LOCATION:Ka-Sal C (Sal Sven-Olof Öhrvik)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170424T110000Z
+DTEND;VALUE=DATE-TIME:20170424T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T125120Z
+UID:1ca9c6ca3f2529c65fd856c920bce63354d6a389
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64930/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 3:3    Lab 3:3
+ \n\n\n\nAnmärkning: L 3\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T125120Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170424T110000Z
+DTEND;VALUE=DATE-TIME:20170424T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115920Z
+UID:9ef6809f4659ca0bf3be43cbc91ab93c1a15bb6a
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52352-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115920Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Information - Ingenjörskunskap och ingenjörsrollen ICT (II1304).
+ \nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170424T110000Z
+DTEND;VALUE=DATE-TIME:20170424T130000Z
+DTSTAMP;VALUE=DATE-TIME:20170407T004000Z
+UID:fbcb5ce3e180885cda0d014f6403f3bad3615f71
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49677/\n\nTillhör: HT 2015\n\n\n\nAnmärkning: redov projektarbete
+ \n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170407T004000Z
+LOCATION:Ka-205
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170425T060000Z
+DTEND;VALUE=DATE-TIME:20170425T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115924Z
+UID:520db093703808c7c7b67a4c2d27a458c239825f
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52353-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115924Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Redovisning - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170425T080000Z
+DTEND;VALUE=DATE-TIME:20170425T100000Z
+DTSTAMP;VALUE=DATE-TIME:20170410T105208Z
+UID:58f04bfd6675b5654c183c252341c148e3b06b14
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/112373/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170410T105208Z
+LOCATION:Ka-Sal A
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170425T080000Z
+DTEND;VALUE=DATE-TIME:20170425T100000Z
+DTSTAMP;VALUE=DATE-TIME:20170407T004306Z
+UID:325865cc81defee294033c18b24ecfc3ba306a71
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64473/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ5:1 (304)\n\n Visare
+   (  Phasor )\n\nWilliam Sandqvist\n\n\n\nAnmärkning: Ö 5\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170407T004306Z
+LOCATION:Ka-304
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170425T110000Z
+DTEND;VALUE=DATE-TIME:20170425T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115931Z
+UID:64940b31833315be158fd8841e5a24a481467868
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52355-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115931Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170425T110000Z
+DTEND;VALUE=DATE-TIME:20170425T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T125336Z
+UID:8e4ffe72ab196eb81f2d82a9bf5108f8215165a2
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64929/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 3:4    Lab 3:4
+ \n\n\n\nAnmärkning: L 3\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T125336Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170426T060000Z
+DTEND;VALUE=DATE-TIME:20170426T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115935Z
+UID:4f25bac836e544fda1ae5c4288d8723af27e211e
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52356-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115935Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170426T060000Z
+DTEND;VALUE=DATE-TIME:20170426T080000Z
+DTSTAMP;VALUE=DATE-TIME:20170314T135431Z
+UID:02ce55504ff0c12269e941d01357437e92f583fe
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64472/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ5:2 (210)\n\n(  Vis
+ are )   Phasor\n\nDimitrios Stathis\n\n\n\nAnmärkning: Ö 5\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170314T135431Z
+LOCATION:Ka-210
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170426T110000Z
+DTEND;VALUE=DATE-TIME:20170426T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115943Z
+UID:0dfc70428792c27e8133eaac0cb3043117028b7a
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52357-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115943Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170426T130000Z
+DTEND;VALUE=DATE-TIME:20170426T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170314T135537Z
+UID:07b83fcc7e59059c5d3bc5f62ba1f9056c3d9759
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64480/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ5:3 (204)\n\n Visare
+   (  Phasor )\n\nWilliam Sandqvist\n\n\n\nAnmärkning: ö 5\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170314T135537Z
+LOCATION:Ka-204
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170427T060000Z
+DTEND;VALUE=DATE-TIME:20170427T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115946Z
+UID:19d28f0532cf8d26dafbd9b3f783ce15a1c3c3ff
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52358-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115946Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170427T080000Z
+DTEND;VALUE=DATE-TIME:20170427T100000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T161858Z
+UID:73af706e630eef27af0dca50cabbdef81231d06f
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64471/\n\nTillhör: VT 2017 CINTE\n\n\n\n F9      Resonans
+     Metalldetektor  Resonansfenomenet.  Lab Metall-detektor.\n\nWill
+ iam Sandqvist\n\n\n\nAnmärkning: F 9\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T161858Z
+LOCATION:Ka-Sal B (Sal Peter Weissglas)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170427T110000Z
+DTEND;VALUE=DATE-TIME:20170427T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115953Z
+UID:043d6a7bb80eae65f03ff4b62b22380e6f7b797a
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52359-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115953Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170427T130000Z
+DTEND;VALUE=DATE-TIME:20170427T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170308T103403Z
+UID:6f1ad126f2af72d27262fab0168ac89abf608807
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64963/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ6:1 (210)\n\n AC kre
+ tsar   (  AC circuits )\n\nWilliam Sandqvist\n\n\n\n\n\nAnmärkning:
+ ö 6\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170308T103403Z
+LOCATION:Ka-210
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170428T060000Z
+DTEND;VALUE=DATE-TIME:20170428T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T115957Z
+UID:08423d194238d740360af58c13fa4f8ea169138d
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52360-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T115957Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170428T060000Z
+DTEND;VALUE=DATE-TIME:20170428T080000Z
+DTSTAMP;VALUE=DATE-TIME:20170308T100107Z
+UID:90c1d8f338a765cefc02c054601c2272c6af04b7
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64964/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ6:2 (304)\n\n(  AC
+ kretsar )   AC circuits\n\nDimitrios Stathis\n\n\n\nAnmärkning: ö 6\n
+ \n
+LAST-MODIFIED;VALUE=DATE-TIME:20170308T100107Z
+LOCATION:Ka-304
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:* Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170428T080000Z
+DTEND;VALUE=DATE-TIME:20170428T100000Z
+DTSTAMP;VALUE=DATE-TIME:20170418T074416Z
+UID:8a1be6b97f9d513f711b1a1db23068649249e390
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64965/\n\nTillhör: VT 2017 CINTE\n\n\n\n Ö6:3 (303)\n\n AC k
+ retsar   (  AC circuits )\n\nWilliam Sandqvist\n\n\n\nAnmärkning: ö
+  6\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170418T074416Z
+LOCATION:Ka-308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:* Information - Civilingenjörsutbildning i informationsteknik (CI
+ NTE\, 300 hp).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170428T100000Z
+DTEND;VALUE=DATE-TIME:20170428T110000Z
+DTSTAMP;VALUE=DATE-TIME:20170418T082412Z
+UID:4f8cc468b3b29964a5a63bcc3f795f6f09b077f1
+DESCRIPTION:https://www.kth.se/social/program/cinte/event/112307/\n\nAnmä
+ rkning: Information Masterval\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170418T082412Z
+LOCATION:Ka-205
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Språkcafé i Kista/Language Café in Kista - Civilingenjörsutbil
+ dning i informationsteknik (CINTE\, 300 hp).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170428T100000Z
+DTEND;VALUE=DATE-TIME:20170428T110000Z
+DTSTAMP;VALUE=DATE-TIME:20170323T075244Z
+UID:2bda98e00baf356e8b43e44229a6f3d21bb0da3c
+DESCRIPTION:https://www.kth.se/social/program/cinte/event/sprakcafe-i-kist
+ alanguage-cafe-in-kista-27/\n\nDu som vill träna på att prata svenska ha
+ r nu möjlighet att gå på språkcafé här i Kista på fredagar kl. 12:0
+ 0-13:00 på Studenttorget (där de röda sofforna står uppställda). Disk
+ ussionerna hålls av svenska studenter från KTH Kista. Vi har plats för
+ 30 studenter och alla får lunchmacka. Ingen anmälan behövs\, först til
+ l kvarn gäller. Varmt välkommen!\n\nFrågor? Vänligen kontakta Malin He
+ dberg mahedber@kth.se \n\nIf you want to practice to talk in Swedish\, yo
+ u are welcome to Language Café on Fridays at 12:00-13:00 in the Student S
+ quare (where the red sofas are situated). The café is run by Swedish stud
+ ents from KTH Kista. Lunch sandwiches will be served and no registration i
+ s needed. First come\, first served and we have places for 30 students. We
+ lcome to join.\n\nQuestions? Please contact Malin Hedberg\, mahedber@kth.s
+ e\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170323T075244Z
+LOCATION:Studenttorget/Student Square
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170428T110000Z
+DTEND;VALUE=DATE-TIME:20170428T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120002Z
+UID:6179a11bfdd40abb58eff6dc8124717623337ba0
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52361-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120002Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170502T060000Z
+DTEND;VALUE=DATE-TIME:20170502T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120005Z
+UID:5d67e9837e932c0836e334a009db92e7319740f5
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52365-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120005Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170502T060000Z
+DTEND;VALUE=DATE-TIME:20170502T080000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T172132Z
+UID:1a1f3d6d1835b132b3558bdd7990f5b0d666ec73
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64490/\n\nTillhör: VT 2017 CINTE\n\n\n\n F10    Frekvens 
+ CCP-enheten frekvensmätning.\n\nWilliam Sandqvist\n\n\n\nAnmärkning: F 1
+ 0\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T172132Z
+LOCATION:Ka-Sal C (Sal Sven-Olof Öhrvik)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170502T110000Z
+DTEND;VALUE=DATE-TIME:20170502T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120013Z
+UID:a6658c0f9b9e853ac792344e008f967585303c4c
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52366-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120013Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170502T110000Z
+DTEND;VALUE=DATE-TIME:20170502T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T125941Z
+UID:2cd9c910ab1362ea3e0c39aff6fcc0f5aba7f04a
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64978/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 4:1    Lab 4:1
+ \n\n\n\nAnmärkning: L 4\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T125941Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Modern mjukvaruutveckling (IV1303)
+DTSTART;VALUE=DATE-TIME:20170502T140000Z
+DTEND;VALUE=DATE-TIME:20170502T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120016Z
+UID:616506dd5c31b3c0e57858571c991b60b7fca192
+DESCRIPTION:https://www.kth.se/social/course/IV1303/subgroup/vt-2017-cinte
+ -3/event/52914/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120016Z
+LOCATION:Ka-301
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170503T060000Z
+DTEND;VALUE=DATE-TIME:20170503T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120018Z
+UID:8d27ae0ff04ea09b26e203fdbccc7c3075438737
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52367-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120018Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170503T110000Z
+DTEND;VALUE=DATE-TIME:20170503T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T130243Z
+UID:32b0eec99ec62927c65d6e2f009c4a3dbb1e7062
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64982/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 4:2    Lab 4:2
+ \n\n\n\nAnmärkning: L 4\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T130243Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Redovisning - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170503T110000Z
+DTEND;VALUE=DATE-TIME:20170503T130000Z
+DTSTAMP;VALUE=DATE-TIME:20170410T105218Z
+UID:e4c8150a0a1f9c67b920c72e886418077af70b11
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/112374/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170410T105218Z
+LOCATION:Ka-Sal A
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170503T110000Z
+DTEND;VALUE=DATE-TIME:20170503T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120024Z
+UID:c00d9cdacdfe5901d4c91c9fcb5e3273c59db2ce
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52368-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120024Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170504T060000Z
+DTEND;VALUE=DATE-TIME:20170504T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120028Z
+UID:dfa494a13ff8a0e28e5b91bf01437bfdca4df22e
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52369-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120028Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304)
+DTSTART;VALUE=DATE-TIME:20170504T060000Z
+DTEND;VALUE=DATE-TIME:20170504T080000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120027Z
+UID:cc681843f6684809e246776ce49e303565e59ed6
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49616-4/\n\nTillhör: HT 2015\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120027Z
+LOCATION:Ka-308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170504T110000Z
+DTEND;VALUE=DATE-TIME:20170504T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120035Z
+UID:4f82fc87bda3c333120a5564b97654d98faf2838
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52370-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120035Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170504T110000Z
+DTEND;VALUE=DATE-TIME:20170504T130000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T173125Z
+UID:227eaac25b228b41cb666a297c2d8f6fd7f822b2
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64491/\n\nTillhör: VT 2017 CINTE\n\n\n\n F11    CCP compare
+     DC motor  CCP-enheten compare. Ex. ECU för förbränningsmotorer
+ . CCP-enheten   PWM DC-motorstyrning.\n\nWilliam Sandqvist\n\n\n\nAnmär
+ kning: F 11\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T173125Z
+LOCATION:Ka-Sal C (Sal Sven-Olof Öhrvik)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170505T060000Z
+DTEND;VALUE=DATE-TIME:20170505T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120038Z
+UID:b0a35994dd1f2100d483f0444a141f2b0a11d0be
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52362-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120038Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170505T060000Z
+DTEND;VALUE=DATE-TIME:20170505T100000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T130450Z
+UID:fd503d70b60fd4c11faa9dca0c4aee3694ec90b3
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64986/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 4:3    Lab 4:3
+ \n\n\n\nAnmärkning: L 4\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T130450Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170505T110000Z
+DTEND;VALUE=DATE-TIME:20170505T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120043Z
+UID:185b9e2c30d3659dccc83e176be8c3e4edbe4f5f
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52363-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120043Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170505T110000Z
+DTEND;VALUE=DATE-TIME:20170505T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T130854Z
+UID:87ef4c6cd3d33a5fb18323350851855ee8da5c26
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64984/\n\nTillhör: VT 2017 CINTE\n\n\n\n Labb 4:4    Lab 4:4
+ \n\n\n\nAnmärkning: L 4\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T130854Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170508T060000Z
+DTEND;VALUE=DATE-TIME:20170508T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120045Z
+UID:fc03099a444d0c8c448d9bcc32a8544b61173d6c
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52371-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120045Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170508T060000Z
+DTEND;VALUE=DATE-TIME:20170508T080000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T173436Z
+UID:6b785d932fe4bdd7013057a73a71a019ff1dd2b6
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64495/\n\nTillhör: VT 2017 CINTE\n\n\n\n F12     Filter.pd
+ f   emc   Enkla RC-filter. Elektriska störningar..\n\nWilliam Sandqvi
+ st\n\n\n\nAnmärkning: F 12\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T173436Z
+LOCATION:Ka-Sal C (Sal Sven-Olof Öhrvik)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170508T110000Z
+DTEND;VALUE=DATE-TIME:20170508T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120051Z
+UID:8fde1cf23044d716341c1a059c343585c25fd255
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52372-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120051Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Laboration - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170508T110000Z
+DTEND;VALUE=DATE-TIME:20170508T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T131026Z
+UID:61c703fe53ed831bbdcd1a6c09ce394bc69802d3
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64494/\n\nTillhör: VT 2017 CINTE\n\n\n\nLabX Catch Up Lab\n\n\n\
+ nAnmärkning: L 4\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T131026Z
+LOCATION:Ka-305
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170509T060000Z
+DTEND;VALUE=DATE-TIME:20170509T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120053Z
+UID:a7ff92958a2aaf9614543c72b5b02c0f7ca48f63
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52373-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120053Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170509T080000Z
+DTEND;VALUE=DATE-TIME:20170509T100000Z
+DTSTAMP;VALUE=DATE-TIME:20170407T004308Z
+UID:f655d001b9a93b7d28ba6bbe24ff93ee0959700b
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64496/\n\nTillhör: VT 2017 CINTE\n\n\n\n Ö7:1 (304)\n\n Filt
+ er Trafo   (  Filter Trafo )\n\nWilliam Sandqvist\n\n\n\nAnmärkning
+ : Ö 7\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170407T004308Z
+LOCATION:Ka-304
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170509T110000Z
+DTEND;VALUE=DATE-TIME:20170509T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120059Z
+UID:6205608dc1c14952b2378bf9d9e1c27a9fd7cb08
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52374-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120059Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170509T110000Z
+DTEND;VALUE=DATE-TIME:20170509T130000Z
+DTSTAMP;VALUE=DATE-TIME:20170316T133102Z
+UID:f5818f1653357c48baa67a04b0e604b8a25558cb
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/65006/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ7:2 (204) \n\n ( F
+ ilter Trafo )   Filter Trafo\n\nWilliam Sandqvist english\n\n\n\nAnm
+ ärkning: Ö 7\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170316T133102Z
+LOCATION:Ka-204
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170510T060000Z
+DTEND;VALUE=DATE-TIME:20170510T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120102Z
+UID:d1f8c04ffa1c68d5c156f659fcfb834585be6223
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52375-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120102Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Redovisning - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170510T080000Z
+DTEND;VALUE=DATE-TIME:20170510T100000Z
+DTSTAMP;VALUE=DATE-TIME:20170410T105226Z
+UID:49a5d56dc6e899ee4cd6b7a182d4fed0ac6e6c63
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/112375/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170410T105226Z
+LOCATION:Ka-Sal A
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170510T110000Z
+DTEND;VALUE=DATE-TIME:20170510T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120108Z
+UID:d87d75b791107eee23a4333cc84b0636c2d08db2
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52376-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120108Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Övning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170510T110000Z
+DTEND;VALUE=DATE-TIME:20170510T130000Z
+DTSTAMP;VALUE=DATE-TIME:20170314T140137Z
+UID:37c0d0508c3031482f53d5b40eebe21f582d1451
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/65007/\n\nTillhör: VT 2017 CINTE\n\n\n\nÖ7:3 (210)\n\n Filter
+  Trafo   (  Filter Trafo )\n\nWilliam Sandqvist\n\n\n\nAnmärkning:
+ Ö 7\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170314T140137Z
+LOCATION:Ka-210
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170511T060000Z
+DTEND;VALUE=DATE-TIME:20170511T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120111Z
+UID:7314543cea8f19cc632267f389097a2230af8004
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52377-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120111Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170511T110000Z
+DTEND;VALUE=DATE-TIME:20170511T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120117Z
+UID:2a0bb0adda9d2a3d3690245bd9079de3ae036064
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52378-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120117Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170512T060000Z
+DTEND;VALUE=DATE-TIME:20170512T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120119Z
+UID:f1813f19a662e3a52b367c98202ee2bd9d813e61
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52379-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120119Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170512T110000Z
+DTEND;VALUE=DATE-TIME:20170512T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120124Z
+UID:37404ba5441195f97a9591c468b2dd070609d2a5
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52380-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120124Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304)
+DTSTART;VALUE=DATE-TIME:20170515T060000Z
+DTEND;VALUE=DATE-TIME:20170515T080000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120125Z
+UID:f0966a63ccfd3a637696dfa371dca69bd542533b
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49622-4/\n\nTillhör: HT 2015\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120125Z
+LOCATION:Ka-308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170515T060000Z
+DTEND;VALUE=DATE-TIME:20170515T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120126Z
+UID:9be8a0fa44bb6b5c0a712ef20e0045148549e3c9
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52381-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120126Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170515T110000Z
+DTEND;VALUE=DATE-TIME:20170515T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120131Z
+UID:c6b32bf13b9b398b3edd8e498306e4ada97bfbd3
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52382-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120131Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170516T060000Z
+DTEND;VALUE=DATE-TIME:20170516T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120133Z
+UID:26ff790c3bf439ed0cdc2c077c0595334a30aa25
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52383-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120133Z
+LOCATION:Ka-G303\, Ka-G304\, Ka-G305\, Ka-G306\, Ka-G307\, Ka-G308\, Ka-G3
+ 09\, Ka-G310\, Ka-G311\, Ka-G314
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Redovisning - Inbyggd elektronik (IE1206)
+DTSTART;VALUE=DATE-TIME:20170516T060000Z
+DTEND;VALUE=DATE-TIME:20170516T100000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T104854Z
+UID:ea517ec6ef3988dd85f8ab1912dba9f585d6e5ff
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64503/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T104854Z
+LOCATION:Ka-Sal B (Sal Peter Weissglas)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170516T110000Z
+DTEND;VALUE=DATE-TIME:20170516T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120144Z
+UID:67af92bf2a1d218504cff3c06ad1c790965f1e52
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52384-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120144Z
+LOCATION:Ka-G303\, Ka-G304\, Ka-G305\, Ka-G306\, Ka-G307\, Ka-G308\, Ka-G3
+ 09\, Ka-G310\, Ka-G311\, Ka-G314
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Redovisning - Inbyggd elektronik (IE1206)
+DTSTART;VALUE=DATE-TIME:20170516T110000Z
+DTEND;VALUE=DATE-TIME:20170516T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120145Z
+UID:d0eeda3350231db32237de78cb94960dcef13fa0
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/65008/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120145Z
+LOCATION:Ka-Sal A (Sal Östen Mäkitalo)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170517T060000Z
+DTEND;VALUE=DATE-TIME:20170517T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120147Z
+UID:72a736ce6a3d7700e422fce1743f557247383da5
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52385-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120147Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170517T110000Z
+DTEND;VALUE=DATE-TIME:20170517T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120151Z
+UID:b1724b3df18dc19c1f2a0635866bb066ecb069d4
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52386-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120151Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Redovisning - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170517T110000Z
+DTEND;VALUE=DATE-TIME:20170517T130000Z
+DTSTAMP;VALUE=DATE-TIME:20170410T105237Z
+UID:6dca6fa06867e2ba8c14cb0e06270b20ea821ffc
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/112376/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170410T105237Z
+LOCATION:Ka-Sal A
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Föreläsning - Inbyggd elektronik (IE1206).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170517T110000Z
+DTEND;VALUE=DATE-TIME:20170517T130000Z
+DTSTAMP;VALUE=DATE-TIME:20170209T175816Z
+UID:487fb1b68ff39c09f7518e4a776e06e9176f079b
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/64505/\n\nTillhör: VT 2017 CINTE\n\n\n\n F13     Trafo 
+    Ethernet   Kurs-Avslutning   Transformatorn.  Ethernetkontakten
+ .\n\nWilliam Sandqvist\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170209T175816Z
+LOCATION:Ka-Sal B (Sal Peter Weissglas)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304)
+DTSTART;VALUE=DATE-TIME:20170517T130000Z
+DTEND;VALUE=DATE-TIME:20170517T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120152Z
+UID:67122e02e2eb978ffe443303d58f57647936fe67
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49623-4/\n\nTillhör: HT 2015\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120152Z
+LOCATION:Ka-308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170518T060000Z
+DTEND;VALUE=DATE-TIME:20170518T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120153Z
+UID:38ab464c4e39f1b2d2aafbf8398dd92d0b9d5506
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52387-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120153Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Projektarbete - Projekt IT (ID1003)
+DTSTART;VALUE=DATE-TIME:20170518T110000Z
+DTEND;VALUE=DATE-TIME:20170518T150000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120157Z
+UID:b725e40bd6514b7a1c397687218b15fb5948b402
+DESCRIPTION:https://www.kth.se/social/course/ID1003/subgroup/vt-2017-cinte
+ -tcomk/event/52388-3/\n\nTillhör: VT 2017 CINTE TCOMK\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120157Z
+LOCATION:Ka-G201\, Ka-G202\, Ka-G203\, Ka-G302\, Ka-G303\, Ka-G304\, Ka-G3
+ 05\, Ka-G306\, Ka-G307\, Ka-G308
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304)
+DTSTART;VALUE=DATE-TIME:20170519T060000Z
+DTEND;VALUE=DATE-TIME:20170519T100000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120158Z
+UID:351102aeb45c059aee1900f8a67637bbc59a069c
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49624-4/\n\nTillhör: HT 2015\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120158Z
+LOCATION:Ka-Sal B (Sal Peter Weissglas)
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Redovisning - Ingenjörskunskap och ingenjörsrollen ICT (II1304).
+ \nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170519T080000Z
+DTEND;VALUE=DATE-TIME:20170519T100000Z
+DTSTAMP;VALUE=DATE-TIME:20170407T004816Z
+UID:83558cfee01b217d2a01117473c72ca475fb97d3
+DESCRIPTION:https://www.kth.se/social/course/II1304/event/111761-2/\n\nAnm
+ ärkning: Presentation exchangestudies\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170407T004816Z
+LOCATION:Ka-Sal C
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:* Redovisning - Ingenjörskunskap och ingenjörsrollen ICT (II1304
+ ).\nSe beskrivning
+DTSTART;VALUE=DATE-TIME:20170519T110000Z
+DTEND;VALUE=DATE-TIME:20170519T130000Z
+DTSTAMP;VALUE=DATE-TIME:20170418T085939Z
+UID:56cecb736eaad722be804dd2777677cb14cfebe7
+DESCRIPTION:https://www.kth.se/social/course/II1304/event/113172/\n\nAnmä
+ rkning: Gruppredovisning utbytesstudier\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170418T085939Z
+LOCATION:Ka-Sal B
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:* Seminarium - Ingenjörskunskap och ingenjörsrollen ICT (II1304)
+DTSTART;VALUE=DATE-TIME:20170519T130000Z
+DTEND;VALUE=DATE-TIME:20170519T150000Z
+DTSTAMP;VALUE=DATE-TIME:20170418T091413Z
+UID:922e88d62c193d2f930b8cf31e7945edc5de222e
+DESCRIPTION:https://www.kth.se/social/course/II1304/subgroup/ht-2015-50301
+ /event/49625-4/\n\nTillhör: HT 2015\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170418T091413Z
+LOCATION:Ka-Sal B
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Tentamen - Inbyggd elektronik (IE1206)
+DTSTART;VALUE=DATE-TIME:20170529T060000Z
+DTEND;VALUE=DATE-TIME:20170529T100000Z
+DTSTAMP;VALUE=DATE-TIME:20170407T004412Z
+UID:51c5820ac917d67ae7b6ff271cc04f5e41e4e0f0
+DESCRIPTION:https://www.kth.se/social/course/IE1206/subgroup/vt-2017-cinte
+ -2/event/83309/\n\nTillhör: VT 2017 CINTE\n\n
+LAST-MODIFIED;VALUE=DATE-TIME:20170407T004412Z
+LOCATION:Ka-304\, Ka-208\, Ka-205\, Ka-308\, Ka-303\, Ka-301
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Omtenta - Flervariabelanalys (SF1626)
+DTSTART;VALUE=DATE-TIME:20170605T060000Z
+DTEND;VALUE=DATE-TIME:20170605T110000Z
+DTSTAMP;VALUE=DATE-TIME:20161031T120212Z
+UID:116d9285e0406a7a1cd273abff452a2338a30d1f
+DESCRIPTION:https://www.kth.se/social/course/SF1626/event/38546-2/
+LAST-MODIFIED;VALUE=DATE-TIME:20161031T120212Z
+LOCATION:D32\, D33\, D34\, D35\, D41\, D42\, E31\, E32\, E33\, E34\, E35\,
+  E36\, E51\, E52\, E53\, L21\, L22\, L31\, L41\, L42\, L43\, L44\, L51\, L
+ 52\, M23\, M24\, M31\, M32\, M33\, M38
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

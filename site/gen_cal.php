@@ -28,6 +28,7 @@
 
 	function gen_event($event){
 
+	    $json = json_encode($event);
 		$length = (ugly_time($event->DTEND)-ugly_time($event->DTSTART))/24;
 		$html  = "<div class='event' style='height:$length%'>";
 		$html .= "<div class='SUMMARY'>".$event->SUMMARY."</div>";
@@ -45,7 +46,7 @@
 			$cl = check($event);
 			$length = (ugly_time($event->DTEND)-ugly_time($event->DTSTART))/24;
 			$str = str_replace($order, $replace, $event->DESCRIPTION);
-			$html  = "<div class='event $cl' style='height:$length%'>";
+			$html  = "<div class='event $cl' value ='$json' style='height:$length%'>";
 			$html .= "<div class='pretty_time'>".pretty_time($event->DTSTART)." - ".pretty_time($event->DTEND)."</div>";
 			$html .= "<div class='SUMMARY'>". str_replace($order, $replace, $event->SUMMARY) ."</div>";
 			if (preg_match($reg_exUrl, $str, $url)) {
@@ -53,7 +54,7 @@
 			} else {
 			$html .= "<br><div class='extra'>" . $str . "<br> Plats: " . $str . "</div>";
 			}
-			$html .= "<br><div><button type='button' data-toggle='modal' class='editbutton btn' data-target='#myModal'>Edit</button></div></div>";
+			$html .= "<br><div><button class='edit'>Edit</button></div></div>";
 		}
 
 		return $html;
