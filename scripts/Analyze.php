@@ -42,30 +42,41 @@ function analyze ($events, $collection) {
 	//Denna for loop fixar dagar man ej vill plugga
 	for ($i = 0; $i < $count; $i++) {
 		if ($e[$i]->AVAILABLE) {
-			if (getDays($e[$i]->DTSTART, $collection) && getDays($e[$i]->DTEND, $collection)) { //Om ett event bara pågår under dagar man ej vill plugga
-				unset($e[$i]);
-				$e = array_values($e);
-			} else {
-				$date = $e[$i]->DTSTART;
-				if(getDays($e[$i]->DTSTART, $collection)) { //Om ett event börjar på en dag man ej vill plugga
-					$e[$i]->DTSTART = date('Ymd', strtotime($e[$i]->DTSTART .' +1 day')) . "T0000Z";//$e[$i]->DTSTART = next day 00.00;
-				}
-				$date = $e[$i]->DTSTART;
-				for ( ; $date < $e[$i]->DTEND; ) {
-					if (getDays($date, $collection)) {
-						if (substr($e[$i]->DTEND, 0, 8) == substr($date, 0, 8) && substr($e[$i]->DTSTART, 0, 8) == substr($date, 0, 8)) {  //Om ett event bara pågår under en dag man ej vill plugga
-						 unset($e[$i]);
-						 $e = array_values($e);
-						} else if (substr($e[$i]->DTEND, 0, 8) == substr($date, 0, 8)) { //Om ett event slutar under en dag man ej vill plugga
-							$e[$i]->DTEND = date('Ymd', strtotime($e[$i]->DTEND .' -1 day')) . "T2359Z";//$e[$i]->DTEND = previous day 23.59
-						}
-						else { //Annars, om ett event börjar en dag man ej vill plugga
-							$e[$i]->DTSTART = date('Ymd', strtotime($e[$i]->DTSTART .' +1 day')) . "T0000Z";//$e[$i]->DTSTART next day 00.00
-						}
+			$date = $e[$i]->DTSTART;
+			$last = false;
+			for ( ; $date < $e[$i]->DTEND; ) {
+				if (getDays($date, $collection)) {
+					if ($last) {
+						$avEvent = new stdClass();
+						$avEvent->SUMMARY = $e[$i]->SUMMARY;
+						$avEvent->DTSTART = $e[$i]->DTSTART;
+						$avEvent->DTEND = date('Ymd', strtotime(substr($date, 0, 8) . "-1 day")) . "T235900Z";
+						$avEvent->UID = $e[$i]->UID; //fixa unik id när vi skaffat databas
+						$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
+						$avEvent->LOCATION = $e[$i]->LOCATION;
+						$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
 
+						$e[$i]->DTSTART = date('Ymd', strtotime(substr($date, 0, 8) . "+1 day")) . "T000000Z";
+						array_splice($e, $i, 0, array($avEvent));
+						$last = false;
+					} else {
+						$e[$i]->DTSTART = date('Ymd', strtotime(substr($date, 0, 8) . "+1 day")) . "T000000Z";
 					}
-					$date = date('Ymd', strtotime($date .' +1 day'));
-					$date = $date . "T0000Z";
+				} else {
+					if (!$last) {
+						$last = true;
+					}
+				}
+				
+				$date = date('Ymd', strtotime($date .' +1 day'));
+				$date = $date . "T0000Z";
+			}
+			if (getDays($e[$i]->DTEND, $collection)) {
+				if ($last){
+					$e[$i]->DTEND = date('Ymd', strtotime(substr($e[$i]->DTEND, 0, 8) . "-1 day")) . "T235900Z";
+				} else {
+					unset($e[$i]);
+					$e = array_values($e);
 				}
 			}
 		}
@@ -256,4 +267,6 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 		}
 	}
 }
+
+echo analyze(free_time_with_events(downloadFile('https://www.kth.se/social/user/214547/icalendar/0762dd2a35085a9f36558bc2907bacdf87e8a1f7')), '{"Monday":"on","Wednesday":"on","sleepfrom":"22:00","sleepto":"06:00","traveltime":"60","studylength":"60","breaktime":"15"}');
 ?>
