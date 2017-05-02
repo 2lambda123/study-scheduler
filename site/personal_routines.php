@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Calendar</title>
+<title>Routines</title>
 <link href="menubar.css" rel="stylesheet">
 
 <body>

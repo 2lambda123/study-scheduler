@@ -13,7 +13,7 @@
 		
 		$db = new DB();
 		$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
-		$file = json_decode(free_time_with_events($result[0]['CURRENT'], $date_start));
+		$file = json_decode(($result[0]['CURRENT']));
 		//$file = json_decode(downloadFile("https://www.kth.se/social/user/214560/icalendar/511554f518e0f69696d2f76a1df75f49427b6471"));
 		$events = array();
 		foreach($file as $event) {

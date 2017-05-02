@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<title>Calendar</title>
+<title>Import &amp; Export</title>
 <link href="menubar.css" rel="stylesheet">
 
 <body>
   <?php include 'menubar.php'; ?>
-  <h1>Export &amp; Import </h1>
+  <h1>Import &amp; Export</h1>
 </body>
