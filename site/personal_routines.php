@@ -2,6 +2,7 @@
 <html>
 <title>Calendar</title>
 <link href="menubar.css" rel="stylesheet">
+
 <body>
   <?php include 'menubar.php'; ?>
   <h1>Personal Routines</h1>
