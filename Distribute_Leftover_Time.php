@@ -1,5 +1,5 @@
 <?php
-  include 'DB.php';
+  include_once 'DB.php';
 
   // If remaining time is equal to the available time, the available time is
   // removed with studytime
@@ -104,6 +104,7 @@ function recursive_distr($restMin, $studyEvent, $calendar, $lastDate){
 }
 
 function distr_leftover($restMin, $studyEvent, $calendar){
+  $calendar = json_decode($calendar);
   $total = 0;
   $lastDate = null;
   // Find the first event after $StudEvent in the calendar

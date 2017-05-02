@@ -1,5 +1,5 @@
 <?php
-include 'DB.php';
+include_once 'DB.php';
 include 'Distribute_Leftover_Time.php';
 $db = new DB();
 $result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
@@ -20,7 +20,7 @@ if(isset($_POST["remove"])){  //  If we are to remove the event from the schedul
         $temp = $calendar[$i];
         unset($calendar[$i]);
         if($_POST["Remove"] == 2){
-          distr_leftover($diffM, $temp, $calendar);
+          distr_leftover($diffM, $temp, json_encode($calendar));
         }
       }
       else{
@@ -52,7 +52,7 @@ else{ // If we are to "cut" the event
         if($calendar[$i]->SUMMARY = "STUDY-SCHEDULER"){
           $temp = $calendar[$i];
           $temp->UID = "Split new UID"; // todo: Make atual UID
-          distr_leftover($diffM, $temp, $calendar);
+          distr_leftover($diffM, $temp, json_encode($calendar));
         }
         else{
           $db -> query("UPDATE CURRENT SET calendar=".$db->quote(json_encode($calendar))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
