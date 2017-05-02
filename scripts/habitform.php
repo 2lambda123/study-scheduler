@@ -1,6 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../site/ajax/ajax.js"></script>
-<form action='../../scripts/habits.php' method='post'>
+<form class="form" action='habits.php' method='post'>
 	<h3>New habit</h3>
 	<div>
 		Habit name: <input name="name" type="text"/><br/>
@@ -9,7 +9,6 @@
 		<select name="repetition">
 			<option>Daily</option>
 			<option>Weekly</option>
-			<option>Monthly</option>
 		</select><br/>
 		Location: <input name="location" type="text"/><br/>
 		from: <input name="dtstart" type="time"/> to: <input name="dtend" type="time"/><br/>
@@ -30,5 +29,5 @@
 	</div>
 </form>
 
-<?php include '../../scripts/showHabits.php'?>
+<?php include 'showHabits.php'?>
 	
