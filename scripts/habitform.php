@@ -30,4 +30,8 @@
 </form>
 
 <?php include 'showHabits.php'?>
-	
+<script>
+
+$(document).on('click', '.toggle',function(event){$(this).next().toggle();});
+
+</script>
