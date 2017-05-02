@@ -1,5 +1,5 @@
 <body>
-	<form action='../../scripts/forms.php' method='post'>
+	<form action='../scripts/forms.php' method='post'>
 		<h3>New course</h3>
 		<div id="container">
 			<input type="submit"/><br/><br/>
@@ -18,7 +18,7 @@
 <script src="dynamic.js"></script>
 <body>
 <?php
-	include '../../scripts/DB.php';
+	include '../scripts/DB.php';
 	
 	$db = new DB();
 	$result = $db -> select("SELECT COURSES FROM data WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");

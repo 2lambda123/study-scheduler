@@ -8,7 +8,13 @@
 	function ugly_time($date) 		{ return substr($date,9,2).substr($date,11,2); }
 
 	function collect($date_start, $date_end) {
-		$file = json_decode(downloadFile("https://www.kth.se/social/user/214560/icalendar/511554f518e0f69696d2f76a1df75f49427b6471"));
+		include_once '../scripts/DB.php';
+		include_once '../scripts/find.php';
+		
+		$db = new DB();
+		$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+		$file = json_decode(free_time_with_events($result[0]['CURRENT'], $date_start));
+		//$file = json_decode(downloadFile("https://www.kth.se/social/user/214560/icalendar/511554f518e0f69696d2f76a1df75f49427b6471"));
 		$events = array();
 		foreach($file as $event) {
 			if(cmp_date($event->DTSTART,$date_start)
@@ -25,14 +31,42 @@
 		}
 		return $week;
 	}
+
 	function gen_event($event){
+
+	    $json = json_encode($event);
 		$length = (ugly_time($event->DTEND)-ugly_time($event->DTSTART))/24;
 		$html  = "<div class='event' style='height:$length%'>";
 		$html .= "<div class='SUMMARY'>".$event->SUMMARY."</div>";
 		$html .= "<div class='pretty_time'>".pretty_time($event->DTSTART)." - ".pretty_time($event->DTEND)."</div>";
-		$html .= "</div>";
+		
+		$html .= " </div>";
+
+		global $c;
+		$order   = array("\\r\\n", "\\n", "\\r");
+		$replace = ' <br />';
+		$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+
+		if ($event) {
+			$c++;
+			$cl = check($event);
+			$length = (ugly_time($event->DTEND)-ugly_time($event->DTSTART))/24;
+			$str = str_replace($order, $replace, $event->DESCRIPTION);
+			$html  = "<div class='event $cl' value ='$json' style='height:$length%'>";
+			$html .= "<div class='pretty_time'>".pretty_time($event->DTSTART)." - ".pretty_time($event->DTEND)."</div>";
+			$html .= "<div class='SUMMARY'>". str_replace($order, $replace, $event->SUMMARY) ."</div>";
+			if (preg_match($reg_exUrl, $str, $url)) {
+				$html .= "<br><div class='extra'>" . preg_replace($reg_exUrl, '<a href="' . $url[0] . '">' . $url[0] . '</a>', $str) . "<br> Plats: " . str_replace($order, $replace, $event->LOCATION) . "</div>";
+			} else {
+			$html .= "<br><div class='extra'>" . $str . "<br> Plats: " . $str . "</div>";
+			}
+			if (!$event->AVAILABLE) { $html .= "<br><div><button class='edit'>Edit</button></div>"; }
+			$html .= "</div>";
+		}
+
 		return $html;
 	}
+
 	function gen_day($events){
 		$html  = "<div class='day'>";
 		foreach($events as $event) {
@@ -51,5 +85,17 @@
 	}
 	function print_events($date1,$date2) {
 		return(gen_week($date1,$date2));
+	}
+	function check($clickedEvent){
+		if(preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $clickedEvent->SUMMARY))
+		{
+			$str ='KTH';
+			return $str;
+		}
+		else
+		{
+			$str = 'Others';
+			return $str;
+		}
 	}
 ?>

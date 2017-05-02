@@ -1,6 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../site/ajax/ajax.js"></script>
-<form class="form" action='habits.php' method='post'>
+<form class="form" action='../scripts/habits.php' method='post'>
 	<h3>New habit</h3>
 	<div>
 		Habit name: <input name="name" type="text"/><br/>

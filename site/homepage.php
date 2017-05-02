@@ -6,14 +6,7 @@
 </head>
 
 <body>
-  <ul>
-    <li><a class="active" href="homepage.php">HOME </a></li>
-    <li><a href="calendar.php">CALENDAR</a></li>
-    <li><a href="personal_routines.php">PERSONAL ROUTINES</a></li>
-    <li><a href="import_export.php">IMPORT &amp; EXPORT</a></li>
-    <li><a href="settings.php">SETTINGS</a></li>
-    <li style="float:right"><a href="">LOGOUT</a></li>
-  </ul>
+  <?php include 'menubar.php'; ?>
 
   <h1> Home Page </h1>
 

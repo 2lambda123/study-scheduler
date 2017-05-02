@@ -1,7 +1,7 @@
 <?php
 
-include 'importCal.php';
-include 'modify.php';
+include_once 'importCal.php';
+include_once 'modify.php';
 
 date_default_timezone_set('UTC');//The calendar file has the timezone UTC
 
@@ -9,10 +9,11 @@ function eventTimeFloat($tid){//Converts for example 20170124T120000Z to 2017012
 		return floatval(substr($tid, 0, 8).substr($tid, 9, 4));
 }
 
-function gen_free_time($file){
+function gen_free_time($file, $start=1){
 	$cal = $file;
 	$eventArray = json_decode($cal, true);
 	$now = date('Ymd').'T'.date('H').'00'.substr($eventArray[0]["DTSTART"],-3,3);
+	if ($start !== 1) { $now = $start; }
 	$new_times = array();
 	$tempstart = $now;
 	$eventS = null;//When the event starts
@@ -84,8 +85,8 @@ function gen_free_time($file){
 	return json_encode($new_times);
 }
 
-function free_time_with_events($schedule){
-	$freeTime = json_decode(gen_free_time($schedule));//Get free times
+function free_time_with_events($schedule, $start = 1){
+	$freeTime = json_decode(gen_free_time($schedule, $start));//Get free times
 	$schema = $schedule;//Get the events of calendar
 	foreach ($freeTime as $key) {//Merge both togheter
 		$schema = modify($schema, json_encode($key));

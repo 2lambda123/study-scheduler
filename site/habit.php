@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<title>Calendar</title>
+<title>Habits</title>
 <link href="menubar.css" rel="stylesheet">
 <body>
   <?php include 'menubar.php'; ?>
-  <h1>Personal Routines</h1>
-  <?php include 'data_collection/collectionform.html'; ?>
+  <h1>Habits</h1>
+  <?php include '../scripts/habitform.php'; ?>
 </body>

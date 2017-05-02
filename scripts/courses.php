@@ -1,12 +1,12 @@
 </html>
 <head>
 
-<script src="dynamic.js"></script>
+<script src="../site/data_collection/dynamic.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../site/ajax/ajax.js"></script>
 </head>
 <body>
-	<form class="form" action='forms.php' method='post'>
+	<form class="form" action='../scripts/forms.php' method='post'>
 		<h3>New course</h3>
 		<div id="container">
 			<input type="submit"/><br/><br/>
@@ -21,6 +21,6 @@
 			<a href="#" id="remove" onclick="removeField()">[Remove] </a><br/>
 		</div>
 	</form>
-	<?php include 'showCourses.php'?>
+	<?php include '../scripts/showCourses.php'?>
 </body>
 </html>

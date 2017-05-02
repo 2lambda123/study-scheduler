@@ -2,7 +2,7 @@
   include "gen_cal.php";
 
   function print_dates($day) {
-    echo "$day \n" . assign_date($day, -2);
+    echo "<p>$day <br></p>" . assign_date($day, -2);
   }
 
   function assign_date($day, $week) {
@@ -43,5 +43,14 @@
 			}
 		}
 		return $html;
+	}
+	
+	
+	function boo()
+	{
+		
+		$pop = '<div class= "event"></div>';
+		$pop = preg_replace('/<div class="event">/', '/<div class="poo">/', $pop);
+		echo $pop;
 	}
  ?>
