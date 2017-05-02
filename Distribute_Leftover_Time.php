@@ -1,5 +1,5 @@
 <?php
-  include "importCal.php";
+  include 'DB.php';
 
   // If remaining time is equal to the available time, the available time is
   // removed with studytime
@@ -103,11 +103,9 @@ function recursive_distr($restMin, $studyEvent, $calendar, $lastDate){
   }
 }
 
-function distr_leftover($restMin, $studyEvent){
-  $calendar = json_decode(downloadFile("MedLabbar.ics")); // Todo: import from database
+function distr_leftover($restMin, $studyEvent, $calendar){
   $total = 0;
   $lastDate = null;
-
   // Find the first event after $StudEvent in the calendar
   $slot = 0;
   for($i = 0; $i<count($calendar); $i++){
@@ -137,7 +135,8 @@ function distr_leftover($restMin, $studyEvent){
   }
 
   $calendar = recursive_distr($restMin, $studyEvent, $calendar, $lastDate);
-  var_dump($calendar);
+  $db = new DB();
+  $db -> query("UPDATE CURRENT SET calendar=".$db->quote(json_encode($calendar))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
 }
   /*
   Testdata:
