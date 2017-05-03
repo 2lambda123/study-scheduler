@@ -1,6 +1,15 @@
 <?php
 
-function getDays($d, $collection) { //Tar emot dagens datum och returnerar true om man inte vill plugga den dagen, false om man vill
+include_once 'find.php';
+//$events = encoded json array of objects of events, $collection = encoded json object of collection
+function analyze ($events, $collection) {
+	$e = json_decode($events); //Decode to array of objects
+	$collection = json_decode($collection);
+	
+	$sleepfrom = str_replace(":", "", $collection->sleepfrom); //Från möjligt 00:00 format till 0000 format
+	$sleepto = str_replace(":", "", $collection->sleepto);
+
+	function getDays($d, $collection) { //Tar emot dagens datum och returnerar true om man inte vill plugga den dagen, false om man vill
 		$wD[] = array();
 		if (property_exists($collection,"Monday")) {
 			array_push($wD, 'Monday');
@@ -28,14 +37,6 @@ function getDays($d, $collection) { //Tar emot dagens datum och returnerar true 
 		}
 		return false;
 	}
-
-//$events = encoded json array of objects of events, $collection = encoded json object of collection
-function analyze ($events, $collection) {
-	$e = json_decode($events); //Decode to array of objects
-	$collection = json_decode($collection);
-	
-	$sleepfrom = str_replace(":", "", $collection->sleepfrom); //Från möjligt 00:00 format till 0000 format
-	$sleepto = str_replace(":", "", $collection->sleepto);
 
 	$count = count($e);
 	//Denna for loop fixar dagar man ej vill plugga

@@ -8,7 +8,7 @@ function strstr_after($haystack, $needle, $case_insensitive = false) {
     // Most likely false or null
     return $pos;
 }
-
+date_default_timezone_set('UTC');
 class event {
 	public $SUMMARY = NULL;
 	public $DTSTART = NULL;

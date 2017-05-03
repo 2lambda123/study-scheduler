@@ -1,13 +1,14 @@
 <?php
 	include_once '../scripts/DB.php';
 	include_once '../scripts/distribute.php';
+	include_once '../scripts/importCal.php';
 	
 	date_default_timezone_set('UTC'); 
 	function cmp_date($date1,$date2){ return cmp_date_val($date1) > cmp_date_val($date2); }
 	function cmp_date_val($date) 	{ return substr($date,0,8).substr($date,9,4); }
 	function cmp_day($date1,$date2) { return intval(substr($date2,0,8)) - intval(substr($date1,0,8)); }
-	function pretty_time($date) 	{ return substr($date,9,2)+2 . ":".substr($date,11,2); }
-	function ugly_time($date) 		{ return substr($date,9,2)+2 . substr($date,11,2); }
+	function pretty_time($date) 	{ return substr($date,9,2) . ":".substr($date,11,2); }
+	function ugly_time($date) 		{ return substr($date,9,2) . substr($date,11,2); }
 	function TimeToSec($time) {
 		$sec = 0;
 		foreach (array_reverse(explode(':', $time)) as $k => $v) $sec += pow(60, $k) * $v;
@@ -18,6 +19,7 @@
 	$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
 	$result1 = $db -> select("SELECT ROUTINES FROM data WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
 	$result2 = $db -> select("SELECT COURSES FROM data WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+	//downloadFile("https://www.kth.se/social/user/214560/icalendar/511554f518e0f69696d2f76a1df75f49427b6471");
 	$result = $result[0]['CURRENT'];
 	$result1 = $result1[0]['ROUTINES'];
 	$result2 = $result2[0]['COURSES'];

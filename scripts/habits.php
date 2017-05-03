@@ -8,6 +8,7 @@ class event {
 	public $UID = NULL;
 	public $DESCRIPTION = NULL;
 	public $LOCATION = NULL;
+	public $AVAILABLE = NULL;
 }
 
 $h = $_POST;
@@ -70,6 +71,7 @@ if ($h['repetition'] == "Daily") {
 		$events[$i]->DTSTART = $d . "T" . str_replace(":", "", $h['dtstart']) . "Z";
 		$events[$i]->DTEND = $d . "T" . str_replace(":", "", $h['dtend']) . "Z";
 		$events[$i]->UID = $d . $h['dtstart'];
+		$events[$i]->AVAILABLE = FALSE;
 		$d = date('Ymd', strtotime($d . "+1 day"));
 	}
 } else if ($h['repetition'] == "Weekly") {
@@ -84,6 +86,7 @@ if ($h['repetition'] == "Daily") {
 			$events[$i]->DTSTART = $d . "T" . str_replace(":", "", $h['dtstart']) . "Z";
 			$events[$i]->DTEND = $d . "T" . str_replace(":", "", $h['dtend']) . "Z";
 			$events[$i]->UID = $d . $h['dtstart'];
+			$events[$i]->AVAILABLE = FALSE;
 			$i++;
 		}
 		$d = date('Ymd', strtotime($d . "+1 day"));
@@ -106,5 +109,25 @@ else{
 	$p = $events;
 }
 $db -> query("UPDATE calendar SET HABITS=".$db->quote(json_encode($p))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+/*
+$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+		
+$r = json_decode($result[0]['CURRENT'], true);
+$p = array();
+include_once 'modify.php';
+//ta resultatet, lägg in events i array, och om det finns events i resultatet, lägg in de också, som sen skickas till databasen.
+if(!empty($r)){
+		$r = json_encode($r);
+		foreach($events as $event){
+			$r = modify($r, json_encode($event));
+		}
+		$p = json_decode($r);
+}
+else{
+	$p = $events;
+}
+
+$db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($p))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+*/
 include 'showHabits.php';
 ?>
