@@ -1,21 +1,22 @@
 <?php
 
-if (isset($_POST['study']))
-{
-	
+$event = json_decode($_POST["JSON2"], false);
 
-}
-if (isset($_POST['del']))
-{
-	$events[] = new event();
-		$events[$i]->SUMMARY = "Busy";
-		$events[$i]->DESCRIPTION = " ";
-		$events[$i]->LOCATION =  " ";
-		$events[$i]->DTSTART = 
-		$events[$i]->DTEND = 
-		$events[$i]->UID = ;
-	}
+
+if(isset($_POST["study"]))
+{  
 	
+	
+}
+
+
+else
+{
+	$freeStart = $event -> DTSTART;	
+	$freeEnd = $event -> DTEND;
+	
+	$arr = array('DTSTART' => $freeStart, 'DTEND' => $freeEnd);
+	echo json_encode($arr);
 	
 }
 
