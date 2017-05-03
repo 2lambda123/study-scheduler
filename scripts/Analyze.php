@@ -1,15 +1,6 @@
 <?php
 
-include_once 'find.php';
-//$events = encoded json array of objects of events, $collection = encoded json object of collection
-function analyze ($events, $collection) {
-	$e = json_decode($events); //Decode to array of objects
-	$collection = json_decode($collection);
-	
-	$sleepfrom = str_replace(":", "", $collection->sleepfrom); //Från möjligt 00:00 format till 0000 format
-	$sleepto = str_replace(":", "", $collection->sleepto);
-
-	function getDays($d, $collection) { //Tar emot dagens datum och returnerar true om man inte vill plugga den dagen, false om man vill
+function getDays($d, $collection) { //Tar emot dagens datum och returnerar true om man inte vill plugga den dagen, false om man vill
 		$wD[] = array();
 		if (property_exists($collection,"Monday")) {
 			array_push($wD, 'Monday');
@@ -37,6 +28,14 @@ function analyze ($events, $collection) {
 		}
 		return false;
 	}
+
+//$events = encoded json array of objects of events, $collection = encoded json object of collection
+function analyze ($events, $collection) {
+	$e = json_decode($events); //Decode to array of objects
+	$collection = json_decode($collection);
+	
+	$sleepfrom = str_replace(":", "", $collection->sleepfrom); //Från möjligt 00:00 format till 0000 format
+	$sleepto = str_replace(":", "", $collection->sleepto);
 
 	$count = count($e);
 	//Denna for loop fixar dagar man ej vill plugga
@@ -248,7 +247,6 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 				unset($e[$x]);
 				$e = array_values($e);
 				$u = true;
-				$x--;
 				$y--;
 			}	//Om avail börjar innan men rest klart
 			if($e[$x]->DTSTART < $pause1end && $e[$x]->DTEND > $pause1end && !$u){
@@ -258,7 +256,6 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 				unset($e[$x]);
 				$e = array_values($e);
 				$u = true;
-				$x--;
 				$y--;
 			} //Om avail slutar efter man måste rest till nästa !avail event 
 			if ($e[$x]->DTEND > $pause2start && $e[$x]->DTEND <= $e[$y]->DTSTART && !$u) {

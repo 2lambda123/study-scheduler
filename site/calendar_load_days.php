@@ -1,5 +1,5 @@
 <?php
-  include "gen_cal.php";
+  include_once "gen_cal.php";
 
   function print_dates($day) {
     echo "<p>$day <br></p>" . assign_date($day, -2);
@@ -27,9 +27,8 @@
 
   function position($day)
 	{
-		include_once "gen_cal.php";
-		$date1 = '20170417T000000Z';
-		$date2 = '20170424T000000Z';
+		$date1 = '20170508T000000Z';
+		$date2 = '20170514T000000Z';
 		$arr = gen_week($date1,$date2);
 
 		$length = count($arr);

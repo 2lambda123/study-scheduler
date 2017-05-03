@@ -1,16 +1,19 @@
 <?php
-include 'Analyze.php';
-include 'export.php';
-/*
+
 //TEST DATA
-$f = free_time_with_events("https://www.kth.se/social/user/214547/icalendar/0762dd2a35085a9f36558bc2907bacdf87e8a1f7");
+/*$f = free_time_with_events("https://www.kth.se/social/user/214547/icalendar/0762dd2a35085a9f36558bc2907bacdf87e8a1f7");
 $courses = '[{"coursecode":"ID1003","exam":"on","hp_exam":"5","coursestart":"2017-05-03","courseend":"2017-05-19","hp_lab":"","numberoflabs":"","":"Assignment","startdate1":"2017-04-01","enddate1":"2017-04-30","hp_work1":"2"}]';
 $collection = '{"Saturday":"on","Sunday":"on","sleepfrom":"23:00","sleepto":"08:00","traveltime":"30","studylength":"60","breaktime":"15"}';
+//echo $f;
 $a = analyze($f, $collection); //Haralds schema
 //echo $a;
-$cal = json_encode(distribute($a, $courses, $collection));
-echo $cal;*/
-//export($cal);
+$cal = distribute($a, $courses, $collection);
+//echo $cal;
+export($cal);*/
+
+include_once '../scripts/Analyze.php';
+include_once '../scripts/find.php';
+include_once '../scripts/export.php';
 
 function dailyWork($start_date, $end_date, $encoded_json, $hp){
   $start_year = (int)substr($start_date, 0, 4);
@@ -213,7 +216,7 @@ function distribute($calendar_encoded, $courses_encoded, $collection_encoded){ /
       $repeat = true;
     }
 
-    if (strcmp($courses_decoded["lab"], "on") == 0){ // lab
+    if (isset($courses_decoded["lab"])){ // lab
       $labs = (int) $courses_decoded["numberoflabs"];
       $start = $courses_decoded["coursestart"];
       $found = 0;
@@ -239,7 +242,7 @@ function distribute($calendar_encoded, $courses_encoded, $collection_encoded){ /
     }
 
 	$cw = 1; // not TENTA or lab ->
-	while($courses_decoded["coursework" . $cw]){ //As long as there is coursework to insert
+	while(isset($courses_decoded["coursework" . $cw])){ //As long as there is coursework to insert
 	  $courseWork = dailyWork($courses_decoded["coursestart" . $cw], $courses_decoded["courseend" . $cw], $collection_encoded, $courses_decoded["hp_work" . $cw]);
 	  $calendar_decoded = distributeWork($calendar_decoded, $courses_decoded, $courseWork, days($collection_encoded), "Study for " . $courses_decoded["coursework" . $cw], $courses_decoded["startdate". $cw], $collection_decoded, $repeat);
 	  $cw++;
@@ -247,7 +250,7 @@ function distribute($calendar_encoded, $courses_encoded, $collection_encoded){ /
 	}
 
   }
-  return $calendar_decoded;
+  return json_encode($calendar_decoded);
 }
 
 // from $courses_decoded we will get start and end date. $examWork will be calculated in 'distribute'
@@ -259,8 +262,9 @@ function distributeWork($calendar_decoded, $courses_decoded, $examWork, $working
   $start_dt = convertDate($start); //converts $start to DT format
   $end_dt = convertDate($courses_decoded["courseend"]);
   while(strcmp(substr($calendar_decoded[$x]["DTSTART"],0,8),$start_dt) < 0) //loops as long as event DTSTART is less than $start_dt
-    $x++;
-
+  {
+    $x++; //echo $calendar_decoded[$x]['DTSTART'] . " | " . $start_dt . "<br>";
+  }
   $firstSunday = firstSunday($start); // first sunday in normal format.
   $weekEnd = convertDate($firstSunday); //convert to DT TODO:firstSunday return in DT
   while($x < $count) {//loops through calendar (new week)
