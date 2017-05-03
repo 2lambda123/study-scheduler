@@ -23,6 +23,7 @@
     height: 50%;
     border-radius: 6px;
     box-shadow: 10px 10px 5px #888888;
+	
 }
 
 .close {
@@ -39,7 +40,7 @@
   background-color: rgba(0,0,0,0.1);
 }
 
-#submit{
+.submit{
     padding: 5px;
     border: 1px solid transparent;
     border-radius:4px;
@@ -53,6 +54,6 @@
     right: 20px;
     cursor: pointer;
 }
-#submit:hover{
+.submit:hover{
   background-color: rgba(0,0,0,0.1);
 }
