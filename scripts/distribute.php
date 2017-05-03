@@ -1,13 +1,17 @@
 <?php
 include 'Analyze.php';
 include 'export.php';
-/*  //TEST DATA
+/*
+//TEST DATA
 $f = free_time_with_events("https://www.kth.se/social/user/214547/icalendar/0762dd2a35085a9f36558bc2907bacdf87e8a1f7");
-$courses = ['{"coursecode":"ID1003","exam":"on","hp_exam":"5","coursestart":"2017-05-01","courseend":"2017-06-24","hp_lab":"","numberoflabs":"","":"Assignment","startdate1":"2017-04-01","enddate1":"2017-04-30","hp_work1":"2"}'];
+$courses = '[{"coursecode":"ID1003","exam":"on","hp_exam":"5","coursestart":"2017-05-03","courseend":"2017-05-19","hp_lab":"","numberoflabs":"","":"Assignment","startdate1":"2017-04-01","enddate1":"2017-04-30","hp_work1":"2"}]';
 $collection = '{"Saturday":"on","Sunday":"on","sleepfrom":"23:00","sleepto":"08:00","traveltime":"30","studylength":"60","breaktime":"15"}';
 $a = analyze($f, $collection); //Haralds schema
 //echo $a;
-echo json_encode(distribute($a, $courses, $collection));*/
+$cal = json_encode(distribute($a, $courses, $collection));
+echo $cal;*/
+//export($cal);
+
 function dailyWork($start_date, $end_date, $encoded_json, $hp){
   $start_year = (int)substr($start_date, 0, 4);
   $start_month = (int)substr($start_date,5, 2);
@@ -194,14 +198,16 @@ function minutesToHour($dtstart,$minutes){ //takes dtstart and minutes and retur
 }
 
 //courses is an array consisting of one or more encoded courses
-function distribute($calendar_encoded, $courses, $collection_encoded){ // distributes time for ONE course, collection checks how many days to work
+function distribute($calendar_encoded, $courses_encoded, $collection_encoded){ // distributes time for ONE course, collection checks how many days to work
   $courses = json_decode($courses_encoded, true);
+  //var_dump($courses);
   foreach($courses as $courses_decoded){ // loop through every course, $courses is all the courses from database
 	  $collection_decoded = json_decode($collection_encoded, true);
     $repeat = false;
 
     if (strcmp($courses_decoded["exam"], "on") == 0){ //TENTA
       $examWork = dailyWork($courses_decoded["coursestart"], $courses_decoded["courseend"], $collection_encoded, $courses_decoded["hp_exam"]);
+      //echo "EXAMWORK: " . $examWork . "<br>";
       $calendar_decoded = json_decode($calendar_encoded, true);
       $calendar_decoded = distributeWork($calendar_decoded, $courses_decoded, $examWork, days($collection_encoded), "Course study",$courses_decoded["coursestart"], $collection_decoded, $repeat);
       $repeat = true;
