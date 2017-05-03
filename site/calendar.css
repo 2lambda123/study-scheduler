@@ -57,6 +57,7 @@ th {
 }
 
 .event {
+	background-color: #067FE3;
 	float: left;
   word-break: break-word;
   outline: 2px groove black;
@@ -73,12 +74,11 @@ th {
 }
 
 .KTH {
-  background-color:blue;
+  background-color:#fa5050;
 }
 
 .Other
 {
-	
 }
 
 #changeEvent {
