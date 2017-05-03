@@ -24,7 +24,9 @@
 	$result1 = $result1[0]['ROUTINES'];
 	$result2 = $result2[0]['COURSES'];
 	$f = free_time_with_events($result);
+	//var_dump($f);
 	$f = analyze($f, $result1);
+	//var_dump($f);
 	$f = distribute($f, $result2, $result1);
 	
 	global $next;

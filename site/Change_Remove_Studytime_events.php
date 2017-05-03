@@ -1,9 +1,9 @@
 <?php
  include "popupEvent.php"; 
- 
+ $html = "";
   if($_POST["JSON"]){
     $event = json_decode($_POST["JSON"], false);	
-
+	$html = "";
     $html .= '<form action="ReceiveChanges.php" method="POST" class = "changeForm">';
     $html .= '<h5> '. $event->SUMMARY .' </h5> <h3> <br> Would you like to change or remove this event? </h3>';
     $html .= '<input type = "radio" name = "remove" value = "1" checked>Remove event <br>';
