@@ -16,10 +16,18 @@
 	function collect($date_start, $date_end) {
 		include_once '../scripts/DB.php';
 		include_once '../scripts/find.php';
-
+		include_once '../scripts/Analyze.php';
+		include_once '../scripts/distribute.php';
+		
 		$db = new DB();
 		$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
-		$file = json_decode($result[0]['CURRENT']);
+		$result1 = $db -> select("SELECT ROUTINES FROM data WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+		$result2 = $db -> select("SELECT COURSES FROM data WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+		$result = $result[0]['CURRENT'];
+		$result1 = $result1[0]['ROUTINES'];
+		$result2 = $result2[0]['COURSES'];
+		
+		$file = distribute(analyze(free_time_with_events($result), $result1), $result2, $result1);
 		//$file = json_decode(downloadFile("https://www.kth.se/social/user/214560/icalendar/511554f518e0f69696d2f76a1df75f49427b6471"));
 		$events = array();
 		foreach($file as $event) {

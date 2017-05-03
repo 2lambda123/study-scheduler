@@ -1,6 +1,6 @@
 <?php
 
-include 'find.php';
+include_once 'find.php';
 //$events = encoded json array of objects of events, $collection = encoded json object of collection
 function analyze ($events, $collection) {
 	$e = json_decode($events); //Decode to array of objects
@@ -267,6 +267,4 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 		}
 	}
 }
-
-echo analyze(free_time_with_events(downloadFile('https://www.kth.se/social/user/214547/icalendar/0762dd2a35085a9f36558bc2907bacdf87e8a1f7')), '{"Monday":"on","Wednesday":"on","sleepfrom":"22:00","sleepto":"06:00","traveltime":"60","studylength":"60","breaktime":"15"}');
 ?>
