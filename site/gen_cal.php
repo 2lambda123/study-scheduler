@@ -23,8 +23,10 @@
 	$result = $result[0]['CURRENT'];
 	$result1 = $result1[0]['ROUTINES'];
 	$result2 = $result2[0]['COURSES'];
-	$f = free_time_with_events($result);
-	//var_dump($f);
+	$f = json_decode(free_time_with_events($result), false);
+	foreach ($f as $e) {
+		echo $e->DTSTART . " - " . $e->DTEND . " | " . $e->AVAILABLE . "<br>";
+	}
 	$f = analyze($f, $result1);
 	//var_dump($f);
 	$f = distribute($f, $result2, $result1);

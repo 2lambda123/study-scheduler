@@ -4,7 +4,7 @@ include_once 'find.php';
 //$events = encoded json array of objects of events, $collection = encoded json object of collection
 function analyze ($events, $collection) {
 	$e = json_decode($events); //Decode to array of objects
-	$collection = json_decode($collection);
+	$collection = json_decode($collection, false);
 	
 	$sleepfrom = str_replace(":", "", $collection->sleepfrom); //Från möjligt 00:00 format till 0000 format
 	$sleepto = str_replace(":", "", $collection->sleepto);
@@ -66,8 +66,7 @@ function analyze ($events, $collection) {
 						$last = true;
 					}
 				}
-				
-				$date = date('Ymd', strtotime($date .' +1 day'));
+				$date = date('Ymd', strtotime(substr($date, 0, 8) .' +1 day'));
 				$date = $date . "T" . $sleepto . "00Z";
 			}
 			if (getDays($e[$i]->DTEND, $collection)) {
