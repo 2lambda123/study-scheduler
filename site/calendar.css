@@ -1,48 +1,55 @@
-#weekHead {
-  font-size: 32px;
-  font-weight: bold;
-  padding-top: 100px;
-  padding-bottom: 50px;
+#weekHead 
+{
+	font-size: 32px;
+	font-weight: bold;
+	padding-top: 100px;
+	padding-bottom: 50px;
 }
 
-table, tr, td{
+table, tr, td
+{
 	border: 1px solid black;
 }
 
 th {
-  padding: 10px 10px 10px 10px;
-  text-align: center
+	padding: 10px 10px 10px 10px;
+	text-align: center
 }
 
-#calendar{
+#calendar
+{
 	padding: 10px 14px;
 	background-color:#ccc;
-  table-layout: fixed;
+	table-layout: fixed;
 	border-radius: 25px;
-  width: 80%;
-  margin: auto;
+	width: 80%;
+	margin: auto;
 }
 
-.box{
-  height: 1080px;
-  margin: 0px auto;
+.box
+{
+	/*One box for each of the 7 days of the week */
+	height: 1080px;
+	margin: 0px auto;
 }
 
-.days{
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  background-color: #666;
-  color: black;
-  overflow: hidden;
+.days
+{
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	background-color: #666;
+	color: black;
+	overflow: hidden;
 }
 
-.item{
-  width: 100%;
-  height: 100%;
+.item
+{
+	width: 100%;
+	height: 100%;
 }
 
 .event:hover
@@ -56,32 +63,39 @@ th {
    width: 100% !important;
 }
 
-.event {
+.event 
+{
 	background-color: #067FE3;
 	float: left;
-  word-break: break-word;
-  outline: 2px groove black;
-  overflow: hidden;
-  font-family: "Times New Roman", Times, serif;
+	word-break: break-word; 
+	outline: 2px groove black;
+	overflow: hidden;
+	font-family: "Times New Roman", Times, serif;
   }
 
-.SUMMARY{
-  font-weight: bold;
+.SUMMARY
+{
+	font-weight: bold;
 }
 
-.day{
+.day
+{
 	height: 100%
 }
 
-.KTH {
-  background-color:#fa5050;
+.KTH  
+/* KTH events */
+ {
+	background-color:#fa5050;
 }
 
 .Other
+/* non-KTH events */
 {
 }
 
-#changeEvent {
+#changeEvent 
+{
     display: block; /* Show block */
     position: fixed; /* Stay in place */
     z-index: 3; /* Sit on top */
