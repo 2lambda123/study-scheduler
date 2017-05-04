@@ -10,6 +10,7 @@
 <script type="text/javascript" src="ajax.js" defer></script>
 <?php include "calendar_load_days.php" ?>
 <?php include "popupEvent.php" ?>
+<?php include 'menubar.php'; ?>
 </head>
 
 
@@ -34,10 +35,11 @@
   </div>
 
   <!-- Calendar table, displays the calendar itself. -->
-  	  <table  id="calendar">
-                   <?php assign_weekHead(getfirstday(0)); ?>
-                  <?php assign_weekEvent(getfirstday(0)); ?>
-	  </table>
+  <table  id="calendar">
+    <!-- Displaying the current weeks calendar --->
+    <?php assign_weekHead(getfirstday(0)); ?>
+    <?php assign_weekEvent(getfirstday(0)); ?>
+	</table>
 
 </body>
 </html>

@@ -1,9 +1,6 @@
 <?php
-include 'importCal.php';
-
 function labFind($file){  //Formats the calenderfile with importCal
-  $e = downloadFile($file);
-  $e = json_decode($e);
+  $e = json_decode($file);
   // Find all with SUMMARY with the word "Laboration" in it
   $eLabs = array();
   for($i = 0; $i < count($e); $i++){

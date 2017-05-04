@@ -8,7 +8,8 @@ $(document).on('click','.edit', function(event)
 		data: "name="+this.parentElement.parentElement.className,
 		success: function(data){
 			console.log(data);
-			if(data == 0){
+			if(data == 1)
+			{
 				$.ajax({
 					type: 'POST',
 					url: "Change_Remove_Studytime_events.php",
@@ -17,6 +18,17 @@ $(document).on('click','.edit', function(event)
 				})
 
 			}
+			else
+			{
+				$.ajax({
+					type: 'POST',
+					url: "change_kth_form.php",
+					data: "JSON="+json,
+					success: function(data){document.body.innerHTML+=data}
+				})
+
+			}
+
 		}
 	})
 });
@@ -30,17 +42,11 @@ $(document).on('submit', "form", function(event){
 		data: send,
 		success: function(data)
 		{
-
 			console.log(data);
 
-			$.ajax
-			({
-				type: 'POST',
-				url: "Distribute_Leftover_time.php",
-				data: send,
-				success: function(dator){ console.log(dator);}
-			})
+			document.getElementById("modal").outerHTML=null;
 
+		console.log(data);
 		}
 	})
 });

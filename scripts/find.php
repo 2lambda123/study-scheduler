@@ -1,22 +1,19 @@
 <?php
 
-include 'importCal.php';
-include 'modify.php';
+include_once 'importCal.php';
+include_once 'modify.php';
 
-function gen_free_time_file($file) {
-	$file_content = file_get_contents($file);
-	return gen_free_time($file_content);
-}
 date_default_timezone_set('UTC');//The calendar file has the timezone UTC
 
 function eventTimeFloat($tid){//Converts for example 20170124T120000Z to 2017012412000 as an float (overflow with int)
 		return floatval(substr($tid, 0, 8).substr($tid, 9, 4));
 }
 
-function gen_free_time($file){
-	$cal = importCal($file);
+function gen_free_time($file, $start=1){
+	$cal = $file;
 	$eventArray = json_decode($cal, true);
 	$now = date('Ymd').'T'.date('H').'00'.substr($eventArray[0]["DTSTART"],-3,3);
+	if ($start !== 1) { $now = $start; }
 	$new_times = array();
 	$tempstart = $now;
 	$eventS = null;//When the event starts
@@ -26,7 +23,6 @@ function gen_free_time($file){
 			$eventS = $eventArray[$i-1]["DTSTART"];
 			$eventE = $eventArray[$i-1]["DTEND"];
 			$check = true;
-			echo $eventS;
 
 			if(floatval(substr($eventS, 0, 8)) == floatval(substr($eventArray[$i]["DTSTART"], 0, 8))){
 					while($check && isset($eventArray[$i + 1])){//This loop is to check if there are any overlapping events
@@ -67,14 +63,14 @@ function gen_free_time($file){
 					$e1->AVAILABLE = true;
 					//var_dump($e1);
 					array_push($new_times, $e1);
-					
+
 					$e2 = new event;
 					$e2->DTSTART = substr($eventArray[$i]["DTSTART"],0,8)."T0000".substr($eventE,-3,3);
 					$e2->DTEND = $eventArray[$i]["DTSTART"];
 					$e2->AVAILABLE = true;
 					//var_dump($e2);
 					array_push($new_times, $e2);
-					
+
 				}
 				else {
 					$e = new event;
@@ -89,13 +85,13 @@ function gen_free_time($file){
 	return json_encode($new_times);
 }
 
-function free_time_with_events($schedule){
-
-	$freeTime = json_decode(gen_free_time_file($schedule));//Get free times
-	$schema = downloadFile($schedule);//Get the events of calendar
+function free_time_with_events($schedule, $start = 1){
+	$freeTime = json_decode(gen_free_time($schedule), $start);//Get free times
+	$schema = $schedule;//Get the events of calendar
 	foreach ($freeTime as $key) {//Merge both togheter
 		$schema = modify($schema, json_encode($key));
 	}
 	return $schema;
 }
+
 ?>

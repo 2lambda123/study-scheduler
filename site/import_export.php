@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
-<title>Routines</title>
+<title>Import &amp; Export</title>
 <link href="menubar.css" rel="stylesheet">
 
 <body>
   <?php include 'menubar.php'; ?>
-  <h1>Personal Routines</h1>
-  <?php include 'data_collection/collectionform.html'; ?>
+  <h1>Import &amp; Export</h1>
 </body>

@@ -1,5 +1,12 @@
 <?php
-  include "gen_cal.php";
+  include_once "gen_cal.php";
+
+  /*getfirstday takes in a number value that represents a week
+  and returns the date of the Monday of the chosen week in YYYYMMDDT000000Z format.
+
+  - value = 0 --> Current weeks monday.
+  - value > 0 --> The coming weeks monday, counting from the current week. Ex. value = 1 --> next week monday.
+  - value < 0 --> The  previous weeks, counting from the current week. Ex. value = -2 previous previous week monday. */
 
   function getfirstday($week) {
       if($week < 0) {
@@ -21,6 +28,9 @@
       }
   }
 
+  /*assign_weekHead receives the monday of the interested week in YYYYMMDDT000000Z format
+  and returns a string with HTML tags <tr> and <th> that displays the dates and weekdays of the week in interest on the calendar table*/
+
   function assign_weekHead($firstday) {
     $html = "<tr text-align='center'>";
     $str = substr($firstday, 0, 8);
@@ -33,6 +43,9 @@
     $html .= "</tr>";
     echo $html;
     }
+
+    /*assign_weekEvent receieves the monday of the interested week in YYYYMMDDT000000Z format
+    and returns a string with HTML tags <tr> and <td> that displays the events of the week in interest on the calendar table*/
 
     function assign_weekEvent($firstday) {
       $html="<tr>";

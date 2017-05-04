@@ -1,17 +1,14 @@
 <?php
-$user = "labs";
-include 'importCal.php';
-$e = json_decode(downloadFile("MedLabbar.ics"));
+include 'DB.php';
+
+$db = new DB();
+$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+$e = json_decode($result[0]['STUDY']);
 $count = count($e);
 
-
-
-$post_string = json_encode($_POST);
-echo "<script type='text/javascript'>alert('$post_string');</script>";
 //	Puts the DTSTART of the desired labs in an array
 for ($i = 0; $i < $count; $i++) {
-	if (!in_array($e[$i]->DTSTART, $_POST) || strstr($e[$i]->SUMMARY, 'Laboration') == false) {
-		//echo $e[$i]->SUMMARY;
+	if (!in_array($e[$i]->DTSTART, $_POST['lab']) && strstr($e[$i]->SUMMARY, 'Laboration')) {
 		unset($e[$i]);
 		$e = array_values($e);
 		$i--;
@@ -19,6 +16,5 @@ for ($i = 0; $i < $count; $i++) {
 	}
 }
 
-file_put_contents($user.='.txt',json_encode($e));
-
+$db -> query("UPDATE calendar SET CURRENT='" . json_encode($e) . "' WHERE ID = 'c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
 ?>

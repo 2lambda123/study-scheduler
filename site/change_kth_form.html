@@ -1,9 +1,15 @@
+<?php
+ include "popupEvent.php"; 
+
+
 <form action="edit_kth.php" method="POST">
 <h4>Change of plan?<h4>
 
 	
-  <input type="radio" name="st" value="study" checked> I want to skip this event and spend the time studying instead.<br>
+ $html = '<input type="radio" name="st" value="study" checked> I want to skip this event and spend the time studying instead.<br>'
   <input type="radio" name="st" value="del"> I want to skip this event do some other activity (not studying).<br>
   <input type="submit"/>
 
 </form>
+
+?>

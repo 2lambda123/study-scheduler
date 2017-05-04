@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
-<title>Routines</title>
+<title>Courses</title>
 <link href="menubar.css" rel="stylesheet">
 
 <body>
   <?php include 'menubar.php'; ?>
-  <h1>Personal Routines</h1>
-  <?php include 'data_collection/collectionform.html'; ?>
+  <h1>Courses</h1>
+  <?php include '../scripts/courses.php'; ?>
+
 </body>
