@@ -86,7 +86,7 @@ function gen_free_time($file, $start=1){
 }
 
 function free_time_with_events($schedule, $start = 1){
-	$freeTime = json_decode(gen_free_time($schedule, $start));//Get free times
+	$freeTime = json_decode(gen_free_time($schedule), $start);//Get free times
 	$schema = $schedule;//Get the events of calendar
 	foreach ($freeTime as $key) {//Merge both togheter
 		$schema = modify($schema, json_encode($key));

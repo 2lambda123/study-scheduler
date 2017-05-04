@@ -1,10 +1,10 @@
 <?php
 
-include 'find.php';
+include_once 'find.php';
 //$events = encoded json array of objects of events, $collection = encoded json object of collection
 function analyze ($events, $collection) {
 	$e = json_decode($events); //Decode to array of objects
-	$collection = json_decode($collection);
+	$collection = json_decode($collection, false);
 	
 	$sleepfrom = str_replace(":", "", $collection->sleepfrom); //Från möjligt 00:00 format till 0000 format
 	$sleepto = str_replace(":", "", $collection->sleepto);
@@ -37,7 +37,6 @@ function analyze ($events, $collection) {
 		}
 		return false;
 	}
-
 	$count = count($e);
 	//Denna for loop fixar dagar man ej vill plugga
 	for ($i = 0; $i < $count; $i++) {
@@ -56,20 +55,19 @@ function analyze ($events, $collection) {
 						$avEvent->LOCATION = $e[$i]->LOCATION;
 						$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
 
-						$e[$i]->DTSTART = date('Ymd', strtotime(substr($date, 0, 8) . "+1 day")) . "T000000Z";
+						$e[$i]->DTSTART = date('Ymd', strtotime(substr($date, 0, 8) . "+1 day")) . "T" . $sleepto . "00Z";
 						array_splice($e, $i, 0, array($avEvent));
 						$last = false;
 					} else {
-						$e[$i]->DTSTART = date('Ymd', strtotime(substr($date, 0, 8) . "+1 day")) . "T000000Z";
+						$e[$i]->DTSTART = date('Ymd', strtotime(substr($date, 0, 8) . "+1 day")) . "T" . $sleepto . "00Z";
 					}
 				} else {
 					if (!$last) {
 						$last = true;
 					}
 				}
-				
-				$date = date('Ymd', strtotime($date .' +1 day'));
-				$date = $date . "T0000Z";
+				$date = date('Ymd', strtotime(substr($date, 0, 8) .' +1 day'));
+				$date = $date . "T" . $sleepto . "00Z";
 			}
 			if (getDays($e[$i]->DTEND, $collection)) {
 				if ($last){
@@ -112,33 +110,38 @@ function analyze ($events, $collection) {
 					$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
 					$avEvent->LOCATION = $e[$i]->LOCATION;
 					$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
-
+					
 					$e[$i]->DTEND = $sleepfrom;
 					array_splice($e, $i+1, 0, array($avEvent));
 				}
 
 			} else {
 				$t = 0;
+				$date = substr($e[$i]->DTSTART, 0, 8);
 				while ($t <= 1) {
 					if ($sleepfrom > 2400 && $sleepto > 2400) {
 						$sleepfrom = substr($sleepfrom, 9, 4);
 						$sleepto = substr($sleepto, 9, 4);
 					}
 					if ($t == 0) {
-						$sleepfrom = date('Ymd', strtotime(substr($e[$i]->DTSTART, 0, 8) . "-1 day")) . "T" . $sleepfrom . "Z";
-						$sleepto = date('Ymd', strtotime(substr($e[$i]->DTSTART, 0, 8))) . "T" . $sleepto . "Z";
+						$sleepfrom = date('Ymd', strtotime($date . "-1 day")) . "T" . $sleepfrom . "Z";
+						$sleepto = date('Ymd', strtotime($date)) . "T" . $sleepto . "Z";
 					} else {
-						$sleepfrom = date('Ymd', strtotime(substr($e[$i]->DTSTART, 0, 8))) . "T" . $sleepfrom . "Z";
-						$sleepto = date('Ymd', strtotime(substr($e[$i]->DTSTART, 0, 8). "+1 day")) . "T" . $sleepto . "Z";
+						$sleepfrom = date('Ymd', strtotime($date)) . "T" . $sleepfrom . "Z";
+						$sleepto = date('Ymd', strtotime($date . "+1 day")) . "T" . $sleepto . "Z";
 					}
-
+					//echo $e[$i]->DTSTART . $e[$i]->AVAILABLE .  " | " . $sleepfrom . " | " . $sleepto . "<br>" . $t . "<br>";
 					if ($e[$i]->DTSTART < $sleepfrom && $e[$i]->DTEND > $sleepfrom && $e[$i]->DTEND <= $sleepto) {
 						$e[$i]->DTEND = $sleepfrom;
-					} else if ($e[$i]->DTSTART >= $sleepfrom && $e[$i]->DTEND <= $sleepto) {
+						//echo "sleepfrom<br>";
+					} else if ($e[$i]->DTSTART >= $sleepfrom && $e[$i]->DTEND <= $sleepto && $e[$i]->DTSTART <= $sleepto && $e[$i]->DTEND >= $sleepfrom) {
 						unset($e[$i]);
 						$e = array_values($e);
+						$i--;
+						//echo "unset<br>";
 					} else if ($e[$i]->DTSTART >= $sleepfrom && $e[$i]->DTSTART < $sleepto && $e[$i]->DTEND > $sleepto) {
 						$e[$i]->DTSTART = $sleepto;
+						//echo "sleepto<br>";
 					} else if ($e[$i]->DTSTART < $sleepfrom && $e[$i]->DTEND > $sleepto) {
 						//Splitta och behåll efter samt innan sova
 						$avEvent = new stdClass();
@@ -149,16 +152,26 @@ function analyze ($events, $collection) {
 						$avEvent->DESCRIPTION = $e[$i]->DESCRIPTION;
 						$avEvent->LOCATION = $e[$i]->LOCATION;
 						$avEvent->AVAILABLE = $e[$i]->AVAILABLE;
-
+						
 						$e[$i]->DTEND = $sleepfrom;
 						array_splice($e, $i+1, 0, array($avEvent));
+						//echo "split<br>";
 					}
+					//echo $e[$i]->DTSTART . $e[$i]->AVAILABLE  . "<br>" . $t . "<br>";
 					$t++;
 				}
 			}
 		}
 		$count = count($e);
+	}/*if (substr($e[$i]->DTSTART, 9, 4) == "0000") {
+							var_dump($e[$i]);
+						}*/
+	foreach ($e as $ev) {
+		if (substr($ev->DTSTART, 9, 4) == "0000") {
+			var_dump($ev);
+		}
 	}
+	
 
 	$firstEvent = true;
 	$lastEvent;
@@ -248,7 +261,6 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 				unset($e[$x]);
 				$e = array_values($e);
 				$u = true;
-				$x--;
 				$y--;
 			}	//Om avail börjar innan men rest klart
 			if($e[$x]->DTSTART < $pause1end && $e[$x]->DTEND > $pause1end && !$u){
@@ -258,7 +270,6 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 				unset($e[$x]);
 				$e = array_values($e);
 				$u = true;
-				$x--;
 				$y--;
 			} //Om avail slutar efter man måste rest till nästa !avail event 
 			if ($e[$x]->DTEND > $pause2start && $e[$x]->DTEND <= $e[$y]->DTSTART && !$u) {
@@ -267,6 +278,4 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 		}
 	}
 }
-
-echo analyze(free_time_with_events(downloadFile('https://www.kth.se/social/user/214547/icalendar/0762dd2a35085a9f36558bc2907bacdf87e8a1f7')), '{"Monday":"on","Wednesday":"on","sleepfrom":"22:00","sleepto":"06:00","traveltime":"60","studylength":"60","breaktime":"15"}');
 ?>

@@ -1,7 +1,7 @@
 <?php
 
 /*** ICS IS EXTREMELY SENSITIVE TO LINE BREAKS AND WHITESPACES ***/
-function export($json_string, $file){ //takes a massive json string and writes to the file "calendar.ics" in ics format.
+function export($json_string){ //takes a massive json string and writes to the file "calendar.ics" in ics format.
   $cal = fopen("calendar.ics", "w+");
   getHeader($cal);
   getEvents($json_string, $cal);
