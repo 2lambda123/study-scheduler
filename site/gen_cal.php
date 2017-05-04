@@ -16,7 +16,7 @@
 				array_push($events,$event);
 		}
 		$week = array();
-		$weeklength = cmp_day($date_start,$date_end);
+		$weeklength = 7;
 		for($i = 0; $i < $weeklength; $i++) {
 			array_push($week,array());
 		}
@@ -33,7 +33,7 @@
 		$html  = "<div class='event' style='height:$length%'>";
 		$html .= "<div class='SUMMARY'>".$event->SUMMARY."</div>";
 		$html .= "<div class='pretty_time'>".pretty_time($event->DTSTART)." - ".pretty_time($event->DTEND)."</div>";
-		
+
 		$html .= " </div>";
 
 		global $c;

@@ -15,7 +15,7 @@ $(document).on('click','.edit', function(event)
 					data: "JSON="+json,
 					success: function(data){document.body.innerHTML+=data}
 				})
-				
+
 			}
 		}
 	})
@@ -30,17 +30,46 @@ $(document).on('submit', "form", function(event){
 		data: send,
 		success: function(data)
 		{
-			
+
 			console.log(data);
-			
+
 			$.ajax
 			({
-				type: 'POST',	
+				type: 'POST',
 				url: "Distribute_Leftover_time.php",
 				data: send,
 				success: function(dator){ console.log(dator);}
-			}) 
-			
+			})
+
 		}
 	})
+});
+
+$(document).on('click', '.prev' , function(event){
+	var one = $('#whichweek').attr('value');
+	$.ajax
+	({
+		type:"POST",
+		url: "WeekButtons.php",
+		data: "key="+one,
+		success: function(send)
+		{
+				if($(this).attr('id','Next')){
+					 $('#whichweek').attr('value', Number(one)+1);
+				 }
+				 if($(this).attr('id','Prev')){
+ 					 $('#whichweek').attr('value', Number(one)-1);
+ 				 }
+				document.getElementById('calendar').innerHTML=send;
+				/*	$.ajax
+					({
+						type:"POST",
+						url: "calendar.php",
+						data: send,
+						success: function(send2) {document.getElementById('calendar').innerHTML=send}
+					})*/
+		}
+		})
+		console.log(one);
+
 });

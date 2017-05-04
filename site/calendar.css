@@ -1,11 +1,28 @@
 #weekHead {
   font-size: 32px;
   font-weight: bold;
-  padding-top: 100px;
-  padding-bottom: 50px;
 }
+#CalHead {
+  padding:3em;
+}
+#CalHead > * {
+  display:inline-block;
+}
+.prev {
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius:4px;
+  text-align: center;
+  width:100px;
+  color:#fff;
+  font-size: 15px;
+  background-color: #5bc0de;
+  cursor: pointer;
+}
+#Prev{float:left;}
+#Next{float:right;}
 
-table, tr, td{
+table, tr, td {
 	border: 1px solid black;
 }
 
@@ -79,7 +96,7 @@ th {
 
 .Other
 {
-	
+
 }
 
 #changeEvent {
