@@ -22,7 +22,7 @@ $(document).on('click','.edit', function(event)
 					data: "JSON="+json,
 					success: function(data){document.body.innerHTML+=data} //form pops up
 				})
-				
+
 			}
 			else //If a KTH event
 			{
@@ -32,9 +32,9 @@ $(document).on('click','.edit', function(event)
 					data: "JSON="+json,
 					success: function(data){document.body.innerHTML+=data} //form pops upp
 				})
-				
+
 			}
-			
+
 		}
 	})
 });
@@ -51,6 +51,7 @@ $(document).on('submit', "form", function(event){
 		data: send,
 		success: function(data)
 		{
+<<<<<<< HEAD
 			document.getElementById("modal").outerHTML=null; //close popup on submit
 			
 			//we decided that Distribute_Leftover_time is called from the scripts directly instead.
@@ -63,6 +64,42 @@ $(document).on('submit', "form", function(event){
 				success: function(dator){ console.log(dator);}
 			})  */
 			
+=======
+			console.log(data);
+
+			document.getElementById("modal").outerHTML=null;
+
+		console.log(data);
+>>>>>>> 8e7b4fafa7020a4026c29d79b7a152e94f624f6b
 		}
 	})
+});
+
+$(document).on('click', '.prev' , function(event){
+	var one = $('#whichweek').attr('value');
+	$.ajax
+	({
+		type:"POST",
+		url: "WeekButtons.php",
+		data: "key="+one,
+		success: function(send)
+		{
+				if($(this).attr('id','Next')){
+					 $('#whichweek').attr('value', Number(one)+1);
+				 }
+				 if($(this).attr('id','Prev')){
+ 					 $('#whichweek').attr('value', Number(one)-1);
+ 				 }
+				document.getElementById('calendar').innerHTML=send;
+				/*	$.ajax
+					({
+						type:"POST",
+						url: "calendar.php",
+						data: send,
+						success: function(send2) {document.getElementById('calendar').innerHTML=send}
+					})*/
+		}
+		})
+		console.log(one);
+
 });

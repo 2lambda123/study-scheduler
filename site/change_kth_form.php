@@ -16,6 +16,6 @@
     $html .= "</form>";
   
   
-  	popupGen($html);
+  	popupGen($html); //generate popup with the form
 
 ?>

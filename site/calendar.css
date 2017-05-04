@@ -1,13 +1,42 @@
+<<<<<<< HEAD
 #weekHead 
 {
 	font-size: 32px;
 	font-weight: bold;
 	padding-top: 100px;
 	padding-bottom: 50px;
+=======
+#weekHead {
+  font-size: 32px;
+  font-weight: bold;
+>>>>>>> 8e7b4fafa7020a4026c29d79b7a152e94f624f6b
 }
+#CalHead {
+  padding:3em;
+}
+#CalHead > * {
+  display:inline-block;
+}
+.prev {
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius:4px;
+  text-align: center;
+  width:100px;
+  color:#fff;
+  font-size: 15px;
+  background-color: #5bc0de;
+  cursor: pointer;
+}
+#Prev{float:left;}
+#Next{float:right;}
 
+<<<<<<< HEAD
 table, tr, td
 {
+=======
+table, tr, td {
+>>>>>>> 8e7b4fafa7020a4026c29d79b7a152e94f624f6b
 	border: 1px solid black;
 }
 
@@ -92,6 +121,7 @@ th {
 .Other
 /* non-KTH events */
 {
+	
 }
 
 #changeEvent 

@@ -2,8 +2,8 @@
 	include_once '../scripts/DB.php';
 	include_once '../scripts/distribute.php';
 	include_once '../scripts/importCal.php';
-	
-	date_default_timezone_set('UTC'); 
+
+	date_default_timezone_set('UTC');
 	function cmp_date($date1,$date2){ return cmp_date_val($date1) > cmp_date_val($date2); }
 	function cmp_date_val($date) 	{ return substr($date,0,8).substr($date,9,4); }
 	function cmp_day($date1,$date2) { return intval(substr($date2,0,8)) - intval(substr($date1,0,8)); }
@@ -30,7 +30,7 @@
 	$f = analyze($f, $result1);
 	//var_dump($f);
 	$f = distribute($f, $result2, $result1);
-	
+
 	global $next;
 	function collect($date_start, $date_end) {
 		global $f;
@@ -44,6 +44,7 @@
 		}
 		$week = array();
 		$weeklength = 7;// cmp_day($date_start,$date_end);
+
 		for($i = 0; $i < $weeklength; $i++) {
 			array_push($week,array());
 		}
@@ -67,7 +68,7 @@
 		$html  = "<div class='event' style='height:$length%'>";
 		$html .= "<div class='SUMMARY'>".$event->SUMMARY."</div>";
 		$html .= "<div class='pretty_time'>".pretty_time($event->DTSTART)." - ".pretty_time($event->DTEND)."</div>";
-		
+
 		$html .= " </div>";
 		$order   = array("\\r\\n", "\\n", "\\r");
 		$replace = ' <br />';
@@ -103,7 +104,7 @@
 			else { $next = false; }
 		}
 		for($i = 0; $i < count($events); $i++) {
-			if ($events[$i]->AVAILABLE) { } 
+			if ($events[$i]->AVAILABLE) { }
 			else {
 				if (isset($events[$i-1])) {
 					$html .= gen_event($events[$i], $events[$i-1]);
