@@ -3,7 +3,7 @@
 <head>
 <title>Calendar</title>
 <link href="menubar.css" rel="stylesheet">
-<link href='popupEvent.css' rel='stylesheet'>
+<link href='../scripts/popupEvent.css' rel='stylesheet'>
 <link href="calendar.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="../ajax/buttonAjax.js" defer></script>

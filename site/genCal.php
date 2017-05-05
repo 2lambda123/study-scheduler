@@ -7,7 +7,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 -->
 <?php
 	include_once '../scripts/DB.php';
-	include_once '../scripts/distribute.php';
+	include_once '../algorithm/distribute.php';
 	include_once '../scripts/importCal.php';
 	
 	date_default_timezone_set('UTC'); 
