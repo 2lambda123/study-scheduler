@@ -1,7 +1,7 @@
 <?php
-include_once '../scripts/Analyze.php';
-include_once '../scripts/find.php';
-include_once '../scripts/export.php';
+include_once '../algorithm/analyze.php';
+include_once '../algorithm/find.php';
+include_once '../algorithm/export.php';
 
 function dailyWork($start_date, $end_date, $encoded_json, $hp){
   $start_year = (int)substr($start_date, 0, 4);
