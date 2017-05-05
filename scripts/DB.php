@@ -51,7 +51,8 @@ class DB {
 			"ID VARCHAR(36) UNIQUE, " .
 			"HABITS TEXT, " .
 			"COURSES TEXT, " .
-			"ROUTINES TEXT)";
+			"ROUTINES TEXT, " .
+			"KTHlink TEXT)";
 			
 		if ($mysqli->query($sql)) { //Create table data, echo table created
 			echo "<br>TABLE DATA Created";
