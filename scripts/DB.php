@@ -37,7 +37,7 @@ class DB {
 		$sql = "CREATE TABLE USER (" .
 			"ID VARCHAR(36) UNIQUE, " .
 			"USERNAME VARCHAR(30) UNIQUE, " .
-			"PASSWORD VARCHAR(36), " .
+			"PASSWORD CHAR(64), " .
 			"SETTINGS TEXT, " .
 			"KTHAUTH TEXT, " .
 			"FBAUTH TEXT)";
