@@ -33,5 +33,5 @@
 	//Update database with new array of events
 	$db -> query("UPDATE calendar SET HABITS=".$db->quote(json_encode($p))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
 	
-	include 'showHabits.php';
+	include '../ajax/showHabits.php';
 ?>
