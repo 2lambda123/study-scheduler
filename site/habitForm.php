@@ -11,7 +11,7 @@ $(document).on('change', '#rep', function() {
 //Toggles visibility on the next element when clicked, used for the habits table to show events for (this) habit
 $(document).on('click', '.toggle',function(event){$(this).next().toggle();});
 </script>
-<form class="form" action='../scripts/receivePersonal.php' method='post'>
+<form class="form" action='../ajax/receivePersonal.php' method='post'>
 	<h3>New habit</h3>
 	<div>
 		Habit name: <input name="name" type="text"/><br/>

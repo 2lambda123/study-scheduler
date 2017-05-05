@@ -1,7 +1,7 @@
 <script src="../ajax/dynamic.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../ajax/ajax.js"></script>
-	<form class="form" action='../scripts/receivePersonal.php' method='post'>
+	<form class="form" action='../ajax/receivePersonal.php' method='post'>
 		<h3>New course</h3>
 		<div id="container">
 			<input type="submit"/><br/><br/>
