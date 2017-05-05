@@ -1,4 +1,6 @@
-<form action="../scripts/receivePersonal.php" method="POST">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../ajax/ajax.js"></script>
+<form class="form" action="../ajax/receivePersonal.php" method="POST">
 	<h3>Days I don't want to study:</h3>
 	<div>
 		<label for="mo"/>Monday:</label> <input type="checkbox" name="Monday" id="mo"/><br/>
