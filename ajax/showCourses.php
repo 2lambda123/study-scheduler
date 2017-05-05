@@ -21,7 +21,7 @@
 				$html .= '<th>' . $c['hp_exam'] . '</th>';
 				$html .= '<th>' . $c['hp_lab'] . '</th>';
 				$html .= '<th>' . $c['numberoflabs'] . '</th>';
-				$html .= '<th><form  class="form" action="../scripts/removeCourses.php" method="post"><input type="hidden" name="remove" value="' . $c['coursecode'] . '"><input type="submit" value="remove"></form></th>';
+				$html .= '<th><form  class="form" action="../ajax/removeCourses.php" method="post"><input type="hidden" name="remove" value="' . $c['coursecode'] . '"><input type="submit" value="remove"></form></th>';
 				$html .= '</tr>';
 			}
 		}

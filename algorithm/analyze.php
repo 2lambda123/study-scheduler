@@ -159,52 +159,42 @@ function analyze ($events, $collection) {
 					if(date('Ymd', strtotime(substr($e[$i]->DTEND, 0, 8))) !== date('Ymd', strtotime(substr($e[$y]->DTSTART, 0, 8)))){
 						$e = findAvailBetween($i,$y,$ti, $ty, $e);
 						$lastEvent = false;
-						$z = true; //Find next not available event $i
-						while ($z && $i+1 < $count) {
-							$i++;
-							if (!$e[$i]->AVAILABLE) {
-								$z = false;
-							}
-							$y = $i+1;
-						}
+						//Break out of 1 of 2 for loops
+						break 1;
 					}
-					//Check if both events are of same type; coursecoude and coursecode or habit and habit
-					else if(($e[$i]->SUMMARY == $e[$y]->SUMMARY) || (preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$i]->SUMMARY) == preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$y]->SUMMARY))){
+					//Check if both events have same name (same habit)
+					else if(($e[$i]->SUMMARY == $e[$y]->SUMMARY)) {
 						$lastEvent = false;
-						$z = true; //Find next not available event $i
-						while ($z && $i+1 < $count) {
-							$i++;
-							if (!$e[$i]->AVAILABLE) {
-								$z = false;
-							}
-							$y = $i+1;
-						}
+						//Break out of 1 of 2 for loops
+						break 1;
+					} //Check if both events are courses
+					else if (preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$i]->SUMMARY) && preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $e[$y]->SUMMARY)){
+						$lastEvent = false;
+						//Break out of 1 of 2 for loops
+						break 1;
 					}
 					//If not same type, fixes traveltimes
 					else{
 						$e = findAvailBetween($i,$y, $ti, $ty, $e);
 						$lastEvent = false;
-						$z = true; //FInd next not available event $i
-						while ($z && $i+1 < $count) {
-							$i++;
-							if (!$e[$i]->AVAILABLE) {
-								$z = false;
-							}
-							$y = $i+1;
-						}
+						//Break out of 1 of 2 for loops
+						break 1;
 					}
 					$lastEvent = false;
 				}
 				$count = count($e);
 			}
 			//Put traveltime after last event
-			if ($lastEvent) {
-				$e = findAvailBetween($i,count($e)-1,$ti, 0, $e);
-			}
 			$lastEvent = true;
 			$firstEvent = false;
 		}
 		$count = count($e);
+	}
+	if (!isset($e[$i])) {
+		$i--;
+		if ($lastEvent && !$e[$i-1]->AVAILABLE) {
+			$e = findAvailBetween($i,count($e)-1,$ti, 0, $e);
+		}
 	}
 
 	//This loop fixes breaks
@@ -247,8 +237,9 @@ function analyze ($events, $collection) {
 // $ttime1 and $ttime 2 is first and next events traveltimes, $e is array of all events
 function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 	//Count both traveltimes, $e[$i]->dtend + ttime1, $e[$y]->dtstart - ttime2
-	$pause1end = str_replace(":", "T", date("Ymd:His", strtotime("+" . $ttime1 . " minutes", strtotime(substr($e[$i]->DTEND, 0, 8) . substr($e[$i]->DTEND, 9, 6))))) . "Z"; // + $ttime1
-	$pause2start = str_replace(":", "T", date("Ymd:His", strtotime( "-" . $ttime2 . " minutes", strtotime(substr($e[$y]->DTSTART, 0, 8) . substr($e[$y]->DTSTART, 9, 6))))) . "Z"; // - $ttime2
+	$pause1end = str_replace(":", "T", date("Ymd:Hi", strtotime("+" . $ttime1 . " minutes", strtotime(substr($e[$i]->DTEND, 0, 8) . substr($e[$i]->DTEND, 9, 6))))) . "Z"; // + $ttime1
+	$pause2start = str_replace(":", "T", date("Ymd:Hi", strtotime( "-" . $ttime2 . " minutes", strtotime(substr($e[$y]->DTSTART, 0, 8) . substr($e[$y]->DTSTART, 9, 6))))) . "Z"; // - $ttime2
+	
 	for($x = $i; $x < $y; $x++){
 		if ($e[$x]->AVAILABLE) {
 			$u = false;
@@ -269,6 +260,13 @@ function findAvailBetween($i,$y,$ttime1,$ttime2, $e){
 			} //If event begins before second traveltime and ends after second traveltime
 			if ($e[$x]->DTEND > $pause2start && $e[$x]->DTEND <= $e[$y]->DTSTART && !$u) {
 				$e[$x]->DTEND = $pause2start;
+			}
+			if ($e[$x]->DTSTART >= $e[$x]->DTEND) {
+				unset($e[$x]);
+				$e = array_values($e);
+				$u = true;
+				$y--;
+				$x--;
 			}
 		}
 	}
