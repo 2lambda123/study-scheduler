@@ -1,5 +1,5 @@
 <?php
-		include_once 'DB.php';
+		include_once '../scripts/DB.php';
 		
 		$db = new DB();
 		//Gets habits from database

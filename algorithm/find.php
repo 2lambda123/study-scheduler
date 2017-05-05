@@ -1,7 +1,7 @@
 <?php
 
 include_once '../scripts/importCal.php';
-include_once '../scripts/modify.php';
+include_once '../algorithm/modify.php';
 
 //The calendar file has the timezone UTC
 date_default_timezone_set('UTC');

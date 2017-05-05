@@ -37,7 +37,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	}
 	//Update database to match new courses
 	$db -> query("UPDATE data SET COURSES=".$db->quote(json_encode($p))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
-	include 'showCourses.php';
+	include '../ajax/showCourses.php';
 } else if (isset($_POST['repetition'])) {
 	//Event with standard values
 	class event {
@@ -145,7 +145,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			
 	$r = json_decode($result[0]['HABITS'], true);
 	$p = array();
-	include_once '../scripts/modify.php';
+	include_once '../algorithm/modify.php';
 	//Add events to existing habit events
 	if(!empty($r)){
 			$r = json_encode($r);
@@ -181,7 +181,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	//Update database with new events
 	$db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($p))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
 	//Echo's table of habits, since changes have been made
-	include 'showHabits.php';
+	include '../ajax/showHabits.php';
 
 } else { //Not sent from personal routines nor courses 
 	die ('No correct form sent');

@@ -18,5 +18,5 @@
 	//Update database with new array of courses
 	$db -> query("UPDATE data SET COURSES=" . $db->quote(json_encode($p)) . " WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
 	
-	include 'showCourses.php';
+	include '../ajax/showCourses.php';
 ?>
