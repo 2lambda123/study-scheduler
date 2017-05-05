@@ -37,7 +37,7 @@ class DB {
 		$sql = "CREATE TABLE USER (" .
 			"ID VARCHAR(36) UNIQUE, " .
 			"USERNAME VARCHAR(30) UNIQUE, " .
-			"PASSWORD VARCHAR(36), " .
+			"PASSWORD CHAR(64), " .
 			"SETTINGS TEXT, " .
 			"KTHAUTH TEXT, " .
 			"FBAUTH TEXT)";
@@ -51,7 +51,8 @@ class DB {
 			"ID VARCHAR(36) UNIQUE, " .
 			"HABITS TEXT, " .
 			"COURSES TEXT, " .
-			"ROUTINES TEXT)";
+			"ROUTINES TEXT, " .
+			"KTHlink TEXT)";
 			
 		if ($mysqli->query($sql)) { //Create table data, echo table created
 			echo "<br>TABLE DATA Created";
