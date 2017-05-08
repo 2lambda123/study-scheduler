@@ -11,7 +11,9 @@
 
   <h1> Home Page </h1>
 
-    This is a website that will help maintain
-    a schedule adjusted to the users study needs.
+    <h3>This is a website that will help maintain
+    a schedule adjusted to the users study needs.</h3>
+
+  <?php include '../scripts/createUser.php'; ?>
 
 </body>

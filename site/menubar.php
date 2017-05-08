@@ -1,10 +1,10 @@
-<ul>
-    <li><a href="homepage.php">HOME </a></li>
-    <li><a href="calendar.php">CALENDAR</a></li>
-    <li><a href="personalRoutines.php">PERSONAL ROUTINES</a></li>
-	  <li><a href="habit.php">HABITS</a></li>
-	  <li><a href="course.php">COURSES</a></li>
-    <li><a href="calExpImp.php">IMPORT &amp; EXPORT</a></li>
-    <li><a href="settings.php">SETTINGS</a></li>
-    <li style="float:right"><a href="">LOGOUT</a></li>
+<ul class='menubar'>
+    <li class='menubarEntry'><a href="homepage.php">HOME </a></li>
+    <li class='menubarEntry'><a href="calendar.php">CALENDAR</a></li>
+    <li class='menubarEntry'><a href="personalRoutines.php">PERSONAL ROUTINES</a></li>
+	<li class='menubarEntry'><a href="habit.php">HABITS</a></li>
+	<li class='menubarEntry'><a href="course.php">COURSES</a></li>
+    <li class='menubarEntry'><a href="calExpImp.php">IMPORT &amp; EXPORT</a></li>
+    <li class='menubarEntry'><a href="settings.php">SETTINGS</a></li>
+    <li class='menubarEntry' id ='login'><?php include_once '../scripts/loginForm.php'?></li>
  </ul>

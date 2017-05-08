@@ -5,7 +5,7 @@ body{
   margin: 0px;
 }
 
-ul {
+.menubar {
   font-family:sans-serif, Verdana, Arial;
   list-style-type: none;
   margin: 0;
@@ -14,7 +14,7 @@ ul {
   background-color: #666;
 }
 
-li a {
+.menubarEntry > a,#login {
   display:block;
   color:white;
   text-align:center;
@@ -22,18 +22,23 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
+.menubarEntry > a:hover {
   background-color:#4d4d4d;
 }
 
-li a:visited {
+.menubarEntry > a:visited {
   color:#ffffff;
 }
 
-li {
+.menubarEntry {
   float:left;
 }
 
 .active{
   background-color:#ff6600;
+}
+
+#login {
+	float: right;
+	
 }

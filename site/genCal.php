@@ -25,13 +25,14 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 	//begin database calls, which should not actually be in this function.
 	global $f;
 	$db = new DB();
-	$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
-	$result1 = $db -> select("SELECT ROUTINES FROM data WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
-	$result2 = $db -> select("SELECT COURSES FROM data WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
-	$result = $result[0]['CURRENT'];
-	$result1 = $result1[0]['ROUTINES'];
-	$result2 = $result2[0]['COURSES'];
-	$f = free_time_with_events($result);
+	$result = null;
+	if(isset($_SESSION['uuid'])){
+		$query = "SELECT CURRENT FROM calendar WHERE ID='".$_SESSION['uuid']."'";
+		$result = $db -> select($query);
+		//var_dump($result);
+	}
+	$current = (isset($result[0]['CURRENT'])) ? $result[0]['CURRENT'] : null;
+	$f = $current;
 	//end database calls.
 	
 	function collect($date_start, $date_end) {
@@ -42,10 +43,12 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		global $f;
 		$file = json_decode($f);
 		$events = array();
-		foreach($file as $event) {
-			if(cmp_date($event->DTSTART,$date_start)
-				&& cmp_date($date_end,$event->DTEND))
-				array_push($events,$event);
+		if($file !== null) {
+			foreach($file as $event) {
+				if(cmp_date($event->DTSTART,$date_start)
+					&& cmp_date($date_end,$event->DTEND))
+					array_push($events,$event);
+			}
 		}
 		$week = array();
 		$weeklength = 7;
@@ -126,6 +129,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		*/
 		$events = collect($date1,$date2);
 		$ar = array();
+		if($events == null) return $ar;
 		foreach($events as $event){
 			array_push($ar,gen_day($event));
 		}
