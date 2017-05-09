@@ -4,10 +4,12 @@
   // If remaining studytime is equal to the available time, the studyEvent will
   // replace the available time.
   function ifEqual($studyEvent, $calendar, $i){
-    $studyEvent->DTSTART = $calendar[$i]->DTSTART;
-    $studyEvent->DTEND = $calendar[$i]->DTEND;
-    $StudyEvent->AVAILABLE = false;
-    $calender[$i] = $studyEvent;
+    if(isset($studyEvent)){
+      $studyEvent->DTSTART = $calendar[$i]->DTSTART;
+      $studyEvent->DTEND = $calendar[$i]->DTEND;
+      $studyEvent->AVAILABLE = false;
+      $calender[$i] = $studyEvent;
+    }
     return $calendar;
   }
   // If available time is bigger than the remaining studytime the studytime will
@@ -119,7 +121,7 @@ function distr_leftover($restMin, $studyEvent, $calendar){
   for($i = 0; $i<count($calendar); $i++){
     $dateCal = (intval(substr($calendar[$i]->DTSTART,0,8))* 10000) + intval(substr($calendar[$i]->DTSTART,9,4)); // y-m-d
     $dateStud = (intval(substr($studyEvent->DTSTART,0,8))* 10000) + intval(substr($studyEvent->DTSTART,9,4)); // h-min
-    if($dateCal >= $dateStud){
+    if($dateCal > $dateStud){
       $slot = $i;
       break;
     }
@@ -143,10 +145,10 @@ function distr_leftover($restMin, $studyEvent, $calendar){
       break;
     }
   }
-
+  echo $lastDate;
   $calendar = recursive_distr($restMin, $studyEvent, $calendar, $lastDate);
   $db = new DB();
-  $db -> query("UPDATE CURRENT SET calendar=".$db->quote(json_encode($calendar))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+  $db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($calendar)) ." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
 }
 
 ?>

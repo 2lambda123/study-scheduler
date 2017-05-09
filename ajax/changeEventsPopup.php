@@ -7,7 +7,7 @@
 	$html = "";
     $html .= '<form action="receiveChanges.php" method="POST" class = "changeForm">';
     $html .= '<h5> '. $event->SUMMARY .' </h5> <h3> <br> Would you like to change or remove this event? </h3>';
-    $html .= '<input type = "radio" name = "remove" value = "1" checked>Remove event <br>';
+    $html .= '<input type = "radio" name = "remove" id="remove" value = "1">Remove event <br>';
     $html .= '<input type = "radio" name = "remove"  id= "remove" value = "2">Remove &amp reschedule <br><br>';
     $html .= "Change the start/end times, stay within: " . substr($event -> DTSTART, 9, 2) . ":" . substr($event -> DTSTART, 11, 2) . " - " . substr($event -> DTEND, 9, 2) . ":" . substr($event -> DTEND, 11, 2) . "<br>";
     $html .= 'Start time: <input size = "10" type = "text" name = "newStartH" id = "newStartH" value = "' . substr($event->DTSTART, 9, 2) . '"> h &nbsp';
