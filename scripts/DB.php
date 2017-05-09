@@ -36,11 +36,13 @@ class DB {
 		//Sql for table user as per decided by database structure
 		$sql = "CREATE TABLE USER (" .
 			"ID VARCHAR(36) UNIQUE, " .
-			"USERNAME VARCHAR(30) UNIQUE, " .
+			"USERNAME VARCHAR(30), " .
 			"PASSWORD CHAR(64), " .
 			"SETTINGS TEXT, " .
 			"KTHAUTH TEXT, " .
-			"FBAUTH TEXT)";
+			"FBAUTH TEXT, " .
+			"GAUTH TEXT, " .
+			"GID TEXT)";
 			
 		if ($mysqli->query($sql)) { //Create table user, echo table created
 			echo "<br>TABLE USER Created";
