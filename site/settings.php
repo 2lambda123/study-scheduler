@@ -14,9 +14,9 @@
       <div class="menuS">Korv2</div>
       <div class="menuS">Korv3</div>
     </div>
-  <div class="pSettings" id="secSettings">Other personal settings</div>
+  <div class="pSettings" id="secSettings">Schedule</div>
     <div id="secsettings">
-      <div class="menuS">Hej1</div>
+      <div class="menuS" id="runAlgo">load algorithm</div>
       <div class="menuS">Hej2</div>
       <div class="menuS">Hej3</div>
     </div>
@@ -36,7 +36,7 @@ $(document).ready(function(){
     $("#pSettings").click(function(){
       if (menuVis1) {
         $('#psettings').css({'display':'none'});
-        menuVisible = false;
+        menuVis1 = false;
         return;
       }
       $('#psettings').css({'display':'block'});
@@ -46,14 +46,14 @@ $(document).ready(function(){
     $("#secSettings").click(function(){
       if (menuVis2) {
         $('#secsettings').css({'display':'none'});
-        menuVisible = false;
+        menuVis2 = false;
         return;
       }
       $('#secsettings').css({'display':'block'});
       menuVis2 = true;
     });
-    $("#accountS").click(function(){
-        $("#displaySettings").load('account_setting.php');
+    $("#runAlgo").click(function(){
+        $("#displaySettings").load('runAlgorithm.php');
     });
 });
 
