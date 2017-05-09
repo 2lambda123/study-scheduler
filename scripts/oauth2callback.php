@@ -3,6 +3,15 @@
 require_once '../google-api-php-client/vendor/autoload.php';
 
 session_start();
+$uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$uri = explode('/', $uri);
+$wholeURL = "http://";
+foreach ($uri as $u) {
+	if ($u == "scripts" || $u == "site" || $u == "ajax" || $u == "algorithm") {
+		break;
+	}
+	$wholeURL .= $u . "/";
+}
 
 define('SCOPES', implode(' ', array(
   Google_Service_Calendar::CALENDAR_READONLY, 
@@ -13,7 +22,7 @@ define('SCOPES', implode(' ', array(
 
 $client = new Google_Client();
 $client->setAuthConfigFile('../client_id.json');
-$client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/readyForGit/scripts/oauth2callback.php');
+$client->setRedirectUri($wholeURL . "scripts/oauth2callback.php");
 $client->addScope(SCOPES);
 $client->setAccessType('offline');
 
@@ -26,7 +35,7 @@ if (! isset($_GET['code'])) {
 } else {
   $client->authenticate($_GET['code']);
   $_SESSION['access_token'] = $client->getAccessToken();
-  $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/readyForGit/scripts/googleAPI.php';
+  $redirect_uri = $wholeURL . "scripts/googleAPI.php";
   header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
 }
 
