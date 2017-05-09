@@ -3,6 +3,10 @@ include_once '../algorithm/analyze.php';
 include_once '../algorithm/find.php';
 include_once '../algorithm/export.php';
 
+function generateUid(){
+  return uniqid("67209119184"); // IP + current string to time
+}
+
 function dailyWork($start_date, $end_date, $encoded_json, $hp){
   $start_year = (int)substr($start_date, 0, 4);
   $start_month = (int)substr($start_date,5, 2);
@@ -322,6 +326,7 @@ $weekStart = $x;
             if ($freeTime <= $examWork && $freeTime > 10){ // if the free time is shorter than study time, and at least 10 mins
               $calendar_decoded[$x+$z]["AVAILABLE"] = false;
               $calendar_decoded[$x+$z]["SUMMARY"] = "STUDY-SCHEDULER: " . $course_work . " - " . $course_code;
+              $calendar_decoded[$x+$z]["UID"] = generateUid();
               $examWork -= $freeTime;
             }
 
@@ -340,7 +345,8 @@ $weekStart = $x;
 
               $calendar_decoded[$x + $z]["AVAILABLE"] = false;
               $calendar_decoded[$x + $z]["SUMMARY"] = "STUDY-SCHEDULER: " . $course_work . " - " . $course_code;
-
+              $calendar_decoded[$x+$z]["UID"] = generateUid();
+              
               $newDT = minutesToHour($calendar_decoded[$x+$z]["DTSTART"], $work);
 
               $calendar_decoded[$x + $z]["DTEND"] = $newDT;

@@ -1,5 +1,5 @@
 <?php
-  include_once "genCal.php";
+  include_once "../site/genCal.php";
 
   /*getfirstday takes in a number value that represents a week
   and returns the date of the Monday of the chosen week in YYYYMMDDT000000Z format.

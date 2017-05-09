@@ -4,7 +4,7 @@ include_once '../scripts/DB.php';
 include '../scripts/distrChanges.php';
 $db = new DB();
 $result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
-$calendar = json_decode($result[0]['STUDY']);
+$calendar = json_decode($result[0]['CURRENT']);
 
 // Outputs the time needed to be distributed in minutes
 if(isset($_POST["remove"])){  //  If we are to remove the event from the schedule
@@ -20,21 +20,26 @@ if(isset($_POST["remove"])){  //  If we are to remove the event from the schedul
 
         //We create a temporary cal[$i] so we can send it to distrChanges
         $temp = $calendar[$i];
-        unset($calendar[$i]);
+        array_splice($calendar, $i, 1);
+
         //If we want to relocate the STUDY-SCHEDULER time
-        if($_POST["Remove"] == 2){
+        if($_POST["remove"] == 2){
           distr_leftover($diffM, $temp, json_encode($calendar));
+        }
+        else{
+          $db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($calendar)) ." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
         }
       }
       else{//If we remove a habit instead
-      unset($calendar[$i]);
-      $db -> query("UPDATE CURRENT SET calendar=".$db->quote(json_encode($calendar))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+        array_splice($calendar, $i, 1);
+        $db -> query("UPDATE calendar SET CURRENT=".$db->quote($calendar) ." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
       }
     }
   }
 }
 else{ // If we are to "cut" the event
-  if(isset($_POST["newStartH"]) || isset($_POST["newEndH"])){
+  if(isset($_POST["newStartH"]) || isset($_POST["newEndH"]) || true){
+    $event = json_decode($_POST["JSON2"], false);
     for($i = 0; $i < count($calendar); $i++){
       if($calendar[$i]->UID == $event->UID){
         //Get the new starting hour and end hour of the event
@@ -52,14 +57,19 @@ else{ // If we are to "cut" the event
         //To separate habits from course-studying (pseudo code)
         if($calendar[$i]->SUMMARY = "STUDY-SCHEDULER"){
           $temp = $calendar[$i];
-          $temp->UID = "Split new UID"; // todo: Make atual UID
+          $newUID = generateUid();//New UID for the split event
+          $temp->UID = $newUID;
           distr_leftover($diffM, $temp, json_encode($calendar));
         }
         else{
-          $db -> query("UPDATE CURRENT SET calendar=".$db->quote(json_encode($calendar))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+          $db -> query("UPDATE calendar SET CURRENT=".$db->quote($calendar) ." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
         }
       }
     }
   }
+}
+
+function generateUid(){
+  return uniqid("67209119184"); // IP + current string to time
 }
 ?>
