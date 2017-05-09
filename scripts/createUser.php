@@ -19,12 +19,14 @@ function createUser ($username, $password) {
 	//If not, insert new user with uuid, username and encrypted password
 	//Also insert new user with uuid into calendar and data table, user is then connected through tables with uuid
 	else {
-		if ($db -> query("INSERT INTO user (ID, USERNAME, PASSWORD, SETTINGS, KTHAUTH, FBAUTH) VALUES ('$UUID', $username, $password, '', '', '')")) {
+		if ($db -> query("INSERT INTO user (ID, USERNAME, PASSWORD, SETTINGS, KTHAUTH, FBAUTH, GAUTH, GID) VALUES ('$UUID', $username, $password, '', '', '', '', '')")) {
 			$sql = "INSERT INTO calendar (ID, STUDY, PERSONAL, HABITS, CURRENT) VALUES ('$UUID', '', '', '', '')";
 			if ($db -> query($sql)) {
-				$sql = "INSERT INTO data (ID, HABITS, COURSES, ROUTINES) VALUES ('$UUID', '', '', '')";
+				$sql = "INSERT INTO data (ID, HABITS, COURSES, ROUTINES, KTHlink) VALUES ('$UUID', '', '', '', '')";
 					if ($db -> query($sql)) {
 						echo "Succesfully created user";
+						session_start();
+						$_SESSION['uuid'] = $UUID;
 					}
 			}
 		}
