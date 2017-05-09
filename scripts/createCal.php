@@ -5,7 +5,8 @@ function createCal ($UUID, $KTHlink) {
 	
 	$db = new DB();
 	$CAL = downloadFile($KTHlink);
-	$sql = "UPDATE calendar SET CURRENT = ".$CAL."' WHERE ID = ".$UUID.")";
+	$CAL = $db->quote($CAL);
+	$sql = "UPDATE calendar SET CURRENT = ".$CAL." WHERE ID = '".$UUID."'";
 	if ($temp = $db -> query($sql)) {
 		echo "<br> success: ";
 		var_dump($temp);

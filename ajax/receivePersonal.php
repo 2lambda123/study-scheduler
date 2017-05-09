@@ -1,16 +1,22 @@
 <?php 
 include_once '../scripts/DB.php';
 $db = new DB();
-
+if(session_id() == "") session_start();
 //If sleepfrom exists, we have a form sent from personal routines, if coursecode exists, we have a form sent from courses
 if (isset($_POST["sleepfrom"])) { //Routines
 	//Update database to match new routines
-	$db -> query("UPDATE data SET ROUTINES=".$db->quote(json_encode($_POST))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+	if(isset($_SESSION['uuid'])){
+		$db -> query("UPDATE data SET ROUTINES=".$db->quote(json_encode($_POST))." WHERE ID='".$_SESSION['uuid']."'");
+	}
+	
 } else if (isset($_POST["coursecode"])) { //Courses
 	//Get courses from database since we have to add courses, not replace existing ones
-	$result = $db -> select("SELECT COURSES FROM data WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+	$result = null;
+	if(isset($_SESSION['uuid'])){
+		$result = $db -> select("SELECT COURSES FROM data WHERE ID='".$_SESSION['uuid']."'");
+	}
 		
-	$r = json_decode($result[0]['COURSES'], true);
+	$r = (isset($result1[0]['COURSES'])) ? json_decode($result1[0]['COURSES'], true) : null;
 	$p = array();
 	
 	//If new coursecode has same name as an existing coursecode, die and echo error message
@@ -36,7 +42,10 @@ if (isset($_POST["sleepfrom"])) { //Routines
 		}
 	}
 	//Update database to match new courses
-	$db -> query("UPDATE data SET COURSES=".$db->quote(json_encode($p))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+	if(isset($_SESSION['uuid'])){
+		$db -> query("UPDATE data SET COURSES=".$db->quote(json_encode($p))." WHERE ID='".$_SESSION['uuid']."'");
+	}
+	
 	include '../ajax/showCourses.php';
 } else if (isset($_POST['repetition'])) {
 	//Event with standard values
@@ -57,7 +66,9 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	$db = new DB();
 
 	//Get existing habits, to not overwrite existing ones
-	$result = $db -> select("SELECT HABITS FROM data WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+	if(isset($_SESSION['uuid'])){
+		$result = $db -> select("SELECT HABITS FROM data WHERE ID='".$_SESSION['uuid']."'");
+	}
 			
 	$r = json_decode($result[0]['HABITS'], true);
 	$p = array();
@@ -81,7 +92,10 @@ if (isset($_POST["sleepfrom"])) { //Routines
 		}
 	}
 	//Update database with updated habits
-	$db -> query("UPDATE data SET HABITS=".$db->quote(json_encode($p))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+	
+	if(isset($_SESSION['uuid'])){
+		$db -> query("UPDATE data SET HABITS=".$db->quote(json_encode($p))." WHERE ID='".$_SESSION['uuid']."'");
+	}
 
 	//Add chosen days from form in one array
 	$wD[] = array();
@@ -141,9 +155,12 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	}
 
 	//Get habit events from calendar
-	$result = $db -> select("SELECT HABITS FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+	$result = null;
+	if(isset($_SESSION['uuid'])){
+		$result = $db -> select("SELECT HABITS FROM calendar WHERE ID='".$_SESSION['uuid']."'");
+	}
 			
-	$r = json_decode($result[0]['HABITS'], true);
+	$r = (isset($result[0]['HABITS'])) ? json_decode($result[0]['HABITS'], true) : null;
 	$p = array();
 	include_once '../algorithm/modify.php';
 	//Add events to existing habit events
@@ -158,13 +175,18 @@ if (isset($_POST["sleepfrom"])) { //Routines
 		$p = $events;
 	}
 	//Update database with new events
-	$db -> query("UPDATE calendar SET HABITS=".$db->quote(json_encode($p))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+	if(isset($_SESSION['uuid'])){
+		$db -> query("UPDATE calendar SET HABITS=".$db->quote(json_encode($p))." WHERE ID='".$_SESSION['uuid']."'");
+	}
 
 
 	//Get current calendar
-	$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
-			
-	$r = json_decode($result[0]['CURRENT'], true);
+	$result = null;
+	if(isset($_SESSION['uuid'])){
+		$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='".$_SESSION['uuid']."'");
+	}
+		
+	$r = (isset($result[0]['CURRENT'])) ? json_decode($result[0]['CURRENT'], true) : null;
 	$p = array();
 
 	//Add new habit events into current calendar
