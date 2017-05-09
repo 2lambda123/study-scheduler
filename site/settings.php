@@ -3,17 +3,10 @@
 <title>Calendar</title>
 <link href="menubar.css" rel="stylesheet">
 <link href="settings.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../site/jquery.min.js"></script>
 <body>
-  <ul>
-    <li><a href="homepage.php">HOME </a></li>
-    <li><a href="calendar.php">CALENDAR</a></li>
-    <li><a href="personal_routines.php">PERSONAL ROUTINES</a></li>
-    <li><a href="import_export.php">IMPORT &amp; EXPORT</a></li>
-    <li><a class="active" href="settings.php">SETTINGS</a></li>
-    <li style="float:right"><a href="">LOGOUT</a></li>
-  </ul>
-  <h1>Settings</h1>
+<?php include_once "../site/menubar.php";?>
+<h1>Settings</h1>
 <div id="settingBar">
   <div class="pSettings" id="pSettings">Personal settings</div>
     <div id="psettings">
@@ -29,8 +22,12 @@
     </div>
 </div>
 <div id="displaySettings">
+<form id='submitKTHlink' action='../scripts/createCal.php' method='POST'>
+	KTHlink:<input type='text' name='KTHlink'/>
+	<input type='hidden' name='uuid' value='<?php if(isset($_SESSION['uuid'])) echo $_SESSION['uuid'];?>'/>
+	<input type='submit'/>
+</form>
 </div>
-
 <script>
 var menuVis1 = false;
 var menuVis2 = false;
@@ -58,6 +55,20 @@ $(document).ready(function(){
     $("#accountS").click(function(){
         $("#displaySettings").load('account_setting.php');
     });
+});
+
+$(document).on('submit','#submitKTHlink', function(event) {
+	event.preventDefault();
+	console.log($(this).serialize());
+	$.ajax ({
+		type: $(this).attr('method'),
+		url: $(this).attr('action'),
+		data: $(this).serialize(),
+		success: function(data){
+			console.log(data);
+			document.getElementById('submitKTHlink').innerHTML += data;
+		}
+	})
 });
 </script>
 </body>

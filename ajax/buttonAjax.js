@@ -84,6 +84,7 @@ $(document).on('click', '.weekBtn' , function(event)
 			data: "key="+steps,
 			success: function(send)
 			{
+				console.log(send);
 				document.getElementById('weekHead').innerHTML = "Week: " + week; //update weekHead with new week
 				document.getElementById('calendar').innerHTML=send; //update calendar
 				$('#calHead').attr('value', steps); //store how many weeks away from current week
@@ -106,6 +107,7 @@ $(document).on('click', '.weekBtn' , function(event)
 			data: "key="+steps,
 			success: function(send)
 			{	
+				console.log(send);
 				document.getElementById('weekHead').innerHTML = "Week: " + week; //update weekHead with new week
 				document.getElementById('calendar').innerHTML=send; //update calendar
 				$('#calHead').attr('value', steps); //store how many weeks away from current week

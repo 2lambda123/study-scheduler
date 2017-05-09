@@ -43,7 +43,7 @@ EOF;
 	else echo $form.$loginForm.$endForm;
 	
 ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../site/jquery.min.js"></script>
 <script>
 $(document).on('submit','#loginForm', function(event) {
 	event.preventDefault();
@@ -53,16 +53,9 @@ $(document).on('submit','#loginForm', function(event) {
 		url: $(this).attr('action'),
 		data: $(this).serialize(),
 		success: function(data){
-			document.getElementById('loginForm').innerHTML = data;
+			window.location.reload();
+			//document.getElementById('loginForm').innerHTML = data;
 		}
 	})
 });
 </script>
-<!--<style>
-#loginForm {
-	display: inline-block;
-	padding: 2em;
-	border: 1px solid;
-	background: whitesmoke;
-}
-</style>-->

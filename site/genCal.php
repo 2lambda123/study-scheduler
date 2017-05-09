@@ -26,6 +26,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 	global $f;
 	$db = new DB();
 	$result = null;
+	if(session_id() == "") session_start();
 	if(isset($_SESSION['uuid'])){
 		$query = "SELECT CURRENT FROM calendar WHERE ID='".$_SESSION['uuid']."'";
 		$result = $db -> select($query);
@@ -75,11 +76,6 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		} else {
 			$tB = (TimeToSec(pretty_time($event->DTSTART)))/$divide;
 		}
-		$html  = "<div class='event' style='height:$length%'>";
-		$html .= "<div class='SUMMARY'>".$event->SUMMARY."</div>";
-		$html .= "<div class='pretty_time'>".pretty_time($event->DTSTART)." - ".pretty_time($event->DTEND)."</div>";
-		
-		$html .= " </div>";
 		$order   = array("\\r\\n", "\\n", "\\r");
 		$replace = ' <br />';
 		$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";

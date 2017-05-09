@@ -9,7 +9,7 @@
 <script type="text/javascript" src="../ajax/buttonAjax.js" defer></script>
 </head>
 <?php
-session_start();
+if(session_id() == "") session_start();
 if(!isset($_SESSION['uuid'])) {
 	include_once "../site/menubar.php";
 	echo "<h3>forbidden</h3>";
@@ -18,5 +18,6 @@ if(!isset($_SESSION['uuid'])) {
 else {
 	include_once "../site/calendarTemplate.php";
 }
+include_once '../scripts/createUser.php'; 
 ?>
 </html>
