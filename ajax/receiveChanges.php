@@ -2,6 +2,7 @@
 //Previous name: "ReceiveChanges.php"
 include_once '../scripts/DB.php';
 include '../scripts/distrChanges.php';
+
 $db = new DB();
 $result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
 $calendar = json_decode($result[0]['CURRENT']);
@@ -49,7 +50,7 @@ else{ // If we are to "cut" the event
         $diffMS = intval($_POST["newStartM"]) - intval(substr($calendar[$i]->DTSTART, 11, 2));
         $diffME = intval(substr($calendar[$i]->DTEND, 11, 2)) - intval($_POST["newEndM"]);
         //Calculate how much STUDYTIME we cut off
-        $diffM = ($diffHE - $diffHS)*60  + ($diffME - $diffMS);
+        $diffM = ($diffHE + $diffHS)*60  + ($diffME + $diffMS);
 
         $calendar[$i]->DTSTART = substr($calendar[$i]->DTSTART, 0, 9) . $_POST["newStartH"] . $_POST["newStartM"] . substr($calendar[$i]->DTSTART, -3, 3); // replace the time in DTSTART with the new time
         $calendar[$i]->DTEND = substr($calendar[$i]->DTEND, 0, 9) . $_POST["newEndH"] . $_POST["newEndM"] . substr($calendar[$i]->DTEND, -3, 3);   // replace the time in DTEND with the new time
@@ -72,4 +73,5 @@ else{ // If we are to "cut" the event
 function generateUid(){
   return uniqid("67209119184"); // IP + current string to time
 }
+
 ?>
