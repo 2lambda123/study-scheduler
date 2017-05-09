@@ -14,7 +14,7 @@ When edit button is clicked, go to the right form depending on type of event, KT
 $(document).on('click','.edit', function(event)
 {
 	var json = this.parentElement.parentElement.getAttribute('value'); //encoded json of clicked event
-			console.log(this.parentElement.parentElement.className);
+			//console.log(this.parentElement.parentElement.className);
 			if(this.parentElement.parentElement.className == 'event KTH') //KTH event
 			{
 				$.ajax
@@ -51,6 +51,7 @@ $(document).on('submit', ".changeForm", function(event){
 		data: send,
 		success: function(data)
 		{
+      console.log(data);
 			document.getElementById("modal").outerHTML=null; //Close popup on submission
 		}
 	})
@@ -84,7 +85,7 @@ $(document).on('click', '.weekBtn' , function(event)
 			data: "key="+steps,
 			success: function(send)
 			{
-				console.log(send);
+				//console.log(send);
 				document.getElementById('weekHead').innerHTML = "Week: " + week; //update weekHead with new week
 				document.getElementById('calendar').innerHTML=send; //update calendar
 				$('#calHead').attr('value', steps); //store how many weeks away from current week
@@ -107,7 +108,7 @@ $(document).on('click', '.weekBtn' , function(event)
 			data: "key="+steps,
 			success: function(send)
 			{
-				console.log(send);
+				//console.log(send);
 				document.getElementById('weekHead').innerHTML = "Week: " + week; //update weekHead with new week
 				document.getElementById('calendar').innerHTML=send; //update calendar
 				$('#calHead').attr('value', steps); //store how many weeks away from current week
