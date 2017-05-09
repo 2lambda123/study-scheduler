@@ -1,15 +1,16 @@
 <?php
+		if (session_id() == "") session_start();
 		include_once '../scripts/DB.php';
 		
 		$db = new DB();
 		//Gets habits from database
-		$result = $db -> select("SELECT HABITS FROM data WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+		$result = $db -> select("SELECT HABITS FROM data WHERE ID='$_SESSION[uuid]'");
 			
 		$r = json_decode($result[0]['HABITS'], true);
 		$html = "";
 		
 		//Gets all habit events from database
-		$result1 = $db -> select("SELECT HABITS FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+		$result1 = $db -> select("SELECT HABITS FROM calendar WHERE ID='$_SESSION[uuid]'");
 		$r1 = json_decode($result1[0]['HABITS'], true);
 		
 		//Create a table of all habits

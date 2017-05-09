@@ -6,6 +6,15 @@ if (isset($_SESSION['calendarPopup']) && $_SESSION['calendarPopup'] !== "") {
 	popupGen($_SESSION['calendarPopup']);
 	unset($_SESSION['calendarPopup']);
 }
+
+if (isset($_SESSION['uuid']) && $_SESSION['uuid']) {
+	echo "Unseting UUID: " . $_SESSION['uuid'] . "<br>";
+	unset($_SESSION['uuid']);
+}
+if(isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+	echo "Unseting access token : " . json_encode($_SESSION['access_token']) . "<br>";
+	unset($_SESSION['access_token']);
+}
 ?>
 
 <div id="googleLogin">

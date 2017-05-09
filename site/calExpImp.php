@@ -10,7 +10,7 @@
   <?php
     session_start();
     //TESTDATA
-    $_SESSION["uuid"] = 'c7fe7b83-2be5-11e7-b210-f0795931a7ef';
+
     // END OF TESTDATA
     include 'menubar.php';
     include '..\scripts\DB.php';

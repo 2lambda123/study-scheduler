@@ -6,5 +6,5 @@
 <body>
   <?php include 'menubar.php'; ?>
   <h1>Personal Routines</h1>
-  <?php include 'data_collection/collectionform.html'; ?>
+  <?php include '../site/routineForm.php'; ?>
 </body>

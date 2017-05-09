@@ -1,10 +1,11 @@
-<?php
+<?php	
+		if (session_id() == "") session_start();
 		include_once '../scripts/DB.php';
 		
 		$db = new DB();
 		
 		//Get courses from database
-		$result = $db -> select("SELECT COURSES FROM data WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+		$result = $db -> select("SELECT COURSES FROM data WHERE ID='$_SESSION[uuid]'");
 			
 		$r = json_decode($result[0]['COURSES'], true);
 		
