@@ -32,7 +32,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			$p = $r;
 		} else {
 			//Add $r into new array and $post to new array
-			array_push($p, (object)$r);
+			//array_push($p, (object)$r);
 			array_push($p, (object)$_POST);
 		}
 	}

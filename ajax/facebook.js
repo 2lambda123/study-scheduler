@@ -132,3 +132,7 @@ var xhttp = new XMLHttpRequest();
   xhttp.send();
 }
 
+FB.logout(function(response) {
+
+});
+
