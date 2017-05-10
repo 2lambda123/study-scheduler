@@ -25,7 +25,7 @@
 
   if(isset($calendarPersonal)) {
     foreach($calendarPersonal as $key)
-      $calendar = modify(json_encode($calendar), json_encode($key));
+      $calendar = modify($calendar, json_encode($key));
   }
 
   if(isset($calendarHabits)) {

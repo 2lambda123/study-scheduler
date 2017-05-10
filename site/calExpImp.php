@@ -19,8 +19,8 @@
     $sessID = $_SESSION["uuid"];
     $db = new DB();
     // Imports the calendar associated with the uuid from the DB
-    $cal = $db -> select("SELECT STUDY FROM calendar WHERE ID = '$sessID'");
-  	$cal = $cal[0]["STUDY"];
+    $cal = $db -> select("SELECT CURRENT FROM calendar WHERE ID = '$sessID'");
+  	$cal = $cal[0]["CURRENT"];
     // Stores the imported calendar in a calendar file
     export($cal, $sessID);
     // The route to the updated/new calendar file
