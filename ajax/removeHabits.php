@@ -1,5 +1,5 @@
 <?php
-
+	if (session_id() == "") session_start();
 	include_once '../scripts/DB.php';
 	$db = new DB();
 	
@@ -11,8 +11,6 @@
 		$result = $db -> select("SELECT HABITS FROM data WHERE ID='".$_SESSION['uuid']."'");
 	}
 	$r = (isset($result1[0]['HABITS'])) ? json_decode($result1[0]['HABITS'], true) : null;
-		
-	$r = json_decode($result[0]['HABITS'], true);
 	$p = array();
 	
 	//Check if habitname is same as the habit we have to remove. If it is, discard it when pushing to new array

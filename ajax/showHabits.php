@@ -1,4 +1,5 @@
 <?php
+		if (session_id() == "") session_start();
 		include_once '../scripts/DB.php';
 		
 		$db = new DB();

@@ -1,7 +1,13 @@
 <?php
 /*** ICS IS EXTREMELY SENSITIVE TO LINE BREAKS AND WHITESPACES ***/
-function export($json_encoded){ //takes an encoded json and writes to the file "calendar.ics" in ics format.
-  $cal = fopen("calendar.ics", "w+");
+/*
+   INPUT: json_encoded calendar, session uuid
+   OUTPUT: Updates the calendar file stored in /site/.. associated with the uuid,
+   or if such a file doesn't exist it creates one.
+*/
+//takes an encoded json and the users ID writes to a personal file "calendar" + ID + ".ics" in ics format.
+function export($json_encoded, $sessID){
+  $cal = fopen("calendar_" . $sessID . ".ics", "w+");
   getHeader($cal);
   getEvents($json_encoded, $cal);
   fclose($cal);

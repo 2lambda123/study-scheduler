@@ -1,4 +1,5 @@
 <?php 
+if (session_id() == "") session_start();
 include_once '../scripts/DB.php';
 $db = new DB();
 if(session_id() == "") session_start();
@@ -37,7 +38,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			$p = $r;
 		} else {
 			//Add $r into new array and $post to new array
-			array_push($p, (object)$r);
+			//array_push($p, (object)$r);
 			array_push($p, (object)$_POST);
 		}
 	}
@@ -45,7 +46,6 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	if(isset($_SESSION['uuid'])){
 		$db -> query("UPDATE data SET COURSES=".$db->quote(json_encode($p))." WHERE ID='".$_SESSION['uuid']."'");
 	}
-	
 	include '../ajax/showCourses.php';
 } else if (isset($_POST['repetition'])) {
 	//Event with standard values
@@ -92,7 +92,6 @@ if (isset($_POST["sleepfrom"])) { //Routines
 		}
 	}
 	//Update database with updated habits
-	
 	if(isset($_SESSION['uuid'])){
 		$db -> query("UPDATE data SET HABITS=".$db->quote(json_encode($p))." WHERE ID='".$_SESSION['uuid']."'");
 	}
@@ -201,7 +200,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 		$p = $events;
 	}
 	//Update database with new events
-	$db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($p))." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+	$db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($p))." WHERE ID='$_SESSION[uuid]'");
 	//Echo's table of habits, since changes have been made
 	include '../ajax/showHabits.php';
 

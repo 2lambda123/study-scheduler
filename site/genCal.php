@@ -47,7 +47,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		if($file !== null) {
 			foreach($file as $event) {
 				if(cmp_date($event->DTSTART,$date_start)
-					&& cmp_date($date_end,$event->DTEND))
+					&& cmp_date($date_end,$event->DTEND) && !$event->AVAILABLE)
 					array_push($events,$event);
 			}
 		}
@@ -57,7 +57,9 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 			array_push($week,array());
 		}
 		foreach($events as $event) {
-			array_push($week[cmp_day($date_start,$event->DTSTART)],$event);
+			if (isset($week[cmp_day($date_start,$event->DTSTART)]) && is_array($week[cmp_day($date_start,$event->DTSTART)])) {
+				array_push($week[cmp_day($date_start,$event->DTSTART)],$event);
+			}
 		}
 		return $week;
 	}

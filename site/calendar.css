@@ -27,22 +27,18 @@
   width:100px;
   color:#fff;
   font-size: 15px;
-  background-color: #5bc0de;
+  background-color: rgb(0,0,0);
   cursor: pointer;
 }
-
-/*table, tr, td {
-	border: 1px solid black;
-}*/
 
 #calendar{
 	padding: 10px 14px;
 	background-color:#ccc;
   table-layout: fixed;
-	border-radius: 25px;
-  width: 80%;
+	/*border-radius: 25px;*/
+  width: 70%;
   margin: auto;
-  background-color: rgb(16, 34, 63);
+  background-color: rgb(0, 0, 0);
 }
 
 th {
@@ -62,56 +58,35 @@ th {
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
-  height: 100%;
-  background-color: #666;
-  color: black;
-  overflow: visible;
-  background-color: rgb(16, 34, 63);
-}
-
-/*.item{
   width: 100%;
   height: 100%;
-}*/
+  /*background-color: #666;*/
+  color: black;
+  overflow: visible;
+  /*background-color: rgb(0, 0, 0);*/
+}
 
 .event:hover
 {
-   background: #ff6600;
-   color:white;
-<<<<<<< HEAD
-   width: 200px; 
+   /*background: #ff6600;*/
+   color: white;
+   min-width: 400px;
+   min-height: 100px;
    overflow: visible;
-   font-size: .5em;
-   z-index:1;
-   transform: scale(2,2);
-}
-
-.event:hover > edit {
-	height: 50%;
-	width: 50%;
-=======
-   width: 200%;
-   overflow: visible;
-   font-size: 0.5em;
    z-index:4;
    /*width: 100% !important;*/
    transform:scale(2,2);
    transition: .1s all;
+      font-size: 0.5em;
+
 }
 .event:hover > .edit {
   height:50%;
   width:50%;
->>>>>>> 1f6b1c886c60ab553416700bdcd85e6affa3aa0e
 }
 
 .event {
 	background-color: #067FE3;
-<<<<<<< HEAD
-	float: left;
-  outline: 2px groove black;
-  overflow: hidden;
-  font-family: sans-serif;
-=======
 	/*float: left;*/
   word-break: break-word;
   outline: 2px groove black;
@@ -119,16 +94,11 @@ th {
   font-family: sans-serif;
   width: 100%;
   z-index: 0;
->>>>>>> 1f6b1c886c60ab553416700bdcd85e6affa3aa0e
   }
 
 .SUMMARY{
   font-weight: bold;
 }
-
-/*.day{
-	height: 100%;
-}*/
 
 .KTH {
   background-color: rgb(255,86,2)/*#fa5050*/;

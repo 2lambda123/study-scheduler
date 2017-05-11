@@ -15,6 +15,9 @@ EOF;
 	if(isset($_POST['logout'])){
 		if(session_id() !== "") 
 			session_destroy();
+			echo '<script type="text/javascript">',
+				'FB.logout();',
+				'</script>';
 		
 		echo $loginForm;
 	}
