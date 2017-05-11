@@ -1,4 +1,5 @@
 <?php
+  if (session_id() == "") session_start();
   include_once 'DB.php';
   include_once 'importCal.php';
   //Previous name Distribute_Leftover_Time.php
@@ -79,10 +80,10 @@ function recursive_distr($restMin, $studyEvent, $calendar, $lastDate, $slot){
         }
         // If $calendar[$i]:s duration >= $restmin
         if($diffM > $restMin){
-          //echo "from: ";
-          //var_dump($studyEvent);
-          //echo "to: ";
-          //var_dump($calendar[$i]);
+          echo "from: ";
+          var_dump($studyEvent);
+          echo "to: ";
+          var_dump($calendar[$i]);
           $calendar = ifLarger($studyEvent, $calendar, $i, $diffM, $restMin);
           return $calendar;
         }
@@ -100,8 +101,8 @@ function recursive_distr($restMin, $studyEvent, $calendar, $lastDate, $slot){
       //recursive function for the splits of restmin
       $calendar = recursive_distr($restMin, $studyEvent, $calendar, $lastDate, $slot);
       $calendar = recursive_distr($restMin, $studE2, $calendar, $lastDate, $slot);
-      //var_dump($studE2);
-      //var_dump($studyEvent);
+      var_dump($studE2);
+      var_dump($studyEvent);
       return $calendar;
     }
   }
@@ -143,7 +144,7 @@ function distr_leftover($restMin, $studyEvent, $calendar){
   }
   $calendar = recursive_distr($restMin, $studyEvent, $calendar, $lastDate, $slot);
   $db = new DB();
-  $db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($calendar)) ." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+  $db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($calendar)) ." WHERE ID='$_SESSION[uuid]'");
 }
 
 ?>
