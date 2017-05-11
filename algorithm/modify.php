@@ -1,6 +1,7 @@
 <?php
 //INPUT: encoded calendar and event -> returns encoded calendar with event in right position
 function modify($array, $event){ //$array is a massive string. When decoded it will be a 2D array. TODO: $event är en array av flera events i ordning istället
+
   $event_decoded = json_decode($event, true); //decodes to a 1D array.
   $dtstart =  substr($event_decoded["DTSTART"], 0, 15); //The 15 first chars are to be compared as date-time.(Leaves out 'Z')
   $decoded_array = json_decode($array, true); //2D ARRAY
