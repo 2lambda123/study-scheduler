@@ -79,10 +79,10 @@ function recursive_distr($restMin, $studyEvent, $calendar, $lastDate, $slot){
         }
         // If $calendar[$i]:s duration >= $restmin
         if($diffM > $restMin){
-          echo "from: ";
-          var_dump($studyEvent);
-          echo "to: ";
-          var_dump($calendar[$i]);
+          //echo "from: ";
+          //var_dump($studyEvent);
+          //echo "to: ";
+          //var_dump($calendar[$i]);
           $calendar = ifLarger($studyEvent, $calendar, $i, $diffM, $restMin);
           return $calendar;
         }
@@ -100,8 +100,8 @@ function recursive_distr($restMin, $studyEvent, $calendar, $lastDate, $slot){
       //recursive function for the splits of restmin
       $calendar = recursive_distr($restMin, $studyEvent, $calendar, $lastDate, $slot);
       $calendar = recursive_distr($restMin, $studE2, $calendar, $lastDate, $slot);
-      var_dump($studE2);
-      var_dump($studyEvent);
+      //var_dump($studE2);
+      //var_dump($studyEvent);
       return $calendar;
     }
   }
