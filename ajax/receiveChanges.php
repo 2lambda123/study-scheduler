@@ -1,10 +1,11 @@
 <?php
 //Previous name: "ReceiveChanges.php"
+if (session_id() == "") session_start();
 include_once '../scripts/DB.php';
 include '../scripts/distrChanges.php';
 
 $db = new DB();
-$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='$_SESSION[uuid]'");
 $calendar = json_decode($result[0]['CURRENT']);
 
 // Outputs the time needed to be distributed in minutes
@@ -28,12 +29,12 @@ if(isset($_POST["remove"])){  //  If we are to remove the event from the schedul
           distr_leftover($diffM, $temp, json_encode($calendar));
         }
         else{
-          $db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($calendar)) ." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+          $db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($calendar)) ." WHERE ID='$_SESSION[uuid]'");
         }
       }
       else{//If we remove a habit instead
         array_splice($calendar, $i, 1);
-        $db -> query("UPDATE calendar SET CURRENT=".$db->quote($calendar) ." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+        $db -> query("UPDATE calendar SET CURRENT=".$db->quote($calendar) ." WHERE ID='$_SESSION[uuid]'");
       }
     }
   }
@@ -63,7 +64,7 @@ else{ // If we are to "cut" the event
           distr_leftover($diffM, $temp, json_encode($calendar));
         }
         else{
-          $db -> query("UPDATE calendar SET CURRENT=".$db->quote($calendar) ." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+          $db -> query("UPDATE calendar SET CURRENT=".$db->quote($calendar) ." WHERE ID='$_SESSION[uuid]'");
         }
       }
     }

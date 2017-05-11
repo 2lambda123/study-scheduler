@@ -2,7 +2,7 @@
   <!--  Menu Bar, includes homepage, calendar, personal routines, import/export and logout -->
   <?php include "../site/menubar.php" ?>
   <?php include "../site/calendarLoadDays.php" ?>
-  <?php include "../scripts/popupEvent.php" ?>
+  <?php include_once "../scripts/popupEvent.php" ?>
 
   <!-- Calendar Header, includes display of current week and two buttons that on click will view either the next
   or previous weeks -->

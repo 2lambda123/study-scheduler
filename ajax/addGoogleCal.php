@@ -17,6 +17,7 @@ $client = new Google_Client();
 $client->setAuthConfig('../client_id.json');
 $client->addScope(SCOPES);
 $client->setAccessType('offline');
+//$client->setApprovalPrompt('force');
 
 $guzzleClient = new \GuzzleHttp\Client(array( 'curl' => array( CURLOPT_SSL_VERIFYPEER => false, ), ));
 $client->setHttpClient($guzzleClient);

@@ -25,6 +25,7 @@ $client->setAuthConfigFile('../client_id.json');
 $client->setRedirectUri($wholeURL . "scripts/oauth2callback.php");
 $client->addScope(SCOPES);
 $client->setAccessType('offline');
+//$client->setApprovalPrompt('force');
 
 $guzzleClient = new \GuzzleHttp\Client(array( 'curl' => array( CURLOPT_SSL_VERIFYPEER => false, ), ));
 $client->setHttpClient($guzzleClient);

@@ -29,6 +29,7 @@ $client = new Google_Client();
 $client->setAuthConfig('../client_id.json');
 $client->addScope(SCOPES);
 $client->setAccessType('offline');
+//$client->setApprovalPrompt('force');
 
 //To ignore SSL (for localhost)
 $guzzleClient = new \GuzzleHttp\Client(array( 'curl' => array( CURLOPT_SSL_VERIFYPEER => false, ), ));
@@ -40,8 +41,10 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 	
 	//If access token has expired, ask for a refresh
 	if ($client->isAccessTokenExpired()) {
+		print_r($_SESSION['access_token']);
 		$client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
 		$_SESSION['access_token'] = $client->getAccessToken();
+		print_r($_SESSION['access_token']);
 	}
 	
 	//Check if we are already logged in
