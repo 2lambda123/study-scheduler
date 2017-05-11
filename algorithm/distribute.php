@@ -3,6 +3,32 @@ include_once '../algorithm/analyze.php';
 include_once '../algorithm/find.php';
 include_once '../algorithm/export.php';
 
+//INPUT: dtstart of event, decoded calendar, min, max. OUTPUT: position of where the event should be in decoded calendar
+//$x is used for substring. Should be 8 if used in distribute(date:20170505) and 13 if used in Modify(date-time: 20170505T0800)
+function binarySearch($dtstart, $calendar_decoded, $min, $max, $x){
+  $mid = ($min + $max)/2;
+  $mid = floor($mid);
+  $current = substr($calendar_decoded[$mid]["DTSTART"], 0, $x);
+  if ($min >= $max || strcmp($dtstart, $current) == 0)
+  {
+    if (strcmp($dtstart, $current) > 0)
+    return $mid+1;
+
+    else {
+      return $mid;
+    }
+  }
+
+  else if (strcmp($dtstart, $current) < 0){
+    return binarySearch($dtstart, $calendar_decoded, $min, $mid-1, $x);
+  }
+
+  else if (strcmp($dtstart, $current) > 0){
+    return binarySearch($dtstart, $calendar_decoded, $mid+1, $max, $x);
+  }
+
+}
+
 function generateUid(){
   return uniqid("67209119184"); // IP + current string to time
 }
@@ -252,10 +278,14 @@ function distributeWork($calendar_decoded, $courses_decoded, $examWork, $working
   //Dra upp $x till start of week, just nu är den bara start of calendar - $start is 2017-05-01
   $start_dt = convertDate($start); //converts $start to DT format
   $end_dt = convertDate($courses_decoded["courseend"]);
-  while(strcmp(substr($calendar_decoded[$x]["DTSTART"],0,8),$start_dt) < 0) //loops as long as event DTSTART is less than $start_dt
+
+  // find first event of first day
+  $x = binarySearch($start_dt, $calendar_decoded, 0, $count-1, 8);
+  while (strcmp($start_dt, substr($calendar_decoded[$x-1]["DTSTART"],0,8)) == 0)
   {
-    $x++;
+    $x--;
   }
+
   $firstSunday = firstSunday($start); // first sunday in normal format.
   $weekEnd = convertDate($firstSunday); //convert to DT TODO:firstSunday return in DT
   while($x < $count) {//loops through calendar (new week)
@@ -346,7 +376,7 @@ $weekStart = $x;
               $calendar_decoded[$x + $z]["AVAILABLE"] = false;
               $calendar_decoded[$x + $z]["SUMMARY"] = "STUDY-SCHEDULER: " . $course_work . " - " . $course_code;
               $calendar_decoded[$x+$z]["UID"] = generateUid();
-              
+
               $newDT = minutesToHour($calendar_decoded[$x+$z]["DTSTART"], $work);
 
               $calendar_decoded[$x + $z]["DTEND"] = $newDT;
