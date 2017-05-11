@@ -28,7 +28,7 @@ function gen_free_time($file, $start=1){
 			$eventS = $eventArray[$i-1]["DTSTART"];
 			$eventE = $eventArray[$i-1]["DTEND"];
 			$check = true;
-			
+
 			//Guard to make sure we look at events from the same date can otherwise mess up the overlapping guards
 			if(floatval(substr($eventS, 0, 8)) == floatval(substr($eventArray[$i]["DTSTART"], 0, 8))){
 					while($check && isset($eventArray[$i + 1])){//This loop is to check if there are any overlapping events
@@ -78,12 +78,11 @@ we will generate free time events from the $start date. After we have gotten the
 $schedule we merge free time with the calendar using the function modify. Then we return a json_encoded
 calendar. $start isn't nessesary for the function to work.*/
 function free_time_with_events($schedule, $start = 1){
-	$freeTime = json_decode(gen_free_time($schedule), $start);//Get free times
-	$schema = $schedule;//Get the events of calendar
-	foreach ($freeTime as $key) {//Merge both togheter
-		$schema = modify($schema, json_encode($key));
-	}
-	return $schema;
+	$freeTime = gen_free_time($schedule, $start);//Get free times
+	//Merge both togheter
+	$schedule = modify($schedule, $freeTime);
+
+	return $schedule;
 }
 
 ?>
