@@ -19,7 +19,7 @@
 			$r1 = (isset($result1[0]['HABITS'])) ? json_decode($result1[0]['HABITS'], true) : null;
 		}
 			
-		
+		 
 		$html = "";
 		
 		//Create a table of all habits
