@@ -45,13 +45,15 @@
 				$html .= '<th>DTEND</th>';
 				$html .= '</tr>';
 				//Create a table of all events of the habit after each habit
-				foreach ($r1 as $d) {
-					if ($d['SUMMARY'] == $c['name']) {
-						$html .= '<tr>';
-						$html .= '<th>' . $d['SUMMARY'] . '</th>';
-						$html .= '<th>' . $d['DTSTART'] . '</th>';
-						$html .= '<th>' . $d['DTSTART'] . '</th>';
-						$html .= '</tr>';
+				if ($r1) {
+					foreach ($r1 as $d) {
+						if ($d['SUMMARY'] == $c['name']) {
+							$html .= '<tr>';
+							$html .= '<th>' . $d['SUMMARY'] . '</th>';
+							$html .= '<th>' . $d['DTSTART'] . '</th>';
+							$html .= '<th>' . $d['DTSTART'] . '</th>';
+							$html .= '</tr>';
+						}
 					}
 				}
 				$html .= '</table>';

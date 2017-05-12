@@ -1,6 +1,7 @@
 <?php 
 if (session_id() == "") session_start();
 include_once '../scripts/DB.php';
+include_once '../scripts/importCal.php';
 $db = new DB();
 if(session_id() == "") session_start();
 //If sleepfrom exists, we have a form sent from personal routines, if coursecode exists, we have a form sent from courses
@@ -51,16 +52,6 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	include '../ajax/showCourses.php';
 } else if (isset($_POST['repetition'])) {
 	//Event with standard values
-	class event {
-		public $SUMMARY = NULL;
-		public $DTSTART = NULL;
-		public $DTEND = NULL;
-		public $UID = NULL;
-		public $DESCRIPTION = NULL;
-		public $LOCATION = NULL;
-		public $AVAILABLE = NULL;
-	}
-
 
 	$h = $_POST;
 	$events;

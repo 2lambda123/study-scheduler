@@ -14,9 +14,11 @@
 	$p = array();
 	
 	//Check if habitname is same as the habit we have to remove. If it is, discard it when pushing to new array
-	foreach ($r as $c) {
-		if ($c['name'] !== $_POST['remove']) {
-			array_push($p, (object)$c);
+	if (is_array($r)) {
+		foreach ($r as $c) {
+			if ($c['name'] !== $_POST['remove']) {
+				array_push($p, (object)$c);
+			}
 		}
 	}
 	
