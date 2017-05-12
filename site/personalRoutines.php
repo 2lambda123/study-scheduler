@@ -9,5 +9,5 @@
 <body>
   <?php include 'menubar.php'; ?>
   <h1>Personal Routines</h1>
-  <?php include '../site/routineForm.php'; ?>
+  <?php include '../site/routineForm.php'; include '../ajax/showPersonal.php'?>
 </body>
