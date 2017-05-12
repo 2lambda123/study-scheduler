@@ -86,6 +86,7 @@ $(document).on('submit', ".changeForm", function(event){
 		success: function(data)
 		{
       console.log(data);
+      window.location.reload();
 			document.getElementById("modal").outerHTML=null; //Close popup on submission
 		}
 	})
