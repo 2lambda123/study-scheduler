@@ -5,6 +5,12 @@
 $(document).on('change', '#rep', function() {
     $( "select option:selected" ).each(function() {
 		$('#weekDays').toggle();
+    var e = document.getElementById('DaysOrWeek');
+    if (e.innerHTML.substring(10,15) == "weeks") {
+      e.innerHTML = 'Number of days: <input name="duration" type="number">';
+    } else {
+      e.innerHTML = 'Number of weeks: <input name="duration" type="number">';
+    }
 	});
 });
 
@@ -15,18 +21,16 @@ $(document).on('click', '.toggle',function(event){$(this).next().toggle();});
 	<h3>New habit</h3>
 	<div>
 		Habit name: <input name="name" type="text"/><br/>
-		Number of repetitions: <input name="duration" type="number"/><br/>
-		Repetition: 
-		<select id="rep" name="repetition">
-			<option>Daily</option>
-			<option selected>Weekly</option>
-		</select><br/>
-		Location: <input name="location" type="text"/><br/>
-		from: <input name="dtstart" type="time"/> to: <input name="dtend" type="time"/><br/>
-		
-		Estimated travel time (minutes): <input name="travel" type="number"/><br/><br/>
+    from: <input name="dtstart" type="time"/> to: <input name="dtend" type="time"/><br/><br />
+    Habit will go on for:
+    <select id="rep" name="repetition">
+      <option>Day(s)</option>
+      <option selected>Week(s)</option>
+    </select><br/>
+    <div id="DaysOrWeek">Number of weeks: <input name="duration" type="number"/></div><br/>
+
 	<div id="weekDays">
-		Which days of week I will repeat (for weekly).
+		Which days of the week will the habit occur?
 	<div>
 		<label for="mo"/>Monday:</label> <input type="checkbox" name="Monday" id="mo"/><br/>
 		<label for="tu"/>Tuesday:</label> <input type="checkbox" name="Tuesday" id="tu"/><br/>
@@ -37,7 +41,10 @@ $(document).on('click', '.toggle',function(event){$(this).next().toggle();});
 		<label for="su"/>Sunday:</label> <input type="checkbox" name="Sunday" id="su"/><br/>
 	</div>
 	</div>
-		<input type="submit"/>
+  <br/>
+  Location: <input name="location" type="text"/><br/>
+  Estimated travel time (minutes): <input name="travel" type="number"/><br/><br/>
+		<input type="submit" value="Send"/>
 	</div>
 </form>
 
