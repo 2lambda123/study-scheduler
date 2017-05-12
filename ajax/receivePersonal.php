@@ -1,4 +1,4 @@
-<?php 
+<?php
 if (session_id() == "") session_start();
 include_once '../scripts/DB.php';
 include_once '../scripts/importCal.php';
@@ -10,17 +10,17 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	if(isset($_SESSION['uuid'])){
 		$db -> query("UPDATE data SET ROUTINES=".$db->quote(json_encode($_POST))." WHERE ID='".$_SESSION['uuid']."'");
 	}
-	
+
 } else if (isset($_POST["coursecode"])) { //Courses
 	//Get courses from database since we have to add courses, not replace existing ones
 	$result = null;
 	if(isset($_SESSION['uuid'])){
 		$result = $db -> select("SELECT COURSES FROM data WHERE ID='".$_SESSION['uuid']."'");
 	}
-		
+
 	$r = (isset($result[0]['COURSES'])) ? json_decode($result[0]['COURSES'], true) : null;
 	$p = array();
-	
+
 	//If new coursecode has same name as an existing coursecode, die and echo error message
 	if (is_array($r)) {
 		foreach ($r as $c) {
@@ -62,11 +62,11 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	if(isset($_SESSION['uuid'])){
 		$result = $db -> select("SELECT HABITS FROM data WHERE ID='".$_SESSION['uuid']."'");
 	}
-			
+
 	$r = json_decode($result[0]['HABITS'], true);
 	$p = array();
 
-	//Check so we cant add habits with the same name	
+	//Check so we cant add habits with the same name
 	if (is_array($r)) {
 		foreach ($r as $c) {
 			if ($_POST['name'] == $c['name']) {
@@ -114,7 +114,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	}
 
 	//If repetition is daily, create new event for this day and x (reps) days forward
-	if ($h['repetition'] == "Daily") {
+	if ($h['repetition'] == "Day(s)") {
 		$d = date('Ymd');
 		for ($i = 0; $i < $x; $i++) {
 			$events[] = new event();
@@ -127,7 +127,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			$events[$i]->AVAILABLE = FALSE;
 			$d = date('Ymd', strtotime($d . "+1 day"));
 		}
-	} else if ($h['repetition'] == "Weekly") { //If repetition is weekly, create new events on the days chosen for x (reps) weeks
+	} else if ($h['repetition'] == "Week(s)") { //If repetition is weekly, create new events on the days chosen for x (reps) weeks
 		$rep = (count($wD)-1)*$x;
 		$d = date('Ymd');
 		for ($i = 0; $i < $rep;) {
@@ -151,7 +151,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	if(isset($_SESSION['uuid'])){
 		$result = $db -> select("SELECT HABITS FROM calendar WHERE ID='".$_SESSION['uuid']."'");
 	}
-			
+
 	$r = (isset($result[0]['HABITS'])) ? json_decode($result[0]['HABITS'], true) : null;
 	$p = array();
 	include_once '../algorithm/modify.php';
@@ -177,7 +177,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	if(isset($_SESSION['uuid'])){
 		$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='".$_SESSION['uuid']."'");
 	}
-		
+
 	$r = (isset($result[0]['CURRENT'])) ? json_decode($result[0]['CURRENT'], true) : null;
 	$p = array();
 
@@ -197,7 +197,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	//Echo's table of habits, since changes have been made
 	include '../ajax/showHabits.php';
 
-} else { //Not sent from personal routines nor courses 
+} else { //Not sent from personal routines nor courses
 	die ('No correct form sent');
 }
 ?>
