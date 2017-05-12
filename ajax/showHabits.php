@@ -21,11 +21,11 @@
 			
 		 
 		$html = "";
-		
+		$html .= '<table id="courses">';
+		$html .= '<tr><th>Habits</th><th>Number of repetitions</th><th>Repetition</th><th>Location</th><th>from</th><th>to</th><th>ETT</th></tr>';
+
 		//Create a table of all habits
 		if ($r) {
-			$html .= '<table id="courses">';
-			$html .= '<tr><th>Habits</th><th>Number of repetitions</th><th>Repetition</th><th>Location</th><th>from</th><th>to</th><th>ETT</th></tr>';
 			foreach ($r as $c) {
 				$html .= '<tr class="toggle">';
 				$html .= '<th>' . $c['name']	. '</th>';
@@ -59,8 +59,9 @@
 				$html .= '</table>';
 				$html .= '</td></tr>';
 			}
-			$html .= '</table>';
+			
 		}
+		$html .= '</table>';
 		//Echo everything we created
 		echo $html;
 ?>

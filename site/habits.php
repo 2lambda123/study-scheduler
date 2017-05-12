@@ -12,4 +12,19 @@
   <?php include '../site/menubar.php'; ?>
   <h1>Habits</h1>
   <?php include '../site/habitform.php'; ?>
+  <script>
+	$(document).on('submit', 'form', function(event) {
+		event.preventDefault();
+		var send = $(this).serialize();
+		$.ajax({
+			type: 'POST',
+			url: $(this).attr('action'),
+			data: send,
+			success: function(data)
+				{
+					document.getElementById("courses").outerHTML=data; //Close popup on submission
+				}
+	})
+});
+  </script>
 </body>
