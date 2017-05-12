@@ -7,10 +7,12 @@ $q = $_REQUEST["q"]; //Facebook user friends
 $q = json_decode($q); //$q is 2D array with $q[x][0] being UserID and $q[x][1] being UserName
 
 $myId = $_SESSION["uuid"];
+//var_dump($q);
 
 foreach ($q as $friend){ //Loops through all friends and inserts their uuid into an array,$friend[0] is fb userID
   $tempId = $db -> select("SELECT ID FROM user WHERE FBAUTH='$friend[0]'");
   $friend[0] = $tempId[0]["ID"];
+  echo "Foreach - " . $friend[0] . "<br>";
   $frIds[] = $friend;
 }
 //starts algorithm, returns encoded JSON 2D array with all found common study times, first obj in array has name and course key-values, rest have dtstart-dtend key-values
@@ -48,8 +50,17 @@ function findStudyFriends($myId, $frIds, $db){ //takes myId is my uuid, frIds as
 	
 	foreach ($frIds as $frId){ //Loop friends
 	  $frCalTemp = $db -> select("SELECT CURRENT FROM calendar WHERE ID='$frId[0]'"); //friends calendar
+	  /*if($frCalTemp[0]["CURRENT"] == ""){ //break in case friend doesn't have a calendar in database
+	    echo "break frCalTemp " . $frId[0] . " <br>";
+	    break;
+		}*/
 	  $frCal = json_decode($frCalTemp[0]["CURRENT"], true);
+	  
 	  $frCoursesTemp = $db -> select("SELECT COURSES FROM data WHERE ID='$frId[0]'"); //friends courses
+	  /*if($frCoursesTemp[0]["COURSES"] == ""){//break in case friend doesn't have any courses in database
+	    echo "break frCoursesTemp <br>";
+		break;
+		}*/
 	  $frCourses = json_decode($frCoursesTemp[0]["COURSES"], true);
 	  
 	  foreach ($myCourses as $myCourse){ //Loop my courses
