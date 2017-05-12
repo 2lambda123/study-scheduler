@@ -1,0 +1,2 @@
+# study-scheduler
+KTH project

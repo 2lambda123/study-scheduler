@@ -1,0 +1,44 @@
+body{
+  font-family:sans-serif, Verdana, Arial;
+  text-align: center;
+  background-color: white;
+  margin: 0px;
+}
+
+.menubar {
+  font-family:sans-serif, Verdana, Arial;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow:hidden;
+  background-color: #666;
+}
+
+.menubarEntry > a,#login {
+  display:block;
+  color:white;
+  text-align:center;
+  padding:14px 16px;
+  text-decoration: none;
+}
+
+.menubarEntry > a:hover {
+  background-color:#4d4d4d;
+}
+
+.menubarEntry > a:visited {
+  color:#ffffff;
+}
+
+.menubarEntry {
+  float:left;
+}
+
+.active{
+  background-color:#ff6600;
+}
+
+#login {
+	float: right;
+
+}
