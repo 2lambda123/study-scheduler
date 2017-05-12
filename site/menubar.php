@@ -8,7 +8,8 @@ if(isset($_SESSION['uuid'])) {
 	<li class='menubarEntry'><a href='habits.php'>HABITS</a></li>
 	<li class='menubarEntry'><a href='courses.php'>COURSES</a></li>
     <li class='menubarEntry'><a href='calExpImp.php'>IMPORT &amp; EXPORT</a></li>
-    <li class='menubarEntry'><a href='settings.php'>SETTINGS</a></li>";
+    <li class='menubarEntry'><a href='settings.php'>SETTINGS</a></li>
+	<li class='menubarEntry'><a href='friends.php'>FRIENDS</a></li>";
 }
 echo "<li class='menubarEntry' id ='login'>";
 	
