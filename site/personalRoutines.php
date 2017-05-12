@@ -10,4 +10,19 @@
   <?php include 'menubar.php'; ?>
   <h1>Personal Routines</h1>
   <?php include '../site/routineForm.php'; include '../ajax/showPersonal.php'?>
+  <script>
+	$(document).on('submit', 'form', function(event) {
+		event.preventDefault();
+		var send = $(this).serialize();
+		$.ajax({
+			type: 'POST',
+			url: $(this).attr('action'),
+			data: send,
+			success: function(data)
+				{
+					document.getElementById("courses").outerHTML=data; //Close popup on submission
+				}
+	})
+});
+  </script>
 </body>

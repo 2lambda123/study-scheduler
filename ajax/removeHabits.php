@@ -2,15 +2,13 @@
 	if (session_id() == "") session_start();
 	include_once '../scripts/DB.php';
 	$db = new DB();
-
-	if(session_id() == "") session_start();
-
+	
 	//Get habits from database
 	$result = null;
 	if(isset($_SESSION['uuid'])){
 		$result = $db -> select("SELECT HABITS FROM data WHERE ID='".$_SESSION['uuid']."'");
 	}
-	$r = (isset($result1[0]['HABITS'])) ? json_decode($result1[0]['HABITS'], true) : null;
+	$r = (isset($result[0]['HABITS'])) ? json_decode($result[0]['HABITS'], true) : null;
 	$p = array();
 
 	//Check if habitname is same as the habit we have to remove. If it is, discard it when pushing to new array
@@ -34,7 +32,7 @@
 	if(isset($_SESSION['uuid'])){
 		$result = $db -> select("SELECT HABITS FROM calendar WHERE ID='".$_SESSION['uuid']."'");
 	}
-	$r = (isset($result1[0]['HABITS'])) ? json_decode($result1[0]['HABITS'], false) : null;
+	$r = (isset($result[0]['HABITS'])) ? json_decode($result[0]['HABITS'], false) : null;
 	$p = array();
 
 	//Check if habitname is the same as the habit we have to remove. If it is, discard the event when pushing to new array

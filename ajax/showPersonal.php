@@ -9,7 +9,6 @@ th:nth-child(odd) {color:black;}
 		$db = new DB();
 
 		$r = null;
-		if(session_id() == "") session_start();
 		if(isset($_SESSION['uuid'])){
 			//Gets ROUTINES from database
 			$query = "SELECT ROUTINES FROM data WHERE ID='".$_SESSION['uuid']."'";

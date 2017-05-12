@@ -10,6 +10,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	if(isset($_SESSION['uuid'])){
 		$db -> query("UPDATE data SET ROUTINES=".$db->quote(json_encode($_POST))." WHERE ID='".$_SESSION['uuid']."'");
 	}
+	include '../ajax/showPersonal.php';
 
 } else if (isset($_POST["coursecode"])) { //Courses
 	//Get courses from database since we have to add courses, not replace existing ones
@@ -29,7 +30,6 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			}
 		}
 	}
-	var_dump($r);
 	//Checks if $r has actual values
 	if ($r !== "") {
 		//Checks if $r is an array
