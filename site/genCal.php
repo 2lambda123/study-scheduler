@@ -1,11 +1,9 @@
-<!--
-
+<?php
+/*
 'genCal.php'
 This file is a collection of functions relating to displaying a user's calendar in HTML.
 TODO: 	leave database calls to whoever is calling these functions, as this file should not be executing code.
-
--->
-<?php
+*/
 	include_once '../scripts/DB.php';
 	include_once '../algorithm/distribute.php';
 	include_once '../scripts/importCal.php';

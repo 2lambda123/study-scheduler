@@ -4,7 +4,8 @@ include '../scripts/distrChanges.php';
 //include '../ajax/receiveChanges.php';
 
 $db = new DB();
-$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+if(session_id() == "") session_start();
+$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='".$_SESSION['uuid']."'");
 $calendar = json_decode($result[0]['CURRENT']);
 
 if(isset($_POST["st"]))

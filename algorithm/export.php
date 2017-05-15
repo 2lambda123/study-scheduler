@@ -7,7 +7,7 @@
 */
 //takes an encoded json and the users ID writes to a personal file "calendar" + ID + ".ics" in ics format.
 function export($json_encoded, $sessID){
-  $cal = fopen("calendar_" . $sessID . ".ics", "w+");
+  $cal = fopen("../userStorage/calendar_" . $sessID . ".ics", "w+");
   getHeader($cal);
   getEvents($json_encoded, $cal);
   fclose($cal);
