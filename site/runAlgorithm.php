@@ -54,7 +54,6 @@
   $calendar = free_time_with_events($calendar);
   $calendar = analyze($calendar, $calendarRoutines);
   $calendar = distribute($calendar, $calendarCourses, $calendarRoutines);
-	var_dump($calendar);
   $db -> query("UPDATE calendar SET CURRENT=".$db->quote($calendar) ." WHERE ID='$_SESSION[uuid]'");
 
 	  echo "<h3>Algorithm is finished</h3>";
