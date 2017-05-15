@@ -1,15 +1,14 @@
 var number = 1;
-
 function addNewField() { //adds a new coursework
-    var container = document.getElementById("container"); //parent container
 
+    var container = document.getElementById("a"); //parent container
     var lab = document.createElement("input"); //creates new input element
     lab.type = "checkbox";//gives input a type
     lab.name = "lab";//gives input a name
 
     var coursework = document.createElement("input");
-    coursework.type = "text"; 
-    coursework.name = "coursework" + number; 
+    coursework.type = "text";
+    coursework.name = "coursework" + number;
 
     var startdate = document.createElement("input");
     startdate.type = "date";
@@ -20,12 +19,12 @@ function addNewField() { //adds a new coursework
     enddate.name = "enddate" + number;
 
     var hp = document.createElement("input");
-    hp.type = "number";
+    hp.type = "float";
     hp.name = "hp_work" + number;
 
     //13 appendChild (used in removeField as static variable)
 
-    container.appendChild(document.createTextNode("Coursework " + number + ": ")); //Adds text
+    container.appendChild(document.createTextNode("Course assignment " + number + ": ")); //Adds text
     container.appendChild(coursework); //Adds element created above
     container.appendChild(document.createElement("br"));
 
@@ -47,6 +46,7 @@ function addNewField() { //adds a new coursework
 
 function removeField() { //removes a coursework
 
+    var container = document.getElementById("a"); //parent container
     if (number > 1) { //prevent button to be removed
         number--;
 

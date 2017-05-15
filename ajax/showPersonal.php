@@ -1,7 +1,3 @@
-<style>
-th { color: #555; }
-th:nth-child(odd) {color:black;}
-</style>
 <?php
 		if (session_id() == "") session_start();
 		include_once '../scripts/DB.php';

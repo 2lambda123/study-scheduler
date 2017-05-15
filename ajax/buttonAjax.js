@@ -9,7 +9,16 @@
 	  document.getElementById('weekHead').innerHTML = "Week: " + week;
   }
 
-
+$(document).on('click','.event',function(){
+	console.log($(this).html());
+	$.ajax ({
+		type: 'POST',
+		url: "../ajax/popupAjax.php", //form
+		data: "contentHTML="+$(this).html(),
+		success: function(data){document.body.innerHTML+=data} //popup
+	})
+});
+  
 /*
 When edit button is clicked, go to the right form depending on type of event, KTH or non-KRTH.
 */

@@ -10,6 +10,26 @@
 
   $calendarLink = $db -> select("SELECT STUDY FROM calendar WHERE ID ='$_SESSION[uuid]'");
   $calendar = $calendarLink[0]["STUDY"];
+// add 2 hours to convert from UTC to GMT+1(swedish time)
+	$decoded_calendar = json_decode($calendar, true);
+	for($i = 0; $i < count($decoded_calendar); $i++){
+		$dtstart = $decoded_calendar[$i]["DTSTART"];
+		$hours = (int) substr($dtstart, 9, 2);
+		$hours += 2;
+		if ($hours < 10){
+			$hours = "0" . $hours;
+		}
+		$decoded_calendar[$i]["DTSTART"] = substr_replace($dtstart, $hours, 9, 2);
+
+		$dtend = $decoded_calendar[$i]["DTEND"];
+		$hours = (int) substr($dtend, 9, 2);
+		$hours += 2;
+		if ($hours < 10){
+			$hours = "0" . $hours;
+		}
+		$decoded_calendar[$i]["DTEND"] = substr_replace($dtstart, $hours, 9, 2);
+	}
+	$calendar = json_encode($decoded_calendar);
 
   $calendarPersonal = $db -> select("SELECT PERSONAL FROM calendar WHERE ID ='$_SESSION[uuid]'");
   $calendarPersonal = $calendarPersonal[0]["PERSONAL"];

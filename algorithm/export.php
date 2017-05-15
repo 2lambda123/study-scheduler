@@ -24,9 +24,24 @@ function getEvents($json_encoded, $cal){
       if ( $temp["AVAILABLE"] == false ){ // if AVAILABLE is false, then add to ics calendar
         fwrite($cal, "BEGIN:VEVENT\n");
         for ($x = 0; $x < count($fields); $x++){ // write every field
-            if ( (strcmp($fields[$x], "DTSTART") == 0 || strcmp($fields[$x], "DTEND") == 0)  && strlen($temp[$fields[$x]]) <= 14) // time cannot be viewed if two zeros are missing before 'Z'
+            if ( (strcmp($fields[$x], "DTSTART") == 0 || strcmp($fields[$x], "DTEND") == 0)){ // time cannot be viewed if two zeros are missing before 'Z'
+              // -2 hours: GMT +1 -> UTC
+              $dt = $temp[$fields[$x]];
+              $hours = (int) substr($dt, 9, 2);
+              $hours -= 2;
+              if ($hours < 10){
+                $hours = "0" . $hours;
+              }
+
+              $temp[$fields[$x]] = substr_replace($dt, $hours, 9, 2);
+
+              if (strlen($temp[$fields[$x]]) <= 14)
               fwrite($cal, $fields[$x] . ":" . substr_replace($temp[$fields[$x]], "00", -1, 0) . "\n");
 
+              else
+              fwrite($cal, $fields[$x] . ":" . $temp[$fields[$x]] . "\n");
+
+            }
             else
             fwrite($cal, $fields[$x] . ":" . $temp[$fields[$x]] . "\n");
         }
@@ -35,4 +50,5 @@ function getEvents($json_encoded, $cal){
   }
   fwrite($cal, "END:VCALENDAR\n"); // necessary end line for ics
 }
+
 ?>

@@ -59,25 +59,29 @@ function findStudyFriends($myId, $frIds, $db){ //takes myId is my uuid, frIds as
 	$myCoursesTemp = $db -> select("SELECT COURSES FROM data WHERE ID='$myId'");
 	$myCourses = json_decode($myCoursesTemp[0]["COURSES"], true); //My courses
 	
-	foreach ($frIds as $frId){ //Loop friends
-	  $frCalTemp = $db -> select("SELECT CURRENT FROM calendar WHERE ID='$frId[0]'");
-	  $frCal = json_decode($frCalTemp[0]["CURRENT"], true); //friends calendar
+	if(isset($myCal) && isset($myCourses)){
+	  foreach ($frIds as $frId){ //Loop friends
+	    $frCalTemp = $db -> select("SELECT CURRENT FROM calendar WHERE ID='$frId[0]'");
+	    $frCal = json_decode($frCalTemp[0]["CURRENT"], true); //friends calendar
 	  
-	  $frCoursesTemp = $db -> select("SELECT COURSES FROM data WHERE ID='$frId[0]'");
-	  $frCourses = json_decode($frCoursesTemp[0]["COURSES"], true); //friends courses
-	  
-	  foreach ($myCourses as $myCourse){ //Loop my courses
-	    foreach ($frCourses as $frCourse){ //Loop friends array - Behöver skapa en json array av json array av json objekt
-		  if ($myCourse["coursecode"] == $frCourse["coursecode"]){ //check if we study the same course
-			$courseStudyTimes = compareStudyTimes($myCal, $frCal, $myCourse); //returns 2D array with DTSTAT-DTEND
-			if ($courseStudyTimes != null){
-			  $userInfo = array("name" => $frId[1], "course" => $myCourse["coursecode"]); //2d array,name of friend and the coursecode 
-			  array_unshift($courseStudyTimes, $userInfo);
-			  $sameStudyTimes[] = $courseStudyTimes;
+	    $frCoursesTemp = $db -> select("SELECT COURSES FROM data WHERE ID='$frId[0]'");
+	    $frCourses = json_decode($frCoursesTemp[0]["COURSES"], true); //friends courses
+	   
+	    if(isset($frCourses) && isset($frCal)){
+	      foreach ($myCourses as $myCourse){ //Loop my courses
+			foreach ($frCourses as $frCourse){ //Loop friends array - Behöver skapa en json array av json array av json objekt
+			  if ($myCourse["coursecode"] == $frCourse["coursecode"]){ //check if we study the same course
+				$courseStudyTimes = compareStudyTimes($myCal, $frCal, $myCourse); //returns 2D array with DTSTAT-DTEND
+				if ($courseStudyTimes != null){
+				  $userInfo = array("name" => $frId[1], "course" => $myCourse["coursecode"]); //2d array,name of friend and the coursecode 
+				  array_unshift($courseStudyTimes, $userInfo);
+				  $sameStudyTimes[] = $courseStudyTimes;
+				  }
+				break; //no reason to continue foreach when a course has been found already
 			  }
-			break; //no reason to continue foreach when a course has been found already
+			}
 		  }
-		}
+	    }
 	  }
 	}
 	
