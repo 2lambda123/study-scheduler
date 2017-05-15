@@ -32,7 +32,7 @@
   and returns a string with HTML tags <tr> and <th> that displays the dates and weekdays of the week in interest on the calendar table*/
 
   function assign_weekHead($firstday) {
-    $html = "<tr text-align='center'>";
+    $html = "<tr>";
     $str = substr($firstday, 0, 8);                                               //gets YYYYMMDD format.
     for($days = 0; $days < 7; $days++)                                            //creates the HTML for the 7 weekdays that will display on calendar tables headcell.
     {
