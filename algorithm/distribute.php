@@ -34,6 +34,10 @@ function generateUid(){
 }
 //$ENCODED_JSON IS APPARENTLY $COLLECTION_ENCODED
 function dailyWork($start_date, $end_date, $encoded_json, $hp){
+  if (strpos($hp, ",") > -1){ // if user writes 2,5 instead of 2.5 hp
+    $hp = str_replace(",", ".", $hp);
+  }
+
   $start_year = (int)substr($start_date, 0, 4);
   $start_month = (int)substr($start_date,5, 2);
   $start_date = (int)substr($start_date,8, 2);
@@ -262,7 +266,7 @@ function distribute($calendar_encoded, $courses_encoded, $collection_encoded){ /
 
 	$cw = 1; // not TENTA or lab ->
 	while(isset($courses_decoded["coursework" . $cw])){ //As long as there is coursework to insert
-	  $courseWork = dailyWork($courses_decoded["coursestart" . $cw], $courses_decoded["courseend" . $cw], $collection_encoded, $courses_decoded["hp_work" . $cw]);
+	  $courseWork = dailyWork($courses_decoded["startdate" . $cw], $courses_decoded["enddate" . $cw], $collection_encoded, $courses_decoded["hp_work" . $cw]);
 	  $calendar_decoded = distributeWork($calendar_decoded, $courses_decoded, $courseWork, days($collection_encoded), "Study for " . $courses_decoded["coursework" . $cw], $courses_decoded["startdate". $cw], $collection_decoded, $repeat);
 	  $cw++;
     $repeat = true;
@@ -321,8 +325,9 @@ $weekStart = $x;
     // still on same day, finds school time
     while(strcmp(substr($calendar_decoded[$x + $y]["DTSTART"], 0, 8),$current_day) == 0){
       $substr = substr($calendar_decoded[$x + $y]["SUMMARY"], 0, 10); // look for laboration
+      $summary = $calendar_decoded[$x + $y]["SUMMARY"];
       // strpos -> if the right course time, and also NOT a lab time
-      if (strpos($calendar_decoded[$x + $y]["SUMMARY"], $course_code) && strcmp($substr, "Laboration") != 0 && $examWork > 0 && $repeat == false){
+      if (strpos($summary, $course_code) !== false && strcmp($substr, "Laboration") != 0 && $examWork > 0 && $repeat == false){
         $examWork -= timeDiff($calendar_decoded[$x + $y]);
       }
 
@@ -396,7 +401,7 @@ $weekStart = $x;
               // +1 as we make an array splice
               $freeTime = timeDiff($calendar_decoded[$x+$z]);
               $examWork = 0;
-              
+
             }
           }
         } // end of if statement checking if it's a study time
