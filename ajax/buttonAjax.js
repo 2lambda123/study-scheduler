@@ -8,15 +8,35 @@
   if(document.getElementById('weekHead')) {
 	  document.getElementById('weekHead').innerHTML = "Week: " + week;
   }
+  
+var entityMap = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+  '/': '&#x2F;',
+  '`': '&#x60;',
+  '=': '&#x3D;'
+};
+
+function escapeHtml (string) {
+  return String(string).replace(/[&<>"'`=\/]/g, function (s) {
+    return entityMap[s];
+  });
+}
 
 $(document).on('click','.event',function(){
-	console.log($(this).html());
-	$.ajax ({
-		type: 'POST',
-		url: "../ajax/popupAjax.php", //form
-		data: "contentHTML="+$(this).html(),
-		success: function(data){document.body.innerHTML+=data} //popup
-	})
+	console.log($('<div/>').text(this.outerHTML).html());
+	console.log($(this).attr('value'));
+	$.post('../ajax/popupAjax.php', 
+		{
+			contentHTML: this.innerHTML,
+			json: $(this).attr('value')
+		}).done(
+		function(data){
+			document.body.innerHTML += data; console.log(data)
+			});
 });
   
 /*

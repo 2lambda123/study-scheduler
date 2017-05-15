@@ -19,7 +19,7 @@ if (isset($_SESSION['calendarPopup']) && $_SESSION['calendarPopup'] !== "") {
 </button>
 </a>
 </li>
-<script src="../scripts/jquery.min.js"></script>
+<script src="../site/jquery.min.js"></script>
 <script>
 $(document).on('submit', "#calendars", function(event){
 	event.preventDefault();
