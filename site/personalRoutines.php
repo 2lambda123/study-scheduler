@@ -9,7 +9,6 @@
 </head>
 <body>
   <?php include 'menubar.php'; ?>
-  <h1>Personal Routines</h1>
   <?php include '../site/routineForm.php'; ?>
   <div id="shown">
   <?php include '../ajax/showPersonal.php';?>

@@ -18,6 +18,7 @@ $(document).on('change', '#rep', function() {
 $(document).on('click', '.toggle',function(event){$(this).next().toggle();});
 </script>
 <div id="formDiv">
+<h1>Habits</h1>
 <form class="form" action='../ajax/receivePersonal.php' method='post'>
 <table id="formTable">
 	<tr><th>Habit name:</th> <th><input name="name" type="text"/></th></tr>

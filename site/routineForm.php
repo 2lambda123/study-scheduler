@@ -1,6 +1,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../ajax/ajax.js"></script>
 <div id="formDiv">
+<h1>Personal Routines</h1>
 <form class="form" action="../ajax/receivePersonal.php" method="POST">
 	<table id="formTable">
 	<tr><th>Days I don't want to study:</th>
