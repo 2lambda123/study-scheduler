@@ -45,3 +45,8 @@ body{
 #loginForm {
 	margin: 13.5px;
 }
+#gLogin {
+	float:right;
+	height: 46px;
+	margin-right: 5px;
+}
