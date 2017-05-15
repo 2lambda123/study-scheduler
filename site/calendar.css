@@ -54,11 +54,13 @@ th {
 }
 
 .day{
-  display: -webkit-flex;
+    
+  display: -webkit-flex; 
   display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
+ -webkit-flex-direction: column;
+  flex-direction: column; 
+  flex-wrap: wrap;
+	width: 100%; 
   height: 100%;
   /*background-color: #666;*/
   color: black;
@@ -76,9 +78,6 @@ th {
    z-index:4;
    /*width: 100% !important;*/
    transform:scale(2,2);
-   transition: .1s all;
-      font-size: 0.5em;
-
 }
 .event:hover > .edit {
   height:50%;
@@ -86,13 +85,12 @@ th {
 }
 
 .event {
+	float: left;
 	background-color: #067FE3;
-	/*float: left;*/
   word-break: break-word;
   outline: 2px groove black;
   overflow: hidden;
   font-family: sans-serif;
-  width: 100%;
   z-index: 0;
   }
 
