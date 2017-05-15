@@ -1,15 +1,24 @@
-	//Calculate week number.
-	Date.prototype.getWeek = function() {
-		var onejan = new Date(this.getFullYear(), 0, 1);
-		return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
-	}
+  //Calculate week number.
+  Date.prototype.getWeek = function() {
+        var onejan = new Date(this.getFullYear(), 0, 1);
+        return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+  }
 
-	var week = (new Date()).getWeek();
-	if(document.getElementById('weekHead')) {
-		document.getElementById('weekHead').innerHTML = "Week: " + week;
-	}
+  var week = (new Date()).getWeek();
+  if(document.getElementById('weekHead')) {
+	  document.getElementById('weekHead').innerHTML = "Week: " + week;
+  }
 
-
+$(document).on('click','.event',function(){
+	console.log($(this).html());
+	$.ajax ({
+		type: 'POST',
+		url: "../ajax/popupAjax.php", //form
+		data: "contentHTML="+$(this).html(),
+		success: function(data){document.body.innerHTML+=data} //popup
+	})
+});
+  
 /*
 When edit button is clicked, go to the right form depending on type of event, KTH or non-KRTH.
 */

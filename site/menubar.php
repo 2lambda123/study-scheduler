@@ -19,7 +19,10 @@ if(isset($_SESSION['uuid'])) {
 echo "<li class='menubarEntry' id ='login'>";
 
 include_once '../scripts/loginForm.php';
-if (!$result || $result[0]['GID'] == "") include_once '../site/googleLogin.php';
+if (!$result || $result[0]['GID'] == "") {
+	echo "<li class='menubarEntry' id='gLogin'>";
+	include_once '../site/googleLogin.php';
+}
 ?>
 
 	</li>

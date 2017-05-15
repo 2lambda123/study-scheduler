@@ -28,11 +28,6 @@
     </div>
 </div>
 <div id="displaySettings">
-<form id='submitKTHlink' action='../scripts/createCal.php' method='POST'>
-	KTHlink:<input type='text' name='KTHlink'/>
-	<input type='hidden' name='uuid' value='<?php if(isset($_SESSION['uuid'])) echo $_SESSION['uuid'];?>'/>
-	<input type='submit'/>
-</form>
 </div>
 <script>
 var menuVis1 = false;
@@ -84,20 +79,6 @@ $(document).ready(function(){
     $("#whatSettings").click(function(){
         $("#displaySettings").load('dataSettingsForm.php');
     });
-});
-
-$(document).on('submit','#submitKTHlink', function(event) {
-	event.preventDefault();
-	console.log($(this).serialize());
-	$.ajax ({
-		type: $(this).attr('method'),
-		url: $(this).attr('action'),
-		data: $(this).serialize(),
-		success: function(data){
-			console.log(data);
-			document.getElementById('submitKTHlink').innerHTML += data;
-		}
-	})
 });
 </script>
 </body>

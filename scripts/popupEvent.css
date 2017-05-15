@@ -25,6 +25,8 @@
     border-radius: 6px;
     box-shadow: 10px 10px 5px #888888;
 	color: black;
+	overflow-y: scroll;
+	display: hidden;
 
 }
 

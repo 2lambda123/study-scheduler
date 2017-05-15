@@ -1,11 +1,9 @@
-<!--
-
+<?php
+/*
 'genCal.php'
 This file is a collection of functions relating to displaying a user's calendar in HTML.
 TODO: 	leave database calls to whoever is calling these functions, as this file should not be executing code.
-
--->
-<?php
+*/
 	include_once '../scripts/DB.php';
 	include_once '../algorithm/distribute.php';
 	include_once '../scripts/importCal.php';
@@ -155,12 +153,13 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 				$html .= "'>";
 				$html .= "<div class='pretty_time'>".pretty_time($events[$i]->DTSTART)." - ".pretty_time($events[$i]->DTEND)."</div>";
 				$html .= "<div class='SUMMARY'>". str_replace($order, $replace, $events[$i]->SUMMARY) ."</div>";
+				if (isset($event->NOTES)) $html .= "<div class ='extra'> <br> Notes:". $event->NOTES . "<br> </div>";
 				if (preg_match($reg_exUrl, $str, $url)) {
 					$html .= "<br><div class='extra'>" . preg_replace($reg_exUrl, '<a href="' . $url[0] . '">' . $url[0] . '</a>', $str) . "<br> Plats: " . str_replace($order, $replace, $events[$i]->LOCATION) . "</div>";
 				} else {
 				$html .= "<br><div class='extra'>" . $str . "<br> Plats: " . $str . "</div>";
 				}
-				if (!$events[$i]->AVAILABLE) { $html .= "<br><div><button class='edit'>Edit</button></div>"; }
+				if (!$events[$i]->AVAILABLE) { $html .= "<br><div><button class='edit'>Edit</button><button class='note'>Add note</button></div>"; }
 				$html .= "</div>";
 			}
 		}
