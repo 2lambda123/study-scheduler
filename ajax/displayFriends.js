@@ -20,7 +20,6 @@ window.fbAsyncInit = function() {
 
 function checkLoginState() { //checks if the person is logged in or not - called only when website first is loaded
     FB.getLoginStatus(function(response) {
-	  console.log("checkLoginState");
       if(response && !response.error){
         statusChangeCallback(response);	
 	  }
@@ -32,7 +31,6 @@ function checkLoginState() { //checks if the person is logged in or not - called
 var hasDone = false;
 function statusChangeCallback(response){ //checks if user is logged in - called when refreshing page
   if(response.status === 'connected'){ //User is logged in
-    console.log("FB account is connected");
 	if(!hasDone){
       hasDone = true;
 	  insertFbId(); //calls ajax for insertFbId.php which inserts fb uuid into user database
@@ -40,7 +38,6 @@ function statusChangeCallback(response){ //checks if user is logged in - called 
 	}
   }
   else{
-    console.log("FB account is NOT connected");
 	removeButton();
 	removeStudy();
 	hasDone = false;
