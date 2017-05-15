@@ -24,7 +24,7 @@ function addNewField() { //adds a new coursework
 
     //13 appendChild (used in removeField as static variable)
 
-    container.appendChild(document.createTextNode("Course work " + number + ": ")); //Adds text
+    container.appendChild(document.createTextNode("Course assignment " + number + ": ")); //Adds text
     container.appendChild(coursework); //Adds element created above
     container.appendChild(document.createElement("br"));
 

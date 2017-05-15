@@ -9,9 +9,16 @@
 </head>
 <body>
   <?php include '../site/menubar.php'; ?>
-  <h1>Courses</h1>
   <?php include '../site/courseForm.php'; ?>
 <script>
+  $(document).on('change','#checkExam', function(){
+    $('.hideExam').toggle();
+  }
+);
+$('#checkLab').change(function(){
+  $('.hideLab').toggle();
+}
+);
 	$(document).on('submit', 'form', function(event) {
 		event.preventDefault();
 		var send = $(this).serialize();
