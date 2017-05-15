@@ -15,10 +15,10 @@
 		<label for="sa"/>Saturday:</label> <input type="checkbox" name="Saturday" id="sa"/><br/>
 		<label for="su"/>Sunday:</label> <input type="checkbox" name="Sunday" id="su"/><br/>
 	</div>
-	</th></tr>	
+	</th></tr>
 	<tr><th>I normally sleep from: </th>
 	<th><input name="sleepfrom" type="time" value="22:00"></th></tr>
-		
+
 	<tr><th>I normally sleep to:</th>
 	<th><input name="sleepto" type="time" value="06:00"></th></tr>
 	<tr><th>Normal travel time (minutes):</th>
@@ -35,5 +35,5 @@
 	<tr><th>I want to study for (minutes): </th><th><input name="studylength" type="number"/></th></tr>
 	<tr><th>Then I want to take a break for (minutes): </th><th><input name="breaktime" type="number"></th></tr>
 	</table>
-	<input type="submit"/>
+	<input type="submit", value="Submit"/>
 </form>
