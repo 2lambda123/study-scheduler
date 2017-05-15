@@ -18,11 +18,11 @@ h1 {
 	margin: 0 auto;
 	width: 80%;
 	border-collapse: collapse;
+	margin-bottom: 15px;
 }
 input {
 	border: 0px;
 	border-bottom: 1px solid black;
-	margin-top: 10px;
 }
 #courses {
 	width: 100%;
@@ -36,4 +36,5 @@ th {
 }
 tr {
 	border-bottom: 1px solid #eee;
+	margin-bottom: 10px;
 }
