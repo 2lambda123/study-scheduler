@@ -1,36 +1,38 @@
 .pSettings{
+  background-color: grey;
   padding-top: 10px;
-  width: 200px;
+  width: 260px;
   height: 30px;
-  background-color: #404040;
   display:block;
-  border-top:2px solid black;
+  border-top: 2px solid black;
   border-bottom:2px solid black;
 }
 .pSettings:hover{
-  background-color: green;
+  background-color: #ff33ff;
   cursor: pointer;
 }
 .menuS{
   width: 200px;
-  height: 30px;
-  border-bottom: 1px solid black;
-  background-color: #808080;
+  background-color: lightgrey;
+  padding-left: 40px;
+  padding-right: 20px;
   padding-top:10px;
+  padding-bottom:10px;
 }
 .menuS:hover{
-  background-color: #737373;
+  background-color: #ffccff;
   cursor: pointer;
 }
-
+.infobox{
+  text-align: left;
+  margin-left: 30px;
+}
 #settingBar{
   width: 200px;
-  background-color: green;
   float: left;
 }
 #displaySettings{
   width: 65%;
-  height: 100px;
   margin-left: 60px;
   background-color: #66ccff;
   float: left;
@@ -39,5 +41,8 @@
   display: none;
 }
 #secsettings{
+  display: none;
+}
+#datapolicy{
   display: none;
 }
