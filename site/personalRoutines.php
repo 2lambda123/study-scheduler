@@ -5,11 +5,16 @@
 <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
 <title>Routines</title>
 <link href="menubar.css" rel="stylesheet">
+<link href="../site/forms.css" rel="stylesheet">
 </head>
 <body>
   <?php include 'menubar.php'; ?>
   <h1>Personal Routines</h1>
-  <?php include '../site/routineForm.php'; include '../ajax/showPersonal.php'?>
+  <?php include '../site/routineForm.php'; ?>
+  <div id="shown">
+  <?php include '../ajax/showPersonal.php';?>
+  </div>
+  </div>
   <script>
 	$(document).on('submit', 'form', function(event) {
 		event.preventDefault();

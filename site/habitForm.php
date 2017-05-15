@@ -7,9 +7,9 @@ $(document).on('change', '#rep', function() {
 		$('#weekDays').toggle();
     var e = document.getElementById('DaysOrWeek');
     if (e.innerHTML.substring(10,15) == "weeks") {
-      e.innerHTML = 'Number of days: <input name="duration" type="number">';
+      e.innerHTML = 'Number of days: ';
     } else {
-      e.innerHTML = 'Number of weeks: <input name="duration" type="number">';
+      e.innerHTML = 'Number of weeks: ';
     }
 	});
 });
@@ -17,20 +17,25 @@ $(document).on('change', '#rep', function() {
 //Toggles visibility on the next element when clicked, used for the habits table to show events for (this) habit
 $(document).on('click', '.toggle',function(event){$(this).next().toggle();});
 </script>
+<div id="formDiv">
 <form class="form" action='../ajax/receivePersonal.php' method='post'>
-	<h3>New habit</h3>
-	<div>
-		Habit name: <input name="name" type="text"/><br/>
-    from: <input name="dtstart" type="time"/> to: <input name="dtend" type="time"/><br/><br />
-    Habit will go on for:
-    <select id="rep" name="repetition">
-      <option>Day(s)</option>
-      <option selected>Week(s)</option>
-    </select><br/>
-    <div id="DaysOrWeek">Number of weeks: <input name="duration" type="number"/></div><br/>
+<table id="formTable">
+	<tr><th>Habit name:</th> <th><input name="name" type="text"/></th></tr>
+    <tr><th>from:</th><th><input name="dtstart" type="time" value="00:00"/></th></tr>
+	<tr><th>to:</th><th><input name="dtend" type="time" value="00:00"/></th></tr>
+    <tr><th>Habit will go on for:</th>
+    <th>
+		<select id="rep" name="repetition">
+			<option>Day(s)</option>
+			<option selected>Week(s)</option>
+		</select>
+	</th></tr>
+	<tr><th><div id="DaysOrWeek">Number of weeks:</th><th><input name="duration" type="number"/></div></th></tr>
 
-	<div id="weekDays">
+	<tr id="weekDays"><th>
 		Which days of the week will the habit occur?
+	</th>
+	<th>
 	<div>
 		<label for="mo"/>Monday:</label> <input type="checkbox" name="Monday" id="mo"/><br/>
 		<label for="tu"/>Tuesday:</label> <input type="checkbox" name="Tuesday" id="tu"/><br/>
@@ -40,12 +45,13 @@ $(document).on('click', '.toggle',function(event){$(this).next().toggle();});
 		<label for="sa"/>Saturday:</label> <input type="checkbox" name="Saturday" id="sa"/><br/>
 		<label for="su"/>Sunday:</label> <input type="checkbox" name="Sunday" id="su"/><br/>
 	</div>
-	</div>
-  <br/>
-  Location: <input name="location" type="text"/><br/>
-  Estimated travel time (minutes): <input name="travel" type="number"/><br/><br/>
-		<input type="submit" value="Send"/>
-	</div>
+	</th></tr>
+	<tr><th>Location:</th><th><input name="location" type="text"/></th></tr>
+	<tr><th>Estimated travel time (minutes):</th><th><input name="travel" type="number"/></th></tr>
+	</table>
+	<input type="submit" value="Send"/>
 </form>
 
+<div id="shown">
 <?php include '../ajax/showHabits.php'?>
+</div>

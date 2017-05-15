@@ -1,0 +1,27 @@
+#formDiv {
+	margin: 0 auto;
+	width: 50%;
+}
+#formTable {
+	margin: 0 auto;
+	width: 100%;
+	border-collapse: collapse;
+}
+input {
+	border: 0px;
+	border-bottom: 1px solid black;
+	margin-top: 10px;
+}
+#courses {
+	width: 100%;
+	margin: 0 auto;
+}
+#shown {
+	margin-top: 100px;
+}
+th {
+	padding: 10px;
+}
+tr {
+	border-bottom: 1px solid #eee;
+}

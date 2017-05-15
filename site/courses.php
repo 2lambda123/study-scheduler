@@ -5,6 +5,7 @@
 <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
 <title>Courses</title>
 <link href="menubar.css" rel="stylesheet">
+<link href="../site/forms.css" rel="stylesheet">
 </head>
 <body>
   <?php include '../site/menubar.php'; ?>
