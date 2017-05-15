@@ -15,9 +15,6 @@ EOF;
 	if(isset($_POST['logout'])){
 		if(session_id() !== "") 
 			session_destroy();
-			echo '<script type="text/javascript">',
-				'FB.logout();',
-				'</script>';
 		
 		echo $loginForm;
 	}
@@ -56,7 +53,8 @@ $(document).on('submit','#loginForm', function(event) {
 		url: $(this).attr('action'),
 		data: $(this).serialize(),
 		success: function(data){
-			window.location.reload();
+			//window.location.reload();
+			window.location.replace('../site/homepage.php'); //using the login/logout button will redirect user to homepage
 			//document.getElementById('loginForm').innerHTML = data;
 		}
 	})

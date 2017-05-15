@@ -4,8 +4,12 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
 <title>Import &amp; Export</title>
 <link href="menubar.css" rel="stylesheet">
+</head>
 <body>
   <?php
     session_start();
@@ -13,9 +17,9 @@
 
     // END OF TESTDATA
     include 'menubar.php';
-    include '..\scripts\DB.php';
-    include '..\scripts\importCal.php';
-    include '..\algorithm\export.php';
+    include_once '..\scripts\DB.php';
+    include_once '..\scripts\importCal.php';
+    include_once '..\algorithm\export.php';
     $sessID = $_SESSION["uuid"];
     $db = new DB();
     // Imports the calendar associated with the uuid from the DB

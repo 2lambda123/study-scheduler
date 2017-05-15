@@ -1,7 +1,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../ajax/ajax.js"></script>
+<div id="formDiv">
+<h1>Personal Routines</h1>
 <form class="form" action="../ajax/receivePersonal.php" method="POST">
-	<h3>Days I don't want to study:</h3>
+	<table id="formTable">
+	<tr><th>Days I don't want to study:</th>
+	<th>
 	<div>
 		<label for="mo"/>Monday:</label> <input type="checkbox" name="Monday" id="mo"/><br/>
 		<label for="tu"/>Tuesday:</label> <input type="checkbox" name="Tuesday" id="tu"/><br/>
@@ -11,16 +15,14 @@
 		<label for="sa"/>Saturday:</label> <input type="checkbox" name="Saturday" id="sa"/><br/>
 		<label for="su"/>Sunday:</label> <input type="checkbox" name="Sunday" id="su"/><br/>
 	</div>
-	<h3>I normally sleep</h3>
-	<div>
-		<h4>from:</h4>
-		<input name="sleepfrom" type="time">
-		
-		<h4>to:</h4>
-		<input name="sleepto" type="time">
-	</div>
-	<div>
-		<h3>Normal travel time (minutes):</h3>
+	</th></tr>
+	<tr><th>I normally sleep from: </th>
+	<th><input name="sleepfrom" type="time" value="22:00"></th></tr>
+
+	<tr><th>I normally sleep to:</th>
+	<th><input name="sleepto" type="time" value="06:00"></th></tr>
+	<tr><th>Normal travel time (minutes):</th>
+	<th>
 		<select name="traveltime">
 			<option value=15>15</option>
 			<option value=30>30</option>
@@ -29,10 +31,9 @@
 			<option value=90>90</option>
 			<option value=120>120</option>
 		</select>
-	</div>
-	<div>
-		<h3>How long between breaks and how long breaks?</h3>
-		Long: <input name="studylength" type="number"/><br/>
-		Time: <input name="breaktime" type="number"><br/>
-	<input type="submit"/>
+	</th></tr>
+	<tr><th>I want to study for (minutes): </th><th><input name="studylength" type="number"/></th></tr>
+	<tr><th>Then I want to take a break for (minutes): </th><th><input name="breaktime" type="number"></th></tr>
+	</table>
+	<input type="submit", value="Submit"/>
 </form>

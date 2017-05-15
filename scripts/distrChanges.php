@@ -1,4 +1,5 @@
 <?php
+  if (session_id() == "") session_start();
   include_once 'DB.php';
   include_once 'importCal.php';
   //Previous name Distribute_Leftover_Time.php
@@ -143,7 +144,7 @@ function distr_leftover($restMin, $studyEvent, $calendar){
   }
   $calendar = recursive_distr($restMin, $studyEvent, $calendar, $lastDate, $slot);
   $db = new DB();
-  $db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($calendar)) ." WHERE ID='c7fe7b83-2be5-11e7-b210-f0795931a7ef'");
+  $db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($calendar)) ." WHERE ID='$_SESSION[uuid]'");
 }
 
 ?>

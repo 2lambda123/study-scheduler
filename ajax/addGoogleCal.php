@@ -72,7 +72,8 @@ foreach($cal as $c) {
 							$end = str_replace(':', '', $end);
 							$end = str_replace('+0200', 'Z', $end);
 							$e->DTEND = $end;
-							$e->AVAILABLE = NULL;
+							$e->AVAILABLE = FALSE;
+							$e->NOTES = NULL;
 							array_push($p, $e);
 						}
 					}

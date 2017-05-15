@@ -1,11 +1,13 @@
-  //Calculate week number.
-  Date.prototype.getWeek = function() {
-        var onejan = new Date(this.getFullYear(), 0, 1);
-        return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
-  }
+	//Calculate week number.
+	Date.prototype.getWeek = function() {
+		var onejan = new Date(this.getFullYear(), 0, 1);
+		return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+	}
 
-  var week = (new Date()).getWeek();
-  document.getElementById('weekHead').innerHTML = "Week: " + week;
+	var week = (new Date()).getWeek();
+	if(document.getElementById('weekHead')) {
+		document.getElementById('weekHead').innerHTML = "Week: " + week;
+	}
 
 
 /*
@@ -42,6 +44,7 @@ $(document).on('click','.edit', function(event)
 /*
 When form is submitted, send input to action specified in form tag
 */
+
 $(document).on('submit', ".changeForm", function(event){
 	event.preventDefault();
 	var send = $(this).serialize();
@@ -52,6 +55,40 @@ $(document).on('submit', ".changeForm", function(event){
 		success: function(data)
 		{
       console.log(data);
+			document.getElementById("modal").outerHTML=null; //Close popup on submission
+		}
+	})
+});
+
+/*
+  "add notes" implementation
+*/
+$(document).on('click','.note', function(event)
+{
+  var json = this.parentElement.parentElement.getAttribute('value'); //encoded json of clicked event
+	$.ajax
+	({
+		type: 'POST',
+		url: "../ajax/changeNotesPopup.php", //form
+		data: "JSON="+json,
+		success: function(data){document.body.innerHTML+=data} //popup
+	})
+});
+
+/*
+When form is submitted, send input to action specified in form tag
+*/
+$(document).on('submit', ".changeForm", function(event){
+	event.preventDefault();
+	var send = $(this).serialize();
+	$.ajax({
+		type: 'POST',
+		url: $(this).attr('action'),
+		data: send,
+		success: function(data)
+		{
+      console.log(data);
+      window.location.reload();
 			document.getElementById("modal").outerHTML=null; //Close popup on submission
 		}
 	})

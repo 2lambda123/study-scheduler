@@ -9,8 +9,8 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 	include_once '../scripts/DB.php';
 	include_once '../algorithm/distribute.php';
 	include_once '../scripts/importCal.php';
-	
-	date_default_timezone_set('UTC'); 
+
+	date_default_timezone_set('UTC');
 	function cmp_date($date1,$date2){ return cmp_date_val($date1) > cmp_date_val($date2); }
 	function cmp_date_val($date) 	{ return substr($date,0,8).substr($date,9,4); }
 	function cmp_day($date1,$date2) { return intval(substr($date2,0,8)) - intval(substr($date1,0,8)); }
@@ -21,7 +21,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		foreach (array_reverse(explode(':', $time)) as $k => $v) $sec += pow(60, $k) * $v;
 		return $sec*60;
 	}
-	
+
 	//begin database calls, which should not actually be in this function.
 	global $f;
 	$db = new DB();
@@ -35,7 +35,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 	$current = (isset($result[0]['CURRENT'])) ? $result[0]['CURRENT'] : null;
 	$f = $current;
 	//end database calls.
-	
+
 	function collect($date_start, $date_end) {
 		/*
 		this function finds all events within the two given dates and returns
@@ -173,7 +173,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 
 	function gen_day($events){
 		/*
-		This function receives all events in a day with the format [day] = [event1,event2,...] where event is 
+		This function receives all events in a day with the format [day] = [event1,event2,...] where event is
 		of the class event from 'importCal.php' and returns their contents in HTML format for use in displaying a user's calendar.
 		*/
 		
@@ -208,7 +208,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		}
 		return $ar;
 	}
-	
+
 	function check($clickedEvent){
 		/*
 		This function checks an event's summary and sees if it belongs to KTH or not, for giving it an HTML class when called in gen_event

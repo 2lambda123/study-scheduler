@@ -1,0 +1,40 @@
+#formDiv {
+	padding-top: 15px;
+	margin: 0 auto;
+	width: 50%;
+	-moz-box-shadow: 0px 3px 8px rgb(100,100,100);
+	-webkit-box-shadow: 0px 3px 8px rgb(100,100,100);
+	box-shadow: 0px 3px 8px rgb(100,100,100);
+}
+@media only screen  and (max-device-width: 800px) {
+	#formDiv {
+		width: 100%;
+	}
+}
+h1 {
+	margin: 0px auto;
+}
+#formTable {
+	margin: 0 auto;
+	width: 80%;
+	border-collapse: collapse;
+	margin-bottom: 15px;
+}
+input {
+	border: 0px;
+	border-bottom: 1px solid black;
+}
+#courses {
+	width: 100%;
+	margin: 0 auto;
+}
+#shown {
+	margin-top: 100px;
+}
+th {
+	padding: 10px;
+}
+tr {
+	border-bottom: 1px solid #eee;
+	margin-bottom: 10px;
+}
