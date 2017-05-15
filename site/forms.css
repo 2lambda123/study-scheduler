@@ -6,6 +6,11 @@
 	-webkit-box-shadow: 0px 3px 8px rgb(100,100,100);
 	box-shadow: 0px 3px 8px rgb(100,100,100);
 }
+@media only screen  and (max-device-width: 800px) {
+	#formDiv {
+		width: 100%;
+	}
+}
 h1 {
 	margin: 0px auto;
 }

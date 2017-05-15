@@ -1,4 +1,4 @@
-<script src="../scripts/jquery.min.js"></script>
+<script src="../site/jquery.min.js"></script>
 <script src="../ajax/buttonAjax.js"></script>
 <script>
 //Toggles visibilty on weekdays forms when repetition select changes
