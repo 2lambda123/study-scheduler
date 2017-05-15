@@ -20,7 +20,6 @@ echo "<li class='menubarEntry' id ='login'>";
 
 include_once '../scripts/loginForm.php';
 if (!$result || $result[0]['GID'] == "") include_once '../site/googleLogin.php';
-if (!$result || $result[0]['FBAUTH'] == "") include_once '../site/facebookLogin.php';
 ?>
 
 	</li>
