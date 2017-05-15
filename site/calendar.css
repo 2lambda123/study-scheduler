@@ -31,41 +31,35 @@
   cursor: pointer;
 }
 
-#calendar{
-	padding: 10px 14px;
-	background-color:#ccc;
-  table-layout: fixed;
-	/*border-radius: 25px;*/
-  width: 70%;
-  margin: auto;
-  background-color: rgb(0, 0, 0);
-}
-
+/*No need to change*/
 th {
-  padding: 10px 10px 10px 10px;
-  text-align: center;
   color:white;
   padding-bottom: 20px;
+  height: 0vh;
+  background-color: #00ccff;
 }
 
-.eventbox{
-  height: 1080px;
-  margin: 0px auto;
+/*Calendar table*/
+#calendar{
+	/*background-color:#ccc;*/
+  table-layout: fixed;
+  width: 90%;
+  margin: auto;
+  height: 100vh;                      /*adjusts the calendar relative to the users viewport*/
+  background-color: rgb(0, 0, 0);
+  font-size: 1vw;                     /*adjusts the calendar texts relative to the users viewport*/
+  text-align: center;
 }
 
 .day{
-    
-  display: -webkit-flex; 
+  display: -webkit-flex;
   display: flex;
- -webkit-flex-direction: column;
-  flex-direction: column; 
-  flex-wrap: wrap;
-	width: 100%; 
-  height: 100%;
-  /*background-color: #666;*/
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;                      /*expand out to the calendar's fullest*/
   color: black;
-  overflow: visible;
-  /*background-color: rgb(0, 0, 0);*/
+  border: 1px solid transparent
 }
 
 /*.event:hover
@@ -75,21 +69,31 @@ th {
    min-height: 100px;
    overflow: visible;
    z-index:4;
+<<<<<<< HEAD
+   /*width: 100% !important;
+=======
+>>>>>>> 7e07bf0d107e99e6b5ef2c3afa79cdc9a113922c
    transform:scale(2,2);
+   transition: .1s all;
+   font-size: 0.5em;
+
 }
+
 .event:hover > .edit {
   height:50%;
   width:50%;
 }*/
 
 .event {
-	float: left;
 	background-color: #067FE3;
   word-break: break-word;
   outline: 2px groove black;
   overflow: hidden;
   font-family: sans-serif;
   z-index: 0;
+  cursor: pointer;
+  float:left;
+  /*white-space: nowrap;*/
   }
 
 .SUMMARY{
@@ -98,9 +102,4 @@ th {
 
 .KTH {
   background-color: rgb(255,86,2)/*#fa5050*/;
-}
-
-.Other
-{
-  background-color: yellow;
 }
