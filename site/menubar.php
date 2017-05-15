@@ -15,8 +15,6 @@ echo "<li class='menubarEntry' id ='login'>";
 	
 include_once '../scripts/loginForm.php';
 /*if (!isset($_SESSION['uuid']))*/ include_once '../site/googleLogin.php';
-/*if (!isset($_SESSION['uuid']))*/ include_once '../site/facebookLogin.php';
-
 
 ?>
 

@@ -7,7 +7,7 @@ window.fbAsyncInit = function() {
       version    : 'v2.9'
     });
     FB.AppEvents.logPageView();
-	setupPage();
+	checkLoginState();
   };
   
   (function(d, s, id){
@@ -18,12 +18,35 @@ window.fbAsyncInit = function() {
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-   //findFriends();
-   function logout(){ //logout from facebook
-  FB.logout(function(response) {
-  });
+function checkLoginState() { //checks if the person is logged in or not - called only when website first is loaded
+    FB.getLoginStatus(function(response) {
+	  console.log("checkLoginState");
+      if(response && !response.error){
+        statusChangeCallback(response);	
+	  }
+	  else{
+	    console.log("Error when calling FB.getLoginStatus");
+	  }
+    });
 }
-
+var hasDone = false;
+function statusChangeCallback(response){ //checks if user is logged in - called when refreshing page
+  if(response.status === 'connected'){ //User is logged in
+    console.log("FB account is connected");
+	if(!hasDone){
+      hasDone = true;
+	  insertFbId(); //calls ajax for insertFbId.php which inserts fb uuid into user database
+	  setupPage();
+	}
+  }
+  else{
+    console.log("FB account is NOT connected");
+	removeButton();
+	removeStudy();
+	hasDone = false;
+  }  
+}   
+  
 function findFriends() { //calls fb api to find friends who use our app, then calls actualLoadPhp with an argument ids[][] containing all ids and names
   FB.getLoginStatus(function(response) {
     if(response && !response.error){
@@ -79,25 +102,42 @@ function addButton(){ //adds button for "Find Study Friends"
 }
 
 function removeButton(){ //Removes "Find Study Friends" button
-  var container = document.getElementById("container"); //parent container
+  var container = document.getElementById("findFriends"); //parent container
   while(container.hasChildNodes())
     container.removeChild(container.lastChild);
 }
 
 function removeStudy(){ //Removes result from studyWithFriends.php
-  var container = document.getElementById("fbLogin"); //parent container
+  var container = document.getElementById("findFriendsResults"); //parent container
   while(container.hasChildNodes())
     container.removeChild(container.lastChild);
 }
 
 function setupPage(){
-  FB.getLoginStatus(function(response) {
-    if(response && !response.error){
-	  addButton();
-	}
-	else{
-	 var container = document.getElementById("findFriends");
-	 container.appendChild(document.createTextNode("Make sure you are have connected with facebook"));
-	}
-  });
+  removeButton();
+  addButton();
+}
+
+function insertFbId(){ //Called when connecting with facebook, calls insertFbId.php which takes appropriate actions
+FB.api(
+    "/me",
+    function (response) {
+      if (response && !response.error) {
+		//console.log(response);
+		insertFbIdAjax(response);
+      }
+    }
+);
+}
+
+function insertFbIdAjax(response){ //Calls insertFbId.php using ajax - response is fb.api "me"
+
+var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("fbLogin").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("POST", "../scripts/insertFbId.php?q=" + JSON.stringify(response),true);
+  xhttp.send();
 }
