@@ -18,26 +18,34 @@ foreach ($q as $friend){ //Loops through all friends and inserts their uuid into
   }
 }
 //starts algorithm, returns encoded JSON 2D array with all found common study times, first obj in array has name and course key-values, rest have dtstart-dtend key-values
-$finalStudyTimes = findStudyFriends($myId, $frIds, $db);  
-
+if(isset($frIds))
+  $finalStudyTimes = findStudyFriends($myId, $frIds, $db);
+else  
+  $finalStudyTimes = null;
 //Simple and basic code to print the result, currently no spot in database where we save $finalStudyTimes
 if($finalStudyTimes != null){
   $studyDecoded = json_decode($finalStudyTimes, true);
-  echo "Found common studytimes! <br><br>";
+  echo "Found common study times! <br><br>";
   foreach ($studyDecoded as $study){
-    echo "Study with " . $study[0]["name"] . " - Course: " . $study[0]["course"] . "<br>";
-	for ($i = 1; $i < count($study); $i++){
-	  echo convertPrintTime($study[$i]["DTSTART"]) . " - ";
-	  echo convertPrintTime($study[$i]["DTEND"]) . "<br>";
+    $today = date("Y-m-d");
+	$i = 1;
+	while($today > revertDate($study[$i]["DTSTART"]) && $i < count($study)){
+	  $i++;
+	  }
+	if($i < count($study)){  
+      echo "Study with " . $study[0]["name"] . " - Course: " . $study[0]["course"] . "<br>";
+	  for ($i; $i < count($study); $i++){
+	    echo convertPrintTime($study[$i]["DTSTART"]) . " - ";
+	    echo convertPrintTime($study[$i]["DTEND"]) . "<br>";
+	  }
+	  echo "<br>";
 	}
-	echo "<br>";
-  }
-  
+  } 
 }
 else
   echo "No times were found";
 
-function convertPrintTime($date){ //takes a DTFORMAT date and turns the string into a printable version, eg. 2017-05-12 10:00 - 12:00
+function convertPrintTime($date){ //takes a DTFORMAT date and turns the string into a printable version, eg. 2017-05-12 10:00 
 //input looks like this 20170509T131000Z
   $year = substr($date, 0, 4);
   $month = substr($date, 4, 2);
