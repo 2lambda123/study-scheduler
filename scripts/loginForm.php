@@ -15,9 +15,7 @@ EOF;
 	if(isset($_POST['logout'])){
 		if(session_id() !== "") 
 			session_destroy();
-			echo '<script type="text/javascript">',
-				'FB.logout();',
-				'</script>';
+			echo '<script> logout(); </script>';
 		
 		echo $loginForm;
 	}
@@ -49,6 +47,8 @@ EOF;
 <script src="../site/jquery.min.js"></script>
 <script>
 $(document).on('submit','#loginForm', function(event) {
+	logout(); //logout from facebook
+	console.log("Logged out facebook");
 	event.preventDefault();
 	console.log($(this).serialize());
 	$.ajax ({
@@ -61,4 +61,28 @@ $(document).on('submit','#loginForm', function(event) {
 		}
 	})
 });
+
+//Initiate FB SDK
+window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '127392254473957',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.9'
+    });
+    FB.AppEvents.logPageView();
+  };
+  
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+   function logout(){ //logout from facebook
+  FB.logout(function(response) {
+  });
+}
 </script>

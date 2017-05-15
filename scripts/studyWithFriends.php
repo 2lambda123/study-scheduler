@@ -9,9 +9,13 @@ $q = json_decode($q); //$q is 2D array with $q[x][0] being UserID and $q[x][1] b
 $myId = $_SESSION["uuid"];
 
 foreach ($q as $friend){ //Loops through all friends and inserts their uuid into an array,$friend[0] is fb userID
-  $tempId = $db -> select("SELECT ID FROM user WHERE FBAUTH='$friend[0]'");
-  $friend[0] = $tempId[0]["ID"];
-  $frIds[] = $friend;
+  if ($db -> select("SELECT ID FROM user WHERE FBAUTH='$friend[0]'") != null){ //make sure there is actually an user in the database with that fbauth
+    $tempId = $db -> select("SELECT ID FROM user WHERE FBAUTH='$friend[0]'");
+    if(isset($tempId[0]["ID"]) && $tempId[0]["ID"] != ""){ //to make sure the friend has an account
+      $friend[0] = $tempId[0]["ID"];
+      $frIds[] = $friend;
+    }
+  }
 }
 //starts algorithm, returns encoded JSON 2D array with all found common study times, first obj in array has name and course key-values, rest have dtstart-dtend key-values
 $finalStudyTimes = findStudyFriends($myId, $frIds, $db);  
@@ -21,10 +25,10 @@ if($finalStudyTimes != null){
   $studyDecoded = json_decode($finalStudyTimes, true);
   echo "Found common studytimes! <br><br>";
   foreach ($studyDecoded as $study){
-    echo "Name: " . $study[0]["name"] . " CourseID: " . $study[0]["course"] . "<br>";
+    echo "Study with " . $study[0]["name"] . " - Course: " . $study[0]["course"] . "<br>";
 	for ($i = 1; $i < count($study); $i++){
-	  echo $study[$i]["DTSTART"] . " - ";
-	  echo $study[$i]["DTEND"] . "<br>";
+	  echo convertPrintTime($study[$i]["DTSTART"]) . " - ";
+	  echo convertPrintTime($study[$i]["DTEND"]) . "<br>";
 	}
 	echo "<br>";
   }
@@ -33,6 +37,15 @@ if($finalStudyTimes != null){
 else
   echo "No times were found";
 
+function convertPrintTime($date){ //takes a DTFORMAT date and turns the string into a printable version, eg. 2017-05-12 10:00 - 12:00
+//input looks like this 20170509T131000Z
+  $year = substr($date, 0, 4);
+  $month = substr($date, 4, 2);
+  $day = substr($date, 6, 2);
+  $hour = substr($date, 9, 2);
+  $min = substr($date, 11, 2);
+  return $year . "-" . $month . "-" . $day . " " . $hour . ":" . $min;
+}
 function revertDate($date){ // converts DTSTART format to "2017-04-24"
   $year = substr($date, 0, 4);
   $month = substr($date,4, 2);
@@ -41,16 +54,17 @@ function revertDate($date){ // converts DTSTART format to "2017-04-24"
 }
 
 function findStudyFriends($myId, $frIds, $db){ //takes myId is my uuid, frIds as 2D array with all friend uuids and their usernames, return 2Djson string
-	$myCalTemp = $db -> select("SELECT CURRENT FROM calendar WHERE ID='$myId'"); //change id to variable
-	$myCal = json_decode($myCalTemp[0]["CURRENT"], true);
-	$myCoursesTemp = $db -> select("SELECT COURSES FROM data WHERE ID='$myId'"); //change id to variable
-	$myCourses = json_decode($myCoursesTemp[0]["COURSES"], true);
+	$myCalTemp = $db -> select("SELECT CURRENT FROM calendar WHERE ID='$myId'"); 
+	$myCal = json_decode($myCalTemp[0]["CURRENT"], true); //My calendar
+	$myCoursesTemp = $db -> select("SELECT COURSES FROM data WHERE ID='$myId'");
+	$myCourses = json_decode($myCoursesTemp[0]["COURSES"], true); //My courses
 	
 	foreach ($frIds as $frId){ //Loop friends
-	  $frCalTemp = $db -> select("SELECT CURRENT FROM calendar WHERE ID='$frId[0]'"); //friends calendar
-	  $frCal = json_decode($frCalTemp[0]["CURRENT"], true);
-	  $frCoursesTemp = $db -> select("SELECT COURSES FROM data WHERE ID='$frId[0]'"); //friends courses
-	  $frCourses = json_decode($frCoursesTemp[0]["COURSES"], true);
+	  $frCalTemp = $db -> select("SELECT CURRENT FROM calendar WHERE ID='$frId[0]'");
+	  $frCal = json_decode($frCalTemp[0]["CURRENT"], true); //friends calendar
+	  
+	  $frCoursesTemp = $db -> select("SELECT COURSES FROM data WHERE ID='$frId[0]'");
+	  $frCourses = json_decode($frCoursesTemp[0]["COURSES"], true); //friends courses
 	  
 	  foreach ($myCourses as $myCourse){ //Loop my courses
 	    foreach ($frCourses as $frCourse){ //Loop friends array - Behöver skapa en json array av json array av json objekt

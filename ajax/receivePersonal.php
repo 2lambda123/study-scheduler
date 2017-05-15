@@ -1,6 +1,7 @@
-<?php 
+<?php
 if (session_id() == "") session_start();
 include_once '../scripts/DB.php';
+include_once '../scripts/importCal.php';
 $db = new DB();
 if(session_id() == "") session_start();
 //If sleepfrom exists, we have a form sent from personal routines, if coursecode exists, we have a form sent from courses
@@ -9,17 +10,18 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	if(isset($_SESSION['uuid'])){
 		$db -> query("UPDATE data SET ROUTINES=".$db->quote(json_encode($_POST))." WHERE ID='".$_SESSION['uuid']."'");
 	}
-	
+	include '../ajax/showPersonal.php';
+
 } else if (isset($_POST["coursecode"])) { //Courses
 	//Get courses from database since we have to add courses, not replace existing ones
 	$result = null;
 	if(isset($_SESSION['uuid'])){
 		$result = $db -> select("SELECT COURSES FROM data WHERE ID='".$_SESSION['uuid']."'");
 	}
-		
-	$r = (isset($result1[0]['COURSES'])) ? json_decode($result1[0]['COURSES'], true) : null;
+
+	$r = (isset($result[0]['COURSES'])) ? json_decode($result[0]['COURSES'], true) : null;
 	$p = array();
-	
+
 	//If new coursecode has same name as an existing coursecode, die and echo error message
 	if (is_array($r)) {
 		foreach ($r as $c) {
@@ -28,7 +30,6 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			}
 		}
 	}
-	
 	//Checks if $r has actual values
 	if ($r !== "") {
 		//Checks if $r is an array
@@ -37,10 +38,12 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			array_push($r, (object)$_POST);
 			$p = $r;
 		} else {
-			//Add $r into new array and $post to new array
-			//array_push($p, (object)$r);
 			array_push($p, (object)$_POST);
 		}
+	} else {
+		//Add $r into new array and $post to new array
+		//array_push($p, (object)$r);
+		array_push($p, (object)$_POST);
 	}
 	//Update database to match new courses
 	if(isset($_SESSION['uuid'])){
@@ -49,16 +52,6 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	include '../ajax/showCourses.php';
 } else if (isset($_POST['repetition'])) {
 	//Event with standard values
-	class event {
-		public $SUMMARY = NULL;
-		public $DTSTART = NULL;
-		public $DTEND = NULL;
-		public $UID = NULL;
-		public $DESCRIPTION = NULL;
-		public $LOCATION = NULL;
-		public $AVAILABLE = NULL;
-	}
-
 
 	$h = $_POST;
 	$events;
@@ -69,11 +62,11 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	if(isset($_SESSION['uuid'])){
 		$result = $db -> select("SELECT HABITS FROM data WHERE ID='".$_SESSION['uuid']."'");
 	}
-			
+
 	$r = json_decode($result[0]['HABITS'], true);
 	$p = array();
 
-	//Check so we cant add habits with the same name	
+	//Check so we cant add habits with the same name
 	if (is_array($r)) {
 		foreach ($r as $c) {
 			if ($_POST['name'] == $c['name']) {
@@ -121,7 +114,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	}
 
 	//If repetition is daily, create new event for this day and x (reps) days forward
-	if ($h['repetition'] == "Daily") {
+	if ($h['repetition'] == "Day(s)") {
 		$d = date('Ymd');
 		for ($i = 0; $i < $x; $i++) {
 			$events[] = new event();
@@ -134,7 +127,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			$events[$i]->AVAILABLE = FALSE;
 			$d = date('Ymd', strtotime($d . "+1 day"));
 		}
-	} else if ($h['repetition'] == "Weekly") { //If repetition is weekly, create new events on the days chosen for x (reps) weeks
+	} else if ($h['repetition'] == "Week(s)") { //If repetition is weekly, create new events on the days chosen for x (reps) weeks
 		$rep = (count($wD)-1)*$x;
 		$d = date('Ymd');
 		for ($i = 0; $i < $rep;) {
@@ -158,7 +151,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	if(isset($_SESSION['uuid'])){
 		$result = $db -> select("SELECT HABITS FROM calendar WHERE ID='".$_SESSION['uuid']."'");
 	}
-			
+
 	$r = (isset($result[0]['HABITS'])) ? json_decode($result[0]['HABITS'], true) : null;
 	$p = array();
 	include_once '../algorithm/modify.php';
@@ -184,7 +177,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	if(isset($_SESSION['uuid'])){
 		$result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='".$_SESSION['uuid']."'");
 	}
-		
+
 	$r = (isset($result[0]['CURRENT'])) ? json_decode($result[0]['CURRENT'], true) : null;
 	$p = array();
 
@@ -204,7 +197,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	//Echo's table of habits, since changes have been made
 	include '../ajax/showHabits.php';
 
-} else { //Not sent from personal routines nor courses 
+} else { //Not sent from personal routines nor courses
 	die ('No correct form sent');
 }
 ?>

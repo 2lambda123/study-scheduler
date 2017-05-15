@@ -15,7 +15,7 @@
 	<div>
 		<h4>from:</h4>
 		<input name="sleepfrom" type="time">
-		
+
 		<h4>to:</h4>
 		<input name="sleepto" type="time">
 	</div>
@@ -31,8 +31,8 @@
 		</select>
 	</div>
 	<div>
-		<h3>How long between breaks and how long breaks?</h3>
-		Long: <input name="studylength" type="number"/><br/>
-		Time: <input name="breaktime" type="number"><br/>
-	<input type="submit"/>
+		<h3>Length of breaks and study sessions:</h3>
+		Study length: <input name="studylength" type="number"/><br/>
+		Break length: <input name="breaktime" type="number"><br/>
+	<input type="submit" value="Send"/>
 </form>

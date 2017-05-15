@@ -7,7 +7,7 @@
   function updateNote($UID, $note, $summary, $changeAll){
     $db = new DB();
     $current = $db -> select("SELECT CURRENT FROM calendar WHERE ID='$_SESSION[uuid]'");
-    $current = json_decode($current, true);
+    $current = json_decode($current[0]["CURRENT"]);
     if($changeAll){
       for($i = 0; $i < count($current); $i++){
         if($current[$i]->SUMMARY == $summary)

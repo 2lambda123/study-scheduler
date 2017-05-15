@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
 <title>Calendar</title>
 <link href="menubar.css" rel="stylesheet">
 <link href="settings.css" rel="stylesheet">
 <script src="../site/jquery.min.js"></script>
+</head>
 <body>
 <?php include_once "../site/menubar.php";?>
 <h1>Settings</h1>
@@ -66,7 +70,7 @@ $(document).on('submit','#submitKTHlink', function(event) {
 		data: $(this).serialize(),
 		success: function(data){
 			console.log(data);
-			document.getElementById('submitKTHlink').innerHTML += data;
+			document.getElementById('submitKTHlink').outerHTML += data;
 		}
 	})
 });
