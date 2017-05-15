@@ -5,7 +5,9 @@
   }
 
   var week = (new Date()).getWeek();
-  document.getElementById('weekHead').innerHTML = "Week: " + week;
+  if(document.getElementById('weekHead')) {
+	  document.getElementById('weekHead').innerHTML = "Week: " + week;
+  }
 
 
 /*
