@@ -61,8 +61,8 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		}
 		return $week;
 	}
-	
-	
+
+
 	function find_clash ($events)
 	{
 		$events2 = array();
@@ -71,7 +71,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		{
 			array_push($arr, $events[0]);
 			$end = $events[0]->DTEND;
-			
+
 			for($i = 1; $i<count($events); $i++)
 			{
 				if($events[$i]->DTSTART < $end)
@@ -82,15 +82,15 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 						foreach($arr as $a)
 						{
 							$a->WIDTH = 100/count($arr);
-						}		
+						}
 						array_push($events2, $arr);
-					}	
+					}
 					else
 					{
 						array_push($arr, $events[$i]);
 						if($events[$i]->DTEND > $end) {$end = $events[$i]->DTEND;}
 					}
-				}	
+				}
 				else
 				{
 					array_push($events2, $arr);
@@ -101,18 +101,18 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 					{
 						array_push($events2, $arr);
 						array_push($arr, $events[$i]);
-					}	
+					}
 					else
-					{ 
+					{
 				   		$end = $events[$i]->DTEND;
 				   	}
 				}
-					
+
 			}
 		}
 		return $events2;
 	}
-	
+
 
 	function gen_event($events, $event1){
 		/*
@@ -120,35 +120,36 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		It also accepts the previous event, in which case it sets the margin-top of this event to be proportional to the time between the two.
 		*/
 		//$tB;
-		$divide=80;
-	 	
+
 	 	$html ="";
-		
+
 	    /*if($events)
 			$start = $events[0]->DTSTART;*/
 
 		$order   = array("\\r\\n", "\\n", "\\r");
 		$replace = ' <br />';
 		$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
-
-		if ($events) 
+		$divide=(60*60*24); /*seconds in a day*/
+		if ($events)
 		{
-			for ($i = 0; $i<count($events); $i++) 
+			for ($i = 0; $i<count($events); $i++)
 			{
 				$cl = check($events[$i]);
 				$json = json_encode($events[$i]);
 				//$width = $events[$i]->WIDTH;
 				$width = 100/(count($events));
+				$length = (((TimeToSec(pretty_time($events[$i]->DTEND))-TimeToSec(pretty_time($events[$i]->DTSTART))))/$divide)*100;
+
 
 				if ($event1) {
-				$mar = ((TimeToSec(pretty_time($events[$i]->DTSTART))-TimeToSec(pretty_time($event1->DTEND))))/$divide;
+				$mar = (((TimeToSec(pretty_time($events[$i]->DTSTART))-TimeToSec(pretty_time($event1->DTEND))))/$divide)*100;
 				} else {
-					$mar = (TimeToSec(pretty_time($events[$i]->DTSTART)))/$divide;
-				} 
+				$mar = ((TimeToSec(pretty_time($events[$i]->DTSTART)))/$divide)*100;
+				}
 
-				$length = ((TimeToSec(pretty_time($events[$i]->DTEND))-TimeToSec(pretty_time($events[$i]->DTSTART))))/$divide;
 				$str = str_replace($order, $replace, $events[$i]->DESCRIPTION);
-				$html  .= "<div class='event $cl' value ='$json' style='height:".$length."px; width: ".$width."%; margin-top:".$mar."px;"; 
+
+				$html  .= "<div class='event $cl' value ='$json' style='height:".$length."vh; width: ".$width."%; margin-top:".$mar."vh;";
 				$html .= "'>";
 				$html .= "<div class='pretty_time'>".pretty_time($events[$i]->DTSTART)." - ".pretty_time($events[$i]->DTEND)."</div>";
 				$html .= "<div class='SUMMARY'>". str_replace($order, $replace, $events[$i]->SUMMARY) ."</div>";
@@ -163,7 +164,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 			}
 		}
 
-		$html2 = "<div class='outerbox' >"; 
+		$html2 = "<div class='outerbox' >";
 		$html2 .= $html;
 		$html2 .= "</div>";
 
@@ -175,18 +176,18 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		This function receives all events in a day with the format [day] = [event1,event2,...] where event is
 		of the class event from 'importCal.php' and returns their contents in HTML format for use in displaying a user's calendar.
 		*/
-		
+
 		$events2 = find_clash($events);
-		
+
 		$html  = "<div class='day'>";
-		for($i = 0; $i < count($events2); $i++) {			
-			//if ($events[$i]->AVAILABLE) { } 
+		for($i = 0; $i < count($events2); $i++) {
+			//if ($events[$i]->AVAILABLE) { }
 			//else {
-				if (isset($events2[$i-1])) 
+				if (isset($events2[$i-1]))
 				{
 					$html .= gen_event($events2[$i], $events2[$i-1][(count($events2[$i-1])-1)]);
-				} 
-				else 
+				}
+				else
 				{
 					$html .= gen_event($events2[$i], null);
 				}
