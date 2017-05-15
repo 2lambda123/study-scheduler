@@ -22,7 +22,7 @@
 			data: send,
 			success: function(data)
 				{
-					document.getElementById("courses").outerHTML=data; //Close popup on submission
+					document.getElementById("shown").innerHTML=data; //Close popup on submission
 				}
 	})
 });

@@ -26,7 +26,9 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	if (is_array($r)) {
 		foreach ($r as $c) {
 			if ($_POST['coursecode'] == $c['coursecode']) {
-				die('You cant add the same course twice.');
+				echo "You can't add the same course twice.";
+				include '../ajax/showCourses.php';
+				die();
 			}
 		}
 	}
@@ -70,7 +72,10 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	if (is_array($r)) {
 		foreach ($r as $c) {
 			if ($_POST['name'] == $c['name']) {
-				die('You cant add the same habit twice.');
+				echo "You can't add the same habit twice.";
+				include '../ajax/showHabits.php';
+				
+				die();
 			}
 		}
 	}
