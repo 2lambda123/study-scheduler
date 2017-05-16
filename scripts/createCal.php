@@ -9,7 +9,11 @@ function createCal ($UUID, $KTHlink) {
 	$CAL = downloadFile($KTHlink);
 	$CAL1 = $db->quote($CAL);
 	$sql = "UPDATE calendar SET STUDY = ".$CAL1 . " WHERE ID = '".$UUID."'";
-	$db -> query($sql);
+	if($db -> query($sql)){
+	  if(isset($_SESSION['tutorial']) && $_SESSION['tutorial'] == 1){
+		$_SESSION['tutorial'] += 1;
+	  }
+	}
 	popupGen(popupLabs($CAL));
 	
 	/*
