@@ -11,7 +11,7 @@
 
 <body>
   <?php include '../site/menubar.php'; ?>
-  <?php include '../site/habitform.php'; ?>
+  <?php include '../site/habitForm.php'; ?>
   <script>
 	$(document).on('submit', 'form', function(event) {
 		event.preventDefault();
