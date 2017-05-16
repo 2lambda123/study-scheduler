@@ -28,7 +28,21 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	}
 	//Update database to match new routines
 	if(isset($_SESSION['uuid'])){
-		$db -> query("UPDATE data SET ROUTINES=".$db->quote(json_encode($_POST))." WHERE ID='".$_SESSION['uuid']."'");
+		if($db -> query("UPDATE data SET ROUTINES=".$db->quote(json_encode($_POST))." WHERE ID='".$_SESSION['uuid']."'")){
+		  if(isset($_SESSION['tutorial']) && $_SESSION['tutorial'] == 0){
+		    $_SESSION['tutorial'] += 1;
+			$uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+			$uri = explode('/', $uri);
+			$wholeURL = "http://";
+			foreach ($uri as $u) {
+			  if ($u == "scripts" || $u == "site" || $u == "ajax" || $u == "algorithm") {
+				break;
+			  }
+			  $wholeURL .= $u . "/";
+			}
+			header("Location; " . $wholeURL . "site/calExpImp.php");
+		  }
+		}
 	}
 	include '../ajax/showPersonal.php';
 
@@ -125,7 +139,21 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	}
 	//Update database to match new courses
 	if(isset($_SESSION['uuid'])){
-		$db -> query("UPDATE data SET COURSES=".$db->quote(json_encode($p))." WHERE ID='".$_SESSION['uuid']."'");
+		if($db -> query("UPDATE data SET COURSES=".$db->quote(json_encode($p))." WHERE ID='".$_SESSION['uuid']."'")){
+		  if(isset($_SESSION['tutorial']) && $_SESSION['tutorial'] == 2){
+		    $_SESSION['tutorial'] += 1;
+			$uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+			$uri = explode('/', $uri);
+			$wholeURL = "http://";
+			foreach ($uri as $u) {
+			  if ($u == "scripts" || $u == "site" || $u == "ajax" || $u == "algorithm") {
+				break;
+			  }
+			  $wholeURL .= $u . "/";
+			}
+			header("Location; " . $wholeURL . "site/habits.php");
+		  }
+		}
 	}
 	include '../ajax/showCourses.php';
 } else if (isset($_POST['repetition'])) {
@@ -222,7 +250,21 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	}
 	//Update database with updated habits
 	if(isset($_SESSION['uuid'])){
-		$db -> query("UPDATE data SET HABITS=".$db->quote(json_encode($p))." WHERE ID='".$_SESSION['uuid']."'");
+		if($db -> query("UPDATE data SET HABITS=".$db->quote(json_encode($p))." WHERE ID='".$_SESSION['uuid']."'")){
+		  if(isset($_SESSION['tutorial']) && $_SESSION['tutorial'] == 3){
+		    $_SESSION['tutorial'] += 1;
+			$uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+			$uri = explode('/', $uri);
+			$wholeURL = "http://";
+			foreach ($uri as $u) {
+			  if ($u == "scripts" || $u == "site" || $u == "ajax" || $u == "algorithm") {
+				break;
+			  }
+			  $wholeURL .= $u . "/";
+			}
+			header("Location; " . $wholeURL . "site/settings.php");
+		  }
+		}
 	}
 
 	//If repetition is daily, create new event for this day and x (reps) days forward

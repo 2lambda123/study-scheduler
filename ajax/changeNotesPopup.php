@@ -2,7 +2,7 @@
 
  include "../scripts/popupEvent.php";
  $html = "";
-  if($_POST["JSON"]){
+  if(isset($_POST["JSON"])){
     $event = json_decode($_POST["JSON"], false);
 	$html = "";
     $html .= '<form action="../ajax/receiveNotes.php" method="POST" class = "changeForm">';
