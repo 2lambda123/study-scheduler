@@ -11,6 +11,7 @@
 <title>Import &amp; Export</title>
 <link href="menubar.css" rel="stylesheet">
 <script src="../site/jquery.min.js"></script>
+<script src="../ajax/buttonAjax.js"></script>
 <style>
 html, body {
 	height: 100%;
