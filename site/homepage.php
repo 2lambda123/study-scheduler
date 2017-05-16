@@ -16,7 +16,12 @@
     <h3>This is a website that will help maintain
     a schedule adjusted to the users study needs.</h3>
     <img src="small.png"/>
-
+	
+	<form action="homepage.php" method="post">
+		<input type="hidden" name="tutorial" value="">
+		<input type="submit" value="Run tutorial">
+	</form>
+	
 <?php
 
 include '../scripts/createUser.php';
