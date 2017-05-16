@@ -84,10 +84,6 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 					if($i == (count($events) - 1))
 					{
 						array_push($arr, $events[$i]);
-						foreach($arr as $a)
-						{
-							$a->WIDTH = 100/count($arr);
-						}
 						array_push($events2, $arr);
 					}
 					else
@@ -100,7 +96,6 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 				{
 					array_push($events2, $arr);
 					$arr = array();
-					array_push($arr, $events[$i]);
 
 					if($i == (count($events) - 1))
 					{
@@ -109,8 +104,9 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 					}
 					else
 					{
+							array_push($arr, $events[$i]);
 				   		$end = $events[$i]->DTEND;
-				   	}
+				   }
 				}
 
 			}
@@ -124,27 +120,18 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		This function takes an event (class event from importCal.php) and returns an HTML formatted event to be used in a calendar view.
 		It also accepts the previous event, in which case it sets the margin-top of this event to be proportional to the time between the two.
 		*/
-		//$tB;
-
 	 	$html ="";
-
-	    /*if($events)
-			$start = $events[0]->DTSTART;*/
-
 		$order   = array("\\r\\n", "\\n", "\\r");
 		$replace = ' <br />';
 		$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
 		$divide=(60*60*24); /*seconds in a day*/
-		if ($events)
-		{
+
 			for ($i = 0; $i<count($events); $i++)
 			{
 				$cl = check($events[$i]);
 				$json = json_encode($events[$i]);
-				//$width = $events[$i]->WIDTH;
 				$width = 100/(count($events));
 				$length = (((TimeToSec(pretty_time($events[$i]->DTEND))-TimeToSec(pretty_time($events[$i]->DTSTART))))/$divide)*100;
-
 
 				if ($event1) {
 				$mar = (((TimeToSec(pretty_time($events[$i]->DTSTART))-TimeToSec(pretty_time($event1->DTEND))))/$divide)*100;
@@ -169,7 +156,6 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 				if (!$events[$i]->AVAILABLE) { $html .= "<br><div><button class='edit'>Edit</button><button class='note'>Add note</button></div>"; }
 				$html .= "</div>";
 			}
-		}
 
 		$html2 = "<div class='outerbox' >";
 		$html2 .= $html;
@@ -188,17 +174,19 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 
 		$html  = "<div class='day'>";
 		for($i = 0; $i < count($events2); $i++) {
-			//if ($events[$i]->AVAILABLE) { }
-			//else {
 				if (isset($events2[$i-1]))
 				{
-					$html .= gen_event($events2[$i], $events2[$i-1][(count($events2[$i-1])-1)]);
+					$last = $events2[$i-1][0];
+					for($j = 0; $j<count($events2[$i-1]); $j++)
+					{
+						if(($events2[$i-1][$j]->DTEND) > $last->DTEND){$last = $events2[$i-1][$j];}
+					}
+					$html .= gen_event($events2[$i], $last);
 				}
 				else
 				{
 					$html .= gen_event($events2[$i], null);
 				}
-			//}
 		}
 		$html .= "</div>";
 		return $html;

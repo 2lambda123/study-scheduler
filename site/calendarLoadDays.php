@@ -32,7 +32,7 @@
   and returns a string with HTML tags <tr> and <th> that displays the dates and weekdays of the week in interest on the calendar table*/
 
   function assign_weekHead($firstday) {
-    $html = "<tr>";
+    $html = "<tr> ";
     $str = substr($firstday, 0, 8);                                               //gets YYYYMMDD format.
     for($days = 0; $days < 7; $days++)                                            //creates the HTML for the 7 weekdays that will display on calendar tables headcell.
     {
@@ -59,4 +59,32 @@
       $html .= "</tr>";
       echo $html;
       }
+
+      /*<td>
+      <ul class='timeLine'>
+      <li style='margin-bottom: 0vh;'>00:00</li>
+      <li style='margin-bottom: 0vh;>01:00</li>
+      <li style='margin-bottom: 0vh;>02:00</li>
+      <li style='margin-bottom: 0vh;>03:00</li>
+      <li style='margin-bottom: 0vh;>04:00</li>
+      <li style='margin-bottom: 0vh;>05:00</li>
+      <li style='margin-bottom: 4vh;>06:00</li>
+      <li style='margin-bottom: 4vh;>07:00</li>
+      <li style='margin-bottom: 4vh;>08:00</li>
+      <li style='margin-bottom: 4vh;>09:00</li>
+      <li style='margin-bottom: 4vh;>10:00</li>
+      <li style='margin-bottom: 4vh;>11:00</li>
+      <li style='margin-bottom: 4vh;>12:00</li>
+      <li style='margin-bottom: 4vh;>13:00</li>
+      <li style='margin-bottom: 4vh;>14:00</li>
+      <li style='margin-bottom: 4vh;>15:00</li>
+      <li style='margin-bottom: 4vh;>16:00</li>
+      <li style='margin-bottom: 4vh;>17:00</li>
+      <li style='margin-bottom: 4vh;>18:00</li>
+      <li style='margin-bottom: 4vh;>19:00</li>
+      <li style='margin-bottom: 4vh;>20:00</li>
+      <li style='margin-bottom: 4vh;>21:00</li>
+      <li style='margin-bottom: 4vh;>22:00</li>
+      <li>23:00</li>
+      </ul></td>*/
  ?>

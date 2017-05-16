@@ -7,9 +7,9 @@
   <!-- Calendar Header, includes display of current week and two buttons that on click will view either the next
   or previous weeks -->
   <div id="calHead" value ="0">
-    <button class = "weekBtn" id="Prev"> Previous</button>
+    <button class = "weekBtn" id="Prev"> &#10094; </button>
     <div id="weekHead"> "MIA"</div>
-    <button class = "weekBtn" id="Next"> Next</button>
+    <button class = "weekBtn" id="Next"> &#10095; </button>
   </div>
 
   <!-- Calendar table, displays the calendar itself. -->

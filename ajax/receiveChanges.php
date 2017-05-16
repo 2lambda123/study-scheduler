@@ -7,14 +7,13 @@ include '../scripts/distrChanges.php';
 $db = new DB();
 $result = $db -> select("SELECT CURRENT FROM calendar WHERE ID='$_SESSION[uuid]'");
 $calendar = json_decode($result[0]['CURRENT']);
-
 // Outputs the time needed to be distributed in minutes
 if(isset($_POST["remove"])){  //  If we are to remove the event from the schedule
   $event = json_decode($_POST["JSON2"], false);
   for($i = 0; $i < count($calendar); $i++){
     if($calendar[$i]->UID == $event->UID){
       //To separate habits from course-studying (pseudo code)
-      if($calendar[$i]->SUMMARY = "STUDY-SCHEDULER"){
+      if(strpos($calendar[$i]->SUMMARY, "STUDY-SCHEDULER") !== false){
         //Length of the event in calendar[$i]
         $diffH = intval(substr($calendar[$i]->DTEND, 9, 2)) - intval(substr($calendar[$i]->DTSTART, 9, 2));
         $diffM = intval(substr($calendar[$i]->DTEND, 11, 2)) - intval(substr($calendar[$i]->DTSTART, 11, 2));
@@ -27,6 +26,7 @@ if(isset($_POST["remove"])){  //  If we are to remove the event from the schedul
         //If we want to relocate the STUDY-SCHEDULER time
         if($_POST["remove"] == 2){
           distr_leftover($diffM, $temp, json_encode($calendar));
+          break;
         }
         else{
           $db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($calendar)) ." WHERE ID='$_SESSION[uuid]'");
@@ -34,13 +34,13 @@ if(isset($_POST["remove"])){  //  If we are to remove the event from the schedul
       }
       else{//If we remove a habit instead
         array_splice($calendar, $i, 1);
-        $db -> query("UPDATE calendar SET CURRENT=".$db->quote($calendar) ." WHERE ID='$_SESSION[uuid]'");
+        $db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($calendar)) ." WHERE ID='$_SESSION[uuid]'");
       }
     }
   }
 }
 else{ // If we are to "cut" the event
-  if(isset($_POST["newStartH"]) || isset($_POST["newEndH"]) || true){
+  if(isset($_POST["newStartH"]) || isset($_POST["newEndH"])){
     $event = json_decode($_POST["JSON2"], false);
     for($i = 0; $i < count($calendar); $i++){
       if($calendar[$i]->UID == $event->UID){
