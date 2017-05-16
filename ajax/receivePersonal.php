@@ -40,7 +40,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			  }
 			  $wholeURL .= $u . "/";
 			}
-			header("Location; " . $wholeURL . "site/calExpImp.php");
+			echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$wholeURL.'site/calExpImp.php">';
 		  }
 		}
 	}
@@ -151,7 +151,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			  }
 			  $wholeURL .= $u . "/";
 			}
-			header("Location; " . $wholeURL . "site/habits.php");
+			echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$wholeURL.'site/habits.php">';
 		  }
 		}
 	}
@@ -262,7 +262,7 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			  }
 			  $wholeURL .= $u . "/";
 			}
-			header("Location; " . $wholeURL . "site/settings.php");
+			echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$wholeURL.'site/settings.php">';
 		  }
 		}
 	}
