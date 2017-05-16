@@ -7,7 +7,7 @@ session_start();
 global $wholeURL;
 $uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $uri = explode('/', $uri);
-$wholeURL = "http://";
+$wholeURL = "https://";
 foreach ($uri as $u) {
 	if ($u == "scripts" || $u == "site" || $u == "ajax" || $u == "algorithm") {
 		break;
@@ -34,7 +34,7 @@ $client->setAccessType('offline');
 //To ignore SSL (for localhost)
 $guzzleClient = new \GuzzleHttp\Client(array( 'curl' => array( CURLOPT_SSL_VERIFYPEER => false, ), ));
 $client->setHttpClient($guzzleClient);
-
+echo $_SESSION['originGLogin'];
 //Check if we've received an access token from google
 if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 	$client->setAccessToken($_SESSION['access_token']);
@@ -52,7 +52,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 		//Access google plus api
 		$plus = new Google_Service_Plus($client);
 		$plus = $plus->people->get('me');
-		
+
 		//Check if user id already exists in db
 		$db = new DB();
 		$result = $db -> SELECT("SELECT * FROM user WHERE GID=" . $db->quote($plus->id));
@@ -60,20 +60,23 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 			//If UUID of existing user id is same as logged in UUID, go back to where we came from
 			if ($result[0]['ID'] == $_SESSION['uuid']) {
 				$url = $_SESSION['originGLogin'];
-				header("Location: http://$url");
+				header("Location: https://" . $url);
+			} else {
+				$url = $_SESSION['originGLogin'];
+				header("Location: https://" . $url . "?Google_Account_Is_Already_Connected_To_Another_Account");
 			}
 		} else { //If user id doesnt already exist in db, add ID and AUTH to logged in UUID to db
+			echo "Hi2";
 			if ($db -> query('UPDATE user SET GID=' . $db->quote($plus->id) . " WHERE ID=" . $db->quote($_SESSION['uuid']))) {
 				if ($db -> query('UPDATE user SET GAUTH=' . $db->quote(json_encode($_SESSION['access_token'])) . " WHERE ID=" . $db->quote($_SESSION['uuid']))) {
 					showCalendars(); //Then call calendar popup function and return to referer
 					$url = $_SESSION['originGLogin'];
-					header("Location: http://$url");
+					header("Location: https://" . $url);
 				}
 			}
 		}
 	} else { //If you're not logged in
 		$db = new DB();
-		
 		//Get new UUID from mysql
 		$row = $db -> select("SELECT UUID() AS UUID");
 		$UUID = $row[0]['UUID'];
@@ -92,18 +95,21 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 			//Login and set session uuid to uuid from db and return to referer
 			$_SESSION['uuid'] = $result[0]['ID'];
 			$url = $_SESSION['originGLogin'];
-			header("Location: http://$url");
+			header("Location: https://" . $url);
 		} else { //Create a new account with access token and user id
-			if ($db -> query("INSERT INTO user (ID, USERNAME, PASSWORD, SETTINGS, KTHAUTH, FBAUTH, GAUTH, GID) VALUES ('$UUID', '', '', '', '', '', $GAUTH, $GID)")) {
-				$sql = "INSERT INTO calendar (ID, STUDY, PERSONAL, HABITS, CURRENT) VALUES ('$UUID', '', '', '', '')";
+			echo "Trying to create new user <br>";
+			if ($db -> query("INSERT INTO user (ID, GAUTH, GID) VALUES ('$UUID', $GAUTH, $GID)")) {
+				echo "INSERT INTO USER SUCCESS<BR>";
+				$sql = "INSERT INTO calendar (ID) VALUES ('$UUID')";
 				if ($db -> query($sql)) {
-					$sql = "INSERT INTO data (ID, HABITS, COURSES, ROUTINES, KTHlink) VALUES ('$UUID', '', '', '', '')";
+					echo "INSERT INTO CALENDAR SUCCESS <BR>";
+					$sql = "INSERT INTO data (ID) VALUES ('$UUID')";
 					if ($db -> query($sql)) {
-						
+						ECHO "INSERT INTO DATA SUCCESS";
 						$_SESSION['uuid'] = $UUID;
 						showCalendars();
 						$url = $_SESSION['originGLogin'];
-						header("Location: http://$url");
+						header("Location: https://" . $url);
 					}
 				}
 			}

@@ -6,7 +6,9 @@ echo'<div class="infobox">';
 echo"Study-scheduler doesn't work with any commercial or noncommercial companies.
      information is only used amongst the function on Study-scheduler.me.<br><br>
      If you wish to use our function 'connect with friends' your study events will be
-     broadcasted to your other friends that use Study-scheduler. This can be turned of
-     by changing your privacy settings.<br><br>";
+     broadcasted to your other friends that use Study-scheduler. <br><br>
+     If you no longer want your STUDY-SCHEDULER to be public for your Facebook friends you'll have to disconnect your
+     account in the 'privacy settings' on the settings page. If you wish to only block a certain Facebook friend
+     you'll have to change your privacy settings on Facebook.<br><br>";
 echo'</div>';
 ?>

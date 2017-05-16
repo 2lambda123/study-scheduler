@@ -95,7 +95,7 @@ a {
   height: 100%;                      /*expand out to the calendar's fullest*/
   font-weight: lighter;
   color: black;
-  height: 100vh; 
+  height: 100vh;
 }
 
 .event:hover {
@@ -113,7 +113,7 @@ a {
   z-index: 0;
   cursor: pointer;
   float: left;
-  opacity: 0.6;
+  opacity: 0.8;
   background-color: red;
   border-radius: 5px;
   font-family: "Nixie One",Arial,sans-serif;
