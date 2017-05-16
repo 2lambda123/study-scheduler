@@ -61,9 +61,6 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 				array_push($week[cmp_day($date_start,$event->DTSTART)],$event);
 			}
 		}
-		$c = 0;
-		foreach($week as $d){$c += count($d);};
-		echo "count: ".$c;
 		return $week;
 	}
 
