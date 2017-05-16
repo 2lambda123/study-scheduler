@@ -1,4 +1,4 @@
-<script>
+<script type="text/javascript">
 
 $(document).on('submit', ".tutorialForm", function(event){
 	event.preventDefault();
@@ -10,6 +10,20 @@ $(document).on('submit', ".tutorialForm", function(event){
 		success: function(data)
 		{
 			document.getElementById('modal').outerHTML=data; //Close popup on submission
+		}
+	})
+});
+
+$(document).on('submit', ".tutorialForm1", function(event){
+	event.preventDefault();
+	var send = $(this).serialize();
+	$.ajax({
+		type: 'POST',
+		url: $(this).attr('action'),
+		data: send,
+		success: function(data)
+		{
+			document.getElementById('modal').outerHTML=null; //Close popup on submission
 		}
 	})
 });
@@ -42,7 +56,7 @@ if (isset($_SESSION['tutorial'])){
     <h1>Step: 1/6 - Routines</h1><br />
     Fill in the form according to your preferences. The algorithm will use the information to create a personal study schedule for you.<br /><br />
     <form class="tutorialForm" action="../ajax/skipTutorial.php" method="post"><input type="submit" value="Skip this part"/></form><br />
-    <form class="tutorialForm" action="../ajax/endTutorial.php" method="post"><input type="submit" value="End tutorial" /></form>
+    <form class="tutorialForm1" action="../ajax/endTutorial.php" method="post"><input type="submit" value="End tutorial" /></form>
     </div>');
     break;
 
@@ -54,7 +68,7 @@ if (isset($_SESSION['tutorial'])){
     <br /><br />
     When You have done that, continue by clicking on "courses" on the menubar. <br /><br />
     <form class="tutorialForm" action="../ajax/skipTutorial.php" method="post"><input type="submit" value="Skip this part"/></form><br />
-    <form class="tutorialForm" action="../ajax/endTutorial.php" method="post"><input type="submit" value="End tutorial" /></form>
+    <form class="tutorialForm1" action="../ajax/endTutorial.php" method="post"><input type="submit" value="End tutorial" /></form>
     </div>');
     break;
 
@@ -63,7 +77,7 @@ if (isset($_SESSION['tutorial'])){
     <h1>Step: 3/6 - Courses</h1><br />
     Fill in the information about the courses you are studying. The information about each course are found in the course web on KTH.<br /><br />
     <form class="tutorialForm" action="../ajax/skipTutorial.php" method="post"><input type="submit" value="Skip this part"/></form><br />
-    <form class="tutorialForm" action="../ajax/endTutorial.php" method="post"><input type="submit" value="End tutorial" /></form>
+    <form class="tutorialForm1" action="../ajax/endTutorial.php" method="post"><input type="submit" value="End tutorial" /></form>
     </div>');
     break;
 
@@ -73,7 +87,7 @@ if (isset($_SESSION['tutorial'])){
     <h1>Step: 4/6 - Habits</h1><br />
     Here, you fill in your habits. If you have multiple habits, click submit and then fill in another one. The algorithm will make sure study times don\'t clash with your habits. If the habit changes, you can remove the habit on the bottom of the page and then fill in a new one. If you don\'t have any habits, go ahead and click on the "skip this part".<br /><br />
     <form class="tutorialForm" action="../ajax/skipTutorial.php" method="post"><input type="submit" value="Skip this part"/></form><br />
-    <form class="tutorialForm" action="../ajax/endTutorial.php" method="post"><input type="submit" value="End tutorial" /></form>
+    <form class="tutorialForm1" action="../ajax/endTutorial.php" method="post"><input type="submit" value="End tutorial" /></form>
     </div>');
     break;
 
@@ -82,7 +96,7 @@ if (isset($_SESSION['tutorial'])){
     <h1>Step: 5/6 - Run algorithm</h1><br />
     Now that you have submitted the forms, the algorithm can be used. Click on "Schedule" on the left hand side and then "load algorithm". Make sure to do this again if you change any of the other forms.<br /><br />
     <form class="tutorialForm" action="../ajax/skipTutorial.php" method="post"><input type="submit" value="Skip this part"/></form><br />
-    <form class="tutorialForm" action="../ajax/endTutorial.php" method="post"><input type="submit" value="End tutorial" /></form>
+    <form class="tutorialForm1" action="../ajax/endTutorial.php" method="post"><input type="submit" value="End tutorial" /></form>
     </div>');
     break;
 
@@ -91,7 +105,7 @@ if (isset($_SESSION['tutorial'])){
     <h1>Step: 6/6 - Calendar</h1><br />
     Here is your calendar! To look closer on an event, click on it. There, you can also add notes or edit them. You can edit an event by removing and/or reschedule it.<br /><br />
     <form class="tutorialForm" action="../ajax/skipTutorial.php" method="post"><input type="submit" value="Skip this part"/></form><br />
-    <form class="tutorialForm" action="../ajax/endTutorial.php" method="post"><input type="submit" value="End tutorial" /></form>
+    <form class="tutorialForm1" action="../ajax/endTutorial.php" method="post"><input type="submit" value="End tutorial" /></form>
     </div>');
     break;
 

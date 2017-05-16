@@ -66,7 +66,7 @@
 		}
 	    $wholeURL .= $u . "/";
 		}
-		header("Location; " . $wholeURL . "site/calendar.php");
+		echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$wholeURL.'site/calendar.php">';
     }
   }
 
