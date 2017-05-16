@@ -20,6 +20,10 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		return $sec*60;
 	}
 
+	$colors = array("event1", "event2", "event3");
+	global $colors;
+	$eventColor = array();
+	global $eventColor;
 	//begin database calls, which should not actually be in this function.
 	global $f;
 	$db = new DB();
@@ -126,12 +130,13 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 				$cl = check($events[$i]);
 				$json = json_encode($events[$i]);
 				$width = 100/(count($events));
-				$length = (((TimeToSec(pretty_time($events[$i]->DTEND))-TimeToSec(pretty_time($events[$i]->DTSTART))))/$divide)*100;
+				$heightCal = 72;
+				$length = (((TimeToSec(pretty_time($events[$i]->DTEND))-TimeToSec(pretty_time($events[$i]->DTSTART))))/$divide)*$heightCal;
 
 				if ($event1) {
-				$mar = (((TimeToSec(pretty_time($events[$i]->DTSTART))-TimeToSec(pretty_time($event1->DTEND))))/$divide)*100;
+				$mar = (((TimeToSec(pretty_time($events[$i]->DTSTART))-TimeToSec(pretty_time($event1->DTEND))))/$divide)*$heightCal;
 				} else {
-				$mar = ((TimeToSec(pretty_time($events[$i]->DTSTART)))/$divide)*100;
+				$mar = ((TimeToSec(pretty_time($events[$i]->DTSTART)))/$divide)*$heightCal;
 				}
 
 				$str = str_replace($order, $replace, $events[$i]->DESCRIPTION);
@@ -146,7 +151,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 				} else {
 				$html .= "<br><div class='extra'>" . $str . "<br> Plats: " . $str . "</div>";
 				}
-				if (!$events[$i]->AVAILABLE) { $html .= "<br><div><button class='edit'>Edit</button><button class='note'>Add note</button></div>"; }
+				if (!$events[$i]->AVAILABLE) { $html .= "<br><div class='buttonEditNote'><div><button class='edit'>Edit</button><button class='note'>Add note</button></div></div>"; }
 				$html .= "</div>";
 			}
 
@@ -201,14 +206,29 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		/*
 		This function checks an event's summary and sees if it belongs to KTH or not, for giving it an HTML class when called in gen_event
 		*/
+		global $eventColor;
+		global $colors;
 		if(preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $clickedEvent->SUMMARY))
 		{
 			$str ='KTH';
 			return $str;
 		}
+		else if(strpos($clickedEvent->SUMMARY, "STUDY-SCHEDULER") !== false){
+			if(in_array($clickedEvent->SUMMARY, $eventColor)){
+				$str = $colors[array_search($clickedEvent->SUMMARY, $eventColor)];
+				return $str;
+			}
+			else{
+				array_push($eventColor, $clickedEvent->SUMMARY);
+				$str = $colors[array_search($clickedEvent->SUMMARY, $eventColor)];
+				return $str;
+			}
+			$str = 'studyEvent';
+			return $str;
+		}
 		else
 		{
-			$str = 'Others';
+			$str = 'Other';
 			return $str;
 		}
 	}
