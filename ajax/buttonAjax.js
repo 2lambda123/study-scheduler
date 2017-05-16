@@ -27,16 +27,14 @@ function escapeHtml (string) {
 }
 
 $(document).on('click','.event',function(){
-	console.log($('<div/>').text(this.outerHTML).html());
-	console.log($(this).attr('value'));
 	$.post('../ajax/popupAjax.php', 
 		{
 			contentHTML: this.innerHTML,
-			json: $(this).attr('value')
+			JSON: $(this).attr('value')
 		}).done(
 		function(data){
-			document.body.innerHTML += data; console.log(data)
-			});
+			document.body.innerHTML += data;
+		});
 });
   
 /*
@@ -84,7 +82,7 @@ $(document).on('submit', ".changeForm", function(event){
 		success: function(data)
 		{
       console.log(data);
-			document.getElementById("modal").outerHTML=null; //Close popup on submission
+			this.parentElement.parentElement.outerHTML=null; //Close popup on submission
 		}
 	})
 });

@@ -23,7 +23,8 @@ class event {
 	public $UID = NULL;
 	public $DESCRIPTION = NULL;
 	public $LOCATION = NULL;
-  public $AVAILABLE = false;
+	public $AVAILABLE = false;
+	public $NOTES = null;
 }
 
 //downloadFile takes link of file and downloads it, then inserts it into importCal, returns what importCal returned
