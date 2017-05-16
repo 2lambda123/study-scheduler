@@ -3,10 +3,21 @@
 <?php
 include_once '../scripts/popupEvent.php';
 if(session_id() == "") session_start();
-if (isset($_POST['tutorial']))
-$_SESSION['tutorial'] = 0;
-
+if (isset($_POST['tutorial'])) {
+	$uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$uri = explode('/', $uri);
+	$wholeURL = "http://";
+	foreach ($uri as $u) {
+		if ($u == "scripts" || $u == "site" || $u == "ajax" || $u == "algorithm") {
+			break;
+		}
+		$wholeURL .= $u . "/";
+	}
+	$_SESSION['tutorial'] = 0;
+	header("Location: " . $wholeURL . "site/personalRoutines.php");
+}
 if (isset($_SESSION['tutorial'])){
+	echo $_SESSION['tutorial'];
   //echo $_SERVER['PHP_SELF'];
   switch($_SESSION['tutorial']){
     case 0: // routines
