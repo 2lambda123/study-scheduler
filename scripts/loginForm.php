@@ -1,5 +1,5 @@
 <?php
-	$form = "<form id='loginForm' class='loginForm' method='POST' action='../scripts/loginform.php'>";
+	$form = "<form id='loginForm' class='loginForm' method='POST' action='../scripts/loginForm.php'>";
 	$endForm = "</form>";
 	$loginForm = 
 <<<EOF

@@ -11,6 +11,7 @@
 <title>Import &amp; Export</title>
 <link href="menubar.css" rel="stylesheet">
 <script src="../site/jquery.min.js"></script>
+<script src="../ajax/buttonAjax.js"></script>
 <style>
 html, body {
 	height: 100%;
@@ -20,7 +21,7 @@ html, body {
 }
 </style>
 <script>
-$(document).on('submit','#submitKTHlink', function(event) {
+$(document).on('submit','#KTHlink', function(event) {
 	event.preventDefault();
 	console.log($(this).serialize());
 	$.ajax ({
@@ -28,16 +29,43 @@ $(document).on('submit','#submitKTHlink', function(event) {
 		url: $(this).attr('action'),
 		data: $(this).serialize(),
 		success: function(data){
-			console.log(data);
+			//console.log(data);
 			document.getElementById('submitKTHlink').outerHTML += data;
 		}
 	})
 });
 </script>
+<style>
+#downloadCal {
+	background: whitesmoke;
+	text-align: center;
+	border: 1px solid;
+	padding: 2em;
+	margin: auto;
+	width: 50%;
+	border-radius: .5em;
+}
+#submitKTHlink {
+	background: whitesmoke;
+	text-align: center;
+	border: 1px solid;
+	padding: 2em;
+	padding-top: 0px;
+	margin: auto;
+	width: 50%;
+	border-radius: .5em;
+}
+#KTHlink {
+	border-radius: .5em;
+}
+#downloadURL {
+	width: 90%;
+}
+</style>
 </head>
 <body>
   <?php
-	include '../site/menubar.php';
+	include_once '../site/menubar.php';
     if(session_id() == "") {
 		session_start();
 	}
@@ -59,9 +87,20 @@ $(document).on('submit','#submitKTHlink', function(event) {
 		export($cal, $sessID);
 		// The route to the updated/new calendar file
 		$calRoute = "../userStorage/calendar_" . $sessID . ".ics";
-		$form = "<h1>Import &amp; Export</h1><a href= '$calRoute' download>EXPORT/DOWNLOAD CALENDAR</a>";
+		
+		$uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$uri = explode('/', $uri);
+		$wholeURL = "http://";
+		foreach ($uri as $u) {
+			if ($u == "scripts" || $u == "site" || $u == "ajax" || $u == "algorithm") {
+				break;
+			}
+			$wholeURL .= $u . "/";
+		}
+		
+		$form = "<h1>Import &amp; Export</h1><div id='downloadCal'><h3>This link works just like your KTH link. You can use it to sync with your phone or Google Calendar.</h3><input id='downloadURL' type='text' onclick='this.select()' readonly='' value='".$wholeURL."ajax/calExport.php?cal=$sessID'></div><br>";
 		echo $form;
-		$form2 = "<form id='submitKTHlink' action='../scripts/createCal.php' method='POST'>KTHlink:<input type='text' name='KTHlink'/><input type='hidden' name='uuid' value='".$_SESSION['uuid']."'/><input type='submit'/></form>";
+		$form2 = "<div id='submitKTHlink'><h3>Insert the link to your <a href='https://www.kth.se/social/home/calendar/settings/'>KTH schedule</a> here to import it</h3><form id='KTHlink' action='../scripts/createCal.php' method='POST'>KTH link:<input type='text' name='KTHlink'/><input type='hidden' name='uuid' value='".$_SESSION['uuid']."'/><input type='submit' value='Submit'/></form><div>";
 		echo $form2;
 	}
   ?>

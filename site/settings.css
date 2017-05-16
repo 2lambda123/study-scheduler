@@ -1,26 +1,29 @@
 .pSettings{
   background-color: grey;
-  padding-top: 10px;
-  width: 260px;
-  height: 30px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  width: 100%;
+  height: 30%;
   display:block;
   border-top: 2px solid black;
   border-bottom:2px solid black;
 }
 .pSettings:hover{
-  background-color: #ff33ff;
+  background-color: #262626;
+  color: white;
   cursor: pointer;
 }
 .menuS{
-  width: 200px;
+  width: 85%;
   background-color: lightgrey;
-  padding-left: 40px;
-  padding-right: 20px;
+  padding-left: 10%;
+  padding-right: 5%;
   padding-top:10px;
   padding-bottom:10px;
 }
 .menuS:hover{
-  background-color: #ffccff;
+  background-color: darkgrey;
+  color: white;
   cursor: pointer;
 }
 .infobox{
@@ -28,12 +31,17 @@
   margin-left: 30px;
 }
 #settingBar{
-  width: 200px;
+  width: 20%;
   float: left;
+  -moz-box-shadow: 0px 3px 8px rgb(100,100,100);
+  -webkit-box-shadow: 0px 3px 8px rgb(100,100,100);
+  box-shadow: 0px 3px 8px rgb(100,100,100);
 }
 #displaySettings{
   width: 50%;
+  float: left;
   margin: 0px auto;
+  margin-left: 5px;
   padding: 5px;
   background-color: white;
   -moz-box-shadow: 0px 3px 8px rgb(100,100,100);

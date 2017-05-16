@@ -11,7 +11,8 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 	date_default_timezone_set('UTC');
 	function cmp_date($date1,$date2){ return cmp_date_val($date1) > cmp_date_val($date2); }
 	function cmp_date_val($date) 	{ return substr($date,0,8).substr($date,9,4); }
-	function cmp_day($date1,$date2) { return intval(substr($date2,0,8)) - intval(substr($date1,0,8)); }
+	function cmp_day2($date1,$date2) { return intval(substr($date2,0,8)) - intval(substr($date1,0,8)); }
+	function cmp_day($date1,$date2) { return date('j',(strtotime(substr($date2,0,8))-strtotime(substr($date1,0,8))))-1; }
 	function pretty_time($date) 	{ return substr($date,9,2) . ":".substr($date,11,2); }
 	function ugly_time($date) 		{ return substr($date,9,2) . substr($date,11,2); }
 	function TimeToSec($time) {
@@ -48,8 +49,8 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		$events = array();
 		if($file !== null) {
 			foreach($file as $event) {
-				if(cmp_date($event->DTSTART,$date_start)
-					&& cmp_date($date_end,$event->DTEND) && !$event->AVAILABLE)
+				if($event->DTSTART > $date_start
+					&& $date_end > $event->DTEND && !$event->AVAILABLE)
 					array_push($events,$event);
 			}
 		}
@@ -59,6 +60,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 			array_push($week,array());
 		}
 		foreach($events as $event) {
+			//echo "<br>cmp: ".cmp_day($date_start, $event->DTSTART)." d_s: ".$date_start." e_d: ".$event->DTSTART." <br>";
 			if (isset($week[cmp_day($date_start,$event->DTSTART)]) && is_array($week[cmp_day($date_start,$event->DTSTART)])) {
 				array_push($week[cmp_day($date_start,$event->DTSTART)],$event);
 			}
@@ -145,7 +147,9 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 				$html .= "'>";
 				$html .= "<div class='pretty_time'>".pretty_time($events[$i]->DTSTART)." - ".pretty_time($events[$i]->DTEND)."</div>";
 				$html .= "<div class='SUMMARY'>". str_replace($order, $replace, $events[$i]->SUMMARY) ."</div>";
-				if (isset($event->NOTES)) $html .= "<div class ='extra'> <br> Notes:". $event->NOTES . "<br> </div>";
+				$html .= "<div class ='extra'> <br> Notes:";
+				if(isset($events[$i]->NOTES)) $html .= $events[$i]->NOTES; 
+				$html .= "<br> </div>";
 				if (preg_match($reg_exUrl, $str, $url)) {
 					$html .= "<br><div class='extra'>" . preg_replace($reg_exUrl, '<a href="' . $url[0] . '">' . $url[0] . '</a>', $str) . "<br> Plats: " . str_replace($order, $replace, $events[$i]->LOCATION) . "</div>";
 				} else {
