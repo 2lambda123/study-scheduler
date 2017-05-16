@@ -11,14 +11,10 @@
   <div class="pSettings" id="pSettings">Personal settings</div>
     <div id="psettings">
       <div class="menuS" id="whatSettings">Change privacy settings</div>
-      <div class="menuS">Korv2</div>
-      <div class="menuS">Korv3</div>
     </div>
   <div class="pSettings" id="secSettings">Schedule</div>
     <div id="secsettings">
-      <div class="menuS" id="runAlgo">load algorithm</div>
-      <div class="menuS">Hej2</div>
-      <div class="menuS">Hej3</div>
+      <div class="menuS" id="runAlgo">Load algorithm</div>
     </div>
   <div class="pSettings" id="dataPolicy">Data policy</div>
     <div id="datapolicy">
@@ -28,6 +24,7 @@
     </div>
 </div>
 <div id="displaySettings">
+  <h2>Welcome to the settings page</h2>
 </div>
 <script>
 var menuVis1 = false;
