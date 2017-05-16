@@ -7,22 +7,39 @@ if(session_id() == "") session_start();
 //If sleepfrom exists, we have a form sent from personal routines, if coursecode exists, we have a form sent from courses
 if (isset($_POST["sleepfrom"])) { //Routines
 	if (!isset($_POST['sleepto']) || $_POST['sleepto'] == "") {
-		echo 'You need to add sleepto.';
+		echo '<div style="color:red">
+		You need to add sleep to.
+		</div>';
 		include '../ajax/showPersonal.php';
 		die();
 	}
+
+	if (!isset($_POST['sleepfrom']) || $_POST['sleepfrom'] == "") {
+		echo '<div style="color:red">
+		You need to add sleep from.
+		</div>';
+		include '../ajax/showPersonal.php';
+		die();
+	}
+
 	if (!isset($_POST['traveltime']) || $_POST['traveltime'] == "") {
-		echo 'You need to add traveltime. (It can be 0)';
+		echo '<div style="color:red">
+		You need to add traveltime. (It can be 0)
+		</div>';
 		include '../ajax/showPersonal.php';
 		die();
 	}
 	if (!isset($_POST['studylength']) || $_POST['studylength'] == "") {
-		echo 'You need to add studylength.';
+		echo '<div style="color:red">
+		You need to add studylength.
+		</div>';
 		include '../ajax/showPersonal.php';
 		die();
 	}
 	if (!isset($_POST['breaktime']) || $_POST['breaktime'] == "") {
-		echo 'You need to add break time. (It can be 0)';
+		echo '<div style="color:red">
+		You need to add break time. (It can be 0)
+		</div>';
 		include '../ajax/showPersonal.php';
 		die();
 	}
@@ -43,40 +60,55 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			header("Location; " . $wholeURL . "site/calExpImp.php");
 		  }
 		}
+		echo '<div style="color:green">
+		Success!
+		</div>';
 	}
 	include '../ajax/showPersonal.php';
 
 } else if (isset($_POST["coursecode"])) { //Courses
 	if (!isset($_POST['coursecode']) || $_POST['coursecode'] == "") {
-		echo "You need to add a course code";
+		echo '<div style="color:red">
+		You need to add a course code
+		</div>';
 		include '../ajax/showCourses.php';
 		die();
 	}
 	if (isset($_POST['exam'])) {
 		if (!isset($_POST['hp_exam']) || $_POST['hp_exam'] == "") {
-			echo "You need to add hp for the exam";
+			echo '<div style="color:red">
+			You need to add hp for the exam
+			</div>';
 			include '../ajax/showCourses.php';
 			die();
 		}
 	}
 	if (!isset($_POST['coursestart']) || $_POST['coursestart'] == "") {
-		echo "You need to add a start of course";
+		echo '<div style="color:red">
+		You need to add a start of course
+		</div>';
 		include '../ajax/showCourses.php';
 		die();
 	}
 	if (!isset($_POST['courseend']) || $_POST['courseend'] == "") {
-		echo "You need to add an end of course";
+		echo '<div style="color:red">
+		You need to add an end of course
+		</div>';
 		include '../ajax/showCourses.php';
 		die();
 	}
 	if (isset($_POST['lab'])) {
 		if (!isset($_POST['hp_lab']) || $_POST['hp_lab'] == "") {
-			echo "You need to add hp for the lab";
+			echo '<div style="color:red">
+			You need to add hp for the lab
+			</div>';
 			include '../ajax/showCourses.php';
 			die();
 		}
 		if (!isset($_POST['numberoflabs']) || $_POST['numberoflabs'] == "") {
-			echo "You need to add numbers of labs";
+			echo '<div style="color:red">
+			You need to add numbers of labs
+			</div>';
 			include '../ajax/showCourses.php';
 			die();
 		}
@@ -87,17 +119,23 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			break;
 		}
 		if (!isset($_POST['startdate'.$x]) || $_POST['startdate'.$x] == "") {
-			echo "You need to add start date for the course assignment";
+			echo '<div style="color:red">
+			You need to add start date for the course assignment
+			</div>';
 			include '../ajax/showCourses.php';
 			die();
 		}
 		if (!isset($_POST['enddate'.$x]) || $_POST['enddate'.$x] == "") {
-			echo "You need to add end date for the course assignment";
+			echo '<div style="color:red">
+			You need to add end date for the course assignment
+			</div>';
 			include '../ajax/showCourses.php';
-			die();		
+			die();
 		}
 		if (!isset($_POST['hp_work'.$x]) || $_POST['hp_work'.$x] == "") {
-			echo "You need to add hp for the course assignment";
+			echo '<div style="color:red">
+			You need to add hp for the course assignment
+			</div>';
 			include '../ajax/showCourses.php';
 			die();
 		}
@@ -116,7 +154,9 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	if (is_array($r)) {
 		foreach ($r as $c) {
 			if ($_POST['coursecode'] == $c['coursecode']) {
-				echo "You can't add the same course twice.";
+				echo '<div style="color:red">
+				You can\'t add the same course twice.
+				</div>';
 				include '../ajax/showCourses.php';
 				die();
 			}
@@ -154,6 +194,9 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			header("Location; " . $wholeURL . "site/habits.php");
 		  }
 		}
+		echo '<div style="color:green">
+		Success!
+		</div>';
 	}
 	include '../ajax/showCourses.php';
 } else if (isset($_POST['repetition'])) {
@@ -182,34 +225,46 @@ if (isset($_POST["sleepfrom"])) { //Routines
 		}
 
 	if (!isset($_POST['name']) || $_POST['name'] == "") {
-		echo "You need to add a name for the habit";
+		echo '<div style="color:red">
+		You need to add a name for the habit
+		</div>';
 		include '../ajax/showHabits.php';
 		die();
 	}
 	if (!isset($_POST['dtstart']) || $_POST['dtstart'] == "") {
-		echo "You need to add a start time for the habit";
+		echo '<div style="color:red">
+		You need to add a start time for the habit
+		</div>';
 		include '../ajax/showHabits.php';
 		die();
 	}
 	if (!isset($_POST['dtend']) || $_POST['dtend'] == "") {
-		echo "You need to add a time end for the habit";
+		echo '<div style="color:red">
+		You need to add an end time for the habit
+		</div>';
 		include '../ajax/showHabits.php';
 		die();
 	}
 	if (!isset($_POST['name']) || $_POST['name'] == "") {
-		echo "You need to add a name for the habit";
+		echo '<div style="color:red">
+		You need to add a name for the habit
+		</div>';
 		include '../ajax/showHabits.php';
 		die();
 	}
 	if ($_POST['repetition'] == "Week(s)") {
 		if (count($wD) == 0) {
-			echo "You need to choose atleast one day for the habit to occur.";
+			echo '<div style="color:red">
+			You need to choose atleast one day for the habit to occur.
+			</div>';
 			include '../ajax/showHabits.php';
 			die();
 		}
 	}
 	if (!isset($_POST['duration'])|| $_POST['duration'] == "") {
-		echo "You need to add a duration for the habit";
+		echo '<div style="color:red">
+		You need to add a duration for the habit
+		</div>';
 		include '../ajax/showHabits.php';
 		die();
 	}
@@ -232,7 +287,9 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	if (is_array($r)) {
 		foreach ($r as $c) {
 			if ($_POST['name'] == $c['name']) {
-				echo "You can't add the same habit twice.";
+				echo '<div style="color:red">
+				You can\'t add the same habit twice.
+				</div>';
 				include '../ajax/showHabits.php';
 				die();
 			}
@@ -265,6 +322,9 @@ if (isset($_POST["sleepfrom"])) { //Routines
 			header("Location; " . $wholeURL . "site/settings.php");
 		  }
 		}
+		echo '<div style="color:green">
+		Success!
+		</div>';
 	}
 
 	//If repetition is daily, create new event for this day and x (reps) days forward
