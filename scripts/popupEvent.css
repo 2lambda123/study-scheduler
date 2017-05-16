@@ -30,6 +30,15 @@
 
 }
 
+.modal-content > .event {
+	width: auto;
+	height: auto;
+	background: white;
+	overflow: visible;
+	margin-top: 0px;
+	border: none;
+}
+
 .close {
   float:right; /*move btn to right*/
   color:#aaaaaa;
