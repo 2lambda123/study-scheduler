@@ -42,7 +42,7 @@ function importCal ($file_content) {
     array_push($events, new event);
 		$file[$i] = "BEGIN:VEVENT:" . $file[$i];      // Replaces the lost "BEGIN:VEVENT"
 		$attr = explode("\r\n", $file[$i]);           // Separates the attributes in the events
-		
+
 		$sum = "";
 		foreach ($attr as $a) {
 			if ($sum !== "") {                          // Deletes the first whitespace and puts the events attributes in "$sum"

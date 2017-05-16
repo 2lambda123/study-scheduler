@@ -6,6 +6,7 @@ $db = new DB();
 $result = null;
 
 if(isset($_SESSION['uuid'])) {
+	include_once '../site/tutorial.php';
 	$result = $db->select('SELECT * FROM user WHERE ID=' . $db->quote($_SESSION['uuid']));
 	echo "<li class='menubarEntry'><a href='homepage.php'>HOME </a></li>
     <li class='menubarEntry'><a href='calendar.php'>CALENDAR</a></li>
