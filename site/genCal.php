@@ -86,34 +86,37 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 
 			for($i = 1; $i<count($events); $i++)
 			{
-				if($events[$i]->DTSTART < $end)
+
+				if($i == (count($events) - 1))
 				{
-					if($i == (count($events) - 1))
+
+					if($events[$i]->DTSTART < $end)
 					{
 						array_push($arr, $events[$i]);
 						array_push($events2, $arr);
 					}
 					else
 					{
+						array_push($events2, $arr);
+						$arr = array();
 						array_push($arr, $events[$i]);
-						if($events[$i]->DTEND > $end) {$end = $events[$i]->DTEND;}
+						array_push($events2, $arr);
+
 					}
+				}
+				else if($events[$i]->DTSTART < $end)
+				{
+					array_push($arr, $events[$i]);
+					if($events[$i]->DTEND > $end) {$end = $events[$i]->DTEND;}
+					
 				}
 				else
 				{
 					array_push($events2, $arr);
 					$arr = array();
-
-					if($i == (count($events) - 1))
-					{
-						array_push($events2, $arr);
-						array_push($arr, $events[$i]);
-					}
-					else
-					{
-							array_push($arr, $events[$i]);
-				   		$end = $events[$i]->DTEND;
-				   }
+					array_push($arr, $events[$i]);
+				   	$end = $events[$i]->DTEND;
+				   
 				}
 
 			}
