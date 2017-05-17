@@ -5,6 +5,14 @@ body{
   margin: 0px;
 }
 
+#logo
+{
+  margin-top: 5%;
+  margin-left: 5%; 
+  float:left;
+}
+
+
 .menubar {
   font-family:sans-serif, Verdana, Arial;
   list-style-type: none;
@@ -36,6 +44,69 @@ body{
 
 .active{
   background-color:#ff6600;
+}
+
+
+#signUp {
+  margin-top: 5%;
+  margin-right: 20%;
+  display: inline-block;
+  padding:5em 3em 5em 3em;
+  border: 0.1em solid;
+  border-radius: 2em;
+  background: whitesmoke;
+  font-family: "Nixie One",Arial,sans-serif;
+}
+
+.loginForm
+{
+  color: white;
+  font-family: "Nixie One",Arial,sans-serif;
+
+}
+.inputBox
+{
+  border: none;
+  border-radius: .3em;
+}
+
+#signUpNow
+{
+  font-size: 3em;
+}
+
+#passwordSignup
+{
+  margin-top: 0.5%;
+}
+#usernameSignup
+{
+  margin-top: 0.5%;
+}
+
+
+.logBtn{
+   background-color:  #009999;
+    color: white;
+    padding: .3em 1em .3em 1em;
+    margin: .5em 0;
+    border: none;
+    border-radius: .3em;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: "Nixie One",Arial,sans-serif;
+      margin: 0.2em;
+
+}
+
+#logBtnSub
+{
+  float: right;
+}
+
+.logBtn:hover
+{
+  box-shadow: inset 0 0 0 10em rgba(0,0,0,0.1);
 }
 
 #login {

@@ -2,9 +2,13 @@
 $form = 
 <<<MILA
 <form id='signUp' action='../scripts/createUser.php' method='POST'>
-Username: <input type="text" name="username">
-Password: <input type="password" name="password">
-<input type='submit' value='Sign Up'>
+<p3 id ='signUpNow'>Sign up now! </p3>
+<br><br><br><br>
+<div id = 'usernameSignup'> Username: <input type="text" name="username"></div>
+<br>
+<div id = 'passwordSignup'>Password: <input type="password" name="password"></div>
+<br><br>
+<input type='submit' class='logBtn' id ='logBtnSub' value='Sign Up'>
 <div id='result'/>
 </form>
 MILA;
@@ -53,15 +57,6 @@ if(!isset($_SESSION['uuid'])) {
 		}
 }
 ?>
-
-<style>
-#signUp {
-	display: inline-block;
-	padding:2em;
-	border: 1px solid;
-	background: whitesmoke;
-}
-</style>
 <script src="../site/jquery.min.js"></script>
 <script>
 $(document).on('submit','#signUp', function(event) {

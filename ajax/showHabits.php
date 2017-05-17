@@ -1,9 +1,9 @@
 <?php
 		if (session_id() == "") session_start();
 		include_once '../scripts/DB.php';
-		
+
 		$db = new DB();
-		
+
 		$r = null;
 		$r1 = null;
 		if(session_id() == "") session_start();
@@ -12,14 +12,14 @@
 			$query = "SELECT HABITS FROM data WHERE ID='".$_SESSION['uuid']."'";
 			$result = $db -> select($query);
 			$r = (isset($result[0]['HABITS'])) ? json_decode($result[0]['HABITS'], true) : null;
-			
+
 			//Gets all habit events from database
 			$query1 = "SELECT HABITS FROM calendar WHERE ID='".$_SESSION['uuid']."'";
 			$result1 = $db -> select($query1);
 			$r1 = (isset($result1[0]['HABITS'])) ? json_decode($result1[0]['HABITS'], true) : null;
 		}
-			
-		 
+
+
 		$html = "";
 		$html .= '<table id="courses">';
 		$html .= '<tr><th>Habits</th><th>Number of repetitions</th><th>Repetition</th><th>Location</th><th>from</th><th>to</th><th>ETT</th></tr>';
@@ -51,7 +51,7 @@
 							$html .= '<tr>';
 							$html .= '<th>' . $d['SUMMARY'] . '</th>';
 							$html .= '<th>' . $d['DTSTART'] . '</th>';
-							$html .= '<th>' . $d['DTSTART'] . '</th>';
+							$html .= '<th>' . $d['DTEND'] . '</th>';
 							$html .= '</tr>';
 						}
 					}
@@ -59,7 +59,7 @@
 				$html .= '</table>';
 				$html .= '</td></tr>';
 			}
-			
+
 		}
 		$html .= '</table>';
 		//Echo everything we created
