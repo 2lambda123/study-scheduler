@@ -8,7 +8,7 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     /*overflow: scroll; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
+    /*background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 	  color: black;
   }
@@ -68,7 +68,12 @@
 	  color: black;
 	  overflow-y: scroll;
 	  display: hidden;
-    /*animation: animatezoom 2s;*/
+    animation: animatetop 1.2s;
+}
+
+@keyframes animatetop {
+from { opacity:0.5; top:-300px;}
+    to {top: 0; opacity: 1}
 }
 
 .modal-content > .event {
@@ -110,5 +115,8 @@
 }
 
 .submit:hover{
-  background-color: rgba(0,0,0,0.1);
+  
+  box-shadow: 1px 1px #888888;
+  transform: scale(1.1,1.1);
+  transition: .2s all;
 }
