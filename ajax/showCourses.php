@@ -28,7 +28,7 @@
 				  $html .= '<th>' . $c['numberoflabs'] . '</th>';
 				else
 				  $html .= '<th>' . '</th>';
-				$html .= '<th><form  class="form" action="../ajax/removeCourses.php" method="post"><input type="hidden" name="remove" value="' . $c['coursecode'] . '"><input type="submit" value="remove"></form></th>';
+				$html .= '<th><form  class="form" action="../ajax/removeCourses.php" method="post"><input type="hidden" name="remove" value="' . $c['coursecode'] . '"><input type="submit" class = "btn" value="remove"></form></th>';
 				$html .= '</tr>';
 			}
 		}

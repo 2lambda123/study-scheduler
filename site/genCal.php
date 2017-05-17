@@ -95,7 +95,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 						array_push($arr, $events[$i]);
 						array_push($events2, $arr);
 					}
-					else
+					else 
 					{
 						array_push($events2, $arr);
 						$arr = array();
@@ -106,11 +106,13 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 				}
 				else if($events[$i]->DTSTART < $end)
 				{
+					
 					array_push($arr, $events[$i]);
 					if($events[$i]->DTEND > $end) {$end = $events[$i]->DTEND;}
 					
 				}
-				else
+				else 
+
 				{
 					array_push($events2, $arr);
 					$arr = array();

@@ -35,7 +35,7 @@
 				$html .= '<th>' . $c['dtstart'] . '</th>';
 				$html .= '<th>' . $c['dtend'] . '</th>';
 				$html .= '<th>' . $c['travel'] . '</th>';
-				$html .= '<th><form  class="form" action="../ajax/removeHabits.php" method="post"><input type="hidden" name="remove" value="' . $c['name'] . '"><input type="submit" value="remove"></form></th>';
+				$html .= '<th><form  class="form" action="../ajax/removeHabits.php" method="post"><input type="hidden" name="remove" value="' . $c['name'] . '"><input type="submit" class="btn" value="remove"></form></th>';
 				$html .= '</tr>';
 				$html .= '<tr style="Display:none;"><td colspan="7">';
 				$html .= '<table class="events">';

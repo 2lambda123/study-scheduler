@@ -16,7 +16,7 @@
 			<th><a href="#" id="remove" onclick="removeField()">[Remove course assignment] </a></th></tr>
 		</table>
 		<div id = a></div>
-		<input type="submit"/ value = "Submit" >
+		<input type="submit" class ="btn"/ value = "Submit" >
 	</form>
 	<div id = "shown">
 	<?php include '../ajax/showCourses.php'?>

@@ -50,7 +50,7 @@ $(document).on('click', '.toggle',function(event){$(this).next().toggle();});
 	<tr><th>Location:</th><th><input name="location" type="text"/></th></tr>
 	<tr><th>Estimated travel time (minutes):</th><th><input name="travel" type="number"/></th></tr>
 	</table>
-	<input type="submit" value="Submit"/>
+	<input type="submit" class="btn" value="Submit"/>
 </form>
 
 <div id="shown">

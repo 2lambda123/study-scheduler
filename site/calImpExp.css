@@ -1,0 +1,29 @@
+#downloadCal {
+	 margin-top: 2%;
+  display: inline-block;
+  padding:2em 10em 2em 10em;
+  border-radius: .3em;
+  font-family: "Nixie One",Arial,sans-serif;
+	-moz-box-shadow: 0px 3px 8px rgb(100,100,100);
+	-webkit-box-shadow: 0px 3px 8px rgb(100,100,100);
+	box-shadow: 0px 3px 8px rgb(100,100,100);
+}
+#submitKTHlink {
+
+	 margin-top: 2%;
+  display: inline-block;
+  padding:2em 22.5em 2em 22.5em;
+  border-radius: 1em;
+  font-family: "Nixie One",Arial,sans-serif;
+  border-radius: .3em;
+  font-family: "Nixie One",Arial,sans-serif;
+	-moz-box-shadow: 0px 3px 8px rgb(100,100,100);
+	-webkit-box-shadow: 0px 3px 8px rgb(100,100,100);
+	box-shadow: 0px 3px 8px rgb(100,100,100);
+}
+#KTHlink {
+	border-radius: .5em;
+}
+#downloadURL {
+	width: 90%;
+}

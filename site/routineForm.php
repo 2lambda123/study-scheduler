@@ -34,5 +34,5 @@
 	<tr><th>I want to study for (minutes): </th><th><input name="studylength" type="number"/></th></tr>
 	<tr><th>Then I want to take a break for (minutes): </th><th><input name="breaktime" type="number"></th></tr>
 	</table>
-	<input type="submit", value="Submit"/>
+	<input type="submit" class="btn" value="Submit"/>
 </form>
