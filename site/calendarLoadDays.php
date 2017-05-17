@@ -48,12 +48,12 @@
     and returns a string with HTML tags <tr> and <td> that displays the events of the week in interest on the calendar table*/
 
     function assign_weekEvent($firstday) {
-      $html="<tr><td class='weekData'><div class='time-group'>";
+      $html="<tr><td class='weekData'><div class='time-group'>";                  //generates the timeline on the side of the calendar from 00:00 - 09:00.
       for($i = 0; $i<10; $i++) {
         $html.="<div class='time-single'>0".$i.":00</div>";
       }
       for($i = 10; $i<24; $i++) {
-        $html.="<div class='time-single'>".$i.":00</div>";
+        $html.="<div class='time-single'>".$i.":00</div>";                        //generates the timeline on the side of the calendar from 10:00 - 23:00.
       }
       $html.="</div></td>";
       $startDate = substr($firstday, 0, 8);

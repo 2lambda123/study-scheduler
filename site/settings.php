@@ -6,26 +6,25 @@
 <script src="../site/jquery.min.js"></script>
 <body>
 <?php include_once "../site/menubar.php";?>
-<h1>Settings</h1>
-<div id="settingBar">
-  <div class="pSettings" id="pSettings">Personal settings</div>
+<h1>Welcome to the settings page!</h1>
+<ul id="settingBar"><h2 id="header2">Settings</h2>
+  <li class="pSettings" id="pSettings">Personal settings</li>
     <div id="psettings">
-      <div class="menuS" id="whatSettings">Change privacy settings</div>
+      <li class="menuS" id="whatSettings">Change privacy settings</li>
     </div>
-  <div class="pSettings" id="secSettings">Schedule</div>
+  <li class="pSettings" id="secSettings">Schedule</li>
     <div id="secsettings">
-      <div class="menuS" id="runAlgo">Load algorithm</div>
+      <li class="menuS" id="runAlgo">Load algorithm</li>
     </div>
-  <div class="pSettings" id="dataPolicy">Data policy</div>
+  <li class="pSettings" id="dataPolicy">Data policy</li>
     <div id="datapolicy">
-      <div class="menuS" id="whatGather">What type of information do we gather?</div>
-      <div class="menuS" id="whatUse">How do we use this information?</div>
-      <div class="menuS" id="whatShare">How is this information shared?</div>
+      <li class="menuS" id="whatGather">What type of information do we gather?</li>
+      <li class="menuS" id="whatUse">How do we use this information?</li>
+      <li class="menuS" id="whatShare">How is this information shared?</li>
     </div>
-</div>
-<div id="displaySettings">
-  <h2>Welcome to the settings page</h2>
-</div>
+</ul>
+<div id="displaySettings"></div>
+
 <script>
 var menuVis1 = false;
 var menuVis2 = false;

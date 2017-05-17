@@ -36,9 +36,14 @@ function createCal ($UUID, $KTHlink) {
 }
 
 //Check if username and password has been entered, if it has, call createUser function
-if (isset($_POST['uuid'],$_POST['KTHlink'])) {
+if (isset($_POST['uuid'],$_POST['KTHlink']) && $_POST['KTHlink'] !== "") {
 	createCal($_POST['uuid'], $_POST['KTHlink']);
+	echo '<div style="color:green">
+	Success!
+	</div>';
 } else {
-	echo "<br>You have not filled in all fields.";
+	echo '<div style="color:red">
+	You have not filled in all fields.
+	</div>';
 }
 ?>
