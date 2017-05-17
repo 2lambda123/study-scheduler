@@ -3,11 +3,13 @@
 	$endForm = "</form>";
 	$loginForm = 
 <<<EOF
-	Username:<input name='username' type='text'/>	
-	Password:<input name='password' type='password'/> 
-	<input type='submit' value='Login'/>
+	<div class= 'loginForm'>
+	Username:<input class ='inputBox' name='username' type='text'/>	
+	Password:<input name='password'class ='inputBox' type='password'/> 
+	<input type='submit' class ='logBtn' value='Login'/>
+	</div>
 EOF;
-	$logoutForm = "<input type='hidden' name='logout' value='on'/><input type='submit' value='logout'/>";
+	$logoutForm = "<input type='hidden' name='logout' value='on'/><input type='submit' class ='logBtn' value='logout'/>";
 		
 	if(session_id() == "")  session_start();
 	if(isset($_GET['sessionDump'])) var_dump( $_SESSION );

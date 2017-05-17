@@ -11,11 +11,9 @@
 <body>
 <?php include "../site/menubar.php";?>
 
-  <h1> Home Page </h1>
-
-    <h3>This is a website that will help maintain
-    a schedule adjusted to the users study needs.</h3>
-    <img src="small.png"/>
+	<div id ='logo'>
+   		 <img src="small.png"/>
+   	</div>
 	
 	<?php if(isset($_SESSION['uuid'])) echo '<form action="homepage.php" method="post">
 		<input type="hidden" name="tutorial" value="">
@@ -30,7 +28,7 @@
 		height: 100px;
 	}
 	</style>
-	
+
 <?php
 
 include '../scripts/createUser.php';
