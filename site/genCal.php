@@ -25,16 +25,22 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 	global $f;
 	$db = new DB();
 	$result = null;
+	$current = null;
 	if(session_id() == "") session_start();
 	if(isset($_SESSION['uuid'])){
 		$query = "SELECT CURRENT FROM calendar WHERE ID='".$_SESSION['uuid']."'";
 		$result = $db -> select($query);
+		$current = (isset($result[0]['CURRENT'])) ? $result[0]['CURRENT'] : null;
+		if(!isset($result[0]['CURRENT'])) {;
+			$query = "SELECT STUDY FROM calendar WHERE ID='".$_SESSION['uuid']."'";
+			$result = $db -> select($query);
+			$current = (isset($result[0]['STUDY'])) ? $result[0]['STUDY'] : null;
+		}
 		//var_dump($result);
 	}
-	$current = (isset($result[0]['CURRENT'])) ? $result[0]['CURRENT'] : null;
 	$f = $current;
 	//end database calls.
-
+	if(isset($result[0]['STUDY'])) echo "<h3>Viewing KTH calendar</h3>";
 	function collect($date_start, $date_end) {
 		/*
 		this function finds all events within the two given dates and returns
@@ -150,7 +156,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 				} else {
 				$html .= "<br><div class='extra'>" . $str . "<br> Plats: " . $str . "</div>";
 				}
-				if (!$events[$i]->AVAILABLE) { $html .= "<br><div><button class='edit'>Edit</button><button class='note'>Add note</button></div>"; }
+				if (!$events[$i]->AVAILABLE && !isset($result[0]['CURRENT'])) { $html .= "<br><div><button class='edit'>Edit</button><button class='note'>Add note</button></div>"; }
 				$html .= "</div>";
 			}
 
