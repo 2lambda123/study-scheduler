@@ -33,7 +33,7 @@ function modify($calendar_encoded, $events_encoded){
   $e = 0; //index of events array
   $y = 1; // length to be spliced in events
 //while loop for events
-  while(isset($events[0])){
+  while(isset($events[0]) ){
     $event = substr($events[0]["DTSTART"], 0, 13); // date time
     //binary search
     $pos = binarySearch($event, $calendar_decoded, 0, $count-1, 13); // find index where array of events should be inserted
@@ -51,6 +51,11 @@ function modify($calendar_encoded, $events_encoded){
           array_splice($calendar_decoded, $count, 0, $events);
           break;
         }
+      }
+
+      else if (!isset($calendar_decoded[$pos])){ // if events are after calendar
+        array_splice($calendar_decoded, $count, 0, $events);
+        break;
       }
 
       $strcmp = strcmp($event, substr($calendar_decoded[$pos]["DTSTART"], 0, 13));

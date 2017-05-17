@@ -306,7 +306,7 @@ function distributeWork($calendar_decoded, $courses_decoded, $examWork, $working
     $x = $array[1]; // x is where the week ended in calendar_decoded
     $calendar_decoded = $array[0];
     if ($x < $count) // prevents out of bound
-    $weekEnd = nextWeek($calendar_decoded[$x]["DTSTART"] - 1); // end of next week.
+    $weekEnd = nextWeek($calendar_decoded[$x]["DTSTART"]) - 1; // end of next week.
   }
 
   return $calendar_decoded;
