@@ -57,14 +57,14 @@ else{ // If we are to "cut" the event
         $calendar[$i]->DTEND = substr($calendar[$i]->DTEND, 0, 9) . $_POST["newEndH"] . $_POST["newEndM"] . substr($calendar[$i]->DTEND, -3, 3);   // replace the time in DTEND with the new time
 
         //To separate habits from course-studying (pseudo code)
-        if($calendar[$i]->SUMMARY = "STUDY-SCHEDULER"){
+        if(strpos($calendar[$i]->SUMMARY, "STUDY-SCHEDULER") !== false){
           $temp = $calendar[$i];
           $newUID = generateUid();//New UID for the split event
           $temp->UID = $newUID;
           distr_leftover($diffM, $temp, json_encode($calendar));
         }
         else{
-          $db -> query("UPDATE calendar SET CURRENT=".$db->quote($calendar) ." WHERE ID='$_SESSION[uuid]'");
+          $db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($calendar)) ." WHERE ID='$_SESSION[uuid]'");
         }
       }
     }
