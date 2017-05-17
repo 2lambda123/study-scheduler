@@ -17,10 +17,10 @@
     a schedule adjusted to the users study needs.</h3>
     <img src="small.png"/>
 	
-	<form action="homepage.php" method="post">
+	<?php if(isset($_SESSION['uuid'])) echo '<form action="homepage.php" method="post">
 		<input type="hidden" name="tutorial" value="">
 		<input type="submit" id="tut" value="Run tutorial">
-	</form>
+	</form>'; ?>
 	
 	<style>
 	#tut {
