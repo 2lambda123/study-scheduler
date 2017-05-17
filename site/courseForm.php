@@ -7,8 +7,8 @@
 			<tr><th>Course code:</th><th><input type="text" name="coursecode"/></th></tr>
 			<tr><th>Exam: <input id = "checkExam" type="checkbox" name="exam"></th></tr>
 			<tr class = "hideExam" style = "display:none"	><th>HP: </th><th><input name="hp_exam" type="float"/></th></tr>
-			<tr ><th>Start of course: </th><th><input name="coursestart" type="date"/></th></tr>
-			<tr><th>End of course: </th><th><input name="courseend" type="date"/></th></tr>
+			<tr ><th>Start of course: </th><th><input name="coursestart" type="date" value="YYYY-MM-DD"/></th></tr>
+			<tr><th>End of course: </th><th><input name="courseend" type="date" value="YYYY-MM-DD"/></th></tr>
 			<tr><th>Laboration: <input id = "checkLab"type="checkbox" name="lab"></th></tr>
 			<tr class = "hideLab" style = "display:none"><th>HP: </th><th><input name="hp_lab" type="float"/></th></tr>
 			<tr class = "hideLab" style = "display:none"><th>Number of labs: </th><th><input name="numberoflabs" type="text"/></th></tr>
