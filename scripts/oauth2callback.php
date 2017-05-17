@@ -5,7 +5,7 @@ require_once '../google-api-php-client/vendor/autoload.php';
 session_start();
 $uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $uri = explode('/', $uri);
-$wholeURL = "http://";
+$wholeURL = "https://";
 foreach ($uri as $u) {
 	if ($u == "scripts" || $u == "site" || $u == "ajax" || $u == "algorithm") {
 		break;

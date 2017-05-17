@@ -15,10 +15,10 @@
    		 <img src="small.png"/>
    	</div>
 	
-	<form action="homepage.php" method="post">
+	<?php if(isset($_SESSION['uuid'])) echo '<form action="homepage.php" method="post">
 		<input type="hidden" name="tutorial" value="">
 		<input type="submit" id="tut" value="Run tutorial">
-	</form>
+	</form>'; ?>
 	
 	<style>
 	#tut {
