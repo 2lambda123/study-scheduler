@@ -11,7 +11,6 @@ function createCal ($UUID, $KTHlink) {
 	$CAL1 = $db->quote($CAL);
 	$sql = "UPDATE calendar SET STUDY = ".$CAL1 . " WHERE ID = '".$UUID."'";
 	if($db -> query($sql)){
-		echo $_SESSION['tutorial'];
 	  if(isset($_SESSION['tutorial']) && $_SESSION['tutorial'] == 1){
 		$_SESSION['tutorial'] += 1;
 	  }
