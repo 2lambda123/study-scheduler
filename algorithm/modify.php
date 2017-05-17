@@ -16,7 +16,7 @@ function modify($calendar_encoded, $events_encoded){
     }
 
     else if ($pos == $count-1){ // if event should be last in calendar, place it at the end of calendar
-      if (strcmp(substr($events[0]["DTSTART"], 0, 13), substr($calendar_decoded[$pos]["DTSTART"], 0, 13)) > 0)
+      if (strcmp(substr($events["DTSTART"], 0, 13), substr($calendar_decoded[$pos]["DTSTART"], 0, 13)) > 0)
       {
         array_splice($calendar_decoded, $count, 0, array($events));
         return json_encode($calendar_decoded);
