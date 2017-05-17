@@ -274,7 +274,6 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	$events;
 	$x = $_POST['duration'];
 	$db = new DB();
-
 	//Get existing habits, to not overwrite existing ones
 	if(isset($_SESSION['uuid'])){
 		$result = $db -> select("SELECT HABITS FROM data WHERE ID='".$_SESSION['uuid']."'");
@@ -307,26 +306,11 @@ if (isset($_POST["sleepfrom"])) { //Routines
 	}
 	//Update database with updated habits
 	if(isset($_SESSION['uuid'])){
-		if($db -> query("UPDATE data SET HABITS=".$db->quote(json_encode($p))." WHERE ID='".$_SESSION['uuid']."'")){
-		  if(isset($_SESSION['tutorial']) && $_SESSION['tutorial'] == 3){
-		    $_SESSION['tutorial'] += 1;
-			$uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-			$uri = explode('/', $uri);
-			$wholeURL = "http://";
-			foreach ($uri as $u) {
-			  if ($u == "scripts" || $u == "site" || $u == "ajax" || $u == "algorithm") {
-				break;
-			  }
-			  $wholeURL .= $u . "/";
-			}
-			echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$wholeURL.'site/settings.php">';
-		  }
-		}
+		$db -> query("UPDATE data SET HABITS=".$db->quote(json_encode($p))." WHERE ID='".$_SESSION['uuid']."'");
 		echo '<div style="color:green">
 		Success!
 		</div>';
 	}
-
 	//If repetition is daily, create new event for this day and x (reps) days forward
 	if ($_POST['repetition'] == "Day(s)") {
 		$d = date('Ymd');
@@ -407,7 +391,21 @@ if (isset($_POST["sleepfrom"])) { //Routines
 		$p = $events;
 	}
 	//Update database with new events
-	$db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($p))." WHERE ID='$_SESSION[uuid]'");
+	if ($db -> query("UPDATE calendar SET CURRENT=".$db->quote(json_encode($p))." WHERE ID='$_SESSION[uuid]'")) {
+		if(isset($_SESSION['tutorial']) && $_SESSION['tutorial'] == 3){
+			$_SESSION['tutorial'] += 1;
+		$uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$uri = explode('/', $uri);
+		$wholeURL = "http://";
+		foreach ($uri as $u) {
+			if ($u == "scripts" || $u == "site" || $u == "ajax" || $u == "algorithm") {
+			break;
+			}
+			$wholeURL .= $u . "/";
+		}
+		echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$wholeURL.'site/settings.php">';
+		}
+	}
 	//Echo's table of habits, since changes have been made
 	include '../ajax/showHabits.php';
 

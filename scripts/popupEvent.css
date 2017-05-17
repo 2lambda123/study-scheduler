@@ -7,34 +7,75 @@
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    /*overflow: scroll; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-	color: black;
+	  color: black;
+  }
+
+.edit {
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius:4px;
+  text-align: center;
+  color:black;
+  font-size: 1vw;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.edit:hover {
+    color: rgba(0, 0, 0, 1);
+    box-shadow: 1px 1px #888888;
+    transform: scale(1.1,1.1);
+    transition: .2s all;
+}
+
+.note {
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius:4px;
+  text-align: center;
+  word-break: break-all;
+  color:black;
+  font-size: 1vw;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.note:hover {
+  color: rgba(0, 0, 0, 1);
+  box-shadow: 1px 1px #888888;
+  transform: scale(1.1,1.1);
+  transition: .2s all;
+
 }
 
 .modal-content {
   /* Modal Content */
+    font-family: "Nixie One",Arial,sans-serif;
     position: relative;
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #888888;
     width: 50%;
     height: 50%;
     border-radius: 6px;
     box-shadow: 10px 10px 5px #888888;
-	color: black;
-	overflow-y: scroll;
-	display: hidden;
-
+	  color: black;
+	  overflow-y: scroll;
+	  display: hidden;
+    /*animation: animatezoom 2s;*/
 }
 
 .modal-content > .event {
 	width: auto;
 	height: auto;
 	background: white;
-	overflow: visible;
+	/*overflow: visible;*/
 	margin-top: 0px;
 	border: none;
 }

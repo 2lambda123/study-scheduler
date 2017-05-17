@@ -32,7 +32,7 @@
   and returns a string with HTML tags <tr> and <th> that displays the dates and weekdays of the week in interest on the calendar table*/
 
   function assign_weekHead($firstday) {
-    $html = "<tr> ";
+    $html = "<tr><th id='time-info'> Time </th> ";
     $str = substr($firstday, 0, 8);                                               //gets YYYYMMDD format.
     for($days = 0; $days < 7; $days++)                                            //creates the HTML for the 7 weekdays that will display on calendar tables headcell.
     {
@@ -48,7 +48,14 @@
     and returns a string with HTML tags <tr> and <td> that displays the events of the week in interest on the calendar table*/
 
     function assign_weekEvent($firstday) {
-      $html="<tr>";
+      $html="<tr><td class='weekData'><div class='time-group'>";
+      for($i = 0; $i<10; $i++) {
+        $html.="<div class='time-single'>0".$i.":00</div>";
+      }
+      for($i = 10; $i<24; $i++) {
+        $html.="<div class='time-single'>".$i.":00</div>";
+      }
+      $html.="</div></td>";
       $startDate = substr($firstday, 0, 8);
       $lastday = date("Ymd", strtotime($startDate . "+7 days")) . "T000000Z";     //returns the date for sunday of current week in YYYYMMDDT000000Z format.
       $arr = gen_week($firstday, $lastday);
@@ -59,32 +66,4 @@
       $html .= "</tr>";
       echo $html;
       }
-
-      /*<td>
-      <ul class='timeLine'>
-      <li style='margin-bottom: 0vh;'>00:00</li>
-      <li style='margin-bottom: 0vh;>01:00</li>
-      <li style='margin-bottom: 0vh;>02:00</li>
-      <li style='margin-bottom: 0vh;>03:00</li>
-      <li style='margin-bottom: 0vh;>04:00</li>
-      <li style='margin-bottom: 0vh;>05:00</li>
-      <li style='margin-bottom: 4vh;>06:00</li>
-      <li style='margin-bottom: 4vh;>07:00</li>
-      <li style='margin-bottom: 4vh;>08:00</li>
-      <li style='margin-bottom: 4vh;>09:00</li>
-      <li style='margin-bottom: 4vh;>10:00</li>
-      <li style='margin-bottom: 4vh;>11:00</li>
-      <li style='margin-bottom: 4vh;>12:00</li>
-      <li style='margin-bottom: 4vh;>13:00</li>
-      <li style='margin-bottom: 4vh;>14:00</li>
-      <li style='margin-bottom: 4vh;>15:00</li>
-      <li style='margin-bottom: 4vh;>16:00</li>
-      <li style='margin-bottom: 4vh;>17:00</li>
-      <li style='margin-bottom: 4vh;>18:00</li>
-      <li style='margin-bottom: 4vh;>19:00</li>
-      <li style='margin-bottom: 4vh;>20:00</li>
-      <li style='margin-bottom: 4vh;>21:00</li>
-      <li style='margin-bottom: 4vh;>22:00</li>
-      <li>23:00</li>
-      </ul></td>*/
  ?>
