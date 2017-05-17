@@ -44,11 +44,11 @@ foreach ($uri as $u) {
   $wholeURL .= $u . "/";
 }
 
-if (isset($_POST['tutorial'])) {
+if (isset($_SESSION['uuid']) && isset($_POST['tutorial'])) {
 	$_SESSION['tutorial'] = 0;
 	header("Location: " . $wholeURL . "site/personalRoutines.php");
 }
-if (isset($_SESSION['tutorial'])){
+if (isset($_SESSION['uuid']) && isset($_SESSION['tutorial'])){
   //echo $_SERVER['PHP_SELF'];
   switch($_SESSION['tutorial']){
     case 0: // routines
@@ -85,7 +85,10 @@ if (isset($_SESSION['tutorial'])){
     case 3: // habits
     popupGen('<div>
     <h1>Step: 4/6 - Habits</h1><br />
-    Here, you fill in your habits. If you have multiple habits, click submit and then fill in another one. The algorithm will make sure study times don\'t clash with your habits. If the habit changes, you can remove the habit on the bottom of the page and then fill in a new one. If you don\'t have any habits, go ahead and click on the "skip this part".<br /><br />
+    Here, you fill in your habits. If you have multiple habits, click submit and then fill in another one. Once you have submitted a habit it will be 
+	added to the list of habits on the bottom of the page. There you can also list all the events created by the habit by clicking the habit name in the
+	very left column. If the habit changes, you can remove the habit on the bottom of the page by clicking the remove button and then fill in a new one. 
+	If you don\'t have any habits, go ahead and click on the "skip this part".<br /><br />
     <form class="tutorialForm" action="../ajax/skipTutorial.php" method="post"><input type="submit" value="Skip this part"/></form><br />
     <form class="tutorialForm1" action="../ajax/endTutorial.php" method="post"><input type="submit" value="End tutorial" /></form>
     </div>');
