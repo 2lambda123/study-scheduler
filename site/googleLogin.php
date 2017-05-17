@@ -40,7 +40,7 @@ $(document).on('submit', "#calendars", function(event){
   box-sizing: border-box;
   position: relative;
   /* width: 13em;  - apply for fixed size */
-  margin: 0.2em;
+  margin: 0.7em;
   padding: 0 15px 0 46px;
   border: none;
   text-align: left;
@@ -63,7 +63,7 @@ $(document).on('submit', "#calendars", function(event){
   outline: none;
 }
 .loginBtn:active {
-  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+  box-shadow: 0 0 0 32px rgba(0,0,0,0.1);
 }
 
 /* Google */
