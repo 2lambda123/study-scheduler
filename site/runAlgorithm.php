@@ -54,7 +54,21 @@
   $calendar = free_time_with_events($calendar);
   $calendar = analyze($calendar, $calendarRoutines);
   $calendar = distribute($calendar, $calendarCourses, $calendarRoutines);
-  $db -> query("UPDATE calendar SET CURRENT=".$db->quote($calendar) ." WHERE ID='$_SESSION[uuid]'");
+  if($db -> query("UPDATE calendar SET CURRENT=".$db->quote($calendar) ." WHERE ID='$_SESSION[uuid]'")){
+    if(isset($_SESSION['tutorial']) && $_SESSION['tutorial'] == 4){
+	  $_SESSION['tutorial'] += 1;
+	  $uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	  $uri = explode('/', $uri);
+	  $wholeURL = "http://";
+	  foreach ($uri as $u) {
+	    if ($u == "scripts" || $u == "site" || $u == "ajax" || $u == "algorithm") {
+		  break;
+		}
+	    $wholeURL .= $u . "/";
+		}
+		echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$wholeURL.'site/calendar.php">';
+    }
+  }
 
 	  echo "<h3>Algorithm is finished</h3>";
 

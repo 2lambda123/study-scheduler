@@ -23,6 +23,7 @@ if (!$result || $result[0]['GID'] == "") {
 	echo "<li class='menubarEntry' id='gLogin'>";
 	include_once '../site/googleLogin.php';
 }
+include '../site/tutorial.php';
 ?>
 
 	</li>

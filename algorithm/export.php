@@ -22,6 +22,7 @@ function getEvents($json_encoded, $cal){
   $json_decoded = json_decode($json_encoded, true); // decodes to $json_decoded which is a 2D array
   foreach($json_decoded as $temp){ // loop through array with json objects
       if ( $temp["AVAILABLE"] == false ){ // if AVAILABLE is false, then add to ics calendar
+		if(isset($temp['NOTES'])) $temp['DESCRIPTION'] .= $temp['NOTES'];
         fwrite($cal, "BEGIN:VEVENT\n");
         for ($x = 0; $x < count($fields); $x++){ // write every field
             if ( (strcmp($fields[$x], "DTSTART") == 0 || strcmp($fields[$x], "DTEND") == 0)){ // time cannot be viewed if two zeros are missing before 'Z'

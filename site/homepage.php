@@ -10,9 +10,24 @@
 
 <body>
 <?php include "../site/menubar.php";?>
+
 	<div id ='logo'>
    		 <img src="small.png"/>
    	</div>
+	
+	<form action="homepage.php" method="post">
+		<input type="hidden" name="tutorial" value="">
+		<input type="submit" id="tut" value="Run tutorial">
+	</form>
+	
+	<style>
+	#tut {
+		margin: 30px auto;
+		font-size: 32px;
+		width: 300px;
+		height: 100px;
+	}
+	</style>
 
 <?php
 

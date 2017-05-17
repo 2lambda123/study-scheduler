@@ -6,7 +6,7 @@ function popupLabs ($labs) {
 	$labs = json_decode($labs, false);
 	$html = "";
 	$html .= "<h1> Vilka labbar ska du gå på? </h1>";
-	$html .= '<form action="../ajax/labsChosen.php" id="labForm" method="post">';
+	$html .= '<form action="../ajax/labsChosen.php" id="labForm" class="changeForm" method="post">';
 	$html .= '<table>';
 	$c = 0;
 	$lastSummary = $labs[0]->SUMMARY;

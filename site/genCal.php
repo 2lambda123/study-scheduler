@@ -11,7 +11,8 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 	date_default_timezone_set('UTC');
 	function cmp_date($date1,$date2){ return cmp_date_val($date1) > cmp_date_val($date2); }
 	function cmp_date_val($date) 	{ return substr($date,0,8).substr($date,9,4); }
-	function cmp_day($date1,$date2) { return intval(substr($date2,0,8)) - intval(substr($date1,0,8)); }
+	function cmp_day2($date1,$date2) { return intval(substr($date2,0,8)) - intval(substr($date1,0,8)); }
+	function cmp_day($date1,$date2) { return date('j',(strtotime(substr($date2,0,8))-strtotime(substr($date1,0,8))))-1; }
 	function pretty_time($date) 	{ return substr($date,9,2) . ":".substr($date,11,2); }
 	function ugly_time($date) 		{ return substr($date,9,2) . substr($date,11,2); }
 	function TimeToSec($time) {
@@ -20,6 +21,10 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		return $sec*60;
 	}
 
+	$colors = array("event1", "event2", "event3");
+	global $colors;
+	$eventColor = array();
+	global $eventColor;
 	//begin database calls, which should not actually be in this function.
 	global $f;
 	$db = new DB();
@@ -44,8 +49,8 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		$events = array();
 		if($file !== null) {
 			foreach($file as $event) {
-				if(cmp_date($event->DTSTART,$date_start)
-					&& cmp_date($date_end,$event->DTEND) && !$event->AVAILABLE)
+				if($event->DTSTART > $date_start
+					&& $date_end > $event->DTEND && !$event->AVAILABLE)
 					array_push($events,$event);
 			}
 		}
@@ -55,6 +60,7 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 			array_push($week,array());
 		}
 		foreach($events as $event) {
+			//echo "<br>cmp: ".cmp_day($date_start, $event->DTSTART)." d_s: ".$date_start." e_d: ".$event->DTSTART." <br>";
 			if (isset($week[cmp_day($date_start,$event->DTSTART)]) && is_array($week[cmp_day($date_start,$event->DTSTART)])) {
 				array_push($week[cmp_day($date_start,$event->DTSTART)],$event);
 			}
@@ -126,12 +132,13 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 				$cl = check($events[$i]);
 				$json = json_encode($events[$i]);
 				$width = 100/(count($events));
-				$length = (((TimeToSec(pretty_time($events[$i]->DTEND))-TimeToSec(pretty_time($events[$i]->DTSTART))))/$divide)*100;
+				$heightCal = 72;
+				$length = (((TimeToSec(pretty_time($events[$i]->DTEND))-TimeToSec(pretty_time($events[$i]->DTSTART))))/$divide)*$heightCal;
 
 				if ($event1) {
-				$mar = (((TimeToSec(pretty_time($events[$i]->DTSTART))-TimeToSec(pretty_time($event1->DTEND))))/$divide)*100;
+				$mar = (((TimeToSec(pretty_time($events[$i]->DTSTART))-TimeToSec(pretty_time($event1->DTEND))))/$divide)*$heightCal;
 				} else {
-				$mar = ((TimeToSec(pretty_time($events[$i]->DTSTART)))/$divide)*100;
+				$mar = ((TimeToSec(pretty_time($events[$i]->DTSTART)))/$divide)*$heightCal;
 				}
 
 				$str = str_replace($order, $replace, $events[$i]->DESCRIPTION);
@@ -140,7 +147,9 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 				$html .= "'>";
 				$html .= "<div class='pretty_time'>".pretty_time($events[$i]->DTSTART)." - ".pretty_time($events[$i]->DTEND)."</div>";
 				$html .= "<div class='SUMMARY'>". str_replace($order, $replace, $events[$i]->SUMMARY) ."</div>";
-				if (isset($event->NOTES)) $html .= "<div class ='extra'> <br> Notes:". $event->NOTES . "<br> </div>";
+				$html .= "<div class ='extra'> <br> Notes:";
+				if(isset($events[$i]->NOTES)) $html .= $events[$i]->NOTES;
+				$html .= "<br> </div>";
 				if (preg_match($reg_exUrl, $str, $url)) {
 					$html .= "<br><div class='extra'>" . preg_replace($reg_exUrl, '<a href="' . $url[0] . '">' . $url[0] . '</a>', $str) . "<br> Plats: " . str_replace($order, $replace, $events[$i]->LOCATION) . "</div>";
 				} else {
@@ -201,14 +210,29 @@ TODO: 	leave database calls to whoever is calling these functions, as this file 
 		/*
 		This function checks an event's summary and sees if it belongs to KTH or not, for giving it an HTML class when called in gen_event
 		*/
+		global $eventColor;
+		global $colors;
 		if(preg_match('(\([A-Z][A-Z]\d\d\d\d\))', $clickedEvent->SUMMARY))
 		{
 			$str ='KTH';
 			return $str;
 		}
+		else if(strpos($clickedEvent->SUMMARY, "STUDY-SCHEDULER") !== false){
+			if(in_array($clickedEvent->SUMMARY, $eventColor)){
+				$str = $colors[array_search($clickedEvent->SUMMARY, $eventColor)];
+				return $str;
+			}
+			else{
+				array_push($eventColor, $clickedEvent->SUMMARY);
+				$str = $colors[array_search($clickedEvent->SUMMARY, $eventColor)];
+				return $str;
+			}
+			$str = 'studyEvent';
+			return $str;
+		}
 		else
 		{
-			$str = 'Others';
+			$str = 'Other';
 			return $str;
 		}
 	}

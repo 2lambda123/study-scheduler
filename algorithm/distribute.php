@@ -233,7 +233,7 @@ function distribute($calendar_encoded, $courses_encoded, $collection_encoded){ /
 	$examWork = 0;
 	$work_per_lab = 0;
 	$courseWork = 0;
-    if (strcmp($courses_decoded["exam"], "on") == 0){ //TENTA
+    if (isset($courses_decoded["exam"])){ //TENTA
       $examWork = dailyWork($courses_decoded["coursestart"], $courses_decoded["courseend"], $collection_encoded, $courses_decoded["hp_exam"]);
       $calendar_decoded = distributeWork($calendar_decoded, $courses_decoded, $examWork, days($collection_encoded), "Course study",$courses_decoded["coursestart"], $collection_decoded, $repeat);
       $repeat = true;

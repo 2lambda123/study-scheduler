@@ -4,20 +4,32 @@ function createCal ($UUID, $KTHlink) {
 	include_once '../scripts/importCal.php';
 	include_once '../scripts/popupEvent.php';
 	include_once '../ajax/popupLabs.php';
-	
+	include_once '../scripts/findLabs.php';
+	if (session_id() == "") session_start();
 	$db = new DB();
 	$CAL = downloadFile($KTHlink);
 	$CAL1 = $db->quote($CAL);
 	$sql = "UPDATE calendar SET STUDY = ".$CAL1 . " WHERE ID = '".$UUID."'";
-	$db -> query($sql);
-	popupGen(popupLabs($CAL));
-	
+	if($db -> query($sql)){
+		echo $_SESSION['tutorial'];
+	  if(isset($_SESSION['tutorial']) && $_SESSION['tutorial'] == 1){
+		$_SESSION['tutorial'] += 1;
+	  }
+	}
+	$CAL = labFind($CAL);
+		// If there are no labs, do not popupLabs
+		if($CAL !== "[]"){
+		var_dump($CAL);
+		popupGen(popupLabs($CAL));
+	}
+
+
 	/*
 	if ($temp = $db -> query($sql)) {
 		echo "<br> success: ";
 		var_dump($temp);
 	}
-	else { 
+	else {
 		echo "<br> not success: ";
 		var_dump($temp);
 		echo ".";
