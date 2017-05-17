@@ -142,21 +142,21 @@ a {
 }
 
 .KTH {
-    background-color: #2476D2;
+    background-color: #2476D2; /*blue*/
 }
 
 .Other {
-  background-color: green;
+  background-color: green; /*green*/
 }
 
 .event1 {
-  background-color: red;
+  background-color: #ff3333; /*red*/
 }
 
 .event2 {
-  background-color: purple;
+  background-color: #b300b3; /*purple*/
 }
 
 .event3 {
-  background-color: purple;
+  background-color: #ffb833; /*orange*/
 }
